@@ -1,0 +1,39 @@
+---
+import bg1 from './../../assets/backgrounds/bg1.svg'
+---
+
+<div class="container">
+  <img
+    id="background"
+    src={bg1.src}
+    alt=""
+    fetchpriority="high"
+  />
+
+  <main>
+    <section>
+      <h2>Hero</h2>
+    </section>
+  </main>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100lvh;
+    width: 100lvw;
+    position: relative;
+  }
+
+  #background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: auto;
+    z-index: -1;
+    filter: blur(30px);
+  }
+</style>

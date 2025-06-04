@@ -1,0 +1,87 @@
+/* 1. Universal Box-Sizing Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove Default Margin and Padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/* 3. Set a more sensible default font size and line-height for body */
+body {
+  line-height: 1.5; /* Good for readability */
+  -webkit-font-smoothing: antialiased; /* Improves text rendering on macOS/iOS */
+  text-rendering: optimizeLegibility; /* Encourages browser to render text well */
+}
+
+/* 4. Remove default list styling */
+ol,
+ul {
+  list-style: none;
+}
+
+/* 5. Set default font for form elements */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* Inherit font from parent */
+  font-size: 100%; /* Ensure consistent font size */
+  line-height: 1.15; /* Consistent line height */
+  margin: 0; /* Remove default margin */
+}
+
+/* 6. Remove default text decoration from links and inherit color */
+a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+}
+
+/* 7. Ensure images are responsive and don't overflow */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block; /* Helps remove extra space below images */
+  max-width: 100%; /* Ensures images scale down within their containers */
+  height: auto; /* Maintains aspect ratio */
+}
+
+/* 8. Reset form element default appearances (often browser-specific) */
+input,
+textarea,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0; /* Remove default rounded borders */
+}
+
+/* 9. Make sure SVG fills are currentColor */
+svg {
+  fill: currentColor;
+}
+
+/* 10. Improve table defaults */
+table {
+  border-collapse: collapse; /* Collapse borders between cells */
+  border-spacing: 0; /* Remove extra space between cells */
+}
+
+/* 11. Optional: Focus-visible for accessibility */
+:focus-visible {
+  outline: 2px solid blue; /* Or any other focus style you prefer */
+  outline-offset: 2px;
+}
