@@ -9,6 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.2.5",
+    "@fontsource-variable/outfit": "^5.2.5",
+    "@fontsource/baskervville": "^5.2.6",
     "astro": "^5.8.1"
   }
 }
