@@ -69,11 +69,6 @@ select {
   border-radius: 0; /* Remove default rounded borders */
 }
 
-/* 9. Make sure SVG fills are currentColor */
-svg {
-  fill: currentColor;
-}
-
 /* 10. Improve table defaults */
 table {
   border-collapse: collapse; /* Collapse borders between cells */

@@ -9,9 +9,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.2.5",
     "@fontsource-variable/outfit": "^5.2.5",
     "@fontsource/baskervville": "^5.2.6",
-    "astro": "^5.8.1"
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.8.1",
+    "lucide-react": "^0.513.0",
+    "motion": "^12.16.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   }
 }

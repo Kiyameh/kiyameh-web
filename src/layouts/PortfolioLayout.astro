@@ -5,10 +5,14 @@ import './../styles/reset.css'
 import '@fontsource-variable/jetbrains-mono'
 import '@fontsource-variable/outfit'
 import '@fontsource/baskervville'
+import NavigationBar from '../components/NavigationBar/NavigationBar'
+import MobileNavigationBar from '../components/MobileNavigationBar/MobileNavigationBar'
+
+const currentLocale = Astro.currentLocale ?? 'en'
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={currentLocale}>
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -24,9 +28,39 @@ import '@fontsource/baskervville'
       name="generator"
       content={Astro.generator}
     />
-    <title>Andoni's Portfolio</title>
+    <title>
+      {currentLocale === 'es' ? 'Portfolio de Andoni' : "Andoni's Portfolio"}
+    </title>
+    <style>
+      .desktop-nav {
+        display: block;
+      }
+      .mobile-nav {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+        .mobile-nav {
+          display: block;
+        }
+      }
+    </style>
   </head>
   <body>
     <slot />
+    <div class="desktop-nav">
+      <NavigationBar
+        currentLocale={currentLocale}
+        client:load
+      />
+    </div>
+    <div class="mobile-nav">
+      <MobileNavigationBar
+        currentLocale={currentLocale}
+        client:load
+      />
+    </div>
   </body>
 </html>
