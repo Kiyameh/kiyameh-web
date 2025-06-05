@@ -111,6 +111,10 @@
   min-height: 40px;
   padding: 0.5rem;
   cursor: pointer;
+  border-radius: 0.5rem;
+}
+.icon.active {
+  background-color: var(--surface-300);
 }
 
 .bot {

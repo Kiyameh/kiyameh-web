@@ -38,8 +38,10 @@ const translations = {
 
 export default function MobileNavigationBar({
   currentLocale,
+  currentPath,
 }: {
   currentLocale: string
+  currentPath: string
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isLanguageSelectorVisible, setIsLanguageSelectorVisible] =
@@ -56,7 +58,6 @@ export default function MobileNavigationBar({
   }
 
   const changeLanguage = (locale: string) => {
-    const currentPath = window.location.pathname
     const newPath = currentPath.replace(`/${currentLocale}`, `/${locale}`)
     window.location.href = newPath
   }
@@ -72,17 +73,27 @@ export default function MobileNavigationBar({
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
         <nav className={styles.navigation}>
+          {/* DELETE */}
+          <p>{currentPath}</p>
+          <p>{currentLocale}</p>
           <ul>
+            {/* Portfolio */}
             <li className={styles.section}>
               <a href="/">
                 <User className={styles.icon} />
-                <span>{t.portfolio}</span>
+                <span
+                  className={
+                    currentPath.endsWith('/') ? `${styles.active}` : ''
+                  }
+                >
+                  {t.portfolio}
+                </span>
               </a>
 
               <ul className={styles.subsections}>
                 <li>
                   <a
-                    href="#hero"
+                    href={`/${currentLocale}/#hero`}
                     onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
@@ -91,7 +102,7 @@ export default function MobileNavigationBar({
                 </li>
                 <li>
                   <a
-                    href="#about"
+                    href={`/${currentLocale}/#about`}
                     onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
@@ -100,7 +111,7 @@ export default function MobileNavigationBar({
                 </li>
                 <li>
                   <a
-                    href="#projects"
+                    href={`/${currentLocale}/#projects`}
                     onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
@@ -109,7 +120,7 @@ export default function MobileNavigationBar({
                 </li>
                 <li>
                   <a
-                    href="#skills"
+                    href={`/${currentLocale}/#skills`}
                     onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
@@ -118,7 +129,7 @@ export default function MobileNavigationBar({
                 </li>
                 <li>
                   <a
-                    href="#contact"
+                    href={`/${currentLocale}/#contact`}
                     onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
@@ -127,31 +138,54 @@ export default function MobileNavigationBar({
                 </li>
               </ul>
             </li>
+            {/* Projects */}
             <li>
               <a href="projects">
                 <FileCode2 className={styles.icon} />
-                <span>{t.projects}</span>
+                <span
+                  className={
+                    currentPath.includes('projects') ? `${styles.active}` : ''
+                  }
+                >
+                  {t.projects}
+                </span>
               </a>
             </li>
+            {/* Labs */}
             <li>
               <a href="labs">
                 <FlaskConical className={styles.icon} />
-                <span>{t.labs}</span>
+                <span
+                  className={
+                    currentPath.includes('labs') ? `${styles.active}` : ''
+                  }
+                >
+                  {t.labs}
+                </span>
               </a>
             </li>
+            {/* Resume */}
             <li>
               <a href="resume">
                 <FileUser className={styles.icon} />
-                <span>{t.resume}</span>
+                <span
+                  className={
+                    currentPath.includes('resume') ? `${styles.active}` : ''
+                  }
+                >
+                  {t.resume}
+                </span>
               </a>
             </li>
           </ul>
         </nav>
 
         <div className={styles.bottomButtons}>
+          {/* Theme */}
           <button className={styles.iconButton}>
             <Sun />
           </button>
+          {/* Language */}
           <div className={styles.languageButton}>
             <button
               className={styles.iconButton}
@@ -182,6 +216,7 @@ export default function MobileNavigationBar({
               </button>
             </div>
           </div>
+          {/* Bot */}
           <button className={styles.iconButton}>
             <BotMessageSquare className={styles.bot} />
           </button>

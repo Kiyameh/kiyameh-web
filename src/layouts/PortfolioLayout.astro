@@ -9,6 +9,7 @@ import NavigationBar from '../components/NavigationBar/NavigationBar'
 import MobileNavigationBar from '../components/MobileNavigationBar/MobileNavigationBar'
 
 const currentLocale = Astro.currentLocale ?? 'en'
+const currentPath = Astro.url.pathname
 ---
 
 <!doctype html>
@@ -53,12 +54,14 @@ const currentLocale = Astro.currentLocale ?? 'en'
     <div class="desktop-nav">
       <NavigationBar
         currentLocale={currentLocale}
+        currentPath={currentPath}
         client:load
       />
     </div>
     <div class="mobile-nav">
       <MobileNavigationBar
         currentLocale={currentLocale}
+        currentPath={currentPath}
         client:load
       />
     </div>

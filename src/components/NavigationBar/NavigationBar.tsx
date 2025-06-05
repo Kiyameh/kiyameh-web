@@ -35,8 +35,10 @@ const translations = {
 
 export default function NavigationBar({
   currentLocale,
+  currentPath,
 }: {
   currentLocale: string
+  currentPath: string
 }) {
   const t =
     translations[currentLocale as keyof typeof translations] || translations.en
@@ -94,7 +96,11 @@ export default function NavigationBar({
             href="/"
             className={styles.trigger}
           >
-            <User className={styles.icon} />
+            <User
+              className={`${styles.icon} ${
+                currentPath.endsWith('/') ? styles.active : ''
+              }`}
+            />
             <span className={styles.text}>{t.portfolio}</span>
           </a>
         </li>
@@ -104,7 +110,11 @@ export default function NavigationBar({
             href="projects"
             className={styles.trigger}
           >
-            <FileCode2 className={styles.icon} />
+            <FileCode2
+              className={`${styles.icon} ${
+                currentPath.includes('projects') ? styles.active : ''
+              }`}
+            />
             <span className={styles.text}>{t.projects}</span>
           </a>
         </li>
@@ -114,7 +124,11 @@ export default function NavigationBar({
             href="labs"
             className={styles.trigger}
           >
-            <FlaskConical className={styles.icon} />
+            <FlaskConical
+              className={`${styles.icon} ${
+                currentPath.includes('labs') ? styles.active : ''
+              }`}
+            />
             <span className={styles.text}>{t.labs}</span>
           </a>
         </li>
@@ -124,7 +138,11 @@ export default function NavigationBar({
             href="resume"
             className={styles.trigger}
           >
-            <FileUser className={styles.icon} />
+            <FileUser
+              className={`${styles.icon} ${
+                currentPath.includes('resume') ? styles.active : ''
+              }`}
+            />
             <span className={styles.text}>{t.resume}</span>
           </a>
         </li>
