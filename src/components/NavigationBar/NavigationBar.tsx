@@ -41,9 +41,17 @@ export default function NavigationBar({
   const t =
     translations[currentLocale as keyof typeof translations] || translations.en
 
+  const toggleLocale = () => {
+    const newLocale = currentLocale === 'es' ? 'en' : 'es'
+    const currentPath = window.location.pathname
+    const newPath = currentPath.replace(`/${currentLocale}`, `/${newLocale}`)
+    window.location.href = newPath
+  }
+
   return (
     <nav className={styles.navbar}>
       <ul>
+        {/* Portfolio */}
         <li className={`${styles.page} ${styles.expansiblePage}`}>
           <div className={styles.sectionContainer}>
             <a
@@ -90,6 +98,7 @@ export default function NavigationBar({
             <span className={styles.text}>{t.portfolio}</span>
           </a>
         </li>
+        {/* Projects */}
         <li className={styles.page}>
           <a
             href="projects"
@@ -99,6 +108,7 @@ export default function NavigationBar({
             <span className={styles.text}>{t.projects}</span>
           </a>
         </li>
+        {/* Labs */}
         <li className={styles.page}>
           <a
             href="labs"
@@ -108,6 +118,7 @@ export default function NavigationBar({
             <span className={styles.text}>{t.labs}</span>
           </a>
         </li>
+        {/* Resume */}
         <li className={styles.page}>
           <a
             href="resume"
@@ -119,13 +130,25 @@ export default function NavigationBar({
         </li>
 
         <div className={styles.divider} />
-
+        {/* Theme */}
         <li className={styles.button}>
           <Sun className={styles.icon} />
         </li>
-        <li className={styles.button}>
-          <Languages className={styles.icon} />
+        {/* Language */}
+        <li
+          className={`${styles.button} ${styles.languageButton}`}
+          onClick={toggleLocale}
+        >
+          <div className={styles.localeContainer}>
+            <Languages className={styles.icon} />
+            <div>
+              <span className={styles.locale}>
+                {currentLocale.toUpperCase()}
+              </span>
+            </div>
+          </div>
         </li>
+        {/* Bot */}
         <li className={styles.button}>
           <BotMessageSquare className={`${styles.icon} ${styles.bot}`} />
         </li>

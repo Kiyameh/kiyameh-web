@@ -42,11 +42,23 @@ export default function MobileNavigationBar({
   currentLocale: string
 }) {
   const [isOpen, setIsOpen] = useState(false)
+  const [isLanguageSelectorVisible, setIsLanguageSelectorVisible] =
+    useState(false)
   const t =
     translations[currentLocale as keyof typeof translations] || translations.en
 
-  const handleNavigationClick = () => {
+  const handleSectionClick = () => {
     setIsOpen(false)
+  }
+
+  const toggleLanguageSelector = () => {
+    setIsLanguageSelectorVisible(!isLanguageSelectorVisible)
+  }
+
+  const changeLanguage = (locale: string) => {
+    const currentPath = window.location.pathname
+    const newPath = currentPath.replace(`/${currentLocale}`, `/${locale}`)
+    window.location.href = newPath
   }
 
   return (
@@ -62,10 +74,7 @@ export default function MobileNavigationBar({
         <nav className={styles.navigation}>
           <ul>
             <li className={styles.section}>
-              <a
-                href="/"
-                onClick={handleNavigationClick}
-              >
+              <a href="/">
                 <User className={styles.icon} />
                 <span>{t.portfolio}</span>
               </a>
@@ -74,7 +83,7 @@ export default function MobileNavigationBar({
                 <li>
                   <a
                     href="#hero"
-                    onClick={handleNavigationClick}
+                    onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
                     <span>{t.home}</span>
@@ -83,7 +92,7 @@ export default function MobileNavigationBar({
                 <li>
                   <a
                     href="#about"
-                    onClick={handleNavigationClick}
+                    onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
                     <span>{t.about}</span>
@@ -92,7 +101,7 @@ export default function MobileNavigationBar({
                 <li>
                   <a
                     href="#projects"
-                    onClick={handleNavigationClick}
+                    onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
                     <span>{t.projects}</span>
@@ -101,7 +110,7 @@ export default function MobileNavigationBar({
                 <li>
                   <a
                     href="#skills"
-                    onClick={handleNavigationClick}
+                    onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
                     <span>{t.skills}</span>
@@ -110,7 +119,7 @@ export default function MobileNavigationBar({
                 <li>
                   <a
                     href="#contact"
-                    onClick={handleNavigationClick}
+                    onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
                     <span>{t.connect}</span>
@@ -119,28 +128,19 @@ export default function MobileNavigationBar({
               </ul>
             </li>
             <li>
-              <a
-                href="projects"
-                onClick={handleNavigationClick}
-              >
+              <a href="projects">
                 <FileCode2 className={styles.icon} />
                 <span>{t.projects}</span>
               </a>
             </li>
             <li>
-              <a
-                href="labs"
-                onClick={handleNavigationClick}
-              >
+              <a href="labs">
                 <FlaskConical className={styles.icon} />
                 <span>{t.labs}</span>
               </a>
             </li>
             <li>
-              <a
-                href="resume"
-                onClick={handleNavigationClick}
-              >
+              <a href="resume">
                 <FileUser className={styles.icon} />
                 <span>{t.resume}</span>
               </a>
@@ -152,9 +152,36 @@ export default function MobileNavigationBar({
           <button className={styles.iconButton}>
             <Sun />
           </button>
-          <button className={styles.iconButton}>
-            <Languages />
-          </button>
+          <div className={styles.languageButton}>
+            <button
+              className={styles.iconButton}
+              onClick={toggleLanguageSelector}
+            >
+              <Languages />
+            </button>
+            <div
+              className={`${styles.languageSelector} ${
+                isLanguageSelectorVisible ? styles.visible : ''
+              }`}
+            >
+              <button
+                className={`${styles.languageOption} ${
+                  currentLocale === 'es' ? styles.active : ''
+                }`}
+                onClick={() => changeLanguage('es')}
+              >
+                ES
+              </button>
+              <button
+                className={`${styles.languageOption} ${
+                  currentLocale === 'en' ? styles.active : ''
+                }`}
+                onClick={() => changeLanguage('en')}
+              >
+                EN
+              </button>
+            </div>
+          </div>
           <button className={styles.iconButton}>
             <BotMessageSquare className={styles.bot} />
           </button>

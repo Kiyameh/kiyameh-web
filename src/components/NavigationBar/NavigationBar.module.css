@@ -125,3 +125,36 @@
 .button:hover {
   background-color: var(--surface-300);
 }
+
+.languageButton {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.localeContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: top 0.3s ease-in-out;
+}
+
+.locale {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.languageButton:hover div {
+  top: -40px;
+}

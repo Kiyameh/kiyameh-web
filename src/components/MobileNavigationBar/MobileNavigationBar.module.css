@@ -107,3 +107,62 @@
 .bot {
   color: var(--accent);
 }
+
+/* Language selector styles */
+.languageButton {
+  position: relative;
+}
+
+.languageSelector {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.languageSelector.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.languageOption {
+  padding: 0.4rem 0.2rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: bold;
+  position: relative;
+  white-space: nowrap;
+}
+
+.languageOption.active {
+  color: var(--accent);
+}
+
+.languageOption::before {
+  content: '';
+  position: absolute;
+  top: calc(100% - 0.2em);
+  left: 0;
+  height: 0.2em;
+  background: linear-gradient(
+    to right,
+    var(--gradient-100),
+    var(--gradient-200)
+  );
+  width: 0;
+}
+
+.languageOption:hover::before,
+.languageOption.active::before {
+  width: 100%;
+}
