@@ -67,7 +67,7 @@
     /* Colores principales */
     --primary: oklch(86.133% 0.141 139.549);
     --primary-content: oklch(17.226% 0.028 139.549);
-    --accent: oklch(74.229% 0.133 311.379);
+    --accent: oklch(0.64 0.2491 8.47);
     --accent-content: oklch(14.845% 0.026 311.379);
     --neutral: oklch(0.72 0 289);
     --neutral-content: oklch(82.901% 0.031 222.959);

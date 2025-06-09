@@ -90,6 +90,7 @@
 }
 
 .iconButton {
+  color: var(--content);
   background: none;
   border: none;
   cursor: pointer;
