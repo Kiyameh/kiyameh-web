@@ -9,6 +9,7 @@ import {
   FlaskConical,
 } from 'lucide-react'
 import styles from './NavigationBar.module.css'
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
 
 const translations = {
   en: {
@@ -149,8 +150,8 @@ export default function NavigationBar({
 
         <div className={styles.divider} />
         {/* Theme */}
-        <li className={styles.button}>
-          <Sun className={styles.icon} />
+        <li>
+          <ThemeSwitcher />
         </li>
         {/* Language */}
         <li

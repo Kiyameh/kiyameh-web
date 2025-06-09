@@ -12,6 +12,7 @@ import {
   FlaskConical,
 } from 'lucide-react'
 import styles from './MobileNavigationBar.module.css'
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
 
 const translations = {
   en: {
@@ -73,13 +74,10 @@ export default function MobileNavigationBar({
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
         <nav className={styles.navigation}>
-          {/* DELETE */}
-          <p>{currentPath}</p>
-          <p>{currentLocale}</p>
           <ul>
             {/* Portfolio */}
             <li className={styles.section}>
-              <a href="/">
+              <a href={`/${currentLocale}/`}>
                 <User className={styles.icon} />
                 <span
                   className={
@@ -182,9 +180,7 @@ export default function MobileNavigationBar({
 
         <div className={styles.bottomButtons}>
           {/* Theme */}
-          <button className={styles.iconButton}>
-            <Sun />
-          </button>
+          <ThemeSwitcher />
           {/* Language */}
           <div className={styles.languageButton}>
             <button
