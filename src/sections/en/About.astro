@@ -1,38 +1,153 @@
+---
+import {Linkedin} from 'lucide-react'
+import TagTitle from '../../components/TagTitle/TagTitle'
+import {SiGithub} from '@icons-pack/react-simple-icons'
+import me from './../../assets/me.jpg'
+import ScalableImage from '../../components/ScalableImage/ScalableImage.astro'
+---
+
 <section
   id="about"
-  class="about"
+  class="about-section"
 >
-  <h2>About Me</h2>
-  <div class="content">
-    <p>
-      I am a web developer passionate about creating unique and functional
-      digital experiences. I specialize in frontend development with a focus on
-      accessibility and user experience.
-    </p>
-  </div>
+  <header class="header">
+    <ScalableImage
+      src={me}
+      alt="Andoni's photo"
+      thumbnailClass="about-image"
+    />
+    <div class="info-container">
+      <p class="code-text name">Andoni Abarzuza</p>
+      <p class="code-text job"># Web Developer</p>
+      <div class="icon-container">
+        <a
+          href="https://github.com/kiyameh"
+          class="icon-link"
+        >
+          <SiGithub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/andoni-gallardo-izcue/"
+          class="icon-link"
+        >
+          <Linkedin />
+        </a>
+      </div>
+    </div>
+  </header>
+  <TagTitle
+    client:load
+    id="about"
+    tagType="starting"
+    >AboutMe</TagTitle
+  >
+  <p class="paragraph code-text">
+    My name is Andoni, I am a <span class="emphasis">web developer</span> and <span
+      class="emphasis">interface designer</span
+    >
+    based in Navarra. Throughout my life, I have felt a deep passion for technology
+    in general and the web in particular, which led me to explore web development
+    independently.
+  </p>
+  <p class="paragraph code-text">
+    Between 2021 and 2024, I decided to deepen my knowledge in this field by
+    pursuing a <span class="emphasis">degree in UI/UX Design</span>, a training
+    that significantly expanded my vision and creative skills, and enables me to
+    prototype and design interfaces using specialized software like <span
+      class="emphasis">Figma</span
+    >. Today, I combine that design vision with my passion for code to create
+    interactive experiences on the web.
+  </p>
+  <p class="paragraph code-text">
+    I have developed most of my projects using <span class="emphasis"
+      >TypeScript</span
+    > and <span class="emphasis">React</span>-based technologies, mainly in
+    environments like Astro, Next.js, or Vite.js. However, one of my main
+    passions is exploring the endless possibilities of
+    <span class="emphasis">CSS language</span> to create unique and customized designs.
+  </p>
+  <p class="paragraph code-text">
+    Thanks to always working independently, I have had the opportunity to
+    experiment with different aspects of web development, such as backend API
+    creation, database management, software deployment, version control, or code
+    testing. These are areas where I continue to deepen and expand my knowledge.
+  </p>
+  <p class="paragraph code-text">
+    Currently, I am looking to make the leap into the professional sector and
+    dedicate myself full-time to <span class="emphasis">web development</span>,
+    applying everything I have learned and growing alongside new challenges and
+    work teams.
+  </p>
+  <TagTitle
+    client:load
+    id="about"
+    tagType="closing"
+    >AboutMe</TagTitle
+  >
 </section>
 
 <style>
-  .about {
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 1rem;
+    max-width: 1024px;
+    margin: auto;
   }
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
+  :global(.about-image) {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 100%;
   }
-
-  .content {
-    line-height: 1.6;
-  }
-
-  @media (min-width: 768px) {
-    .about {
-      padding: 4rem 2rem;
+  @media (max-width: 768px) {
+    .about-image {
+      width: 130px;
+      height: 130px;
     }
   }
-</style>
+  .paragraph {
+    margin-left: 1.5rem;
+  }
 
+  .header {
+    width: 100%;
+    padding-block: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+    text-align: right;
+  }
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .icon-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .icon-container {
+      justify-content: center;
+    }
+  }
+  .icon-link:hover {
+    color: var(--primary);
+  }
+</style>

@@ -15,7 +15,7 @@
   --gradient-content: oklch(100% 0 0);
 
   /* Colores principales */
-  --primary: oklch(56.86% 0.255 257.57);
+  --primary: oklch(0.63 0.1998 252);
   --primary-content: oklch(91.372% 0.051 257.57);
   --accent: oklch(0.64 0.2491 8.47);
   --accent-content: oklch(11.988% 0.038 335.171);
@@ -65,7 +65,7 @@
     --gradient-300: oklch(0.63 0.1998 252);
 
     /* Colores principales */
-    --primary: oklch(86.133% 0.141 139.549);
+    --primary: oklch(0.63 0.1998 252);
     --primary-content: oklch(17.226% 0.028 139.549);
     --accent: oklch(0.64 0.2491 8.47);
     --accent-content: oklch(14.845% 0.026 311.379);

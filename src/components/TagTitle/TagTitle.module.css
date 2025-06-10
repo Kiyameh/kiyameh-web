@@ -1,0 +1,34 @@
+.tagTitle {
+  text-wrap: nowrap;
+  font-family: var(--font-mono);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.header a,
+.header span {
+  text-decoration: none;
+}
+
+.anchorIcon {
+  visibility: hidden;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.header:hover .anchorIcon {
+  visibility: visible;
+  opacity: 1;
+}
+
+.clipboardIcon {
+  visibility: visible;
+  color: var(--gradient-200);
+}
+.headerContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

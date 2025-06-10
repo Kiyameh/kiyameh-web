@@ -39,6 +39,9 @@ export default function Hero() {
     <section
       id="hero"
       className="section"
+      style={{
+        textAlign: 'center',
+      }}
     >
       {/* Title */}
       <h1 className="big-paragraph">

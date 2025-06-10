@@ -1,38 +1,153 @@
+---
+import {Linkedin} from 'lucide-react'
+import TagTitle from '../../components/TagTitle/TagTitle'
+import {SiGithub} from '@icons-pack/react-simple-icons'
+import me from './../../assets/me.jpg'
+import ScalableImage from '../../components/ScalableImage/ScalableImage.astro'
+---
+
 <section
   id="about"
-  class="about"
+  class="about-section"
 >
-  <h2>Sobre Mí</h2>
-  <div class="content">
-    <p>
-      Soy un desarrollador web apasionado por crear experiencias digitales
-      únicas y funcionales. Me especializo en el desarrollo frontend con un
-      enfoque en la accesibilidad y la experiencia de usuario.
-    </p>
-  </div>
+  <header class="header">
+    <ScalableImage
+      src={me}
+      alt="Foto de Andoni"
+      thumbnailClass="about-image"
+    />
+    <div class="info-container">
+      <p class="code-text name">Andoni Abarzuza</p>
+      <p class="code-text job"># Desarrollador web</p>
+      <div class="icon-container">
+        <a
+          href="https://github.com/kiyameh"
+          class="icon-link"
+        >
+          <SiGithub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/andoni-gallardo-izcue/"
+          class="icon-link"
+        >
+          <Linkedin />
+        </a>
+      </div>
+    </div>
+  </header>
+  <TagTitle
+    client:load
+    id="about"
+    tagType="starting"
+    >SobreMí</TagTitle
+  >
+  <p class="paragraph code-text">
+    Mi nombre es Andoni, soy <span class="emphasis">desarrollador web</span> y <span
+      class="emphasis">diseñador de interfaces</span
+    >
+    afincado en Navarra. A lo largo de toda mi vida he sentido una profunda pasión
+    por la tecnología en general y por la web en particular, lo que me llevó a explorar
+    el desarrollo web de manera independiente.
+  </p>
+  <p class="paragraph code-text">
+    Entre 2021 y 2024 decidí profundizar en este campo cursando un <span
+      class="emphasis">grado en Diseño de UI/UX</span
+    >, una formación que amplió de forma significativa mi visión y habilidades
+    creativas, y que me capacita para prototipar y diseñar interfaces mediante
+    software especializado como <span class="emphasis">Figma</span>. Hoy en día
+    combino esa visión de diseño con mi pasión por el código para crear
+    experiencias interactivas en la web.
+  </p>
+  <p class="paragraph code-text">
+    He desarrollado la mayoría de mis proyectos utilizando <span
+      class="emphasis">TypeScript</span
+    > y tecnologías basadas en <span class="emphasis">React</span>,
+    principalmente en entornos como Astro, Next.js o Vite.js. Sin embargo, una
+    de mis principales pasiones es explorar las infinitas posibilidades del
+    <span class="emphasis">lenguaje CSS</span> para crear diseños únicos y personalizados.
+  </p>
+  <p class="paragraph code-text">
+    Gracias a que siempre he trabajado de forma independiente, he tenido la
+    oportunidad de experimentar con diferentes aspectos del desarrollo web, como
+    la creación de APIs backend, el manejo de bases de datos, el despliegue de
+    software, el control de versiones o el testeo de código. Son áreas en las
+    que sigo profundizando y ampliando conocimientos.
+  </p>
+  <p class="paragraph code-text">
+    Actualmente, busco dar el salto al sector profesional y dedicarme a tiempo
+    completo al <span class="emphasis">desarrollo web</span>, aplicando todo lo
+    aprendido y creciendo junto a nuevos retos y equipos de trabajo.
+  </p>
+  <TagTitle
+    client:load
+    id="about"
+    tagType="closing"
+    >SobreMí</TagTitle
+  >
 </section>
 
 <style>
-  .about {
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 1rem;
+    max-width: 1024px;
+    margin: auto;
   }
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
+  :global(.about-image) {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 100%;
   }
-
-  .content {
-    line-height: 1.6;
-  }
-
-  @media (min-width: 768px) {
-    .about {
-      padding: 4rem 2rem;
+  @media (max-width: 768px) {
+    .about-image {
+      width: 130px;
+      height: 130px;
     }
   }
-</style>
+  .paragraph {
+    margin-left: 1.5rem;
+  }
 
+  .header {
+    width: 100%;
+    padding-block: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+    text-align: right;
+  }
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .icon-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .icon-container {
+      justify-content: center;
+    }
+  }
+  .icon-link:hover {
+    color: var(--primary);
+  }
+</style>
