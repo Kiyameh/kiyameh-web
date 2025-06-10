@@ -51,19 +51,19 @@ const currentPath = Astro.url.pathname
   </head>
   <body data-theme="light">
     <slot />
-    <div class="desktop-nav">
+    <nav class="desktop-nav">
       <NavigationBar
         currentLocale={currentLocale}
         currentPath={currentPath}
         client:load
       />
-    </div>
-    <div class="mobile-nav">
+    </nav>
+    <nav class="mobile-nav">
       <MobileNavigationBar
         currentLocale={currentLocale}
         currentPath={currentPath}
         client:load
       />
-    </div>
+    </nav>
   </body>
 </html>

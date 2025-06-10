@@ -1,0 +1,128 @@
+/* Page Container */
+
+.page-container {
+  min-height: 100lvh;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding: 2rem;
+  }
+}
+
+/* Section */
+.section {
+  min-height: 100lvh;
+  max-width: 1024px;
+  padding: 2rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section {
+    max-width: 100lvw;
+  }
+}
+
+/* Paragraph */
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+}
+
+/* Big paragraph */
+.big-paragraph {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Code paragraph */
+.code-paragraph {
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+  background-color: var(--surface-300);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-small);
+}
+
+/* Link */
+.link {
+  display: inline-block;
+  position: relative;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--gradient-100);
+}
+.link:hover {
+  text-decoration: none;
+  /* To avoid the link being hidden by the gradient */
+  z-index: 2;
+}
+
+.link::before {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  top: calc(100% - 0.2em);
+  left: 0;
+  width: 0%;
+  height: 0.2em;
+  background: linear-gradient(
+    to right,
+    var(--gradient-100),
+    var(--gradient-200)
+  );
+  transition: width 0.3s ease;
+}
+.link:hover::before {
+  width: 100%;
+}
+
+/* Emphasis */
+.emphasis {
+  background: linear-gradient(
+    to right,
+    var(--gradient-100),
+    var(--gradient-200)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Fantasy text */
+.fantasy-text {
+  font-family: var(--font-fantasy);
+  font-style: italic;
+  font-size: calc(1em + 0.2rem);
+  background: linear-gradient(
+    to right,
+    var(--gradient-100),
+    var(--gradient-200),
+    var(--gradient-300)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  padding-inline: 0.1rem;
+}
+
+/*  Code text  */
+
+.code-text {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}

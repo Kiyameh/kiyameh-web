@@ -26,6 +26,7 @@ const moonIcon = `
 
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [isAnimating, setIsAnimating] = useState(false)
 
   const getCurrentTheme = (): 'light' | 'dark' => {
     return (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
@@ -40,42 +41,29 @@ export default function ThemeSwitcher() {
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
-    applyTheme(newTheme)
-  }
-
-  const updateIcon = (newTheme: 'light' | 'dark') => {
-    const icon = document.getElementById('theme-icon')
-    if (!icon) return
-
-    // Aplicar animación de salida
-    icon.classList.add(styles.fadeOut)
-    icon.classList.remove(styles.fadeIn)
-
+    setIsAnimating(true)
     setTimeout(() => {
-      icon.innerHTML = newTheme === 'light' ? sunIcon : moonIcon
-      icon.classList.remove(styles.fadeOut)
-      icon.classList.add(styles.fadeIn)
+      applyTheme(newTheme)
+      setIsAnimating(false)
     }, 150)
   }
 
   useEffect(() => {
     const savedTheme = getCurrentTheme()
     applyTheme(savedTheme)
-    updateIcon(savedTheme)
   }, [])
 
   return (
     <button
       id="theme-toggle-btn"
       className={styles.themeIconBtn}
-      onClick={() => {
-        toggleTheme()
-        updateIcon(theme === 'light' ? 'dark' : 'light')
-      }}
+      onClick={toggleTheme}
       aria-label="Toggle theme"
     >
       <svg
-        className={styles.icon}
+        className={`${styles.icon} ${
+          isAnimating ? styles.fadeOut : styles.fadeIn
+        }`}
         id="theme-icon"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

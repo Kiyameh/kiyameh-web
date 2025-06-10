@@ -1,7 +1,7 @@
 ---
-import '../../styles/pages.css'
+import '../../styles/css-components.css'
 import PortfolioLayout from '../../layouts/PortfolioLayout.astro'
-import Hero from '../../sections/es/Hero.astro'
+import Hero from '../../sections/es/Hero'
 import About from '../../sections/es/About.astro'
 import Projects from '../../sections/es/Projects.astro'
 import Skills from '../../sections/es/Skills.astro'
@@ -9,11 +9,11 @@ import Conect from '../../sections/es/Conect.astro'
 ---
 
 <PortfolioLayout>
-  <div class="page-container">
-    <Hero />
+  <main>
+    <Hero client:load />
     <About />
     <Projects />
     <Skills />
     <Conect />
-  </div>
+  </main>
 </PortfolioLayout>
