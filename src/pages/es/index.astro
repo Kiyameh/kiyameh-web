@@ -1,19 +1,22 @@
 ---
 import '../../styles/css-components.css'
 import PortfolioLayout from '../../layouts/PortfolioLayout.astro'
-import Hero from '../../sections/es/Hero'
-import About from '../../sections/es/About.astro'
-import Projects from '../../sections/es/Projects.astro'
-import Skills from '../../sections/es/Skills.astro'
-import Conect from '../../sections/es/Conect.astro'
+import Hero from '../../sections/Hero'
+import About from '../../sections/About.astro'
+import Skills from '../../sections/Skills.astro'
+import Connect from '../../sections/Connect.astro'
+import Works from '../../sections/Works.astro'
 ---
 
 <PortfolioLayout>
   <main>
-    <Hero client:load />
-    <About />
-    <Projects />
-    <Skills />
-    <Conect />
+    <Hero
+      client:load
+      language="es"
+    />
+    <About language="es" />
+    <Works language="es" />
+    <Skills language="es" />
+    <Connect language="es" />
   </main>
 </PortfolioLayout>

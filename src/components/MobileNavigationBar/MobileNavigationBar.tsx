@@ -18,20 +18,22 @@ const translations = {
   en: {
     home: 'Home',
     about: 'About',
-    projects: 'Projects',
+    works: 'Works',
     skills: 'Skills',
     connect: 'Connect',
     portfolio: 'Portfolio',
+    projects: 'Projects',
     labs: 'Labs',
     resume: 'Resume',
   },
   es: {
     home: 'Inicio',
     about: 'Sobre mí',
-    projects: 'Proyectos',
+    works: 'Trabajos',
     skills: 'Habilidades',
     connect: 'Contacto',
     portfolio: 'Portafolio',
+    projects: 'Proyectos',
     labs: 'Laboratorio',
     resume: 'Currículum',
   },
@@ -109,11 +111,11 @@ export default function MobileNavigationBar({
                 </li>
                 <li>
                   <a
-                    href={`/${currentLocale}/#projects`}
+                    href={`/${currentLocale}/#works`}
                     onClick={handleSectionClick}
                   >
                     <Hash className={styles.hash} />
-                    <span>{t.projects}</span>
+                    <span>{t.works}</span>
                   </a>
                 </li>
                 <li>

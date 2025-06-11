@@ -3,7 +3,6 @@ import {
   BotMessageSquare,
   FileUser,
   Hash,
-  Sun,
   Languages,
   FileCode2,
   FlaskConical,
@@ -15,20 +14,22 @@ const translations = {
   en: {
     home: 'Home',
     about: 'About',
-    projects: 'Projects',
+    works: 'Works',
     skills: 'Skills',
     connect: 'Connect',
     portfolio: 'Portfolio',
+    projects: 'Projects',
     labs: 'Labs',
     resume: 'Resume',
   },
   es: {
     home: 'Inicio',
     about: 'Sobre mí',
-    projects: 'Proyectos',
+    works: 'Trabajos',
     skills: 'Habilidades',
     connect: 'Contacto',
     portfolio: 'Portafolio',
+    projects: 'Proyectos',
     labs: 'Labs',
     resume: 'Currículum',
   },
@@ -58,35 +59,35 @@ export default function NavigationBar({
         <li className={`${styles.page} ${styles.expansiblePage}`}>
           <div className={styles.sectionContainer}>
             <a
-              href="#hero"
+              href={`/${currentLocale}/#hero`}
               className={styles.section}
             >
               <Hash className={styles.hash} />
               <span> {t.home}</span>
             </a>
             <a
-              href="#about"
+              href={`/${currentLocale}/#about`}
               className={styles.section}
             >
               <Hash className={styles.hash} />
               <span> {t.about}</span>
             </a>
             <a
-              href="#projects"
+              href={`/${currentLocale}/#works`}
               className={styles.section}
             >
               <Hash className={styles.hash} />
-              <span> {t.projects}</span>
+              <span> {t.works}</span>
             </a>
             <a
-              href="#skills"
+              href={`/${currentLocale}/#skills`}
               className={styles.section}
             >
               <Hash className={styles.hash} />
               <span> {t.skills}</span>
             </a>
             <a
-              href="#contact"
+              href={`/${currentLocale}/#contact`}
               className={styles.section}
             >
               <Hash className={styles.hash} />
@@ -94,7 +95,7 @@ export default function NavigationBar({
             </a>
           </div>
           <a
-            href="/"
+            href={`/${currentLocale}/`}
             className={styles.trigger}
           >
             <User
