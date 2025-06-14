@@ -5,7 +5,8 @@
   --surface-300: oklch(93.268% 0.016 262.751);
   --content: oklch(41.886% 0.053 255.824);
   --emphasis: oklch(0.63 0.1998 252);
-  --border: oklch(41.886% 0.053 255.824);
+  --border: oklch(0.5575 0.053 255.824);
+  --border-soft: oklch(82.901% 0.031 222.959);
   --focus: oklch(0.64 0.2491 8.47);
 
   /* Colores gradientes */
@@ -35,7 +36,7 @@
   /* Radios */
   --radius-small: 0.25rem;
   --radius-medium: 0.5rem;
-  --radius-large: 0.8rem;
+  --radius-large: 1rem;
 
   /* Shadows */
   --shadow-small: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -56,7 +57,8 @@
     --surface-300: oklch(26.346% 0.018 262.177);
     --content: oklch(82.901% 0.031 222.959);
     --emphasis: oklch(0.64 0.2491 8.47);
-    --border: oklch(82.901% 0.031 222.959);
+    --border: oklch(0.5486 0.031 222.959);
+    --border-soft: oklch(0.5486 0.031 222.959);
     --focus: oklch(0.64 0.2491 8.47);
 
     /* Colores gradientes */
@@ -85,7 +87,7 @@
     /* Radios */
     --radius-small: 0.25rem;
     --radius-medium: 0.5rem;
-    --radius-large: 2rem;
+    --radius-large: 1rem;
 
     /* Shadows */
     --shadow-small: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -136,4 +138,9 @@ body {
 
 * {
   scrollbar-color: var(--content) var(--surface-100);
+}
+
+/* Focus */
+html *:focus-visible {
+  outline: 2px solid var(--focus) !important;
 }

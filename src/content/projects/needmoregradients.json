@@ -1,0 +1,30 @@
+{
+  "name": "Need More Gradients",
+  "slug": "need-more-gradients",
+  "url": "https://www.npmjs.com/package/need-more-gradients-ui",
+  "repository": "https://github.com/Kiyameh/need-more-gradients-ui",
+  "type": "package",
+  "description": "Biblioteca de componentes Ui para React con estilos de gradientes.",
+  "description_en": "UI component library for React with gradient styles.",
+  "technologies": [
+    "html",
+    "css",
+    "react",
+    "npm",
+    "typescript",
+    "vite",
+    "figma"
+  ],
+  "features": [
+    "Biblioteca de componentes de ui",
+    "Sistema de estilos",
+    "Paquete npm o sistema de copiar-usar"
+  ],
+  "features_en": [
+    "UI component library",
+    "Style system",
+    "NPM package or copy-use system"
+  ],
+  "featured": true,
+  "date": "2025-01-15"
+}

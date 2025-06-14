@@ -1,0 +1,27 @@
+{
+  "name": "CaverBob",
+  "slug": "caverbob",
+  "logo": "/projects/caverbob/logo.png",
+  "url": "https://www.caverbob.org/",
+  "repository": "https://github.com/Kiyameh/caverbob-web",
+  "type": "webpage",
+  "description": "Página web de referencia para el ranking de cavidades mundiales.",
+  "description_en": "Reference website for world cave rankings.",
+  "technologies": ["html", "css", "react", "next", "typescript", "supabase"],
+  "features": [
+    "Base de datos de cavidades mundiales",
+    "Sistema de comentarios",
+    "Sistema de reporte de nueva información",
+    "SEO optimizado",
+    "Internacionalización en tres idiomas"
+  ],
+  "features_en": [
+    "World cave database",
+    "Comment system",
+    "New information reporting system",
+    "SEO optimized",
+    "Internationalization in three languages"
+  ],
+  "featured": true,
+  "date": "2025-01-15"
+}

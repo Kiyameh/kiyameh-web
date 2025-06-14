@@ -40,6 +40,8 @@ textarea {
   font-size: 100%; /* Ensure consistent font size */
   line-height: 1.15; /* Consistent line height */
   margin: 0; /* Remove default margin */
+  border: none; /* Remove default border */
+  background: none;
 }
 
 /* 6. Remove default text decoration from links and inherit color */

@@ -19,6 +19,7 @@
     "astro": "^5.8.1",
     "lucide-react": "^0.513.0",
     "motion": "^12.16.0",
+    "need-more-gradients-ui": "^0.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   }

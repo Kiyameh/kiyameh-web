@@ -1,0 +1,40 @@
+---
+import {getCollection} from 'astro:content'
+import ProjectsExplorer from '../components/ProjectsExplorer/ProjectsExplorer'
+interface Props {
+  language: 'en' | 'es'
+}
+
+const {language = 'en'} = Astro.props as Props
+
+// Obtener y ordenar proyectos
+const allProjects = (await getCollection('projects')).sort((a, b) => {
+  const dateA = a.data.date ? new Date(a.data.date).getTime() : 0
+  const dateB = b.data.date ? new Date(b.data.date).getTime() : 0
+  return dateB - dateA
+})
+---
+
+<section
+  id="works"
+  class="section"
+>
+  <ProjectsExplorer
+    client:load
+    projects={allProjects}
+    language={language}
+  />
+</section>
+
+<style>
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 1rem;
+    max-width: 1024px;
+    margin: auto;
+    height: 600px; /* Altura fija para el explorador */
+  }
+</style>

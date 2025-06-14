@@ -1,0 +1,32 @@
+{
+  "name": "Portfolio",
+  "slug": "portfolio",
+  "logo": "/projects/portfolio/logo.svg",
+  "url": "https://www.kiyameh.dev",
+  "repository": "https://github.com/Kiyameh/kiyameh.dev",
+  "type": "webpage",
+  "description": "Portfolio personal moderno y responsivo que muestra mis proyectos y habilidades como desarrollador.",
+  "description_en": "Personal modern and responsive portfolio that showcases my projects and skills as a developer.",
+  "technologies": [
+    "html",
+    "css modules",
+    "react",
+    "astro",
+    "typescript",
+    "figma"
+  ],
+  "features": [
+    "Diseño responsivo",
+    "Modo oscuro/claro",
+    "Diseño estético personalizado",
+    "SEO optimizado"
+  ],
+  "features_en": [
+    "Responsive design",
+    "Dark/light mode",
+    "Custom aesthetic design",
+    "SEO optimized"
+  ],
+  "featured": true,
+  "date": "2025-01-15"
+}

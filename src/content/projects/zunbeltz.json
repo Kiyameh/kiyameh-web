@@ -1,0 +1,36 @@
+{
+  "name": "Zunbeltz",
+  "slug": "zunbeltz",
+  "url": "https://www.zunbeltz.org/",
+  "repository": "https://github.com/Kiyameh/zunbeltz_web",
+  "type": "webpage",
+  "description": "Página web de referencia sobre espeleología en Navarra",
+  "description_en": "Reference website about speleology in Navarre",
+  "technologies": [
+    "html",
+    "css",
+    "react",
+    "astro",
+    "typescript",
+    "figma",
+    "cloudinary",
+    "stripe",
+    "markdown"
+  ],
+  "features": [
+    "Página web informativa sobre espeleología en Navarra",
+    "Blog de noticias sobre espeleología",
+    "Tienda online de productos",
+    "Sección de formación con formato de LMS",
+    "Sistema de distribución de contenido mediante colecciones de astro"
+  ],
+  "features_en": [
+    "Informative website about speleology in Navarre",
+    "Speleology news blog",
+    "Online product store",
+    "Training section with LMS format",
+    "Content distribution system using astro collections"
+  ],
+  "featured": true,
+  "date": "2025-01-15"
+}

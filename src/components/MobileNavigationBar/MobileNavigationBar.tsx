@@ -4,7 +4,6 @@ import {
   BotMessageSquare,
   FileUser,
   Hash,
-  Sun,
   Languages,
   FileCode2,
   Menu,

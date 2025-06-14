@@ -1,0 +1,47 @@
+{
+  "name": "Subterra",
+  "slug": "subterra",
+  "logo": "/projects/subterra/logo.svg",
+  "url": "https://www.subterra.app/",
+  "repository": "https://github.com/Kiyameh/subterra_web",
+  "type": "webpage",
+  "description": "Aplicación web para la gestión de datos de exploración de cavidades",
+  "description_en": "Web application for cave exploration data management",
+  "technologies": [
+    "html",
+    "css",
+    "react",
+    "next",
+    "typescript",
+    "mongodb",
+    "figma",
+    "auth.js",
+    "cloudinary"
+  ],
+  "features": [
+    "Base de datos masiva para exploración de cavidades",
+    "Sistema de autenticación, grupos y roles",
+    "Subida de imágenes y archivos",
+    "Metodos de consulta, filtro y tratamiento de datos",
+    "Interfaz tipo dashboard para la visualización de datos",
+    "Modalidad premium con funcionalidades adicionales"
+  ],
+  "features_en": [
+    "Massive cave database for exploration",
+    "Authentication, groups and roles system",
+    "Photo and file upload",
+    "Query, filter and data treatment methods",
+    "Dashboard interface for data visualization",
+    "Premium mode with additional features"
+  ],
+  "mainImage": "/projects/subterra/1.png",
+  "images": [
+    "/projects/subterra/1.png",
+    "/projects/subterra/2.png",
+    "/projects/subterra/3.png",
+    "/projects/subterra/4.png",
+    "/projects/subterra/5.png"
+  ],
+  "featured": true,
+  "date": "2025-01-15"
+}
