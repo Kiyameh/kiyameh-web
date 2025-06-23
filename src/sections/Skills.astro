@@ -1,0 +1,72 @@
+---
+import SectionTitle from '../components/SectionTitle/SectionTitle'
+import TechBadge from '../components/TechBadge/TechBadge'
+import TechCarrousel from '../components/TechCarrousel/TechCarrousel'
+interface Props {
+  language: 'en' | 'es'
+}
+
+const {language = 'en'} = Astro.props as Props
+
+const TEXTS = {
+  en: {
+    title: 'How do I do things?',
+    description:
+      'I love <span class="fantasy-text">CSS</span>. I also love <span class="fantasy-text">Typescript</span>. So over the years I have accumulated a stack that has allowed me to exploit these two technologies. However, I consider that you never stop learning, so I am constantly exploring new technologies and tools.',
+  },
+  es: {
+    title: '¿Cómo hago las cosas?',
+    description:
+      'Me gusta <span class="fantasy-text">CSS</span>. También me gusta <span class="fantasy-text">Typescript</span>. Así que durante años he acumulado un stack que me ha permitido explotar estas dos técnologias. Sin embargo, considero que nunca se deja de aprender, asi que constantemente estoy explorando nuevas tecnologias y herramientas.',
+  },
+}
+
+const {title, description} = TEXTS[language]
+---
+
+<section
+  id="skills"
+  class="skills-section"
+>
+  <header class="header">
+    <SectionTitle
+      client:load
+      id="skills"
+      level="title"
+    >
+      {title}
+    </SectionTitle>
+    <p
+      class="paragraph code-text"
+      set:html={description}
+    />
+  </header>
+  <main class="main">
+    <TechCarrousel client:load />
+  </main>
+</section>
+
+<style>
+  .skills-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-block: 2rem;
+    max-width: 1024px;
+    min-height: 80vh;
+    margin: auto;
+  }
+  .skills-section header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
+  .skills-section .main {
+    width: 100%;
+    min-height: 250px;
+  }
+</style>

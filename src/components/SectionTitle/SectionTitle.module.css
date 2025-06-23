@@ -1,0 +1,40 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 3rem;
+  font-family: var(--font-fantasy);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.clipboardIcon {
+  width: 0.9em;
+  visibility: visible;
+  color: var(--gradient-200);
+}
+.anchorIcon {
+  width: 0.9em;
+  visibility: hidden;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.title:hover .anchorIcon,
+.subtitle:hover .anchorIcon {
+  opacity: 1;
+  visibility: visible;
+}

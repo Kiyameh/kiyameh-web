@@ -1,0 +1,30 @@
+---
+import HeroBanner from '../components/Hero/Hero'
+
+interface HeroProps {
+  language: 'en' | 'es'
+}
+const {language = 'es'} = Astro.props as HeroProps
+---
+
+<section
+  id="hero"
+  class="hero-section"
+>
+  <HeroBanner
+    client:load
+    language={language}
+  />
+</section>
+
+<style>
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+</style>

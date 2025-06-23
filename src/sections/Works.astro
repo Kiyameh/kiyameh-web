@@ -1,6 +1,7 @@
 ---
 import {getCollection} from 'astro:content'
 import ProjectsExplorer from '../components/ProjectsExplorer/ProjectsExplorer'
+import SectionTitle from '../components/SectionTitle/SectionTitle'
 interface Props {
   language: 'en' | 'es'
 }
@@ -13,28 +14,65 @@ const allProjects = (await getCollection('projects')).sort((a, b) => {
   const dateB = b.data.date ? new Date(b.data.date).getTime() : 0
   return dateB - dateA
 })
+
+const TEXTS = {
+  en: {
+    title: 'What have I done?',
+    description:
+      'Here you can see some of the featured projects I have worked on recently. You can also visit the <span class="link"><a href="/en/projects">project pages</a></span> or the <span class="link"><a href="/en/labs">labs</a></span>, where I share my most personal works.',
+  },
+  es: {
+    title: '¿Qué he hecho?',
+    description:
+      'Aquí puedes ver algunos de los proyectos destacados en los que he trabajado recientemente. También puedes visitar las <span class="link"><a href="/es/projects">páginas de cada proyecto</a></span> o los <span class="link"><a href="/es/labs">laboratorios</a></span>, donde comparto mis trabajos más personales.',
+  },
+}
+
+const {title, description} = TEXTS[language]
 ---
 
 <section
   id="works"
-  class="section"
+  class="works-section"
 >
-  <ProjectsExplorer
-    client:load
-    projects={allProjects}
-    language={language}
-  />
-</section>
+  <header class="header">
+    <SectionTitle
+      client:load
+      id="works"
+      level="title"
+    >
+      {title}
+    </SectionTitle>
+    <p
+      class="paragraph code-text"
+      set:html={description}
+    />
+  </header>
+  <main>
+    <ProjectsExplorer
+      client:load
+      projects={allProjects}
+      language={language}
+    />
+  </main>
 
-<style>
-  .section {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    padding: 1rem;
-    max-width: 1024px;
-    margin: auto;
-    height: 600px; /* Altura fija para el explorador */
-  }
-</style>
+  <style>
+    .works-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-block: 2rem;
+      max-width: 1024px;
+      margin: auto;
+    }
+    .works-section header {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+    }
+  </style>
+</section>

@@ -1,7 +1,7 @@
 ---
 import '../../styles/css-components.css'
 import PortfolioLayout from '../../layouts/PortfolioLayout.astro'
-import Hero from '../../sections/Hero'
+import Hero from '../../sections/Hero.astro'
 import About from '../../sections/About.astro'
 import Skills from '../../sections/Skills.astro'
 import Connect from '../../sections/Connect.astro'
@@ -10,10 +10,7 @@ import Works from '../../sections/Works.astro'
 
 <PortfolioLayout>
   <main>
-    <Hero
-      client:load
-      language="en"
-    />
+    <Hero language="en" />
     <About language="en" />
     <Works language="en" />
     <Skills language="en" />

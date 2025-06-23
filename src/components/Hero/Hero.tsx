@@ -1,35 +1,35 @@
-import { useMemo, useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import {useMemo, useState, useEffect} from 'react'
+import {AnimatePresence, motion} from 'framer-motion'
 
-type Language = 'en' | 'es';
+type Language = 'en' | 'es'
 
 interface HeroProps {
-  language: Language;
+  language: Language
 }
 
 interface SubtitleContent {
-  a: string;
-  b: string;
+  a: string
+  b: string
 }
 
 const SUBTITLES: Record<Language, SubtitleContent[]> = {
   en: [
-    { a: ' passion ', b: ' creating memorable digital experiences ' },
-    { a: ' purpose ', b: ' designing modern and accessible interfaces ' },
-    { a: ' vision ', b: ' clean, sustainable and efficient code ' },
-    { a: ' path ', b: ' innovation and adaptation ' },
-    { a: ' cause ', b: ' free software and community ' },
+    {a: ' passion ', b: ' creating memorable digital experiences '},
+    {a: ' purpose ', b: ' designing modern and accessible interfaces '},
+    {a: ' vision ', b: ' clean, sustainable and efficient code '},
+    {a: ' path ', b: ' innovation and adaptation '},
+    {a: ' cause ', b: ' free software and community '},
   ],
   es: [
-    { a: ' pasión ', b: ' crear experiencias digitales memorables ' },
-    { a: ' propósito ', b: ' diseñar interfaces modernas y accesibles ' },
-    { a: ' visión ', b: ' un código limpio, sostenible y eficiente ' },
-    { a: ' camino ', b: ' la inovación y la adaptación ' },
-    { a: ' causa ', b: ' el software libre y la comunidad ' },
+    {a: ' pasión ', b: ' crear experiencias digitales memorables '},
+    {a: ' propósito ', b: ' diseñar interfaces modernas y accesibles '},
+    {a: ' visión ', b: ' un código limpio, sostenible y eficiente '},
+    {a: ' camino ', b: ' la inovación y la adaptación '},
+    {a: ' causa ', b: ' el software libre y la comunidad '},
   ],
-};
+}
 
-const TITLES: Record<Language, { prefix: string; suffix: string }> = {
+const TITLES: Record<Language, {prefix: string; suffix: string}> = {
   en: {
     prefix: "I'm Andoni, and I'm a ",
     suffix: 'software developer',
@@ -38,42 +38,49 @@ const TITLES: Record<Language, { prefix: string; suffix: string }> = {
     prefix: 'Soy Andoni, y soy ',
     suffix: 'desarrollador de software',
   },
-};
+}
 
-const TEXTS: Record<Language, { my: string; is: string }> = {
-  en: { my: 'My', is: 'is' },
-  es: { my: 'Mi', is: 'es' },
-};
+const TEXTS: Record<Language, {my: string; is: string}> = {
+  en: {my: 'My', is: 'is'},
+  es: {my: 'Mi', is: 'es'},
+}
 
-export default function Hero({ language = 'en' }: HeroProps) {
-  const [subtitle, setSubtitle] = useState<SubtitleContent>(SUBTITLES[language][0]);
+export default function Hero({language = 'en'}: HeroProps) {
+  const [subtitle, setSubtitle] = useState<SubtitleContent>(
+    SUBTITLES[language][0]
+  )
 
-  const subtitleStates = useMemo(() => ({
-    initial: { y: '100%', opacity: 0 },
-    animate: { y: '0%', opacity: 1 },
-    exit: { y: '-100%', opacity: 0 },
-  }), []);
+  const subtitleStates = useMemo(
+    () => ({
+      initial: {y: '100%', opacity: 0},
+      animate: {y: '0%', opacity: 1},
+      exit: {y: '-100%', opacity: 0},
+    }),
+    []
+  )
 
-  const subtitles = useMemo(() => SUBTITLES[language], [language]);
-  const { my, is } = TEXTS[language];
-  const { prefix, suffix } = TITLES[language];
+  const subtitles = useMemo(() => SUBTITLES[language], [language])
+  const {my, is} = TEXTS[language]
+  const {prefix, suffix} = TITLES[language]
 
   useEffect(() => {
-    let currentIndex = 0;
+    let currentIndex = 0
     const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % subtitles.length;
-      setSubtitle(subtitles[currentIndex]);
-    }, 4000);
+      currentIndex = (currentIndex + 1) % subtitles.length
+      setSubtitle(subtitles[currentIndex])
+    }, 4000)
 
-    return () => clearInterval(interval);
-  }, [subtitles]);
+    return () => clearInterval(interval)
+  }, [subtitles])
 
   return (
-    <section
-      id="hero"
-      className="section"
+    <div
       style={{
         textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <svg
@@ -99,7 +106,7 @@ export default function Hero({ language = 'en' }: HeroProps) {
           fill="#FF197C"
         />
       </svg>
-      
+
       {/* Title */}
       <h1 className="big-paragraph">
         {prefix}
@@ -109,7 +116,7 @@ export default function Hero({ language = 'en' }: HeroProps) {
       {/* Subtitle */}
       <div
         className="big-paragraph"
-        style={{ height: '120px' }}
+        style={{height: '120px'}}
       >
         <AnimatePresence mode="wait">
           <motion.div
@@ -121,7 +128,7 @@ export default function Hero({ language = 'en' }: HeroProps) {
             transition={{
               duration: 0.4,
               ease: [0.4, 0, 0.2, 1],
-              opacity: { duration: 0.3 },
+              opacity: {duration: 0.3},
             }}
           >
             <span>{my}</span>
@@ -131,6 +138,6 @@ export default function Hero({ language = 'en' }: HeroProps) {
           </motion.div>
         </AnimatePresence>
       </div>
-    </section>
-  );
+    </div>
+  )
 }
