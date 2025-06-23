@@ -4,6 +4,7 @@ import TagTitle from '../components/TagTitle/TagTitle'
 import {SiGithub} from '@icons-pack/react-simple-icons'
 import me from '../assets/me.jpg'
 import ImageThumbnail from '../components/ImageThumbnail/ImageThumbnail'
+import IconButton from '../components/IconButton/IconButton'
 
 interface AboutProps {
   language: 'en' | 'es'
@@ -56,20 +57,20 @@ const {alt, job, title, paragraphs} = TEXTS[language]
       <p class="code-text name">Andoni Abarzuza</p>
       <p class="code-text job">{job}</p>
       <div class="icon-container">
-        <a
-          href="https://github.com/kiyameh"
-          class="icon-link"
-          aria-label="GitHub profile"
+        <IconButton
+          client:load
+          src="https://github.com/kiyameh"
+          title="GitHub profile"
         >
           <SiGithub />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/andoni-gallardo-izcue/"
-          class="icon-link"
-          aria-label="LinkedIn profile"
+        </IconButton>
+        <IconButton
+          client:load
+          src="https://www.linkedin.com/in/andoni-gallardo-izcue/"
+          title="LinkedIn profile"
         >
           <Linkedin />
-        </a>
+        </IconButton>
       </div>
     </div>
   </header>
@@ -209,20 +210,13 @@ const {alt, job, title, paragraphs} = TEXTS[language]
     flex-direction: row-reverse;
     align-items: center;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   @media (max-width: 768px) {
     .icon-container {
       justify-content: center;
     }
-  }
-  .icon-link {
-    color: inherit;
-    transition: color 0.2s ease;
-  }
-  .icon-link:hover {
-    color: var(--primary);
   }
 
   .signature-container {

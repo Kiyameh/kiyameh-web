@@ -1,5 +1,6 @@
 import {useMemo, useState} from 'react'
 import TechBadge from '../TechBadge/TechBadge'
+import IconButton from '../IconButton/IconButton'
 import styles from './TechCarrousel.module.css'
 import {
   Atom,
@@ -111,70 +112,78 @@ export default function TechCarrousel({reverse = false}) {
         </div>
       </div>
       <div className={styles.tagsContainer}>
-        <button
+        <IconButton
           className={selectedTag === 'languages' ? styles.active : ''}
           onMouseEnter={() => setActiveTags(['languages'])}
           onMouseLeave={() => !selectedTag && setActiveTags(allTags)}
           onClick={() => handleTagClick('languages')}
+          title="Languages"
         >
           <Code />
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           className={selectedTag === 'frameworks' ? styles.active : ''}
           onMouseEnter={() => setActiveTags(['frameworks'])}
           onMouseLeave={() => !selectedTag && setActiveTags(allTags)}
           onClick={() => handleTagClick('frameworks')}
+          title="Frameworks"
         >
           <Atom />
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           className={selectedTag === 'tools' ? styles.active : ''}
           onMouseEnter={() => setActiveTags(['tools'])}
           onMouseLeave={() => !selectedTag && setActiveTags(allTags)}
           onClick={() => handleTagClick('tools')}
+          title="Tools"
         >
           <Hammer />
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           className={selectedTag === 'libraries' ? styles.active : ''}
           onMouseEnter={() => setActiveTags(['libraries'])}
           onMouseLeave={() => !selectedTag && setActiveTags(allTags)}
           onClick={() => handleTagClick('libraries')}
+          title="Libraries"
         >
           <Library />
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           className={selectedTag === 'databases' ? styles.active : ''}
           onMouseEnter={() => setActiveTags(['databases'])}
           onMouseLeave={() => !selectedTag && setActiveTags(allTags)}
           onClick={() => handleTagClick('databases')}
+          title="Databases"
         >
           <Database />
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           className={selectedTag === 'cloud' ? styles.active : ''}
           onMouseEnter={() => setActiveTags(['cloud'])}
           onMouseLeave={() => !selectedTag && setActiveTags(allTags)}
           onClick={() => handleTagClick('cloud')}
+          title="Cloud"
         >
           <Cloud />
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           className={selectedTag === 'backend' ? styles.active : ''}
           onMouseEnter={() => setActiveTags(['backend'])}
           onMouseLeave={() => !selectedTag && setActiveTags(allTags)}
           onClick={() => handleTagClick('backend')}
+          title="Backend"
         >
           <Server />
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           className={selectedTag === 'design' ? styles.active : ''}
           onMouseEnter={() => setActiveTags(['design'])}
           onMouseLeave={() => !selectedTag && setActiveTags(allTags)}
           onClick={() => handleTagClick('design')}
+          title="Design"
         >
           <Palette />
-        </button>
+        </IconButton>
       </div>
     </>
   )

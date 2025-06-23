@@ -5,18 +5,9 @@
   align-items: center;
   padding-block: 1rem;
 }
-.tagsContainer button {
-  background-color: var(--surface-300);
-  border-radius: 99px;
-  cursor: pointer;
-  padding: 0.3rem;
-  transition: all 0.2s ease-in-out;
-}
-.tagsContainer button:hover {
-  color: var(--accent);
-}
+
 .tagsContainer button.active {
-  background-color: var(--accent);
+  background: var(--gradient-100);
   color: var(--surface-100);
 }
 
