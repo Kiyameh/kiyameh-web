@@ -1,0 +1,256 @@
+---
+import SectionTitle from '../components/SectionTitle/SectionTitle'
+import {Mail, User, MessageSquare, AtSign} from 'lucide-react'
+
+interface ConnectProps {
+  language: 'en' | 'es'
+}
+
+const {language = 'es'} = Astro.props as ConnectProps
+
+const TEXTS = {
+  en: {
+    title: "Let's talk!",
+    description:
+      'I am always open to new opportunities and collaborations. If you have a project in mind or just want to say hello, feel free to contact me.',
+    form: {
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      submit: 'Send message',
+      namePlaceholder: 'Your name',
+      emailPlaceholder: 'Your email',
+      messagePlaceholder: "What's on your mind?",
+    },
+  },
+  es: {
+    title: '¡Hablemos!',
+    description:
+      'Siempre estoy abierto a nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente o simplemente quieres saludar, no dudes en contactarme. ',
+    form: {
+      name: 'Nombre',
+      email: 'Correo electrónico',
+      message: 'Mensaje',
+      submit: 'Enviar mensaje',
+      namePlaceholder: 'Tu nombre',
+      emailPlaceholder: 'Tu correo electrónico',
+      messagePlaceholder: '¿Qué tienes en mente?',
+    },
+  },
+}
+
+const {title, description, form} = TEXTS[language]
+---
+
+<section
+  id="contact"
+  class="contact-section"
+>
+  <header class="header">
+    <SectionTitle
+      client:load
+      id="contact"
+      level="title"
+    >
+      {title}
+    </SectionTitle>
+    <p class="paragraph code-text">
+      {description}
+    </p>
+  </header>
+
+  <main class="form-container">
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="contact-form"
+    >
+      <input
+        type="hidden"
+        name="form-name"
+        value="contact"
+      />
+      <p class="hidden">
+        <label>
+          Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+      </p>
+
+      <div class="form-group">
+        <div class="input-container">
+          <User className="input-icon" />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder={form.namePlaceholder}
+            aria-label={form.name}
+            required
+            class="form-input"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-container">
+          <AtSign className="input-icon" />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder={form.emailPlaceholder}
+            aria-label={form.email}
+            required
+            class="form-input"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea
+          id="message"
+          name="message"
+          placeholder={form.messagePlaceholder}
+          aria-label={form.message}
+          required
+          rows="6"
+          class="form-textarea"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="submit-button"
+      >
+        {form.submit}
+      </button>
+    </form>
+  </main>
+</section>
+
+<style>
+  .contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding-block: 2rem;
+    max-width: 1024px;
+    margin: auto;
+    min-height: 100vh;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .paragraph {
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 0 2rem 2rem 2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .input-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--content);
+    opacity: 0.6;
+    z-index: 1;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 0.75rem 0.75rem 0.75rem 2.75rem;
+    border: 2px solid var(--border-soft);
+    border-radius: var(--radius-medium);
+    background-color: var(--surface-200);
+    color: var(--content);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .form-textarea {
+    padding: 0.75rem;
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-button {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(
+      135deg,
+      var(--gradient-100),
+      var(--gradient-200)
+    );
+    color: var(--gradient-content);
+    border: none;
+    border-radius: var(--radius-medium);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .submit-button:active {
+    transform: translateY(0);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 1rem;
+    }
+
+    .header {
+      padding: 1rem;
+    }
+
+    .form-container {
+      padding: 0 1rem 1rem 1rem;
+    }
+  }
+</style>
