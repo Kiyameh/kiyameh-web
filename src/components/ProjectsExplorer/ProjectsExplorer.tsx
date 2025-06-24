@@ -22,6 +22,7 @@ import {
   Hammer,
   Settings,
   Images,
+  Plus,
 } from 'lucide-react'
 import ImageGallery from '../ImageGallery/ImageGallery'
 
@@ -287,6 +288,15 @@ export default function ProjectsExplorer({
                 </div>
               </a>
             )}
+            <a
+              href={`/${language}/projects/${selectedProject.data.slug}`}
+              className={`${styles.linkCard} ${styles.projectPageCard}`}
+            >
+              <Info className={styles.linkIcon} />
+              <div>
+                <p className={styles.linkText}>{t.viewProjectPage}</p>
+              </div>
+            </a>
           </div>
 
           <div className={styles.detailsSection}>
