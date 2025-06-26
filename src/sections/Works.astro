@@ -2,6 +2,7 @@
 import {getCollection} from 'astro:content'
 import ProjectsExplorer from '../components/ProjectsExplorer/ProjectsExplorer'
 import SectionTitle from '../components/SectionTitle/SectionTitle'
+
 interface Props {
   language: 'en' | 'es'
 }
@@ -17,14 +18,14 @@ const allProjects = (await getCollection('projects')).sort((a, b) => {
 
 const TEXTS = {
   en: {
-    title: 'What have I done?',
+    title: 'What?',
     description:
-      'Here you can see some of the featured projects I have worked on recently. You can also visit the <span class="link"><a href="/en/projects">project pages</a></span> or the <span class="link"><a href="/en/labs">labs</a></span>, where I share my most personal works.',
+      'Here you can see some of the projects I have worked on recently. You can also visit the <span class="link"><a href="/en/projects">project pages</a></span> or the <span class="link"><a href="/en/labs">labs</a></span>, where I share my most personal works.',
   },
   es: {
-    title: '¿Qué he hecho?',
+    title: '¿Qué?',
     description:
-      'Aquí puedes ver algunos de los proyectos destacados en los que he trabajado recientemente. También puedes visitar las <span class="link"><a href="/es/projects">páginas de cada proyecto</a></span> o los <span class="link"><a href="/es/labs">laboratorios</a></span>, donde comparto mis trabajos más personales.',
+      'Aquí puedes ver algunos de los proyectos en los que he trabajado recientemente. También puedes visitar la <span class="link"><a href="/es/projects">página de cada proyecto</a></span> o los <span class="link"><a href="/es/labs">laboratorios</a></span>, donde comparto mis trabajos más personales.',
   },
 }
 

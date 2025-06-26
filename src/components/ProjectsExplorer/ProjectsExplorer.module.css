@@ -215,7 +215,7 @@
 
 /* 1 Main content container */
 .mainContent {
-  background-color: var(--surface-100);
+  background: linear-gradient(120deg, var(--surface-100), var(--surface-300));
   flex: 1;
   display: flex;
   overflow-x: hidden;
@@ -365,6 +365,7 @@
 }
 
 .projectLogoFallback {
+  color: var(--content);
   scale: 1.5;
 }
 

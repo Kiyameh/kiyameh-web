@@ -108,7 +108,12 @@ export default function Hero({language = 'en'}: HeroProps) {
       </svg>
 
       {/* Title */}
-      <h1 className="big-paragraph">
+      <h1
+        className="big-paragraph"
+        style={{
+          fontSize: '2rem',
+        }}
+      >
         {prefix}
         <span className="emphasis fantasy-text">{suffix}</span>
       </h1>

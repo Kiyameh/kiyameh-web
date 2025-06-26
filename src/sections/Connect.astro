@@ -1,6 +1,7 @@
 ---
 import SectionTitle from '../components/SectionTitle/SectionTitle'
-import {Mail, User, MessageSquare, AtSign} from 'lucide-react'
+import {GradientButton} from 'need-more-gradients-ui'
+import {User, AtSign} from 'lucide-react'
 
 interface ConnectProps {
   language: 'en' | 'es'
@@ -120,12 +121,15 @@ const {title, description, form} = TEXTS[language]
         ></textarea>
       </div>
 
-      <button
+      <GradientButton
         type="submit"
-        class="submit-button"
+        roundness={0.5}
+        primary
+        borderWidth={2}
+        className="submit-button"
       >
         {form.submit}
-      </button>
+      </GradientButton>
     </form>
   </main>
 </section>
@@ -137,7 +141,7 @@ const {title, description, form} = TEXTS[language]
     align-items: start;
     justify-content: center;
     padding-block: 2rem;
-    max-width: 1024px;
+    max-width: 600px;
     margin: auto;
     min-height: 100vh;
   }
@@ -153,13 +157,11 @@ const {title, description, form} = TEXTS[language]
   }
 
   .paragraph {
-    max-width: 600px;
     line-height: 1.6;
   }
 
   .form-container {
     width: 100%;
-    max-width: 600px;
     padding: 0 2rem 2rem 2rem;
   }
 
@@ -195,9 +197,9 @@ const {title, description, form} = TEXTS[language]
   .form-textarea {
     width: 100%;
     padding: 0.75rem 0.75rem 0.75rem 2.75rem;
-    border: 2px solid var(--border-soft);
+    border: 1px solid var(--border-soft);
     border-radius: var(--radius-medium);
-    background-color: var(--surface-200);
+    background-color: var(--surface-100);
     color: var(--content);
     font-family: var(--font-sans);
     font-size: 1rem;
@@ -210,34 +212,13 @@ const {title, description, form} = TEXTS[language]
     min-height: 120px;
   }
 
-  .submit-button {
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(
-      135deg,
-      var(--gradient-100),
-      var(--gradient-200)
-    );
-    color: var(--gradient-content);
-    border: none;
-    border-radius: var(--radius-medium);
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .submit-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
-  }
-
-  .submit-button:active {
-    transform: translateY(0);
-  }
-
   .hidden {
     display: none;
+  }
+
+  .submit-button {
+    font-size: 1.2rem;
+    height: 2.5rem;
   }
 
   @media (max-width: 768px) {

@@ -44,7 +44,7 @@
   --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
 
   /* Fonts */
-  --font-sans: 'Outfit', sans-serif;
+  --font-sans: 'Outfit Variable', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-fantasy: 'Baskervville', serif;
 }
@@ -95,7 +95,7 @@
     --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
 
     /* Fonts */
-    --font-sans: 'Outfit', sans-serif;
+    --font-sans: 'Outfit Variable', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --font-fantasy: 'Baskervville', serif;
   }

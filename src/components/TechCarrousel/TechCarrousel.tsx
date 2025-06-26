@@ -74,7 +74,7 @@ export default function TechCarrousel({reverse = false}) {
   }
 
   return (
-    <>
+    <div className={styles.mainContainer}>
       <div className={styles.carouselContainer}>
         <div className={styles.carouselTrack}>
           {technologies.map((tech, index) => (
@@ -185,6 +185,6 @@ export default function TechCarrousel({reverse = false}) {
           <Palette />
         </IconButton>
       </div>
-    </>
+    </div>
   )
 }
