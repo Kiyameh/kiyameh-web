@@ -81,6 +81,7 @@ export default function Hero({language = 'en'}: HeroProps) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: '1rem',
       }}
     >
       <svg
@@ -115,7 +116,7 @@ export default function Hero({language = 'en'}: HeroProps) {
         }}
       >
         {prefix}
-        <span className="emphasis fantasy-text">{suffix}</span>
+        <p className="emphasis fantasy-text">{suffix}</p>
       </h1>
 
       {/* Subtitle */}

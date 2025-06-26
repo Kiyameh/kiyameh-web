@@ -22,7 +22,6 @@ import {
   Hammer,
   Settings,
   Images,
-  Plus,
 } from 'lucide-react'
 import ImageGallery from '../ImageGallery/ImageGallery'
 
