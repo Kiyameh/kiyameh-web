@@ -1,10 +1,40 @@
 ---
-import '../../styles/css-components.css'
-import PortfolioLayout from '../../layouts/PortfolioLayout.astro'
+import ResumeContainer from '../../components/Resume/Resume'
+import background from '../../assets/backgrounds/resume_bg.svg'
+import CvLayout from '../../layouts/CvLayout.astro'
 ---
 
-<PortfolioLayout>
-  <div class="page-container">
-    <h1 class="page-title">Resume</h1>
+<CvLayout>
+  <div class="container">
+    <img
+      id="background"
+      src={background.src}
+      alt=""
+      fetchpriority="high"
+    />
+    <ResumeContainer
+      client:load
+      language="en"
+    />
   </div>
-</PortfolioLayout>
+</CvLayout>
+
+<style>
+  .container {
+    margin: 1rem;
+  }
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
+  }
+  @media print {
+    #background {
+      display: none;
+    }
+  }
+</style>

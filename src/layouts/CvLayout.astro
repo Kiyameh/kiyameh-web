@@ -1,0 +1,69 @@
+---
+import './../styles/theme.css'
+import './../styles/reset.css'
+
+import '@fontsource-variable/jetbrains-mono'
+import '@fontsource-variable/outfit'
+import '@fontsource/baskervville'
+import NavigationBar from '../components/NavigationBar/NavigationBar'
+import MobileNavigationBar from '../components/MobileNavigationBar/MobileNavigationBar'
+
+const currentLocale = Astro.currentLocale ?? 'en'
+const currentPath = Astro.url.pathname
+---
+
+<!doctype html>
+<html lang={currentLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+    <title>
+      {currentLocale === 'es' ? 'Curriculum de Andoni' : "Andoni's Resume"}
+    </title>
+    <style>
+      .desktop-nav {
+        display: block;
+      }
+      .mobile-nav {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .desktop-nav {
+          display: none;
+        }
+        .mobile-nav {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body data-theme="dark">
+    <slot />
+    <nav class="desktop-nav">
+      <NavigationBar
+        currentLocale={currentLocale}
+        currentPath={currentPath}
+        client:load
+      />
+    </nav>
+    <nav class="mobile-nav">
+      <MobileNavigationBar
+        currentLocale={currentLocale}
+        currentPath={currentPath}
+        client:load
+      />
+    </nav>
+  </body>
+</html>
