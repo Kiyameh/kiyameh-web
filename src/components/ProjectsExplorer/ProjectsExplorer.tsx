@@ -33,6 +33,7 @@ export default function ProjectsExplorer({
   language: 'en' | 'es'
 }) {
   const t = translations[language]
+
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
