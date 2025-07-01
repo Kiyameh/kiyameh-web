@@ -1,0 +1,143 @@
+/* Project Card */
+.projectCard {
+  background: var(--surface-100);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-large);
+}
+
+
+/* Project Image */
+.projectImage {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: var(--surface-200);
+}
+
+.projectImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.3s ease;
+}
+
+
+.projectCard:hover .projectImage img,
+.projectCard:hover .placeholderContent {
+  transform: scale(1.05);
+}
+
+
+
+
+/* Project Content */
+
+.projectContent {
+  border-top: 1px solid var(--border-soft);
+  padding: 2rem;
+}
+
+.projectHeader {
+  margin-bottom: 1.5rem;
+}
+
+.projectTitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--content);
+}
+
+.projectDescription {
+  color: var(--content);
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Project Links */
+
+
+.projectLinks {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.projectLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--surface-200);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-medium);
+  color: var(--content);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.projectLinkIcon {
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+}
+
+.liveIndicator {
+  min-width: 10px;
+  min-height: 10px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    opacity: 0.7;
+  }
+  100% {
+    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+    opacity: 1;
+  }
+}
+
+.detailsButton {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projectContent {
+    padding: 1.5rem;
+  }
+
+  .projectLinks {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .projectContent {
+    padding: 1rem;
+  }
+
+  .projectLinks {
+    gap: 0.5rem;
+  }
+}

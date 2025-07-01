@@ -1,0 +1,106 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+
+  background: var(--surface-200);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-medium);
+  color: var(--content);
+
+  font-family: var(--font-sans);
+  text-wrap: nowrap;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 2.75rem;
+  min-width: fit-content;
+}
+
+.button:hover {
+  background: var(--surface-300);
+  border: 1px solid var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-medium);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.button:disabled:hover {
+  background: var(--surface-200);
+  border-color: var(--border-soft);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Primary variant */
+.button.primary {
+  background: var(--accent);
+  color: var(--accent-content);
+  border: 1px solid var(--accent);
+  box-shadow: var(--shadow-medium);
+}
+
+.button.primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
+}
+
+.button.primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-medium);
+}
+
+
+.button.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-medium);
+}
+
+.button.primary:disabled:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: none;
+  box-shadow: var(--shadow-medium);
+}
+
+/* Active variant */
+.button.active {
+  background: var(--primary);
+  color: var(--primary-content);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-medium);
+}
+
+.button.active:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .button {
+    padding: 0.625rem 5rem;
+    font-size: 0.8rem;
+    min-height: 2.5rem;
+  }
+}

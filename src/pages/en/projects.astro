@@ -1,10 +1,108 @@
 ---
-import '../../styles/css-components.css'
-import PortfolioLayout from '../../layouts/PortfolioLayout.astro'
+import "../../styles/css-components.css";
+import PortfolioLayout from "../../layouts/PortfolioLayout.astro";
+import { getCollection } from "astro:content";
+import PointsGridBackground from "../../components/PointsGridBackground/PointGridBackground";
+import ProjectCardContainer from "../../components/ProjectCardContainer/ProjectCardContainer";
+
+// Get all projects from the collection
+const projects = await getCollection("projects");
+
+// Sort by date (most recent first)
+const sortedProjects = projects.sort((a, b) => {
+  const dateA = a.data.date ? new Date(a.data.date) : new Date(0);
+  const dateB = b.data.date ? new Date(b.data.date) : new Date(0);
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <PortfolioLayout>
-  <div class="page-container">
-    <h1 class="page-title">Projects</h1>
-  </div>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title fantasy-text">Projects</h1>
+      <p class="hero-description code-text">
+        A collection of my most recent and outstanding works
+      </p>
+    </div>
+  </section>
+  <section class="projects-section">
+    <ProjectCardContainer projects={sortedProjects} language="en" client:load />
+  </section>
+
+  <PointsGridBackground client:load />
 </PortfolioLayout>
+
+<style>
+  /* Layout */
+  .projects-section {
+    position: relative;
+  }
+
+  .projects-section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/backgrounds/bg2.svg");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    filter: blur(100px);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    max-width: 100lvw;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/backgrounds/bg1.svg");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    filter: blur(100px);
+  }
+
+  .hero-content {
+    text-align: center;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    padding-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 0 1rem;
+    }
+  }
+</style>

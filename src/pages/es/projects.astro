@@ -1,58 +1,50 @@
 ---
-import '../../styles/css-components.css'
-import PortfolioLayout from '../../layouts/PortfolioLayout.astro'
-import {getCollection} from 'astro:content'
-import PointsGridBackground from '../../components/PointsGridBackground/PointGridBackground'
-import ProjectCardContainer from '../../components/ProjectCardContainer/ProjectCardContainer'
+import "../../styles/css-components.css";
+import PortfolioLayout from "../../layouts/PortfolioLayout.astro";
+import { getCollection } from "astro:content";
+import PointsGridBackground from "../../components/PointsGridBackground/PointGridBackground";
+import ProjectCardContainer from "../../components/ProjectCardContainer/ProjectCardContainer";
 
 // Obtener todos los proyectos de la colección
-const projects = await getCollection('projects')
+const projects = await getCollection("projects");
 
 // Ordenar por fecha (más recientes primero)
 const sortedProjects = projects.sort((a, b) => {
-  const dateA = a.data.date ? new Date(a.data.date) : new Date(0)
-  const dateB = b.data.date ? new Date(b.data.date) : new Date(0)
-  return dateB.getTime() - dateA.getTime()
-})
+  const dateA = a.data.date ? new Date(a.data.date) : new Date(0);
+  const dateB = b.data.date ? new Date(b.data.date) : new Date(0);
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <PortfolioLayout>
-  <div class="background">
-    <!-- Título principal que ocupa 100vh -->
-    <section class="hero-section">
-      <div class="hero-content">
-        <h1 class="hero-title fantasy-text">Proyectos</h1>
-        <p class="hero-description code-text">
-          Una colección de mis trabajos más recientes y destacados
-        </p>
-      </div>
-    </section>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title fantasy-text">Proyectos</h1>
+      <p class="hero-description code-text">
+        Una colección de mis trabajos más recientes y destacados
+      </p>
+    </div>
+  </section>
+  <section class="projects-section">
+    <ProjectCardContainer projects={sortedProjects} language="es" client:load />
+  </section>
 
-    <ProjectCardContainer
-      projects={sortedProjects}
-      language="es"
-      client:load
-    />
-
-    <PointsGridBackground client:load />
-  </div>
+  <PointsGridBackground client:load />
 </PortfolioLayout>
 
 <style>
   /* Layout */
-  .background {
+  .projects-section {
     position: relative;
-    max-width: 100lvw;
   }
 
-  .background::before {
-    content: '';
+  .projects-section::before {
+    content: "";
     position: absolute;
-    top: -300px;
     left: 0;
     width: 100%;
-    height: 200%;
-    background-image: url('/backgrounds/bg2.svg');
+    height: 100%;
+    background-image: url("/backgrounds/bg2.svg");
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
@@ -68,10 +60,25 @@ const sortedProjects = projects.sort((a, b) => {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    max-width: 1024px;
+    max-width: 100lvw;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
+  }
+
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/backgrounds/bg1.svg");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    filter: blur(100px);
   }
 
   .hero-content {
@@ -80,7 +87,7 @@ const sortedProjects = projects.sort((a, b) => {
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     padding-bottom: 1.5rem;
     line-height: 1.1;
   }
