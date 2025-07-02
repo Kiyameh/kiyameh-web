@@ -142,5 +142,14 @@ body {
 
 /* Focus */
 html *:focus-visible {
-  outline: 2px solid var(--focus) !important;
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Transiciones fluídas */
+*,
+*::before,
+*::after {
+  transition: color 0.3s ease, background-color 0.3s ease,
+    border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
 }

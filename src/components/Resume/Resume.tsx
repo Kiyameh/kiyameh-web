@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   ResumeLayout,
   ResumeHeader,
@@ -10,7 +9,7 @@ import {
   ResumeTechnologies,
   ResumeContact,
 } from 'react-resume-kit'
-import {content} from '../../content/resumeData'
+import {content} from '@/content/resumeData'
 
 export default function Resume({language}: {language: 'en' | 'es'}) {
   return (
@@ -24,9 +23,9 @@ export default function Resume({language}: {language: 'en' | 'es'}) {
       <ResumeAbout />
       <ResumeWorks />
       <ResumeCourses />
+      <ResumeProjects />
       <ResumeTechnologies />
       <ResumeSoftSkills />
-      <ResumeProjects />
       <ResumeContact />
     </ResumeLayout>
   )

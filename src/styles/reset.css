@@ -76,9 +76,3 @@ table {
   border-collapse: collapse; /* Collapse borders between cells */
   border-spacing: 0; /* Remove extra space between cells */
 }
-
-/* 11. Optional: Focus-visible for accessibility */
-:focus-visible {
-  outline: 2px solid blue; /* Or any other focus style you prefer */
-  outline-offset: 2px;
-}
