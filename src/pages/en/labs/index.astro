@@ -1,0 +1,56 @@
+---
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import SectionTitle from '@/components/SectionTitle/SectionTitle'
+import Hero from '@/sections/labs/hero.astro'
+---
+
+<PortfolioLayout>
+  <div class="page-container">
+    <main>
+      <Hero language="en" />
+
+      <section
+        class="section-container"
+        id="components"
+      >
+        <SectionTitle
+          id="components"
+          level="title"
+          >Components
+        </SectionTitle>
+      </section>
+      <section
+        class="section-container"
+        id="mountain"
+      >
+        <SectionTitle
+          id="mountain"
+          level="title"
+          >Mountain
+        </SectionTitle>
+      </section>
+    </main>
+  </div>
+</PortfolioLayout>
+
+<style>
+  main {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Sections */
+  .section-container {
+    width: 100%;
+    min-height: 100lvh;
+  }
+  #components {
+    background: lightblue;
+  }
+  #mountain {
+    background: lightcoral;
+  }
+</style>

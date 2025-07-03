@@ -1,0 +1,184 @@
+---
+interface Props {
+  language?: 'es' | 'en'
+}
+
+const {language = 'es'} = Astro.props
+
+const translations = {
+  es: {
+    welcome: 'Bienvenido a',
+    labs: 'Labs',
+    subtitle: 'El lugar donde comparto mis experimentos y componentes',
+    languageClass: 'spanish',
+  },
+  en: {
+    welcome: 'Welcome to',
+    labs: 'Labs',
+    subtitle: 'The place where I share my experiments and components',
+    languageClass: 'english',
+  },
+}
+
+const t = translations[language]
+import {FlaskConical} from 'lucide-react'
+---
+
+<div class="spacer"></div>
+<div class="sentinel"></div>
+<header class="header">
+  <div>
+    <FlaskConical id="flask" />
+  </div>
+  <div class="header-text">
+    <h1 class="header-title">
+      <div class={`header-welcome-text ${t.languageClass}`}>{t.welcome}</div>
+      <div class="header-labs-text">{t.labs}</div>
+    </h1>
+    <p class="header-subtitle">
+      {t.subtitle}
+    </p>
+  </div>
+</header>
+<div class="spacer"></div>
+
+<style>
+  /* Header spacer */
+  .spacer {
+    width: 100%;
+    height: 45svh;
+  }
+  /* Sentinel element to trigger header stickyness */
+  .sentinel {
+    height: 1px;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 4px;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    transition: max-width 0.5s ease-in-out;
+  }
+
+  header.at-the-top {
+    max-width: 140px;
+  }
+  @media (max-width: 350px) {
+    header {
+      max-width: 140px;
+    }
+  }
+
+  /* Flask */
+  header #flask {
+    min-width: 50px;
+    width: 50px;
+    transition: width 0.5s ease-in-out;
+  }
+  header.at-the-top #flask {
+    min-width: 40px;
+    width: 40px;
+  }
+  @media (max-width: 350px) {
+    header #flask {
+      min-width: 40px;
+      width: 40px;
+    }
+  }
+
+  /* Title */
+  header .header-title {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  /* Welcome text */
+  header .header-welcome-text {
+    height: 50px;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out;
+    padding-left: 1px;
+  }
+  header .header-welcome-text.spanish {
+    width: 195px;
+  }
+  header .header-welcome-text.english {
+    width: 178px;
+  }
+
+  header.at-the-top .header-welcome-text {
+    width: 1px;
+  }
+  @media (max-width: 350px) {
+    header .header-welcome-text {
+      width: 1px;
+    }
+  }
+  /* Labs text */
+  header .header-labs-text {
+    width: 80px;
+  }
+
+  /* Subtitle */
+  header .header-subtitle {
+    font-size: 1.2rem;
+    text-wrap: wrap;
+
+    height: 30px;
+    transition:
+      opacity 0.5s ease-in-out,
+      visibility 0.5s ease-in-out,
+      height 0.5s ease-in-out,
+      width 0.5s ease-in-out;
+  }
+
+  header.at-the-top .header-subtitle {
+    opacity: 0;
+    visibility: hidden;
+    height: 1px;
+    overflow: hidden;
+  }
+  @media (max-width: 350px) {
+    header .header-subtitle {
+      opacity: 0;
+      visibility: hidden;
+      height: 1px;
+      overflow: hidden;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sentinel = document.querySelector('.sentinel')
+    const header = document.querySelector('.header')
+
+    const observerOptions = {
+      root: null, // Observa intersecciones con el viewport
+      rootMargin: '0px', // Sin margen adicional
+      threshold: 0, // Se dispara en cuanto el elemento entra o sale (incluso 1px)
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting && header) {
+          header.classList.add('at-the-top')
+        } else if (header) {
+          header.classList.remove('at-the-top')
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+    if (sentinel) observer.observe(sentinel)
+  })
+</script>
