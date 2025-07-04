@@ -39,7 +39,7 @@ export function filterProjects(
 ) {
   return projects.filter((project) => {
     const matchesFilter =
-      activeFilter === null || project.data.type === activeFilter
+      activeFilter === null || activeFilter === "all" || project.data.type === activeFilter
     const matchesSearch =
       project.data.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.data.description_en

@@ -1,7 +1,7 @@
 ---
 import {getCollection} from 'astro:content'
-import ProjectsExplorer from '@/components/ProjectsExplorer/ProjectsExplorer'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
+import ProjectHighlighter from '@/components/ProjectHighlighter/ProjectHighlighter'
 
 interface Props {
   language: 'en' | 'es'
@@ -25,7 +25,7 @@ const TEXTS = {
   es: {
     title: '¿Qué?',
     description:
-      'Aquí puedes ver algunos de los proyectos en los que he trabajado recientemente. También puedes visitar la <span class="link"><a href="/es/projects">página de cada proyecto</a></span> o los <span class="link"><a href="/es/labs">laboratorios</a></span>, donde comparto mis trabajos más personales.',
+      'Aquí puedes ver algunos de los proyectos en los que he trabajado recientemente. También puedes visitar la <span class="link"><a href="/es/projects">página de proyectos</a></span> o los <span class="link"><a href="/es/labs">laboratorios</a></span>, donde comparto mis trabajos más personales.',
   },
 }
 
@@ -50,7 +50,7 @@ const {title, description} = TEXTS[language]
     />
   </header>
   <main>
-    <ProjectsExplorer
+    <ProjectHighlighter
       client:load
       projects={allProjects}
       language={language}
@@ -62,7 +62,7 @@ const {title, description} = TEXTS[language]
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: start;
       padding-block: 2rem;
       max-width: 1024px;
       margin: auto;

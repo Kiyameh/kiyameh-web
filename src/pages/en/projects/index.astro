@@ -1,0 +1,67 @@
+---
+/* Layout */
+import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
+/* Components */
+import Hero from "@/sections/projects/hero.astro";
+/* Collections */
+import { getCollection } from "astro:content";
+// Obtener todos los proyectos de la colección
+const projects = await getCollection("projects");
+import { sortProjectByDate } from "@/functions/sortProjectByDate";
+const sortedProjects = sortProjectByDate(projects);
+import ProjectsExplorer from "@/components/ProjectsExplorer/ProjectsExplorer";
+
+/* 
+ @version 1
+ @revisado 02/07/2025
+ @descripcion: Página de proyectos en inglés
+*/
+---
+
+<PortfolioLayout>
+  <div class="page-container">
+    <main>
+      <Hero language="en" />
+      <section class="projects-section">
+        <ProjectsExplorer projects={sortedProjects} language="en" client:load />
+      </section>
+    </main>
+  </div>
+</PortfolioLayout>
+
+<style>
+  main {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }  
+  main::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/public/backgrounds/bg3.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+    filter: blur(100px);  }
+
+
+  /* Projects Section */
+  .projects-section {
+    height: 90lvh;
+    width: 100lvw;
+    max-width: 1024px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+</style>

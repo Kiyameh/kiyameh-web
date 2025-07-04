@@ -1,52 +1,34 @@
-import React from 'react'
-import styles from './Button.module.css'
+import styles from "./Button.module.css";
 
-interface BaseButtonProps {
-  primary?: boolean
-  active?: boolean
-  className?: string
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  text: string;
+  icon: React.ReactNode;
+  primary?: boolean;
+  responsive?: boolean;
+  active?: boolean;
 }
-
-interface ButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
-  children: React.ReactNode
-  href?: never
-}
-
-interface LinkButtonProps extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'children' | 'href'> {
-  children: React.ReactNode
-  href: string
-}
-
-type ButtonComponentProps = ButtonProps | LinkButtonProps
 
 export default function Button({
-  children,
+  text,
+  icon,
   primary = false,
+  responsive = true,
   active = false,
-  href,
-  className = '',
+  className,
   ...props
-}: ButtonComponentProps) {
-  const buttonClasses = `${styles.button} ${primary ? styles.primary : ''} ${active ? styles.active : ''} ${className}`
-
-  if (href) {
-    const { target, rel, ...anchorProps } = props as LinkButtonProps
-    return (
-      <a
-        target={target}
-        rel={rel}
-        className={buttonClasses}
-        {...anchorProps}
-        href={href}
-      >
-        {children}
-      </a>
-    )
-  }
+}: ButtonProps) {
+  const buttonStyles = `
+    ${styles.button}
+    ${primary ? styles.primary : ""}
+    ${responsive ? styles.responsive : ""}
+    ${active ? styles.active : ""}
+    ${className || ""}
+    `;
 
   return (
-    <button className={buttonClasses} {...(props as ButtonProps)}>
-      {children}
+    <button {...props} className={buttonStyles}>
+      <div className={styles.buttonIcon}>{icon}</div>
+      <div className={styles.buttonText}>{text}</div>
     </button>
-  )
+  );
 }

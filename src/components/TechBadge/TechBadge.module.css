@@ -13,7 +13,7 @@
   padding-block: 0.3rem;
 
   /* Styling */
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   background-color: var(--surface-100);
   border-radius: 1rem;
   max-width: 130px;
@@ -22,7 +22,7 @@
 
 .techBadge::before,
 .techBadge::after {
-  content: '';
+  content: "";
   position: absolute;
   border-radius: inherit;
   pointer-events: none;
@@ -44,8 +44,7 @@
   inset: var(--border-inset);
   background: var(--surface-100);
   border-radius: 1rem;
-  transition: background 0.3s ease,
-    opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
   z-index: 0;
 }
 

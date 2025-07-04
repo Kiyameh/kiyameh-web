@@ -1,4 +1,13 @@
-import {defineCollection, z} from 'astro:content'
+import { defineCollection, z } from "astro:content";
+
+export const projectCategories = [
+  "webpage",
+  "tool",
+  "package",
+  "design",
+  "other",
+] as const;
+export type ProjectCategory = (typeof projectCategories)[number];
 
 // Definición de la colección de proyectos
 const projectsSchema = z.object({
@@ -7,7 +16,7 @@ const projectsSchema = z.object({
   logo: z.string().optional(),
   url: z.string().url().optional(),
   repository: z.string().url().optional(),
-  type: z.enum(['webpage', 'tool', 'package', 'design', 'other']),
+  type: z.enum(projectCategories),
   description: z.string(),
   description_en: z.string(),
   technologies: z.array(z.string()),
@@ -19,26 +28,26 @@ const projectsSchema = z.object({
   date: z
     .string()
     .or(z.date())
-    .transform((val) => (typeof val === 'string' ? new Date(val) : val))
+    .transform((val) => (typeof val === "string" ? new Date(val) : val))
     .optional(),
-})
+});
 
 // Inferir automáticamente el tipo en TypeScript
 export type Project = {
-  id: string
-  collection: string
-  data: z.infer<typeof projectsSchema>
-  body?: string
-  rendered?: any
-  filePath?: string
-  digest?: string
-}
+  id: string;
+  collection: string;
+  data: z.infer<typeof projectsSchema>;
+  body?: string;
+  rendered?: any;
+  filePath?: string;
+  digest?: string;
+};
 
 const projects = defineCollection({
-  type: 'data',
+  type: "data",
   schema: projectsSchema,
-})
+});
 
 export const collections = {
   projects,
-}
+};

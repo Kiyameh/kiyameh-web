@@ -91,7 +91,6 @@
 
 .searchContainer {
   flex: 1;
-  min-width: 16rem;
 }
 
 .searchBar {
@@ -130,6 +129,8 @@
 
 .viewToggle {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .viewButton {
@@ -148,8 +149,7 @@
 }
 
 .viewButtonActive {
-  background-color: var(--primary);
-  color: var(--primary-content);
+  color: var(--accent);
 }
 
 .viewButtonInactive {
@@ -165,50 +165,14 @@
   width: 1.2rem;
   height: 1.2rem;
 }
-
-.filterButtons {
+.projectFilter {
+  width: 100%;
   display: flex;
-  gap: 0.5rem;
-}
-
-.filterButton {
-  font-family: var(--font-mono);
-  padding: 0.4rem;
-  border-radius: var(--radius-medium);
-  border: 1px solid var(--border-soft);
-  cursor: pointer;
-  transition: background-color 0.2s;
-  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.4rem;
-}
-
-.filterButtonActive {
-  background-color: var(--primary);
-  color: var(--primary-content);
-}
-
-.filterButtonInactive {
-  background-color: var(--surface-100);
-  color: var(--content);
-}
-
-.filterButtonInactive:hover {
-  background-color: var(--surface-200);
-}
-
-.filterIcon {
-  width: 1rem;
-  height: 1rem;
-}
-
-.filterLabel {
-  display: none;
-}
-@media (min-width: 768px) {
-  .filterLabel {
-    display: block;
-  }
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 /* Main content Layout */

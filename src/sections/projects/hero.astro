@@ -7,33 +7,33 @@ const {language = 'es'} = Astro.props
 
 const translations = {
   es: {
-    welcome: 'Bienvenido a',
-    labs: 'Labs',
-    subtitle: 'El lugar donde comparto mis experimentos y componentes',
-    languageClass: 'spanish-welcome-text',
+    featured: 'Principales',
+    projects: 'Proyectos',
+    subtitle: 'Una colección de los proyectos más destacados',
+    languageClass: 'spanish-featured-text',
   },
   en: {
-    welcome: 'Welcome to',
-    labs: 'Labs',
-    subtitle: 'The place where I share my experiments and components',
-    languageClass: 'english-welcome-text',
+    featured: 'Featured',
+    projects: 'Projects',
+    subtitle: 'A collection of my most featured works',
+    languageClass: 'english-featured-text',
   },
 }
 
 const t = translations[language]
-import {FlaskConical} from 'lucide-react'
+import {FileCode2} from 'lucide-react'
 ---
 
 <div class="spacer"></div>
 <div class="sentinel"></div>
 <header class="header">
   <div>
-    <FlaskConical id="flask" />
+    <FileCode2 id="icon" />
   </div>
   <div class="header-text">
     <h1 class="header-title">
-      <div class={t.languageClass}>{t.welcome}</div>
-      <div class="header-labs-text">{t.labs}</div>
+      <div class={t.languageClass}>{t.featured}</div>
+      <div class="header-projects-text">{t.projects}</div>
     </h1>
     <p class="header-subtitle">
       {t.subtitle}
@@ -77,18 +77,18 @@ import {FlaskConical} from 'lucide-react'
     }
   }
 
-  /* Flask */
-  header #flask {
+  /* Icon */
+  header #icon {
     min-width: 50px;
     width: 50px;
     transition: width 0.5s ease-in-out;
   }
-  header.at-the-top #flask {
+  header.at-the-top #icon {
     min-width: 40px;
     width: 40px;
   }
   @media (max-width: 350px) {
-    header #flask {
+    header #icon {
       min-width: 40px;
       width: 40px;
     }
@@ -101,33 +101,33 @@ import {FlaskConical} from 'lucide-react'
     flex-direction: row;
     align-items: center;
   }
-  /* Welcome text */
-  header .spanish-welcome-text,
-  header .english-welcome-text {
+  /* Featured text */
+  header .spanish-featured-text,
+  header .english-featured-text {
     height: 50px;
     overflow: hidden;
     transition: width 0.5s ease-in-out;
     padding-left: 1px;
   }
-  header .spanish-welcome-text {
-    width: 195px;
+  header .spanish-featured-text {
+    width: 172px;
   }
-  header .english-welcome-text {
-    width: 178px;
+  header .english-featured-text {
+    width: 144px;
   }
 
-  header.at-the-top .spanish-welcome-text,
-  header.at-the-top .english-welcome-text {
+  header.at-the-top .spanish-featured-text,
+  header.at-the-top .english-featured-text {
     width: 1px;
   }
   @media (max-width: 350px) {
-    header .spanish-welcome-text,
-    header .english-welcome-text {
+    header .spanish-featured-text,
+    header .english-featured-text {
       width: 1px;
     }
   }
-  /* Labs text */
-  header .header-labs-text {
+  /* Projects text */
+  header .header-projects-text {
     width: 80px;
   }
 

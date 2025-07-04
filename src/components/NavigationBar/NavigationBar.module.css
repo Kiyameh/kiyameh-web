@@ -90,7 +90,7 @@
 }
 
 .text::before {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(100% - 0.2em);
   left: 0;
