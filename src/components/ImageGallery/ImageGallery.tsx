@@ -39,7 +39,12 @@ export default function ImageGallery({
           src={img.src}
           alt={img.alt}
           sources={img.sources}
-          className={styles.thumbnail}
+          style={{
+            width: '150px',
+            border: '1px solid var(--border)',
+            boxShadow: 'var(--shadow-small)',
+            borderRadius: 'var(--radius-small)',
+          }}
           onClick={() => handleThumbnailClick(idx)}
         />
       ))}

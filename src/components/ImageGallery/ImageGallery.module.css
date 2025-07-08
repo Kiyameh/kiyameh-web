@@ -17,13 +17,3 @@
   outline: 2px solid #4a90e2;
   outline-offset: 4px;
 }
-
-.thumbnail {
-  width: 100px;
-}
-
-@media (max-width: 600px) {
-  .thumbnail {
-    width: 80px;
-  }
-}

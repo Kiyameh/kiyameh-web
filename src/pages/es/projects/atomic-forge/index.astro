@@ -1,0 +1,128 @@
+---
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
+import SectionTitle from '@/components/SectionTitle/SectionTitle'
+import ImageThumbnail from '@/components/ImageThumbnail/ImageThumbnail'
+import mainImage from './screenshots/1.png'
+import {Github, Info, Link, Link2} from 'lucide-react'
+import Button from '@/components/ui/Button/Button'
+
+/* Collections */
+import {getCollection} from 'astro:content'
+import ImageGallery from '@/components/ImageGallery/ImageGallery'
+const projects = await getCollection('projects')
+const project = projects.find((project) => project.data.slug === 'atomic-forge')
+---
+
+<PortfolioLayout>
+  <section class="container">
+    <header>
+      <Breadcrumb
+        client:load
+        items={[
+          {label: 'Inicio', href: '/es'},
+          {label: 'Proyectos', href: '/es/projects'},
+          {label: 'Atomic Forge', href: '/es/projects/atomic-forge'},
+        ]}
+      />
+      <SectionTitle
+        client:load
+        id=""
+        level="title"
+      >
+        Atomic Forge
+      </SectionTitle>
+    </header>
+    <p class="info-box">
+      <Info />
+      {project?.data.description}
+    </p>
+    <ImageThumbnail
+      client:load
+      src={mainImage.src}
+      alt="Atomic Forge"
+      style={{
+        width: '100%',
+        border: '1px solid var(--border)',
+        boxShadow: 'var(--shadow-large)',
+        borderRadius: 'var(--radius-small)',
+      }}
+    />
+    <SectionTitle
+      client:load
+      id="features"
+      level="subtitle"
+    >
+      Caracteristicas
+    </SectionTitle>
+    <ul class="features-list">
+      {project?.data.features?.map((feature) => <li>{feature}</li>)}
+    </ul>
+
+    <SectionTitle
+      client:load
+      id="screenshots"
+      level="subtitle"
+    >
+      Capturas de pantalla
+    </SectionTitle>
+    <ImageGallery
+      client:load
+      images={project?.data.images?.map((image) => {
+        return {
+          src: image,
+          alt: project.data.name,
+        }
+      }) || []}
+    />
+  </section>
+</PortfolioLayout>
+
+<style>
+  .container {
+    width: 100%;
+    max-width: 1024px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+    padding: 4rem;
+    margin: auto;
+    background-color: var(--surface-100);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 2rem;
+    }
+  }
+
+  .info-box {
+    width: 90%;
+    background: var(--surface-300);
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: var(--radius-large);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .features-list {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: var(--radius-large);
+  }
+
+  .features-list li {
+    margin-left: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .info-box {
+      width: 100%;
+    }
+  }
+</style>
