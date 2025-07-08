@@ -8,7 +8,7 @@ interface ImageThumbnailProps {
   src: string
   alt: string
   sources?: {srcSet: string; type: string}[]
-  className?: string
+  style?: React.CSSProperties
   onClick?: () => void
 }
 
@@ -16,8 +16,8 @@ export default function ImageThumbnail({
   src,
   alt,
   sources = [],
-  className,
   onClick,
+  style,
 }: ImageThumbnailProps) {
   const [showModal, setShowModal] = useState(false)
   const [imageVisible, setImageVisible] = useState(false)
@@ -47,7 +47,7 @@ export default function ImageThumbnail({
       <figure className={styles.thumbnailContainer}>
         <picture
           onClick={handleClick}
-          className={`${styles.picture} ${className || ''}`}
+          className={styles.picture}
           tabIndex={0}
           role="button"
           onKeyDown={handleKeyDown}
@@ -62,7 +62,8 @@ export default function ImageThumbnail({
           <img
             src={src}
             alt={alt}
-            className={`${styles.thumbnailImage} ${className || ''}`}
+            className={styles.thumbnailImage}
+            style={style}
           />
         </picture>
       </figure>
