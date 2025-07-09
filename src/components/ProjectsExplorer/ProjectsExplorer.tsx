@@ -1,8 +1,8 @@
-import { useState, useMemo, useCallback } from "react";
-import styles from "./ProjectsExplorer.module.css";
-import type { Project } from "../../content/config";
-import { getTypeIcon, getTypeColor, filterProjects } from "./functions";
-import { translations } from "./translations";
+import {useState, useMemo, useCallback} from 'react'
+import styles from './ProjectsExplorer.module.css'
+import type {Project} from '../../content/config'
+import {getTypeIcon, getTypeColor, filterProjects} from './functions'
+import {translations} from './translations'
 
 import {
   X,
@@ -24,63 +24,60 @@ import {
   Images,
   FileQuestion,
   Asterisk,
-} from "lucide-react";
-import ImageGallery from "../ImageGallery/ImageGallery";
-import filterProjectsByType from "@/functions/filterProyectByType";
-import Button from "../ui/Button/Button";
+} from 'lucide-react'
+import ImageGallery from '../ImageGallery/ImageGallery'
+import Button from '../ui/Button/Button'
+import ProjectTypeBadge from '../ProjectTypeBadge/ProjectTypeBadge'
 
 export default function ProjectsExplorer({
   projects,
   language,
 }: {
-  projects: Project[];
-  language: "en" | "es";
+  projects: Project[]
+  language: 'en' | 'es'
 }) {
-  const t = translations[language];
+  const t = translations[language]
 
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
-
   const proyectCategories = useMemo(() => {
     return [
-      { name: "all", label_es: "Todos", label_en: "All", icon: <Asterisk /> },
+      {name: 'all', label_es: 'Todos', label_en: 'All', icon: <Asterisk />},
       {
-        name: "webpage",
-        label_es: "Página Web",
-        label_en: "Webpage",
+        name: 'webpage',
+        label_es: 'Página Web',
+        label_en: 'Webpage',
         icon: <Globe />,
       },
       {
-        name: "tool",
-        label_es: "Herramienta",
-        label_en: "Tool",
+        name: 'tool',
+        label_es: 'Herramienta',
+        label_en: 'Tool',
         icon: <Wrench />,
       },
       {
-        name: "package",
-        label_es: "Paquete",
-        label_en: "Package",
+        name: 'package',
+        label_es: 'Paquete',
+        label_en: 'Package',
         icon: <Package />,
       },
       {
-        name: "design",
-        label_es: "Diseño",
-        label_en: "Design",
+        name: 'design',
+        label_es: 'Diseño',
+        label_en: 'Design',
         icon: <Palette />,
       },
       {
-        name: "other",
-        label_es: "Otro",
-        label_en: "Other",
+        name: 'other',
+        label_es: 'Otro',
+        label_en: 'Other',
         icon: <FileQuestion />,
       },
-    ];
-  }, []);
-
-
+    ]
+  }, [])
 
   const filteredProjects = useMemo(
     () => filterProjects(projects, searchTerm, activeFilter),
@@ -89,15 +86,15 @@ export default function ProjectsExplorer({
 
   const handleImageError = useCallback(
     (e: React.SyntheticEvent<HTMLImageElement>) => {
-      const target = e.target as HTMLImageElement;
-      target.style.display = "none";
-      const fallback = target.nextElementSibling as HTMLElement;
+      const target = e.target as HTMLImageElement
+      target.style.display = 'none'
+      const fallback = target.nextElementSibling as HTMLElement
       if (fallback) {
-        fallback.classList.remove("hidden");
+        fallback.classList.remove('hidden')
       }
     },
     []
-  );
+  )
 
   const renderGridView = () => (
     <div className={styles.gridView}>
@@ -105,7 +102,7 @@ export default function ProjectsExplorer({
         <button
           key={project.id}
           className={`${styles.projectCard} ${
-            selectedProject?.id === project.id ? styles.projectCardSelected : ""
+            selectedProject?.id === project.id ? styles.projectCardSelected : ''
           }`}
           onClick={() => setSelectedProject(project)}
           tabIndex={selectedProject ? -1 : 0}
@@ -128,14 +125,7 @@ export default function ProjectsExplorer({
           <h3 className={styles.projectName}>{project.data.name}</h3>
 
           <div className={styles.projectType}>
-            <span
-              className={`${styles.typeBadge} ${getTypeColor(
-                project.data.type
-              )}`}
-            >
-              {getTypeIcon(project.data.type)}
-              <span>{project.data.type}</span>
-            </span>
+            <ProjectTypeBadge type={project.data.type} />
           </div>
 
           {selectedProject?.id === project.id && (
@@ -146,7 +136,7 @@ export default function ProjectsExplorer({
         </button>
       ))}
     </div>
-  );
+  )
 
   const renderListView = () => (
     <table className={styles.listView}>
@@ -163,7 +153,7 @@ export default function ProjectsExplorer({
           <tr
             key={project.id}
             className={`${styles.listRow} ${
-              selectedProject?.id === project.id ? styles.listRowSelected : ""
+              selectedProject?.id === project.id ? styles.listRowSelected : ''
             }`}
             onClick={() => setSelectedProject(project)}
             tabIndex={selectedProject ? -1 : 0}
@@ -187,7 +177,10 @@ export default function ProjectsExplorer({
 
             <td className={styles.listRowTechnologies}>
               {project.data.technologies.slice(0, 6).map((tech, index) => (
-                <span key={index} className={styles.techBadge}>
+                <span
+                  key={index}
+                  className={styles.techBadge}
+                >
                   {tech}
                 </span>
               ))}
@@ -201,10 +194,10 @@ export default function ProjectsExplorer({
         ))}
       </tbody>
     </table>
-  );
+  )
 
   const renderDetailsPanel = () => {
-    if (!selectedProject) return null;
+    if (!selectedProject) return null
 
     return (
       <div className={styles.detailsPanel}>
@@ -253,7 +246,7 @@ export default function ProjectsExplorer({
               {t.description}
             </h4>
             <p className={styles.detailsText}>
-              {language === "en"
+              {language === 'en'
                 ? selectedProject.data.description_en
                 : selectedProject.data.description}
             </p>
@@ -309,7 +302,10 @@ export default function ProjectsExplorer({
             </h4>
             <div className={styles.techList}>
               {selectedProject.data.technologies.map((tech, index) => (
-                <span key={index} className={styles.techBadge}>
+                <span
+                  key={index}
+                  className={styles.techBadge}
+                >
                   {tech}
                 </span>
               ))}
@@ -322,11 +318,14 @@ export default function ProjectsExplorer({
               {t.keyFeatures}
             </h4>
             <ul className={styles.featureList}>
-              {(language === "en"
+              {(language === 'en'
                 ? selectedProject.data.features_en
                 : selectedProject.data.features
               ).map((feature, index) => (
-                <li key={index} className={styles.featureItem}>
+                <li
+                  key={index}
+                  className={styles.featureItem}
+                >
                   <span className={styles.featureDot}></span>
                   {feature}
                 </li>
@@ -347,7 +346,7 @@ export default function ProjectsExplorer({
                       return {
                         src: image,
                         alt: selectedProject.data.name,
-                      };
+                      }
                     }) || []
                   }
                 />
@@ -356,8 +355,8 @@ export default function ProjectsExplorer({
           )}
         </div>
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <div
@@ -410,26 +409,26 @@ export default function ProjectsExplorer({
 
           <div className={styles.viewToggle}>
             <button
-              onClick={() => setViewMode("grid")}
+              onClick={() => setViewMode('grid')}
               className={`${styles.viewButton} ${
-                viewMode === "grid"
+                viewMode === 'grid'
                   ? styles.viewButtonActive
                   : styles.viewButtonInactive
               }`}
               aria-label={t.gridView}
-              aria-pressed={viewMode === "grid"}
+              aria-pressed={viewMode === 'grid'}
             >
               <Grid3x3 className={styles.viewIcon} />
             </button>
             <button
-              onClick={() => setViewMode("list")}
+              onClick={() => setViewMode('list')}
               className={`${styles.viewButton} ${
-                viewMode === "list"
+                viewMode === 'list'
                   ? styles.viewButtonActive
                   : styles.viewButtonInactive
               }`}
               aria-label={t.listView}
-              aria-pressed={viewMode === "list"}
+              aria-pressed={viewMode === 'list'}
             >
               <List className={styles.viewIcon} />
             </button>
@@ -438,7 +437,7 @@ export default function ProjectsExplorer({
             {proyectCategories.map((category) => (
               <Button
                 key={category.name}
-                text={language === "es" ? category.label_es : category.label_en}
+                text={language === 'es' ? category.label_es : category.label_en}
                 icon={category.icon}
                 onClick={() => setActiveFilter(category.name)}
                 active={activeFilter === category.name}
@@ -456,7 +455,7 @@ export default function ProjectsExplorer({
               <h3 className={styles.emptyTitle}>{t.noProjectsFound}</h3>
               <p className={styles.emptyText}>{t.noProjectsFoundSubtitle}</p>
             </div>
-          ) : viewMode === "grid" ? (
+          ) : viewMode === 'grid' ? (
             renderGridView()
           ) : (
             renderListView()
@@ -465,7 +464,7 @@ export default function ProjectsExplorer({
 
         <div
           className={`${styles.detailsOverlay} ${
-            selectedProject ? styles.visible : ""
+            selectedProject ? styles.visible : ''
           }`}
           onClick={() => setSelectedProject(null)}
           aria-hidden={!selectedProject}
@@ -473,7 +472,7 @@ export default function ProjectsExplorer({
 
         <div
           className={`${styles.detailsPanelContainer} ${
-            selectedProject ? styles.visible : ""
+            selectedProject ? styles.visible : ''
           }`}
           role="dialog"
           aria-modal="true"
@@ -485,10 +484,10 @@ export default function ProjectsExplorer({
 
       <div className={styles.statusBar}>
         <span>
-          {filteredProjects.length} {t.projectsCount} {projects.length}{" "}
+          {filteredProjects.length} {t.projectsCount} {projects.length}{' '}
           {t.projects}
         </span>
       </div>
     </div>
-  );
+  )
 }

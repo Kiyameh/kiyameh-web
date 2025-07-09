@@ -88,7 +88,7 @@ export default function ProjectHighlighter({
       <ul className={styles.projectList}>
         {filteredProjects.map((project) => (
           <li key={project.id} className={styles.projectItem}>
-            <a href={`projects/${project.id}`} key={project.id}>
+            <a href={`projects/${project.data.slug}`} key={project.id}>
               <div className={styles.projectImage}>
                 {project.data.logo ? (
                   <img src={project.data.logo} alt={project.data.name} />
