@@ -1,0 +1,168 @@
+/* Container */
+
+.navbar {
+  font-family: var(--font-sans);
+  position: fixed;
+  max-width: 95%;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background-color: var(--surface-100);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-large);
+  padding: 0.5rem;
+  box-shadow: var(--shadow-large);
+}
+.navbar > ul {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.divider {
+  width: 1px;
+  height: 2.4rem;
+  background-color: var(--neutral-content);
+}
+
+/* Pages */
+
+.page {
+  background-color: var(--surface-100);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+  gap: 0.3rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+.expansiblePage:hover {
+  height: 170px;
+  width: 110px;
+}
+
+.page:hover {
+  width: 125px;
+}
+.page:nth-child(3):hover {
+  width: 90px;
+}
+
+.trigger {
+  min-height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}
+.page:hover .trigger {
+  background-color: var(--surface-300);
+  width: 125px;
+  transition: width 0.3s ease-in-out;
+}
+
+.section {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.2rem;
+  overflow: hidden;
+  padding-left: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.hash {
+  scale: 0.6;
+  color: var(--accent);
+}
+
+/* Link styles */
+.text {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.text::before {
+  content: "";
+  position: absolute;
+  top: calc(100% - 0.2em);
+  left: 0;
+  width: 100%;
+  height: 0.2em;
+  background: linear-gradient(
+    to right,
+    var(--gradient-100),
+    var(--gradient-200)
+  );
+  transition: width 0.3s ease;
+}
+
+/* Buttons styles */
+
+.icon {
+  scale: 0.8;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+.icon.active {
+  background-color: var(--surface-300);
+}
+
+.bot {
+  color: var(--accent);
+}
+
+.button {
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--surface-300);
+}
+
+.languageButton {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.localeContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: top 0.3s ease-in-out;
+}
+
+.locale {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.languageButton:hover div {
+  top: -40px;
+}

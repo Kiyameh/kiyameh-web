@@ -2,29 +2,40 @@
 /* Layout */
 import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
 /* Components */
-import Hero from "@/sections/projects/hero.astro";
 /* Collections */
 import { getCollection } from "astro:content";
 // Obtener todos los proyectos de la colección
 const projects = await getCollection("projects");
 import { sortProjectByDate } from "@/functions/sortProjectByDate";
 const sortedProjects = sortProjectByDate(projects);
-import ProjectsExplorer from "@/components/ProjectsExplorer/ProjectsExplorer";
+import ProjectsExplorer from "@/components/elements/ProjectsExplorer/ProjectsExplorer";
+
+import { Image } from "astro:assets";
+import bg4 from "@/assets/backgrounds/bg4.svg";
+import ProjectsHero from "@/templates/projects/ProjectsHero.astro";
 
 /* 
- @version 1
- @revisado 02/07/2025
+ @version 2
+ @revisado 14/07/2025
  @descripcion: Página de proyectos en inglés
 */
 ---
 
 <PortfolioLayout>
   <div class="page-container">
+    <div class="bg-grid" aria-hidden="true"></div>
     <main>
-      <Hero language="en" />
+      <ProjectsHero language="en" />
       <section class="projects-section">
         <ProjectsExplorer projects={sortedProjects} language="en" client:load />
       </section>
+
+      <Image
+        src={bg4}
+        alt="background-decoration"
+        aria-hidden="true"
+        class="bg-gradient"
+      />
     </main>
   </div>
 </PortfolioLayout>
@@ -38,22 +49,37 @@ import ProjectsExplorer from "@/components/ProjectsExplorer/ProjectsExplorer";
     align-items: center;
     justify-content: center;
     position: relative;
-  }  
-  main::before{
+  }
+
+  .bg-grid {
+    z-index: -1;
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("/public/backgrounds/bg3.svg");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.4;
-    z-index: -1;
-    filter: blur(100px);  }
+    background: linear-gradient(to right, var(--primary) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--primary) 1px, transparent 1px);
+    background-size: 25px 25px;
+    opacity: 0.5;
+    mask-image: radial-gradient(
+      ellipse 50% 60% at 60% 0%,
+      #000 20%,
+      transparent 90%
+    );
+  }
 
+  .bg-gradient {
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 100%;
+    height: 80%;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(100px);
+  }
 
   /* Projects Section */
   .projects-section {

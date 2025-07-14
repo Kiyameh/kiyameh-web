@@ -1,0 +1,188 @@
+---
+import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
+import Breadcrumb from "@/components/ui/Breadcrumb/Breadcrumb";
+import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
+import { Info } from "lucide-react";
+import ProjectTypeBadge from "@/components/ui/ProjectTypeBadge/ProjectTypeBadge";
+
+/* Collections */
+import { getCollection } from "astro:content";
+import ImageGallery from "@/components/ui/ImageGallery/ImageGallery";
+const projects = await getCollection("projects");
+const project = projects.find(
+  (project) => project.data.slug === "atomic-forge"
+);
+---
+
+<PortfolioLayout>
+  <section class="container">
+    <header class="project-header">
+      <Breadcrumb
+        client:load
+        items={[
+          { label: "Inicio", href: "/es" },
+          { label: "Proyectos", href: "/es/projects" },
+          { label: "Atomic Forge", href: "/es/projects/atomic-forge" },
+        ]}
+      />
+      <div class="title-box">
+        <SectionTitle client:load id="" level="title">
+          Atomic Forge
+        </SectionTitle>
+        <ProjectTypeBadge type={project?.data.type || ""} />
+      </div>
+    </header>
+    <p class="info-box">
+      <Info />
+      {project?.data.description}
+    </p>
+    <picture class="project-picture">
+      <a href={project?.data.url || ""} target="_blank">
+        <img
+          class="project-image"
+          src={project?.data.images?.[0] || ""}
+          alt="Atomic Forge"
+        />
+        <button class="live-button"> Ver online </button>
+      </a>
+    </picture>
+    <SectionTitle client:load id="features" level="subtitle">
+      Caracteristicas
+    </SectionTitle>
+    <ul class="features-list">
+      {project?.data.features?.map((feature) => <li>{feature}</li>)}
+    </ul>
+
+    <SectionTitle client:load id="screenshots" level="subtitle">
+      Capturas de pantalla
+    </SectionTitle>
+    <ImageGallery
+      client:load
+      images={project?.data.images?.map((image) => {
+        return {
+          src: image,
+          alt: project.data.name,
+        };
+      }) || []}
+    />
+  </section>
+</PortfolioLayout>
+
+<style>
+  .container {
+    width: 100%;
+    max-width: 1024px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+    padding: 4rem;
+    margin: auto;
+    background-color: var(--surface-100);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 2rem;
+    }
+  }
+
+  .info-box {
+    width: 90%;
+    background: var(--surface-300);
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: var(--radius-large);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .features-list {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: var(--radius-large);
+  }
+
+  .features-list li {
+    margin-left: 1rem;
+  }
+  .features-list li::marker {
+    font-family: var(--font-mono);
+    content: "<> ";
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .info-box {
+      width: 100%;
+    }
+  }
+
+  .project-header {
+    width: 100%;
+  }
+
+  .title-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 2rem;
+  }
+
+  .project-picture {
+    position: relative;
+    cursor: pointer;
+  }
+  .project-picture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-small);
+    transition: opacity 0.3s ease-in-out;
+  }
+  .project-picture:hover::before {
+    opacity: 0.5;
+  }
+  .project-image {
+    width: 100%;
+    border-radius: var(--radius-small);
+    border: 1px solid var(--border);
+  }
+  .live-button {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background: var(--accent);
+    color: var(--accent-content);
+    padding: 1rem 2rem;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-large);
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .project-picture:hover .live-button {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .live-button {
+      padding: 0.5rem 1rem;
+      opacity: 1;
+    }
+  }
+</style>

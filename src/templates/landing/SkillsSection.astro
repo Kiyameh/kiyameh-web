@@ -1,0 +1,48 @@
+---
+import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
+import TechCarrousel from "@/components/elements/TechCarrousel/TechCarrousel";
+
+interface Props {
+  language: "en" | "es";
+}
+
+const { language = "en" } = Astro.props as Props;
+
+const TEXTS = {
+  en: {
+    title: "How?",
+    description:
+      'Over the years, I have focused my stack on technologies in the orbit of <span style="font-size:1.2rem; color: #E34F26">&lt;html&gt;</span>, <span style="font-weight: bold;" class="fantasy-text">CSS</span> and <span style="font-size: 1.2rem; color: #3178C6; font-family: var(--font-sans);">Typescript</span>. I feel comfortable working with <span style="font-weight: bold;">React</span> and frameworks like <span style="font-weight: bold;">Astro</span> or <span style="font-weight: bold;">Next</span>. However, I believe you never stop learning, so I am constantly exploring new technologies and tools.',
+  },
+  es: {
+    title: "¿Cómo?",
+    description:
+      'A lo largo de los años, he centrado mi stack en tecnologías de la orbita de <span style="font-size:1.2rem; color: #E34F26">&lt;html&gt;</span>, <span style="font-weight: bold;" class="fantasy-text">CSS</span> y <span style="font-size: 1.2rem; color: #3178C6; font-family: var(--font-sans);">Typescript</span>. Me siento comodo trabajando con <span style="font-weight: bold;">React</span> y con frameworks como <span style="font-weight: bold;">Astro</span> o <span style="font-weight: bold;">Next</span>. Sin embargo, considero que nunca se deja de aprender, asi que constantemente estoy explorando nuevas tecnologias y herramientas.',
+  },
+};
+
+const { title, description } = TEXTS[language];
+---
+
+<header class="header">
+  <SectionTitle client:load id="skills" level="title">
+    {title}
+  </SectionTitle>
+  <p class="paragraph code-text" set:html={description} />
+</header>
+
+<article class="tech-carrousel">
+  <TechCarrousel client:load />
+</article>
+
+<style>
+  /* Header */
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
+</style>

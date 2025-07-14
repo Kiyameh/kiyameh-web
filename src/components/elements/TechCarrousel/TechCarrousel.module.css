@@ -1,0 +1,54 @@
+.mainContainer {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.tagsContainer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-block: 1rem;
+}
+
+.tagsContainer button.active {
+  background: var(--gradient-100);
+  color: var(--surface-100);
+}
+
+.carouselContainer {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carouselTrack {
+  padding-block: 0.2rem;
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll infinite linear 50s;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Detener animación en hover o cuando el usuario mantiene el dedo en la pantalla */
+.carouselContainer:hover .carouselTrack,
+.carouselContainer:active .carouselTrack {
+  animation-play-state: paused;
+}

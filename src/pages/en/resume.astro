@@ -1,12 +1,12 @@
 ---
 /* Layout */
-import CvLayout from '@/layouts/CvLayout.astro'
+import CvLayout from "@/layouts/CvLayout.astro";
 
 /* Components */
-import ResumeContainer from '@/components/Resume/Resume'
+import ResumeContainer from "@/components/elements/Resume/Resume";
 
 /* Content */
-import background from '@/assets/backgrounds/resume_bg.svg'
+import background from "@/assets/backgrounds/resume_bg.svg";
 
 /* 
  @version 1
@@ -17,16 +17,8 @@ import background from '@/assets/backgrounds/resume_bg.svg'
 
 <CvLayout>
   <div class="container">
-    <img
-      id="background"
-      src={background.src}
-      alt=""
-      fetchpriority="high"
-    />
-    <ResumeContainer
-      client:load
-      language="en"
-    />
+    <img id="background" src={background.src} alt="" fetchpriority="high" />
+    <ResumeContainer client:load language="en" />
   </div>
 </CvLayout>
 
