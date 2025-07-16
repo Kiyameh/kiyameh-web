@@ -48,6 +48,7 @@
 }
 
 .page:hover {
+  color: var(--content);
   width: 125px;
 }
 .page:nth-child(3):hover {
@@ -93,7 +94,7 @@
 }
 
 .text::before {
-  content: "";
+  content: '';
   position: absolute;
   top: calc(100% - 0.2em);
   left: 0;

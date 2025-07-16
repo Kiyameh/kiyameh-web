@@ -4,6 +4,7 @@
   right: 1rem;
   z-index: 1000;
   background-color: var(--surface-100);
+  color: var(--content);
   border: none;
   border-radius: 50%;
   width: 3rem;
@@ -149,7 +150,7 @@
 }
 
 .active::before {
-  content: "";
+  content: '';
   position: absolute;
   top: calc(100% - 0.2em);
   left: 0;

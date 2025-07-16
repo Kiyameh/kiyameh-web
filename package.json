@@ -17,6 +17,7 @@
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
     "astro": "^5.8.1",
+    "github-repo-stats-card": "^0.1.0",
     "lucide-react": "^0.513.0",
     "motion": "^12.16.0",
     "need-more-gradients-ui": "^0.0.1",
