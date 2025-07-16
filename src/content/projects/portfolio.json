@@ -16,15 +16,15 @@
     "figma"
   ],
   "features": [
-    "Diseño responsivo",
-    "Modo oscuro/claro",
-    "Diseño estético personalizado",
+    "Diseño visual y estético personalizado y dedicado",
+    "Diseño responsivo y accesible",
+    "Sistema de temas oscuro/claro",
     "SEO optimizado"
   ],
   "features_en": [
-    "Responsive design",
-    "Dark/light mode",
-    "Custom aesthetic design",
+    "Custom aesthetic visual design",
+    "Responsive and accessible design",
+    "Dark/light themes system",
     "SEO optimized"
   ],
   "images": [
@@ -34,6 +34,6 @@
     "/projects/portfolio/4.png",
     "/projects/portfolio/5.png"
   ],
-  "featured": true,
+  "relevancy": 4,
   "date": "2025-01-15"
 }

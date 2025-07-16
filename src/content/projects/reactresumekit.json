@@ -4,8 +4,8 @@
   "url": "https://www.npmjs.com/package/react-resume-kit",
   "repository": "https://github.com/Kiyameh/react-resume-kit",
   "type": "package",
-  "description": "Paquete npm para la creación de CVs de forma rápida y sencilla.",
-  "description_en": "Npm package for creating resumes quickly and easily.",
+  "description": "Paquete npm para la creación de Currículums vitae de forma rápida y sencilla.",
+  "description_en": "Npm package for creating resumes or CVs quickly and easily.",
   "technologies": [
     "html5",
     "css",
@@ -16,22 +16,23 @@
     "figma"
   ],
   "features": [
-    "Multilenguaje soportado",
-    "Personalización sencilla",
-    "Opciones de exportación"
+    "Soporte para múltiples idiomas",
+    "Personalización sencilla mediante variables de css o clases",
+    "Opciones de descarga en formato pdf",
+    "Sistema modular de secciones de currículum"
   ],
   "features_en": [
     "Multi-language support",
-    "Easy customization",
-    "Export options"
+    "Easy customization through css variables or classes",
+    "Download options in pdf format",
+    "Modular sections system"
   ],
-  "mainImage": "/projects/reactresumekit/1.png",
   "images": [
     "/projects/reactresumekit/1.png",
     "/projects/reactresumekit/2.png",
     "/projects/reactresumekit/3.png",
     "/projects/reactresumekit/4.png"
   ],
-  "featured": true,
+  "relevancy": 3,
   "date": "2025-01-15"
 }

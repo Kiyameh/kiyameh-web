@@ -1,18 +1,18 @@
 ---
 /* Layout */
-import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
 /* Components */
 /* Collections */
-import { getCollection } from "astro:content";
+import {getCollection} from 'astro:content'
 // Obtener todos los proyectos de la colección
-const projects = await getCollection("projects");
-import { sortProjectByDate } from "@/functions/sortProjectByDate";
-const sortedProjects = sortProjectByDate(projects);
-import ProjectsExplorer from "@/components/elements/ProjectsExplorer/ProjectsExplorer";
+const projects = await getCollection('projects')
+import {sortProjectByRelevancy} from '@/functions/sortProjectByRelevancy'
+const sortedProjects = sortProjectByRelevancy(projects)
+import ProjectsExplorer from '@/components/elements/ProjectsExplorer/ProjectsExplorer'
 
-import { Image } from "astro:assets";
-import bg4 from "@/assets/backgrounds/bg4.svg";
-import ProjectsHero from "@/templates/projects/ProjectsHero.astro";
+import {Image} from 'astro:assets'
+import bg4 from '@/assets/backgrounds/bg4.svg'
+import ProjectsHero from '@/templates/projects/ProjectsHero.astro'
 
 /* 
  @version 2
@@ -23,11 +23,19 @@ import ProjectsHero from "@/templates/projects/ProjectsHero.astro";
 
 <PortfolioLayout>
   <div class="page-container">
-    <div class="bg-grid" aria-hidden="true"></div>
+    <div
+      class="bg-grid"
+      aria-hidden="true"
+    >
+    </div>
     <main>
       <ProjectsHero language="es" />
       <section class="projects-section">
-        <ProjectsExplorer projects={sortedProjects} language="es" client:load />
+        <ProjectsExplorer
+          projects={sortedProjects}
+          language="es"
+          client:load
+        />
       </section>
 
       <Image
@@ -53,7 +61,7 @@ import ProjectsHero from "@/templates/projects/ProjectsHero.astro";
 
   .bg-grid {
     z-index: -1;
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;

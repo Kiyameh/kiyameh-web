@@ -5,8 +5,8 @@
   "url": "https://www.caverbob.org/",
   "repository": "https://github.com/Kiyameh/caverbob-web",
   "type": "webpage",
-  "description": "Página web de referencia para el ranking de cavidades mundiales.",
-  "description_en": "Reference website for world cave rankings.",
+  "description": "Página web de referencia para espeleólogos para consulta del ranking espeleométrico de cavidades mundiales.",
+  "description_en": "Reference website for speleologists for the world speleometric cave rankings.",
   "technologies": [
     "html5",
     "css",
@@ -16,20 +16,19 @@
     "supabase"
   ],
   "features": [
-    "Base de datos de cavidades mundiales",
-    "Sistema de comentarios",
-    "Sistema de reporte de nueva información",
-    "SEO optimizado",
+    "Base de datos de espeleolometría de cavidades mundiales",
+    "Sistema de comentarios y discusión",
+    "Sistema de reporte de nueva información y actualización de los datos",
+    "SEO optimizado, accesibilidad y responsividad",
     "Internacionalización en tres idiomas"
   ],
   "features_en": [
-    "World cave database",
-    "Comment system",
-    "New information reporting system",
-    "SEO optimized",
+    "World speleometric cave database",
+    "Comment and discussion system",
+    "New information reporting system and data update",
+    "SEO optimized, accessible and responsive",
     "Internationalization in three languages"
   ],
-  "featured": true,
   "images": [
     "/projects/caverbob/1.png",
     "/projects/caverbob/2.png",
@@ -37,5 +36,6 @@
     "/projects/caverbob/4.png",
     "/projects/caverbob/5.png"
   ],
+  "relevancy": 4,
   "date": "2025-01-15"
 }

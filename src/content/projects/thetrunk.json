@@ -5,25 +5,24 @@
   "url": "https://thetrunk.vercel.app/",
   "repository": "https://github.com/Kiyameh/the-trunk",
   "type": "tool",
-  "description": "Herramienta online para crear y almacenar tipos y objectos de javascript.",
-  "description_en": "Online tool for creating and storing JavaScript types and objects.",
+  "description": "Herramienta online para crear y almacenar tipos y objectos de typescript.",
+  "description_en": "Online tool for creating and storing typescript types and objects.",
   "technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
   "features": [
-    "Biblioteca de typos y baul de objetos",
-    "Previsualización en tiempo real",
-    "Organización de componentes por proyecto"
+    "Biblioteca de tipos y baul de objetos",
+    "Organización de objetos por proyecto",
+    "Sistema de combinación de tipos"
   ],
   "features_en": [
     "Types library and object storage",
-    "Real-time preview",
-    "Component organization by project"
+    "Object organization by project",
+    "Type combination system"
   ],
-  "mainImage": "/projects/thetrunk/1.png",
   "images": [
     "/projects/thetrunk/1.png",
     "/projects/thetrunk/2.png",
     "/projects/thetrunk/3.png"
   ],
-  "featured": true,
+  "relevancy": 2,
   "date": "2025-01-15"
 }

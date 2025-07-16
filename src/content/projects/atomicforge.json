@@ -5,26 +5,25 @@
   "url": "https://atomicforge.vercel.app/",
   "repository": "https://github.com/Kiyameh/atomic-forge",
   "type": "tool",
-  "description": "Una herramienta online para crear y previsualizar componentes de React.",
-  "description_en": "An online tool for creating and previewing React components.",
+  "description": "Herramienta online para crear y previsualizar en tiempo real componentes de React. Pensado para aprendizaje y formación.",
+  "description_en": "Online tool for creating and previewing React components in real time. Thought for learning and training.",
   "technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
   "features": [
-    "Biblioteca de componentes",
-    "Previsualización en tiempo real",
+    "Biblioteca de componentes creados",
+    "Previsualización en tiempo real de los componentes",
     "Organización de componentes por proyecto"
   ],
   "features_en": [
-    "Component library",
-    "Real-time preview",
-    "Component organization by project"
+    "Created components library",
+    "Real-time preview of the components",
+    "Components organization by project"
   ],
-  "mainImage": "/projects/atomicforge/1.png",
   "images": [
     "/projects/atomicforge/1.png",
     "/projects/atomicforge/2.png",
     "/projects/atomicforge/3.png",
     "/projects/atomicforge/4.png"
   ],
-  "featured": true,
+  "relevancy": 1,
   "date": "2025-01-15"
 }

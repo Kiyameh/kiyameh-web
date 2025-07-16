@@ -331,7 +331,7 @@ export default function ProjectsExplorer({
             </ul>
           </div>
 
-          {selectedProject.data.mainImage && (
+          {selectedProject.data.images && (
             <div className={styles.detailsSection}>
               <h4 className={styles.detailsTitle}>
                 <Images className={styles.typeIcon} />

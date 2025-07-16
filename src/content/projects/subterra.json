@@ -5,8 +5,8 @@
   "url": "https://www.subterra.app/",
   "repository": "https://github.com/Kiyameh/subterra_web",
   "type": "webpage",
-  "description": "Aplicación web para la gestión de datos de exploración de cavidades",
-  "description_en": "Web application for cave exploration data management",
+  "description": "Aplicación web para la gestión de datos de exploración de cavidades. Base de datos masiva para grupos y usuarios.",
+  "description_en": "Web application for cave exploration data management. Massive database for groups and users.",
   "technologies": [
     "html5",
     "css",
@@ -33,7 +33,6 @@
     "Dashboard interface for data visualization",
     "Premium mode with additional features"
   ],
-  "mainImage": "/projects/subterra/1.png",
   "images": [
     "/projects/subterra/1.png",
     "/projects/subterra/2.png",
@@ -41,6 +40,6 @@
     "/projects/subterra/4.png",
     "/projects/subterra/5.png"
   ],
-  "featured": true,
+  "relevancy": 5,
   "date": "2025-01-15"
 }
