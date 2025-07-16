@@ -7,7 +7,14 @@
   "type": "webpage",
   "description": "Página web de referencia para el ranking de cavidades mundiales.",
   "description_en": "Reference website for world cave rankings.",
-  "technologies": ["html", "css", "react", "next", "typescript", "supabase"],
+  "technologies": [
+    "html5",
+    "css",
+    "react",
+    "nextdotjs",
+    "typescript",
+    "supabase"
+  ],
   "features": [
     "Base de datos de cavidades mundiales",
     "Sistema de comentarios",
@@ -23,5 +30,12 @@
     "Internationalization in three languages"
   ],
   "featured": true,
+  "images": [
+    "/projects/caverbob/1.png",
+    "/projects/caverbob/2.png",
+    "/projects/caverbob/3.png",
+    "/projects/caverbob/4.png",
+    "/projects/caverbob/5.png"
+  ],
   "date": "2025-01-15"
 }

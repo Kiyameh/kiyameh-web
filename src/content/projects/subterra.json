@@ -8,14 +8,13 @@
   "description": "Aplicación web para la gestión de datos de exploración de cavidades",
   "description_en": "Web application for cave exploration data management",
   "technologies": [
-    "html",
+    "html5",
     "css",
     "react",
-    "next",
+    "nextdotjs",
     "typescript",
     "mongodb",
     "figma",
-    "auth.js",
     "cloudinary"
   ],
   "features": [

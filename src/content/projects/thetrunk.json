@@ -1,13 +1,13 @@
 {
   "name": "The Trunk",
   "slug": "the-trunk",
+  "logo": "/projects/thetrunk/logo.png",
   "url": "https://thetrunk.vercel.app/",
   "repository": "https://github.com/Kiyameh/the-trunk",
   "type": "tool",
-  "logo": "/projects/thetrunk/logo.png",
   "description": "Herramienta online para crear y almacenar tipos y objectos de javascript.",
   "description_en": "Online tool for creating and storing JavaScript types and objects.",
-  "technologies": ["html", "css", "react", "next", "typescript"],
+  "technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
   "features": [
     "Biblioteca de typos y baul de objetos",
     "Previsualización en tiempo real",

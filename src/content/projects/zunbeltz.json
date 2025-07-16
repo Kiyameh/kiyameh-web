@@ -7,7 +7,7 @@
   "description": "Página web de referencia sobre espeleología en Navarra",
   "description_en": "Reference website about speleology in Navarre",
   "technologies": [
-    "html",
+    "html5",
     "css",
     "react",
     "astro",

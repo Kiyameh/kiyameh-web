@@ -1,5 +1,5 @@
 import React, {useRef, useState, useCallback, type MouseEvent} from 'react'
-import technologies from '../../../content/technologies.json'
+import technologies from '@/content/technologies.json'
 import styles from './TechBadge.module.css'
 
 export default function TechBadge({

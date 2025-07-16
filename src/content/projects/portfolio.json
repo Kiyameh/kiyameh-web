@@ -8,8 +8,8 @@
   "description": "Portfolio personal moderno y responsivo que muestra mis proyectos y habilidades como desarrollador.",
   "description_en": "Personal modern and responsive portfolio that showcases my projects and skills as a developer.",
   "technologies": [
-    "html",
-    "css modules",
+    "html5",
+    "cssmodules",
     "react",
     "astro",
     "typescript",
@@ -26,6 +26,13 @@
     "Dark/light mode",
     "Custom aesthetic design",
     "SEO optimized"
+  ],
+  "images": [
+    "/projects/portfolio/1.png",
+    "/projects/portfolio/2.png",
+    "/projects/portfolio/3.png",
+    "/projects/portfolio/4.png",
+    "/projects/portfolio/5.png"
   ],
   "featured": true,
   "date": "2025-01-15"

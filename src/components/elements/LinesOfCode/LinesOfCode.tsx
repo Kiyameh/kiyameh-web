@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
-import {Code, Loader2} from 'lucide-react'
+import {Code} from 'lucide-react'
+import styles from './LinesOfCode.module.css'
 
 interface CodeTabsStats {
   language: string
@@ -9,7 +10,13 @@ interface CodeTabsStats {
 
 type CodeTabsApiResponse = CodeTabsStats[]
 
-export default function LinesOfCode({repositoryUrl}: {repositoryUrl: string}) {
+export default function LinesOfCode({
+  repositoryUrl,
+  language,
+}: {
+  repositoryUrl: string
+  language: 'en' | 'es'
+}) {
   const [lines, setLines] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -53,8 +60,9 @@ export default function LinesOfCode({repositoryUrl}: {repositoryUrl: string}) {
 
   if (loading) {
     return (
-      <div>
-        <Loader2 style={{animation: 'spin 1s linear infinite'}} />
+      <div className={styles.loaderContainer}>
+        <span className={styles.loader}></span>
+        <span>Loading stats...</span>
       </div>
     )
   }
@@ -68,9 +76,11 @@ export default function LinesOfCode({repositoryUrl}: {repositoryUrl: string}) {
   }
 
   return (
-    <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
-      <Code style={{color: 'var(--primary)', width: '20px', height: '20px'}} />
-      <span style={{fontWeight: 'bold'}}>{lines} líneas de código</span>
+    <div className={styles.container}>
+      <Code className={styles.icon} />
+      <span>
+        {lines} {language === 'es' ? 'líneas de código' : 'lines of code'}
+      </span>
     </div>
   )
 }

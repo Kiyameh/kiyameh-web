@@ -7,7 +7,7 @@
   "description": "Biblioteca de componentes Ui para React con estilos de gradientes.",
   "description_en": "UI component library for React with gradient styles.",
   "technologies": [
-    "html",
+    "html5",
     "css",
     "react",
     "npm",

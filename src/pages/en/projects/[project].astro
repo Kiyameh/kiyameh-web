@@ -11,7 +11,7 @@ import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
 import {Code, Info} from 'lucide-react'
 import {getCollection} from 'astro:content'
 
-// Obtener el slug del parámetro dinámico
+// Get the slug from the dynamic parameter
 export async function getStaticPaths() {
   const projects = await getCollection('projects')
   return projects.map((project) => ({
@@ -43,9 +43,9 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
     <Breadcrumb
       client:load
       items={[
-        {label: 'Inicio', href: '/es'},
-        {label: 'Proyectos', href: '/es/projects'},
-        {label: name, href: `/es/projects/${slug}`},
+        {label: 'Home', href: '/en'},
+        {label: 'Projects', href: '/en/projects'},
+        {label: name, href: `/en/projects/${slug}`},
       ]}
     />
     <header>
@@ -79,7 +79,7 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
           href={url}
           target="_blank"
         >
-          <button class="live-button"> Ver online </button>
+          <button class="live-button"> View online </button>
         </a>
       </picture>
 
@@ -91,7 +91,7 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
             id="features"
             level="subtitle"
           >
-            Características
+            Features
           </SectionTitle>
         </header>
         {
@@ -134,14 +134,14 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
             id="repository"
             level="subtitle"
           >
-            Repositorio
+            Repository
           </SectionTitle>
           {
             repository && (
               <LinesOfCode
                 client:load
                 repositoryUrl={repository}
-                language="es"
+                language="en"
               />
             )
           }
@@ -163,7 +163,7 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
                 id="screenshots"
                 level="subtitle"
               >
-                Capturas
+                Screenshots
               </SectionTitle>
             </header>
             <div class="screenshots-container">

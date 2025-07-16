@@ -7,7 +7,7 @@
   "type": "tool",
   "description": "Una herramienta online para crear y previsualizar componentes de React.",
   "description_en": "An online tool for creating and previewing React components.",
-  "technologies": ["html", "css", "react", "next", "typescript"],
+  "technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
   "features": [
     "Biblioteca de componentes",
     "Previsualización en tiempo real",

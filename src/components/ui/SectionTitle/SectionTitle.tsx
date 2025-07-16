@@ -8,7 +8,7 @@ export default function SectionTitle({
   level,
 }: {
   children: React.ReactNode
-  id: string
+  id?: string
   level: 'title' | 'subtitle'
 }) {
   const [isCopied, setIsCopied] = useState(false)
@@ -25,9 +25,9 @@ export default function SectionTitle({
   const HeadingTag = level === 'title' ? 'h1' : 'h2'
 
   return (
-    <HeadingTag id={id}>
+    <HeadingTag id={id || undefined}>
       <a
-        href={`#${id}`}
+        href={`#${id || ''}`}
         onClick={handleCopy}
       >
         <div

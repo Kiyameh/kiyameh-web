@@ -1,6 +1,6 @@
 import {Globe, Wrench, Package, Palette, Asterisk} from 'lucide-react'
 import styles from './ProjectsExplorer.module.css'
-import type {Project} from '../../../content/config'
+import type {Project} from '@/content/config'
 
 export function getTypeIcon(type: string) {
   switch (type) {
@@ -39,7 +39,9 @@ export function filterProjects(
 ) {
   return projects.filter((project) => {
     const matchesFilter =
-      activeFilter === null || activeFilter === "all" || project.data.type === activeFilter
+      activeFilter === null ||
+      activeFilter === 'all' ||
+      project.data.type === activeFilter
     const matchesSearch =
       project.data.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.data.description_en

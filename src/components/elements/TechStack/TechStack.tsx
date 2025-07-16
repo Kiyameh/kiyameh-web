@@ -1,7 +1,6 @@
 import {useMemo, useState} from 'react'
-import TechBadge from '../../ui/TechBadge/TechBadge'
-import IconButton from '../../ui/IconButton/IconButton'
-import styles from './TechCarrousel.module.css'
+import IconButton from '@/components/ui/IconButton/IconButton'
+import styles from './TechStack.module.css'
 import {
   Atom,
   Cloud,
@@ -12,8 +11,9 @@ import {
   Palette,
   Server,
 } from 'lucide-react'
+import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
 
-export default function TechCarrousel({reverse = false}) {
+export default function TechStack() {
   const technologies = useMemo(
     () => [
       {name: 'astro', tag: 'frameworks'},
@@ -76,40 +76,19 @@ export default function TechCarrousel({reverse = false}) {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.carouselContainer}>
-        <div className={styles.carouselTrack}>
-          {technologies.map((tech, index) => (
-            <TechBadge
-              key={`${tech.name}-${index}`}
-              tech={tech.name}
-              disabled={!activeTags.includes(tech.tag)}
-            />
-          ))}
-          {/* Duplicado de los elementos para el efecto infinito */}
-          {technologies.map((tech, index) => (
-            <TechBadge
-              key={`duplicate-${tech}-${index}`}
-              tech={tech.name}
-              disabled={!activeTags.includes(tech.tag)}
-            />
-          ))}
-        </div>
-        <div className={`${styles.carouselTrack} ${styles.reverse}`}>
-          {technologies.map((tech, index) => (
-            <TechBadge
-              key={`${tech.name}-${index}`}
-              tech={tech.name}
-              disabled={!activeTags.includes(tech.tag)}
-            />
-          ))}
-          {/* Duplicado de los elementos para el efecto infinito */}
-          {technologies.map((tech, index) => (
-            <TechBadge
-              key={`duplicate-${tech}-${index}`}
-              tech={tech.name}
-              disabled={!activeTags.includes(tech.tag)}
-            />
-          ))}
-        </div>
+        <TechBadgesCarrousel
+          technologies={technologies.map((tech) => ({
+            name: tech.name,
+            disabled: !activeTags.includes(tech.tag),
+          }))}
+        />
+        <TechBadgesCarrousel
+          technologies={technologies.map((tech) => ({
+            name: tech.name,
+            disabled: !activeTags.includes(tech.tag),
+          }))}
+          reverse
+        />
       </div>
       <div className={styles.tagsContainer}>
         <IconButton

@@ -8,7 +8,7 @@ import {
   FlaskConical,
 } from 'lucide-react'
 import styles from './NavigationBar.module.css'
-import ThemeSwitcher from '../../ui/ThemeSwitcher/ThemeSwitcher'
+import ThemeSwitcher from '@/components/ui/ThemeSwitcher/ThemeSwitcher'
 
 const translations = {
   en: {

@@ -1,6 +1,6 @@
 import {useState, useMemo, useCallback} from 'react'
 import styles from './ProjectsExplorer.module.css'
-import type {Project} from '../../../content/config'
+import type {Project} from '@/content/config'
 import {getTypeIcon, getTypeColor, filterProjects} from './functions'
 import {translations} from './translations'
 
@@ -234,9 +234,7 @@ export default function ProjectsExplorer({
               )}`}
             >
               {getTypeIcon(selectedProject.data.type)}
-              <span className="ml-2 capitalize">
-                {selectedProject.data.type}
-              </span>
+              <span>{selectedProject.data.type}</span>
             </span>
           </div>
 
@@ -253,6 +251,15 @@ export default function ProjectsExplorer({
           </div>
 
           <div className={styles.detailsSection}>
+            <a
+              href={`/${language}/projects/${selectedProject.data.slug}`}
+              className={styles.projectPageCard}
+            >
+              <Info className={styles.linkIcon} />
+              <div>
+                <p className={styles.linkText}>{t.viewProjectPage}</p>
+              </div>
+            </a>
             {selectedProject.data.url && (
               <a
                 href={selectedProject.data.url}
@@ -284,15 +291,6 @@ export default function ProjectsExplorer({
                 </div>
               </a>
             )}
-            <a
-              href={`/${language}/projects/${selectedProject.data.slug}`}
-              className={`${styles.linkCard} ${styles.projectPageCard}`}
-            >
-              <Info className={styles.linkIcon} />
-              <div>
-                <p className={styles.linkText}>{t.viewProjectPage}</p>
-              </div>
-            </a>
           </div>
 
           <div className={styles.detailsSection}>

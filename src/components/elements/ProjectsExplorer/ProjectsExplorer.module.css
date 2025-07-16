@@ -540,10 +540,32 @@
 }
 
 .projectPageCard {
-  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    var(--gradient-100),
+    var(--gradient-200)
+  );
+}
+.projectPageCard:hover {
+  scale: 1.02;
+}
+.projectPageCard .linkIcon {
+  color: white;
+}
+.projectPageCard .linkText {
+  color: white;
 }
 
 .linkCard:hover {
+  scale: 1.02;
   border-color: var(--accent);
   background-color: var(--surface-100);
 }

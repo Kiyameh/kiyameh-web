@@ -7,7 +7,7 @@
   "description": "Paquete npm para la creación de CVs de forma rápida y sencilla.",
   "description_en": "Npm package for creating resumes quickly and easily.",
   "technologies": [
-    "html",
+    "html5",
     "css",
     "react",
     "npm",
@@ -29,7 +29,8 @@
   "images": [
     "/projects/reactresumekit/1.png",
     "/projects/reactresumekit/2.png",
-    "/projects/reactresumekit/3.png"
+    "/projects/reactresumekit/3.png",
+    "/projects/reactresumekit/4.png"
   ],
   "featured": true,
   "date": "2025-01-15"
