@@ -1,5 +1,5 @@
 ---
-import { getRepoStats } from "github-repo-stats-card";
+import { getRepoStats, renderRepoCard } from "github-repo-stats-card";
 
 const { repo, githubAuthToken } = Astro.props;
 
@@ -9,7 +9,7 @@ let error = null;
 try {
   stats = await getRepoStats(repo, githubAuthToken);
 } catch (err) {
-  error = err instanceof Error ? "Something wrong :(" : "";
+  error = err instanceof Error;
 }
 ---
 
@@ -26,27 +26,18 @@ try {
     ) : (
       <div class="errorContainer">
         <div class="errorIcon">⚠️</div>
-        <p>{error}</p>
+        <p>Something wrong :(</p>
       </div>
     )
   }
 </div>
 
 <script type="module">
-  import("/src/functions/renderRepoCard.ts").then((mod) => {
-    const container = document.querySelector("#repo-stats-card");
-    if (!container) return;
+  import { renderRepoCard } from "github-repo-stats-card";
 
-    const error = container.dataset.error;
-    if (error) {
-      return;
-    }
-
-    const stats = JSON.parse(container.dataset.stats);
-    if (stats) {
-      mod.renderStatsCard("#repo-stats-card", stats);
-    }
-  });
+  const container = document.querySelector("#repo-stats-card");
+  const stats = JSON.parse(container.dataset.stats || "{}");
+  renderRepoCard("#repo-stats-card", stats);
 </script>
 
 <style>
