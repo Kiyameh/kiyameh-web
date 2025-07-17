@@ -1,7 +1,8 @@
 {
   "name": "CaverBob",
   "slug": "caverbob",
-  "logo": "/projects/caverbob/logo.png",
+  "logo": "/projects/caverbob/logo.svg",
+  "logo_dark": "/projects/caverbob/logo.svg",
   "url": "https://www.caverbob.org/",
   "repository": "https://github.com/Kiyameh/caverbob-web",
   "type": "webpage",

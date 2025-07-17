@@ -1,6 +1,8 @@
 {
   "name": "Need More Gradients Ui",
   "slug": "need-more-gradients",
+  "logo": "/projects/needmoregradients/logo.png",
+  "logo_dark": "/projects/needmoregradients/logo.png",
   "url": "https://www.npmjs.com/package/need-more-gradients-ui",
   "repository": "https://github.com/Kiyameh/need-more-gradients-ui",
   "type": "package",
@@ -24,6 +26,10 @@
     "UI component library",
     "Styled and customizable system",
     "Installable from NPM or copy-use system"
+  ],
+  "images": [
+    "/projects/needmoregradients/1.png",
+    "/projects/needmoregradients/2.png"
   ],
   "relevancy": 2,
   "date": "2025-01-15"

@@ -33,6 +33,7 @@ const {
   url,
   images,
   logo,
+  logo_dark,
 } = project.data
 
 const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
@@ -53,8 +54,17 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
         {
           logo && (
             <img
-              class="logo"
+              class="logo logo-light"
               src={logo}
+              alt={name}
+            />
+          )
+        }
+        {
+          logo_dark && (
+            <img
+              class="logo logo-dark"
+              src={logo_dark}
               alt={name}
             />
           )
@@ -237,6 +247,26 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
   .logo {
     max-width: 4rem;
     max-height: 3rem;
+  }
+  .logo-light {
+    display: block;
+  }
+  .logo-dark {
+    display: none;
+  }
+  /* Mostrar logo oscuro en tema oscuro */
+  :global([data-theme='dark']) .logo-light {
+    display: none;
+  }
+  :global([data-theme='dark']) .logo-dark {
+    display: block;
+  }
+  /* Mostrar logo claro en tema claro */
+  :global([data-theme='light']) .logo-light {
+    display: block;
+  }
+  :global([data-theme='light']) .logo-dark {
+    display: none;
   }
 
   /* Picture */

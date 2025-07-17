@@ -1,60 +1,63 @@
 ---
-import { SpotlightButton, StickyCard } from "need-more-gradients-ui";
+import {SpotlightButton, StickyCard} from 'need-more-gradients-ui'
 
-import cursorSvg from "@/assets/ui-pieces/cursor.svg";
-import measure1Svg from "@/assets/ui-pieces/measure1.svg";
-import measure2Svg from "@/assets/ui-pieces/measure2.svg";
+import cursorSvg from '@/assets/ui-pieces/cursor.svg'
+import measure1Svg from '@/assets/ui-pieces/measure1.svg'
+import measure2Svg from '@/assets/ui-pieces/measure2.svg'
+import bg1 from '@/assets/backgrounds/bg1.svg'
+import bg_grid from '@/assets/backgrounds/bg_grid.svg'
+import {Image} from 'astro:assets'
 
 interface Props {
-  language: "en" | "es";
+  language: 'en' | 'es'
 }
 
-const { language = "en" } = Astro.props as Props;
+const {language = 'en'} = Astro.props as Props
 
 const TEXTS = {
   en: {
-    designTitle: "Design",
+    designTitle: 'Design',
     designDescription:
-      "I create intuitive and visually appealing interfaces that prioritize user experience. From wireframes to high-fidelity mockups, I ensure every design decision serves the user.",
-    layoutTitle: "Layout",
+      'I create intuitive and visually appealing interfaces that prioritize user experience. From wireframes to high-fidelity mockups, I ensure every design decision serves the user.',
+    layoutTitle: 'Layout',
     layoutDescription:
-      "I transform designs into responsive layouts using modern CSS techniques. I focus on creating flexible, accessible, and performant structures that work across all devices.",
-    interactivityTitle: "Interactivity",
+      'I transform designs into responsive layouts using modern CSS techniques. I focus on creating flexible, accessible, and performant structures that work across all devices.',
+    interactivityTitle: 'Interactivity',
     interactivityDescription:
-      "I bring interfaces to life with smooth animations and interactive elements. Using JavaScript and modern frameworks, I create engaging user experiences that feel natural and responsive.",
-    designCardTitle: "Design",
-    designCardDescription: "The soul and the heart of awesome interfaces",
-    designCardButton: "Awsm button",
-    structureCardTitle: "Structure",
-    structureCardDescription: "Responsiveness, accessibility and SEO",
-    structureCardButton: "aria-check",
-    interactivityCardTitle: "Interactivity",
+      'I bring interfaces to life with smooth animations and interactive elements. Using JavaScript and modern frameworks, I create engaging user experiences that feel natural and responsive.',
+    designCardTitle: 'Design',
+    designCardDescription: 'The soul and the heart of awesome interfaces',
+    designCardButton: 'Awsm button',
+    structureCardTitle: 'Structure',
+    structureCardDescription: 'Responsiveness, accessibility and SEO',
+    structureCardButton: 'aria-check',
+    interactivityCardTitle: 'Interactivity',
     interactivityCardDescription:
-      "Where design comes alive through motion and logic",
+      'Where design comes alive through motion and logic',
     interactivityCardButton: "Let's do it",
   },
   es: {
-    designTitle: "Diseño",
+    designTitle: 'Diseño',
     designDescription:
-      "Creo interfaces intuitivas y visualmente atractivas que priorizan la experiencia del usuario. Desde wireframes hasta mockups de alta fidelidad, me aseguro de que cada decisión de diseño sirva al usuario.",
-    layoutTitle: "Maquetación",
+      'Creo interfaces intuitivas y visualmente atractivas que priorizan la experiencia del usuario. Desde wireframes hasta mockups de alta fidelidad, me aseguro de que cada decisión de diseño sirva al usuario.',
+    layoutTitle: 'Maquetación',
     layoutDescription:
-      "Transformo diseños en layouts responsivos usando técnicas CSS modernas. Me enfoco en crear estructuras flexibles, accesibles y performantes que funcionen en todos los dispositivos.",
-    interactivityTitle: "Interactividad",
+      'Transformo diseños en layouts responsivos usando técnicas CSS modernas. Me enfoco en crear estructuras flexibles, accesibles y performantes que funcionen en todos los dispositivos.',
+    interactivityTitle: 'Interactividad',
     interactivityDescription:
-      "Doy vida a las interfaces con animaciones suaves y elementos interactivos. Usando JavaScript y frameworks modernos, creo experiencias de usuario atractivas que se sienten naturales y responsivas.",
-    designCardTitle: "Diseño",
-    designCardDescription: "El alma y el corazón de interfaces increíbles",
-    designCardButton: "Botón asombroso",
-    structureCardTitle: "Estructura",
-    structureCardDescription: "Responsividad, accesibilidad y SEO",
-    structureCardButton: "aria-check",
-    interactivityCardTitle: "Interactividad",
+      'Doy vida a las interfaces con animaciones suaves y elementos interactivos. Usando JavaScript y frameworks modernos, creo experiencias de usuario atractivas que se sienten naturales y responsivas.',
+    designCardTitle: 'Diseño',
+    designCardDescription: 'El alma y el corazón de interfaces increíbles',
+    designCardButton: 'Botón asombroso',
+    structureCardTitle: 'Estructura',
+    structureCardDescription: 'Responsividad, accesibilidad y SEO',
+    structureCardButton: 'aria-check',
+    interactivityCardTitle: 'Interactividad',
     interactivityCardDescription:
-      "Donde el diseño cobra vida a través del movimiento y la lógica",
-    interactivityCardButton: "¡Hagámoslo!",
+      'Donde el diseño cobra vida a través del movimiento y la lógica',
+    interactivityCardButton: '¡Hagámoslo!',
   },
-};
+}
 
 const {
   designCardTitle,
@@ -66,14 +69,26 @@ const {
   interactivityCardTitle,
   interactivityCardDescription,
   interactivityCardButton,
-} = TEXTS[language];
+} = TEXTS[language]
 ---
 
 <arcticle class="design-process-box">
   <div class="design-card card">
-    <img src={cursorSvg.src} alt="Cursor" class="cursor-svg" />
-    <img src={measure1Svg.src} alt="Measure 1" class="measure-1" />
-    <img src={measure2Svg.src} alt="Measure 2" class="measure-2" />
+    <Image
+      src={cursorSvg}
+      alt="Cursor"
+      class="cursor-svg"
+    />
+    <Image
+      src={measure1Svg}
+      alt="Measure 1"
+      class="measure-1"
+    />
+    <Image
+      src={measure2Svg}
+      alt="Measure 2"
+      class="measure-2"
+    />
     <span class="bubble-1"></span>
     <span class="bubble-2"></span>
     <h3 class="card-title">{designCardTitle}</h3>
@@ -84,6 +99,11 @@ const {
       {designCardButton}
     </button>
   </div>
+  <Image
+    src={bg_grid}
+    alt="bg-grid"
+    class="bg-grid"
+  />
   <div class="structure-card card">
     <code>&lt;div&gt;</code>
     <h3 class="card-title">
@@ -107,13 +127,13 @@ const {
       roundness={2}
       borderWidth={2}
       style={{
-        padding: "3rem 2rem",
-        minHeight: "300px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "start",
-        justifyContent: "space-between",
-        gap: "1rem",
+        padding: '3rem 2rem',
+        minHeight: '300px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'start',
+        justifyContent: 'space-between',
+        gap: '1rem',
       }}
     >
       <h3 class="card-title fantasy-text">{interactivityCardTitle}</h3>
@@ -131,6 +151,11 @@ const {
       </SpotlightButton>
     </StickyCard>
   </div>
+  <Image
+    src={bg1}
+    alt="bg-1"
+    class="bg-1"
+  />
 </arcticle>
 
 <style>
@@ -156,10 +181,10 @@ const {
     .card:nth-child(1) {
       margin-top: 4rem;
     }
-    .card:nth-child(2) {
+    .card:nth-child(3) {
       margin-top: 8rem;
     }
-    .card:nth-child(3) {
+    .card:nth-child(4) {
       margin-top: 12rem;
     }
   }
@@ -204,7 +229,7 @@ const {
     position: relative;
   }
   .design-card::before {
-    content: "";
+    content: '';
     position: absolute;
     background: transparent;
     pointer-events: none;
@@ -216,18 +241,13 @@ const {
     border: 2px solid #60b7ff;
     clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 60% 100%, 0% 100%);
   }
-  .design-card::after {
-    content: "";
+  .bg-grid {
     position: absolute;
+    top: 50lvh;
+    left: 0;
+    scale: 1.5;
     z-index: -1;
     pointer-events: none;
-    top: -100px;
-    left: -100px;
-    right: -100px;
-    bottom: -100px;
-    background-image: url("/backgrounds/bg_grid.svg");
-    background-size: cover;
-    background-position: center;
   }
 
   .design-card .card-title {
@@ -353,26 +373,20 @@ const {
   .interactivity-card {
     padding: 0;
     border-radius: 2rem;
-    position: relative;
     box-shadow: var(--shadow-large);
-  }
-  .interactivity-card::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    left: -50px;
-    right: -50px;
-    bottom: -50px;
-    background-image: url("/backgrounds/bg1.svg");
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    filter: blur(40px);
-    opacity: 0.3;
-    transform: rotate(16deg) scale(1.05);
   }
   .interactivity-button {
     width: 100%;
     height: 3rem;
+  }
+
+  .bg-1 {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    filter: blur(100px);
   }
 </style>

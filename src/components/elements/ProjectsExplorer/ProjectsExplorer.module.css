@@ -686,3 +686,23 @@
 .typeDesign {
   background-color: #ddffc7;
 }
+
+/* --- LOGOS SEGÚN TEMA --- */
+.logoLight {
+  display: block;
+}
+.logoDark {
+  display: none;
+}
+[data-theme='dark'] .projectLogo .logoLight {
+  display: none;
+}
+[data-theme='dark'] .projectLogo .logoDark {
+  display: block;
+}
+[data-theme='light'] .projectLogo .logoLight {
+  display: block;
+}
+[data-theme='light'] .projectLogo .logoDark {
+  display: none;
+}

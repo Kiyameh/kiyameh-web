@@ -1,7 +1,8 @@
 {
   "name": "The Trunk",
   "slug": "the-trunk",
-  "logo": "/projects/thetrunk/logo.png",
+  "logo": "/projects/thetrunk/logo.svg",
+  "logo_dark": "/projects/thetrunk/logo_dark.svg",
   "url": "https://thetrunk.vercel.app/",
   "repository": "https://github.com/Kiyameh/the-trunk",
   "type": "tool",

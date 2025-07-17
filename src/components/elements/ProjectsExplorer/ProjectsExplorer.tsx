@@ -108,14 +108,23 @@ export default function ProjectsExplorer({
           tabIndex={selectedProject ? -1 : 0}
         >
           <div className={styles.projectLogo}>
-            {project.data.logo ? (
+            {project.data.logo && (
               <img
                 src={project.data.logo}
                 alt={project.data.name}
-                className={styles.projectLogoImage}
+                className={`${styles.projectLogoImage} ${styles.logoLight}`}
                 onError={handleImageError}
               />
-            ) : (
+            )}
+            {project.data.logo_dark && (
+              <img
+                src={project.data.logo_dark}
+                alt={project.data.name}
+                className={`${styles.projectLogoImage} ${styles.logoDark}`}
+                onError={handleImageError}
+              />
+            )}
+            {!project.data.logo && !project.data.logo_dark && (
               <div className={styles.projectLogoFallback}>
                 {getTypeIcon(project.data.type)}
               </div>
@@ -214,18 +223,28 @@ export default function ProjectsExplorer({
         <div className={styles.detailsContent}>
           <div className={styles.detailsSectionTitle}>
             <div className={styles.projectLogo}>
-              {selectedProject.data.logo ? (
+              {selectedProject.data.logo && (
                 <img
                   src={selectedProject.data.logo}
                   alt={selectedProject.data.name}
-                  className={styles.projectLogoImage}
+                  className={`${styles.projectLogoImage} ${styles.logoLight}`}
                   onError={handleImageError}
                 />
-              ) : (
-                <div className={styles.projectLogoFallback}>
-                  {getTypeIcon(selectedProject.data.type)}
-                </div>
               )}
+              {selectedProject.data.logo_dark && (
+                <img
+                  src={selectedProject.data.logo_dark}
+                  alt={selectedProject.data.name}
+                  className={`${styles.projectLogoImage} ${styles.logoDark}`}
+                  onError={handleImageError}
+                />
+              )}
+              {!selectedProject.data.logo &&
+                !selectedProject.data.logo_dark && (
+                  <div className={styles.projectLogoFallback}>
+                    {getTypeIcon(selectedProject.data.type)}
+                  </div>
+                )}
             </div>
             <h3 className={styles.projectName}>{selectedProject.data.name}</h3>
             <span

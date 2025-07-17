@@ -65,6 +65,30 @@
   object-fit: contain;
 }
 
+.logoLight {
+  display: block;
+}
+
+.logoDark {
+  display: none;
+}
+
+/* Mostrar logo oscuro en tema oscuro */
+[data-theme='dark'] .projectImage .logoLight {
+  display: none;
+}
+[data-theme='dark'] .projectImage .logoDark {
+  display: block;
+}
+
+/* Mostrar logo claro en tema claro */
+[data-theme='light'] .projectImage .logoLight {
+  display: block;
+}
+[data-theme='light'] .projectImage .logoDark {
+  display: none;
+}
+
 .placeholderIcon {
   width: 50%;
   height: 50%;

@@ -1,45 +1,54 @@
 ---
-import { getCollection } from "astro:content";
-import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
-import ProjectHighlighter from "@/components/elements/ProjectHighlighter/ProjectHighlighter";
+import {getCollection} from 'astro:content'
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
+import ProjectHighlighter from '@/components/elements/ProjectHighlighter/ProjectHighlighter'
+import {sortProjectByRelevancy} from '@/functions/sortProjectByRelevancy'
 
 interface Props {
-  language: "en" | "es";
+  language: 'en' | 'es'
 }
 
-const { language = "en" } = Astro.props as Props;
+const {language = 'en'} = Astro.props as Props
 
 // Obtener y ordenar proyectos
-const allProjects = (await getCollection("projects")).sort((a, b) => {
-  const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
-  const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
-  return dateB - dateA;
-});
+const allProjects = await getCollection('projects')
+const sortedProjects = sortProjectByRelevancy(allProjects)
 
 const TEXTS = {
   en: {
-    title: "What?",
+    title: 'What?',
     description:
       'Here you can see some of the projects I have worked on recently. You can also visit the <span class="link"><a href="/en/projects">project pages</a></span> or the <span class="link"><a href="/en/labs">labs</a></span>, where I share my most personal works.',
   },
   es: {
-    title: "¿Qué?",
+    title: '¿Qué?',
     description:
       'Aquí puedes ver algunos de los proyectos en los que he trabajado recientemente. También puedes visitar la <span class="link"><a href="/es/projects">página de proyectos</a></span> o los <span class="link"><a href="/es/labs">laboratorios</a></span>, donde comparto mis trabajos más personales.',
   },
-};
+}
 
-const { title, description } = TEXTS[language];
+const {title, description} = TEXTS[language]
 ---
 
 <header class="header">
-  <SectionTitle client:load id="works" level="title">
+  <SectionTitle
+    client:load
+    id="works"
+    level="title"
+  >
     {title}
   </SectionTitle>
-  <p class="paragraph code-text" set:html={description} />
+  <p
+    class="paragraph code-text"
+    set:html={description}
+  />
 </header>
 <main class="content">
-  <ProjectHighlighter client:load projects={allProjects} language={language} />
+  <ProjectHighlighter
+    client:load
+    projects={sortedProjects}
+    language={language}
+  />
 </main>
 
 <style>

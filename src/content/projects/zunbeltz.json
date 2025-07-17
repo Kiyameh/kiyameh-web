@@ -2,6 +2,8 @@
   "name": "Zunbeltz",
   "slug": "zunbeltz",
   "url": "https://www.zunbeltz.org/",
+  "logo": "/projects/zunbeltz/logo.svg",
+  "logo_dark": "/projects/zunbeltz/logo_dark.svg",
   "repository": "https://github.com/Kiyameh/zunbeltz_web",
   "type": "webpage",
   "description": "Página web de referencia sobre espeleología en Navarra. Blog, tienda online y sección de formación.",
@@ -34,5 +36,6 @@
     "Authentication and user management system"
   ],
   "relevancy": 4,
+  "images": ["/projects/zunbeltz/1.png"],
   "date": "2025-01-15"
 }

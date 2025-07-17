@@ -2,6 +2,7 @@
   "name": "Subterra",
   "slug": "subterra",
   "logo": "/projects/subterra/logo.svg",
+  "logo_dark": "/projects/subterra/logo_dark.svg",
   "url": "https://www.subterra.app/",
   "repository": "https://github.com/Kiyameh/subterra_web",
   "type": "webpage",

@@ -2,6 +2,7 @@
   "name": "Portfolio",
   "slug": "portfolio",
   "logo": "/projects/portfolio/logo.svg",
+  "logo_dark": "/projects/portfolio/logo_dark.svg",
   "url": "https://www.kiyameh.dev",
   "repository": "https://github.com/Kiyameh/kiyameh.dev",
   "type": "webpage",

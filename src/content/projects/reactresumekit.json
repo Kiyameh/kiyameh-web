@@ -2,6 +2,8 @@
   "name": "React Resume Kit",
   "slug": "react-resume-kit",
   "url": "https://www.npmjs.com/package/react-resume-kit",
+  "logo": "/projects/reactresumekit/logo.png",
+  "logo_dark": "/projects/reactresumekit/logo.png",
   "repository": "https://github.com/Kiyameh/react-resume-kit",
   "type": "package",
   "description": "Paquete npm para la creación de Currículums vitae de forma rápida y sencilla.",

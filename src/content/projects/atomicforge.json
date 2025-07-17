@@ -1,7 +1,8 @@
 {
   "name": "Atomic Forge",
   "slug": "atomic-forge",
-  "logo": "/projects/atomicforge/logo.png",
+  "logo": "/projects/atomicforge/logo.svg",
+  "logo_dark": "/projects/atomicforge/logo_dark.svg",
   "url": "https://atomicforge.vercel.app/",
   "repository": "https://github.com/Kiyameh/atomic-forge",
   "type": "tool",
