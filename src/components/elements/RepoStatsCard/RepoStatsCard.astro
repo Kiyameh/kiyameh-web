@@ -1,23 +1,52 @@
 ---
-import { getRepoStats, renderRepoCard } from "github-repo-stats-card";
+import { getRepoStats } from "github-repo-stats-card";
 
 const { repo, githubAuthToken } = Astro.props;
 
-const stats = await getRepoStats(repo, githubAuthToken);
+let stats = null;
+let error = null;
+
+try {
+  stats = await getRepoStats(repo, githubAuthToken);
+} catch (err) {
+  error = err instanceof Error ? "Something wrong :(" : "";
+}
 ---
 
-<div id="repo-stats-card" data-stats={JSON.stringify(stats)}>
-  <div class="loaderContainer">
-    <div class="loader"></div>
-  </div>
+<div
+  id="repo-stats-card"
+  data-stats={stats ? JSON.stringify(stats) : ""}
+  data-error={error || ""}
+>
+  {
+    !error ? (
+      <div class="loaderContainer">
+        <div class="loader" />
+      </div>
+    ) : (
+      <div class="errorContainer">
+        <div class="errorIcon">⚠️</div>
+        <p>{error}</p>
+      </div>
+    )
+  }
 </div>
 
-<script>
-  import { renderRepoCard } from "github-repo-stats-card";
+<script type="module">
+  import("/src/functions/renderRepoCard.ts").then((mod) => {
+    const container = document.querySelector("#repo-stats-card");
+    if (!container) return;
 
-  const container = document.querySelector("#repo-stats-card") as HTMLElement;
-  const stats = JSON.parse(container.dataset.stats || "{}");
-  renderRepoCard("#repo-stats-card", stats);
+    const error = container.dataset.error;
+    if (error) {
+      return;
+    }
+
+    const stats = JSON.parse(container.dataset.stats);
+    if (stats) {
+      mod.renderStatsCard("#repo-stats-card", stats);
+    }
+  });
 </script>
 
 <style>
@@ -40,6 +69,23 @@ const stats = await getRepoStats(repo, githubAuthToken);
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
+  }
+
+  .errorContainer {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-large);
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .errorIcon {
+    font-size: 1.5rem;
+    opacity: 0.7;
   }
 
   @keyframes rotation {
