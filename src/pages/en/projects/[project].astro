@@ -1,26 +1,26 @@
 ---
-import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
-import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
-import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
-import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
-import LinesOfCode from '@/components/elements/LinesOfCode/LinesOfCode'
-import RepoStatsCard from '@/components/elements/RepoStatsCard/RepoStatsCard'
-import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
-import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
+import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
+import Breadcrumb from "@/components/ui/Breadcrumb/Breadcrumb";
+import ProjectTypeBadge from "@/components/ui/ProjectTypeBadge/ProjectTypeBadge";
+import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
+import LinesOfCode from "@/components/elements/LinesOfCode/LinesOfCode";
+import RepoStatsCard from "@/components/elements/RepoStatsCard/RepoStatsCard.astro";
+import TechBadgesCarrousel from "@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel";
+import ImageGallery from "@/components/ui/ImageGallery/ImageGallery";
 
-import {Code, Info} from 'lucide-react'
-import {getCollection} from 'astro:content'
+import { Code, Info } from "lucide-react";
+import { getCollection } from "astro:content";
 
 // Get the slug from the dynamic parameter
 export async function getStaticPaths() {
-  const projects = await getCollection('projects')
+  const projects = await getCollection("projects");
   return projects.map((project) => ({
-    params: {project: project.data.slug},
-    props: {project},
-  }))
+    params: { project: project.data.slug },
+    props: { project },
+  }));
 }
 
-const {project} = Astro.props
+const { project } = Astro.props;
 
 const {
   repository,
@@ -34,9 +34,9 @@ const {
   images,
   logo,
   logo_dark,
-} = project.data
+} = project.data;
 
-const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
+const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
 ---
 
 <PortfolioLayout>
@@ -44,35 +44,16 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
     <Breadcrumb
       client:load
       items={[
-        {label: 'Home', href: '/en'},
-        {label: 'Projects', href: '/en/projects'},
-        {label: name, href: `/en/projects/${slug}`},
+        { label: "Home", href: "/en" },
+        { label: "Projects", href: "/en/projects" },
+        { label: name, href: `/en/projects/${slug}` },
       ]}
     />
     <header>
       <div class="name-and-logo">
-        {
-          logo && (
-            <img
-              class="logo logo-light"
-              src={logo}
-              alt={name}
-            />
-          )
-        }
-        {
-          logo_dark && (
-            <img
-              class="logo logo-dark"
-              src={logo_dark}
-              alt={name}
-            />
-          )
-        }
-        <SectionTitle
-          client:load
-          level="title"
-        >
+        {logo && <img class="logo logo-light" src={logo} alt={name} />}
+        {logo_dark && <img class="logo logo-dark" src={logo_dark} alt={name} />}
+        <SectionTitle client:load level="title">
           {name}
         </SectionTitle>
       </div>
@@ -81,14 +62,8 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
     <main>
       <!-- Picture -->
       <picture class="main-picture">
-        <img
-          src={images?.[0] || ''}
-          alt={name}
-        />
-        <a
-          href={url}
-          target="_blank"
-        >
+        <img src={images?.[0] || ""} alt={name} />
+        <a href={url} target="_blank">
           <button class="live-button"> View online </button>
         </a>
       </picture>
@@ -96,11 +71,7 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
       <!-- Features -->
       <section>
         <header>
-          <SectionTitle
-            client:load
-            id="features"
-            level="subtitle"
-          >
+          <SectionTitle client:load id="features" level="subtitle">
             Features
           </SectionTitle>
         </header>
@@ -139,11 +110,7 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
       </section>
       <section>
         <header>
-          <SectionTitle
-            client:load
-            id="repository"
-            level="subtitle"
-          >
+          <SectionTitle client:load id="repository" level="subtitle">
             Repository
           </SectionTitle>
           {
@@ -158,7 +125,6 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
         </header>
         <div class="repo-stats">
           <RepoStatsCard
-            client:load
             repo={repoSlug}
             githubAuthToken={import.meta.env.GITHUB_AUTH_TOKEN}
           />
@@ -168,11 +134,7 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
         images && (
           <section>
             <header>
-              <SectionTitle
-                client:load
-                id="screenshots"
-                level="subtitle"
-              >
+              <SectionTitle client:load id="screenshots" level="subtitle">
                 Screenshots
               </SectionTitle>
             </header>
@@ -255,17 +217,17 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
     display: none;
   }
   /* Mostrar logo oscuro en tema oscuro */
-  :global([data-theme='dark']) .logo-light {
+  :global([data-theme="dark"]) .logo-light {
     display: none;
   }
-  :global([data-theme='dark']) .logo-dark {
+  :global([data-theme="dark"]) .logo-dark {
     display: block;
   }
   /* Mostrar logo claro en tema claro */
-  :global([data-theme='light']) .logo-light {
+  :global([data-theme="light"]) .logo-light {
     display: block;
   }
-  :global([data-theme='light']) .logo-dark {
+  :global([data-theme="light"]) .logo-dark {
     display: none;
   }
 
@@ -275,7 +237,7 @@ const repoSlug = `${repository?.split('/')[3]}/${repository?.split('/')[4]}`
     cursor: pointer;
   }
   .main-picture::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
