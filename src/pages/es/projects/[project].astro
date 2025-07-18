@@ -1,26 +1,25 @@
 ---
-import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
-import Breadcrumb from "@/components/ui/Breadcrumb/Breadcrumb";
-import ProjectTypeBadge from "@/components/ui/ProjectTypeBadge/ProjectTypeBadge";
-import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
-import RepoStatsCard from "@/components/elements/RepoStatsCard/RepoStatsCard.astro";
-import TechBadgesCarrousel from "@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel";
-import ImageGallery from "@/components/ui/ImageGallery/ImageGallery";
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
+import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
+import RepoStatsCard from '@/components/elements/RepoStatsCard/RepoStatsCard.astro'
+import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
+import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
 
-import { Code, Info } from "lucide-react";
-import { getCollection } from "astro:content";
-import NetlifyServerTester from "@/components/elements/NetlifyServerTester/NetlifyServerTester.astro";
+import {Code, Info} from 'lucide-react'
+import {getCollection} from 'astro:content'
 
 // Obtener el slug del parámetro dinámico
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
+  const projects = await getCollection('projects')
   return projects.map((project) => ({
-    params: { project: project.data.slug },
-    props: { project },
-  }));
+    params: {project: project.data.slug},
+    props: {project},
+  }))
 }
 
-const { project } = Astro.props;
+const {project} = Astro.props
 
 const {
   repository,
@@ -34,7 +33,7 @@ const {
   images,
   logo,
   logo_dark,
-} = project.data;
+} = project.data
 ---
 
 <PortfolioLayout>
@@ -42,16 +41,35 @@ const {
     <Breadcrumb
       client:load
       items={[
-        { label: "Inicio", href: "/es" },
-        { label: "Proyectos", href: "/es/projects" },
-        { label: name, href: `/es/projects/${slug}` },
+        {label: 'Inicio', href: '/es'},
+        {label: 'Proyectos', href: '/es/projects'},
+        {label: name, href: `/es/projects/${slug}`},
       ]}
     />
     <header>
       <div class="name-and-logo">
-        {logo && <img class="logo logo-light" src={logo} alt={name} />}
-        {logo_dark && <img class="logo logo-dark" src={logo_dark} alt={name} />}
-        <SectionTitle client:load level="title">
+        {
+          logo && (
+            <img
+              class="logo logo-light"
+              src={logo}
+              alt={name}
+            />
+          )
+        }
+        {
+          logo_dark && (
+            <img
+              class="logo logo-dark"
+              src={logo_dark}
+              alt={name}
+            />
+          )
+        }
+        <SectionTitle
+          client:load
+          level="title"
+        >
           {name}
         </SectionTitle>
       </div>
@@ -60,8 +78,14 @@ const {
     <main>
       <!-- Picture -->
       <picture class="main-picture">
-        <img src={images?.[0] || ""} alt={name} />
-        <a href={url} target="_blank">
+        <img
+          src={images?.[0] || ''}
+          alt={name}
+        />
+        <a
+          href={url}
+          target="_blank"
+        >
           <button class="live-button"> Ver online </button>
         </a>
       </picture>
@@ -69,7 +93,11 @@ const {
       <!-- Features -->
       <section>
         <header>
-          <SectionTitle client:load id="features" level="subtitle">
+          <SectionTitle
+            client:load
+            id="features"
+            level="subtitle"
+          >
             Características
           </SectionTitle>
         </header>
@@ -108,27 +136,37 @@ const {
       </section>
       <section>
         <header>
-          <SectionTitle client:load id="repository" level="subtitle">
+          <SectionTitle
+            client:load
+            id="repository"
+            level="subtitle"
+          >
             Repositorio
           </SectionTitle>
         </header>
         <!-- Server Island con los datos del repositorio -->
 
-        <RepoStatsCard repository={repository} server:defer>
-          <div class="loaderContainer" slot="fallback">
+        <RepoStatsCard
+          repository={repository}
+          server:defer
+        >
+          <div
+            class="loaderContainer"
+            slot="fallback"
+          >
             <div class="loader"></div>
           </div>
         </RepoStatsCard>
-        <p>TESTER:</p>
-        <NetlifyServerTester repository={repository} server:defer>
-          <div slot="fallback">Cargando</div>
-        </NetlifyServerTester>
       </section>
       {
         images && (
           <section>
             <header>
-              <SectionTitle client:load id="screenshots" level="subtitle">
+              <SectionTitle
+                client:load
+                id="screenshots"
+                level="subtitle"
+              >
                 Capturas
               </SectionTitle>
             </header>
@@ -211,17 +249,17 @@ const {
     display: none;
   }
   /* Mostrar logo oscuro en tema oscuro */
-  :global([data-theme="dark"]) .logo-light {
+  :global([data-theme='dark']) .logo-light {
     display: none;
   }
-  :global([data-theme="dark"]) .logo-dark {
+  :global([data-theme='dark']) .logo-dark {
     display: block;
   }
   /* Mostrar logo claro en tema claro */
-  :global([data-theme="light"]) .logo-light {
+  :global([data-theme='light']) .logo-light {
     display: block;
   }
-  :global([data-theme="light"]) .logo-dark {
+  :global([data-theme='light']) .logo-dark {
     display: none;
   }
 
@@ -231,7 +269,7 @@ const {
     cursor: pointer;
   }
   .main-picture::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
