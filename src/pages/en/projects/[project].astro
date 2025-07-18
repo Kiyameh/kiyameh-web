@@ -1,26 +1,26 @@
 ---
-import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
-import Breadcrumb from "@/components/ui/Breadcrumb/Breadcrumb";
-import ProjectTypeBadge from "@/components/ui/ProjectTypeBadge/ProjectTypeBadge";
-import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
-import LinesOfCode from "@/components/elements/LinesOfCode/LinesOfCode";
-import RepoStatsCard from "@/components/elements/RepoStatsCard/RepoStatsCard.astro";
-import TechBadgesCarrousel from "@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel";
-import ImageGallery from "@/components/ui/ImageGallery/ImageGallery";
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
+import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
+import LinesOfCode from '@/components/elements/LinesOfCode/LinesOfCode'
+import RepoStatsCard from '@/components/elements/RepoStatsCard/RepoStatsCard.astro'
+import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
+import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
 
-import { Code, Info } from "lucide-react";
-import { getCollection } from "astro:content";
+import {Code, Info} from 'lucide-react'
+import {getCollection} from 'astro:content'
 
 // Get the slug from the dynamic parameter
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
+  const projects = await getCollection('projects')
   return projects.map((project) => ({
-    params: { project: project.data.slug },
-    props: { project },
-  }));
+    params: {project: project.data.slug},
+    props: {project},
+  }))
 }
 
-const { project } = Astro.props;
+const {project} = Astro.props
 
 const {
   repository,
@@ -34,9 +34,7 @@ const {
   images,
   logo,
   logo_dark,
-} = project.data;
-
-const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
+} = project.data
 ---
 
 <PortfolioLayout>
@@ -44,16 +42,35 @@ const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
     <Breadcrumb
       client:load
       items={[
-        { label: "Home", href: "/en" },
-        { label: "Projects", href: "/en/projects" },
-        { label: name, href: `/en/projects/${slug}` },
+        {label: 'Home', href: '/en'},
+        {label: 'Projects', href: '/en/projects'},
+        {label: name, href: `/en/projects/${slug}`},
       ]}
     />
     <header>
       <div class="name-and-logo">
-        {logo && <img class="logo logo-light" src={logo} alt={name} />}
-        {logo_dark && <img class="logo logo-dark" src={logo_dark} alt={name} />}
-        <SectionTitle client:load level="title">
+        {
+          logo && (
+            <img
+              class="logo logo-light"
+              src={logo}
+              alt={name}
+            />
+          )
+        }
+        {
+          logo_dark && (
+            <img
+              class="logo logo-dark"
+              src={logo_dark}
+              alt={name}
+            />
+          )
+        }
+        <SectionTitle
+          client:load
+          level="title"
+        >
           {name}
         </SectionTitle>
       </div>
@@ -62,8 +79,14 @@ const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
     <main>
       <!-- Picture -->
       <picture class="main-picture">
-        <img src={images?.[0] || ""} alt={name} />
-        <a href={url} target="_blank">
+        <img
+          src={images?.[0] || ''}
+          alt={name}
+        />
+        <a
+          href={url}
+          target="_blank"
+        >
           <button class="live-button"> View online </button>
         </a>
       </picture>
@@ -71,7 +94,11 @@ const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
       <!-- Features -->
       <section>
         <header>
-          <SectionTitle client:load id="features" level="subtitle">
+          <SectionTitle
+            client:load
+            id="features"
+            level="subtitle"
+          >
             Features
           </SectionTitle>
         </header>
@@ -110,31 +137,38 @@ const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
       </section>
       <section>
         <header>
-          <SectionTitle client:load id="repository" level="subtitle">
+          <SectionTitle
+            client:load
+            id="repository"
+            level="subtitle"
+          >
             Repository
           </SectionTitle>
-          {
-            repository && (
-              <LinesOfCode
-                client:load
-                repositoryUrl={repository}
-                language="en"
-              />
-            )
-          }
         </header>
-        <div class="repo-stats">
-          <RepoStatsCard
-            repo={repoSlug}
-            githubAuthToken={import.meta.env.GITHUB_AUTH_TOKEN}
-          />
-        </div>
+
+        <!-- Server Island con los datos del repositorio -->
+
+        <RepoStatsCard
+          repository={repository}
+          server:defer
+        >
+          <div
+            class="loaderContainer"
+            slot="fallback"
+          >
+            <div class="loader"></div>
+          </div>
+        </RepoStatsCard>
       </section>
       {
         images && (
           <section>
             <header>
-              <SectionTitle client:load id="screenshots" level="subtitle">
+              <SectionTitle
+                client:load
+                id="screenshots"
+                level="subtitle"
+              >
                 Screenshots
               </SectionTitle>
             </header>
@@ -217,17 +251,17 @@ const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
     display: none;
   }
   /* Mostrar logo oscuro en tema oscuro */
-  :global([data-theme="dark"]) .logo-light {
+  :global([data-theme='dark']) .logo-light {
     display: none;
   }
-  :global([data-theme="dark"]) .logo-dark {
+  :global([data-theme='dark']) .logo-dark {
     display: block;
   }
   /* Mostrar logo claro en tema claro */
-  :global([data-theme="light"]) .logo-light {
+  :global([data-theme='light']) .logo-light {
     display: block;
   }
-  :global([data-theme="light"]) .logo-dark {
+  :global([data-theme='light']) .logo-dark {
     display: none;
   }
 
@@ -237,7 +271,7 @@ const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
     cursor: pointer;
   }
   .main-picture::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -309,21 +343,35 @@ const repoSlug = `${repository?.split("/")[3]}/${repository?.split("/")[4]}`;
     padding: 1rem;
     position: relative;
   }
-  /* Stats */
-  .repo-stats {
+
+  /* Loader */
+  .loaderContainer {
     width: 100%;
-    padding: 0rem;
-    background-color: var(--surface-300);
+    height: 120px;
+    background: var(--surface-300);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: var(--radius-large);
-    min-height: 100px;
-    --stat-card-surface: var(--surface-300);
-    --stat-card-border: transparent;
-    --stat-card-shadow: var(--shadow-large);
-    --stat-card-radius: var(--radius-large);
-    --stat-card-text-primary: var(--content);
-    --stat-card-text-secondary: var(--border);
-    --stat-card-text-muted: var(--content-muted);
-    --stat-card-accent: var(--primary);
-    --stat-card-accent-hover: var(--accent);
+    gap: 1rem;
+  }
+
+  .loader {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-bottom-color: var(--primary);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>

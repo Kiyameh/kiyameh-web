@@ -1,67 +1,137 @@
 ---
-import { getRepoStats, renderRepoCard } from "github-repo-stats-card";
+import {SiGithub} from '@icons-pack/react-simple-icons'
+import {getRepoStats} from 'github-repo-stats-card'
+import RingChart from '@/components/ui/RingChart/RingChart.astro'
+import {getCodetabsStats} from './getCodetabsStats'
+import {
+  CalendarPlus,
+  CalendarSync,
+  Code,
+  ExternalLink,
+  GitFork,
+  Star,
+} from 'lucide-react'
 
-const { repo, githubAuthToken } = Astro.props;
+const {repository} = Astro.props
 
-let stats = null;
-let error = null;
+const author = repository.split('/')[3]
+const slug = repository.split('/')[4]
+const githubSlug = `${author}/${slug}`
+
+let stats = null
+let totalLines = null
 
 try {
-  stats = await getRepoStats(repo, githubAuthToken);
+  stats = await getRepoStats(githubSlug, import.meta.env.GITHUB_AUTH_TOKEN)
+  const codetabsStats = await getCodetabsStats(repository)
+  totalLines = codetabsStats.find(
+    (item) => item.language === 'Total'
+  )?.linesOfCode
 } catch (err) {
-  error = err instanceof Error;
+  console.error(err)
 }
 ---
 
-<div
-  id="repo-stats-card"
-  data-stats={stats ? JSON.stringify(stats) : ""}
-  data-error={error || ""}
->
-  {
-    !error ? (
-      <div class="loaderContainer">
-        <div class="loader" />
+{
+  !stats ? (
+    <div class="errorContainer">
+      <div class="errorIcon">⚠️</div>
+      <p>Something wrong :(</p>
+    </div>
+  ) : (
+    <article class="card">
+      <div class="stats">
+        <header class="header">
+          <SiGithub className="github" />
+          <div>
+            <div class="name">
+              <a
+                class="link"
+                href={stats.htmlUrl}
+                target="_blank"
+              >
+                {stats.name}
+              </a>
+              <ExternalLink className="external icon" />
+            </div>
+            <p class="fullName">{stats.fullName}</p>
+          </div>
+        </header>
+        <main class="content">
+          <div class="icon-box">
+            <p class="star">
+              <span>
+                <Star />
+              </span>
+              <span>{stats.stargazersCount}</span>
+              <span>stars</span>
+            </p>
+            <p class="fork">
+              <span>
+                <GitFork />
+              </span>
+              <span>{stats.forksCount}</span>
+              <span>forks</span>
+            </p>
+          </div>
+          <p>{stats.description}</p>
+          <div class="date-box">
+            <div>
+              <p class="date-head">
+                <span>
+                  <CalendarPlus />
+                </span>
+                <span>Created at</span>
+              </p>
+              <p>
+                {new Date(stats.createdAt).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
+            </div>
+            <div>
+              <p class="date-head">
+                <span>
+                  <CalendarSync />
+                </span>
+                <span>Updated at</span>
+              </p>
+              <p>
+                {new Date(stats.updatedAt).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
+            </div>
+          </div>
+        </main>
       </div>
-    ) : (
-      <div class="errorContainer">
-        <div class="errorIcon">⚠️</div>
-        <p>Something wrong :(</p>
-      </div>
-    )
-  }
-</div>
-
-<script type="module">
-  import { renderRepoCard } from "github-repo-stats-card";
-
-  const container = document.querySelector("#repo-stats-card");
-  const stats = JSON.parse(container.dataset.stats || "{}");
-  renderRepoCard("#repo-stats-card", stats);
-</script>
+      <aside>
+        {totalLines && (
+          <p class="lines-of-code">
+            <span>
+              <Code />
+            </span>
+            <span>{totalLines} </span>
+            <span>lines of code</span>
+          </p>
+        )}
+        <RingChart
+          data={Object.entries(stats.languages).map(([name, value]) => ({
+            name,
+            value,
+          }))}
+        />
+      </aside>
+    </article>
+  )
+}
 
 <style>
-  .loaderContainer {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--radius-large);
-    gap: 1rem;
-  }
-
-  .loader {
-    width: 32px;
-    height: 32px;
-    border: 3px solid var(--border);
-    border-bottom-color: var(--primary);
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-  }
-
+  /* Error feedback */
   .errorContainer {
     width: 100%;
     min-height: 100px;
@@ -79,12 +149,137 @@ try {
     opacity: 0.7;
   }
 
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
+  /* Repo card */
+  .card {
+    background-color: var(--surface-300);
+    min-width: 100%;
+    padding: 2rem;
+    border-radius: var(--radius-large);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-evenly;
+  }
+  @media (max-width: 768px) {
+    .card {
+      padding: 2rem 1rem;
+      flex-direction: column;
     }
-    100% {
-      transform: rotate(360deg);
-    }
+  }
+  /* Header */
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .github {
+    color: var(--content);
+    width: 2rem;
+  }
+  .name .link {
+    text-decoration: none;
+  }
+  .name .external {
+    width: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .name:hover .external {
+    color: var(--content);
+    opacity: 1;
+  }
+  .fullName {
+    color: var(--content);
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+
+  /* Content */
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .icon-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  .icon-box > p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .star > span:nth-child(1) {
+    color: #c5a800;
+    width: 1rem;
+  }
+  .fork > span:nth-child(1) {
+    color: #ac1ab9;
+    width: 1rem;
+  }
+  .icon-box > span:nth-child(2) {
+    font-weight: 600;
+  }
+  .icon-box > span:nth-child(3) {
+    font-size: 0.8rem;
+  }
+  .date-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .date-head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .date-head > span:nth-child(1) {
+    width: 1rem;
+  }
+
+  /* Aside */
+  aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .lines-of-code {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .lines-of-code > span:nth-child(1) {
+    color: var(--primary);
+  }
+  .lines-of-code > span:nth-child(2) {
+    font-weight: 600;
+  }
+  .lines-of-code > span:nth-child(3) {
+    font-size: 0.8rem;
   }
 </style>
