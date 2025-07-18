@@ -2,6 +2,9 @@
 import { fetchTotalLines } from "../RepoStatsCard/fetchTotalLines";
 import { fetchRepoLanguages } from "../RepoStatsCard/fetchRepoLanguages";
 import { fetchRepoStats } from "../RepoStatsCard/fetchRepoStats";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { CalendarPlus, CalendarSync, Code, ExternalLink, GitFork, Star } from "lucide-react";
+import RingChart from "@/components/ui/RingChart/RingChart.astro";
 
 const { repository } = Astro.props;
 const githubToken = import.meta.env.GITHUB_AUTH_TOKEN;
@@ -11,28 +14,120 @@ const languages = await fetchRepoLanguages(repository, githubToken);
 const stats = await fetchRepoStats(repository, githubToken);
 ---
 
-<article>
-  <h2>Componente de Servidor para test</h2>
-  <p>{repository}</p>
-  <p>TOKEN:</p>
-  <p>{githubToken ? "SI" : "NO"}</p>
-  <p>Lenguajes:</p>
-  <p>
-    {languages ? JSON.stringify(languages) : "No se pudo obtener los lenguajes"}
-  </p>
-  <p>Stats:</p>
-  <p>{stats ? JSON.stringify(stats) : "No se pudo obtener los stats"}</p>
-  <p>Total de líneas:</p>
-  <p>{totalLines ? totalLines : "No se pudo obtener el número de líneas"}</p>
+<article class="card">
+{ stats ?(
 
-  <p>Renderizado a las: {new Date().toLocaleTimeString()}</p>
+  <div class="stats">
+    <header class="header">
+      <SiGithub className="github" />
+      <div>
+        <div class="name">
+          <a class="link" href={stats.htmlUrl} target="_blank">
+            {stats.name}
+          </a>
+          <ExternalLink className="external icon" />
+        </div>
+        <p class="fullName">{stats.fullName}</p>
+      </div>
+    </header>
+    <main class="content">
+      <div class="icon-box">
+        <p class="star">
+          <span>
+            <Star />
+          </span>
+          <span>{stats.stargazersCount}</span>
+          <span>stars</span>
+        </p>
+        <p class="fork">
+          <span>
+            <GitFork />
+          </span>
+          <span>{stats.forksCount}</span>
+          <span>forks</span>
+        </p>
+      </div>
+      <p>{stats.description}</p>
+      <div class="date-box">
+        <div>
+          <p class="date-head">
+            <span>
+              <CalendarPlus />
+            </span>
+            <span>Created at</span>
+          </p>
+          <p>
+            {new Date(stats.createdAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+        </div>
+        <div>
+          <p class="date-head">
+            <span>
+              <CalendarSync />
+            </span>
+            <span>Updated at</span>
+          </p>
+          <p>
+            {new Date(stats.updatedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <aside>
+    {totalLines && (
+      <p class="lines-of-code">
+        <span>
+          <Code />
+        </span>
+        <span>{totalLines} </span>
+        <span>lines of code</span>
+      </p>
+    )}
+    {
+      languages && (
+      <RingChart
+      data={Object.entries(languages).map(([name, value]) => ({
+        name,
+        value,
+      }))}
+      />
+    )}
+  </aside>
+) : (
+  <div class="errorContainer">
+    <div class="errorIcon">⚠️</div>
+    <p>Something wrong :(</p>
+  </div>
+)
+
+}
+
 </article>
-
 <style>
-  article {
-    border: 2px solid var(--border);
-    border-radius: var(--radius-large);
-    padding: 2rem;
+    /* Error feedback */
+    .errorContainer {
     width: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-large);
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .errorIcon {
+    font-size: 1.5rem;
+    opacity: 0.7;
   }
 </style>

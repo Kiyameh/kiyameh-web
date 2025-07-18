@@ -29,9 +29,21 @@ try {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       
-      const data: RepoStats = await response.json()
+      const data = await response.json()
       
-      return data
+      const selectedData: RepoStats = {
+        name: data.name,
+        fullName: data.full_name,
+        htmlUrl: data.html_url,
+        stargazersCount: data.stargazers_count,
+        forksCount: data.forks_count,
+        openIssuesCount: data.open_issues_count,
+        description: data.description || 'No description',
+        createdAt: data.created_at,
+        updatedAt: data.updated_at,
+      }
+      
+      return selectedData
 } catch (error) {
     console.error(error)
     return undefined
