@@ -17,91 +17,25 @@ const stats = await fetchRepoStats(repository, githubToken);
 <article class="card">
 { stats ?(
 
-  <div class="stats">
-    <header class="header">
-      <SiGithub className="github" />
-      <div>
-        <div class="name">
-          <a class="link" href={stats.htmlUrl} target="_blank">
-            {stats.name}
-          </a>
-          <ExternalLink className="external icon" />
-        </div>
-        <p class="fullName">{stats.fullName}</p>
-      </div>
-    </header>
-    <main class="content">
-      <div class="icon-box">
-        <p class="star">
-          <span>
-            <Star />
-          </span>
-          <span>{stats.stargazersCount}</span>
-          <span>stars</span>
-        </p>
-        <p class="fork">
-          <span>
-            <GitFork />
-          </span>
-          <span>{stats.forksCount}</span>
-          <span>forks</span>
-        </p>
-      </div>
-      <p>{stats.description}</p>
-      <div class="date-box">
-        <div>
-          <p class="date-head">
-            <span>
-              <CalendarPlus />
-            </span>
-            <span>Created at</span>
-          </p>
-          <p>
-            {new Date(stats.createdAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
-        </div>
-        <div>
-          <p class="date-head">
-            <span>
-              <CalendarSync />
-            </span>
-            <span>Updated at</span>
-          </p>
-          <p>
-            {new Date(stats.updatedAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
-        </div>
-      </div>
-    </main>
-  </div>
-  <aside>
-    {totalLines && (
-      <p class="lines-of-code">
-        <span>
-          <Code />
-        </span>
-        <span>{totalLines} </span>
-        <span>lines of code</span>
-      </p>
-    )}
-    {
-      languages && (
-      <RingChart
-      data={Object.entries(languages).map(([name, value]) => ({
-        name,
-        value,
-      }))}
-      />
-    )}
-  </aside>
+ <p>Stats cargados</p>
+ <div>
+
+
+ {
+  languages && 
+  <p>Languages cargados</p>
+ }
+
+ </div>
+ <div>
+  {
+    totalLines &&
+    <p>Total lines: {totalLines}</p>
+  }
+ </div>
+
+
+
 ) : (
   <div class="errorContainer">
     <div class="errorIcon">⚠️</div>
