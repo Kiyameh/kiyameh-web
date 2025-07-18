@@ -9,6 +9,7 @@ import ImageGallery from "@/components/ui/ImageGallery/ImageGallery";
 
 import { Code, Info } from "lucide-react";
 import { getCollection } from "astro:content";
+import NetlifyServerTester from "@/components/elements/NetlifyServerTester/NetlifyServerTester.astro";
 
 // Obtener el slug del parámetro dinámico
 export async function getStaticPaths() {
@@ -118,6 +119,10 @@ const {
             <div class="loader"></div>
           </div>
         </RepoStatsCard>
+        <p>TESTER:</p>
+        <NetlifyServerTester server:defer>
+          <div slot="fallback">Cargando</div>
+        </NetlifyServerTester>
       </section>
       {
         images && (

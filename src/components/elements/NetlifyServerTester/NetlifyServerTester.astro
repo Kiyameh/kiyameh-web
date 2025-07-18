@@ -1,0 +1,12 @@
+---
+// No importamos nada. No hacemos llamadas a APIs.
+const message = "Hola desde el servidor de Netlify!";
+const randomNumber = Math.random();
+---
+
+<article style="border: 2px solid green; padding: 1rem; color: white;">
+  <h2>Componente de Servidor Básico</h2>
+  <p>{message}</p>
+  <p>Número aleatorio: {randomNumber}</p>
+  <p>Renderizado a las: {new Date().toLocaleTimeString()}</p>
+</article>
