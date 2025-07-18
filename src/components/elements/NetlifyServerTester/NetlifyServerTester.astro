@@ -1,24 +1,29 @@
 ---
 import { fetchTotalLines } from "../RepoStatsCard/fetchTotalLines";
+import { fetchRepoLanguages } from "../RepoStatsCard/fetchRepoLanguages";
+import { fetchRepoStats } from "../RepoStatsCard/fetchRepoStats";
+
 const { repository } = Astro.props;
 const githubToken = import.meta.env.GITHUB_AUTH_TOKEN;
 
 const totalLines = await fetchTotalLines(repository);
+const languages = await fetchRepoLanguages(repository, githubToken);
+const stats = await fetchRepoStats(repository, githubToken);
 ---
 
 <article>
   <h2>Componente de Servidor para test</h2>
   <p>{repository}</p>
-
+  <p>TOKEN:</p>
   <p>{githubToken ? "SI" : "NO"}</p>
-
-  {
-    totalLines ? (
-      <p>{totalLines}</p>
-    ) : (
-      <p>No se pudo obtener el número de líneas</p>
-    )
-  }
+  <p>Lenguajes:</p>
+  <p>
+    {languages ? JSON.stringify(languages) : "No se pudo obtener los lenguajes"}
+  </p>
+  <p>Stats:</p>
+  <p>{stats ? JSON.stringify(stats) : "No se pudo obtener los stats"}</p>
+  <p>Total de líneas:</p>
+  <p>{totalLines ? totalLines : "No se pudo obtener el número de líneas"}</p>
 
   <p>Renderizado a las: {new Date().toLocaleTimeString()}</p>
 </article>
