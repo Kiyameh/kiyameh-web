@@ -1,0 +1,68 @@
+---
+export const prerender = false;
+import fox from "@/assets/fox.png";
+import { Image } from "astro:assets";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Boira</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text">
+        <p>Boira helps me with the SSR :)</p>
+        <a href="https://github.com/withastro/astro/issues/12744">¿Why?</a>
+      </div>
+      <Image class="image" src={fox} alt="Boira" />
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    background: radial-gradient(
+      125% 125% at 50% 100%,
+      #000000 40%,
+      #350136 100%
+    );
+    color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  a {
+    font-weight: 600;
+    color: blueviolet;
+  }
+
+  .text {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 4px dotted brown;
+  }
+
+  .image {
+    width: 200px;
+    height: 200px;
+  }
+</style>

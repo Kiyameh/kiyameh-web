@@ -4,9 +4,18 @@ const message = "Hola desde el servidor de Netlify!";
 const randomNumber = Math.random();
 ---
 
-<article style="border: 2px solid green; padding: 1rem; color: white;">
-  <h2>Componente de Servidor Básico</h2>
+<article>
+  <h2>Componente de Servidor para test</h2>
   <p>{message}</p>
   <p>Número aleatorio: {randomNumber}</p>
   <p>Renderizado a las: {new Date().toLocaleTimeString()}</p>
 </article>
+
+<style>
+  article {
+    border: 2px solid var(--border);
+    border-radius: var(--radius-large);
+    padding: 2rem;
+    width: 100%;
+  }
+</style>
