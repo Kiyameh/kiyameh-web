@@ -18,9 +18,9 @@ const author = repository.split("/")[3];
 const slug = repository.split("/")[4];
 const githubSlug = `${author}/${slug}`;
 
-let stats = null;
-let totalLines = null;
 let error = null;
+/* let stats = null;
+let totalLines = null;
 
 try {
   stats = await getRepoStats(githubSlug, import.meta.env.GITHUB_AUTH_TOKEN);
@@ -28,10 +28,27 @@ try {
   totalLines = codetabsStats.find(
     (item) => item.language === "Total"
   )?.linesOfCode;
+  console.log(codetabsStats);
+  console.log(stats);
 } catch (err) {
   console.error(err);
   error = (err as Error).message;
 }
+ */
+const stats = {
+  name: "subterra_web",
+  fullName: "Kiyameh/subterra_web",
+  htmlUrl: "https://github.com/Kiyameh/subterra_web",
+  stargazersCount: 0,
+  forksCount: 0,
+  openIssuesCount: 22,
+  description: "Sin descripción",
+  createdAt: "2024-11-12T05:19:33Z",
+  updatedAt: "2025-03-13T08:47:53Z",
+  languages: { TypeScript: 954154, CSS: 3858, JavaScript: 135 },
+};
+
+const totalLines = 1000000;
 ---
 
 {
