@@ -96,12 +96,17 @@ const stats = await fetchRepoStats(repository, githubToken);
       )}
       {
         languages && (
-        <RingChart
+
+        <p>Languages cargados</p>
+
+      /*   <RingChart
         data={Object.entries(languages).map(([name, value]) => ({
           name,
           value,
         }))}
         />
+       */
+      
       )}
     </aside>
   ) : (
