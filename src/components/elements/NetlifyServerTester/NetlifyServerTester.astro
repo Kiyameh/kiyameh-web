@@ -1,13 +1,37 @@
 ---
-// No importamos nada. No hacemos llamadas a APIs.
-const message = "Hola desde el servidor de Netlify!";
-const randomNumber = Math.random();
+const { repository } = Astro.props;
+
+const stats = {
+  name: "subterra_web",
+  fullName: "Kiyameh/subterra_web",
+  htmlUrl: "https://github.com/Kiyameh/subterra_web",
+  stargazersCount: 0,
+  forksCount: 0,
+  openIssuesCount: 22,
+  description: "Sin descripción",
+  createdAt: "2024-11-12T05:19:33Z",
+  updatedAt: "2025-03-13T08:47:53Z",
+  languages: { TypeScript: 954154, CSS: 3858, JavaScript: 135 },
+};
+
+const totalLines = 1000000;
 ---
 
 <article>
   <h2>Componente de Servidor para test</h2>
-  <p>{message}</p>
-  <p>Número aleatorio: {randomNumber}</p>
+  <p>{repository}</p>
+
+  <p>{stats.name}</p>
+  <p>{stats.fullName}</p>
+  <p>{stats.htmlUrl}</p>
+  <p>{stats.stargazersCount}</p>
+  <p>{stats.forksCount}</p>
+  <p>{stats.openIssuesCount}</p>
+  <p>{stats.description}</p>
+  <p>{stats.createdAt}</p>
+  <p>{stats.updatedAt}</p>
+  <p>{totalLines}</p>
+
   <p>Renderizado a las: {new Date().toLocaleTimeString()}</p>
 </article>
 

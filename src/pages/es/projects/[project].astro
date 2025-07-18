@@ -120,7 +120,7 @@ const {
           </div>
         </RepoStatsCard>
         <p>TESTER:</p>
-        <NetlifyServerTester server:defer>
+        <NetlifyServerTester repository={repository} server:defer>
           <div slot="fallback">Cargando</div>
         </NetlifyServerTester>
       </section>
