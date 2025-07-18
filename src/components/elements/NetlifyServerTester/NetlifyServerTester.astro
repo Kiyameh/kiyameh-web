@@ -1,36 +1,16 @@
 ---
 import { fetchTotalLines } from "../RepoStatsCard/fetchTotalLines";
 const { repository } = Astro.props;
+const githubToken = import.meta.env.GITHUB_AUTH_TOKEN;
 
-const stats = {
-  name: "subterra_web",
-  fullName: "Kiyameh/subterra_web",
-  htmlUrl: "https://github.com/Kiyameh/subterra_web",
-  stargazersCount: 0,
-  forksCount: 0,
-  openIssuesCount: 22,
-  description: "Sin descripción",
-  createdAt: "2024-11-12T05:19:33Z",
-  updatedAt: "2025-03-13T08:47:53Z",
-  languages: { TypeScript: 954154, CSS: 3858, JavaScript: 135 },
-};
-
-const totalLines = await fetchTotalLines("he");
+const totalLines = await fetchTotalLines(repository);
 ---
 
 <article>
   <h2>Componente de Servidor para test</h2>
   <p>{repository}</p>
 
-  <p>{stats.name}</p>
-  <p>{stats.fullName}</p>
-  <p>{stats.htmlUrl}</p>
-  <p>{stats.stargazersCount}</p>
-  <p>{stats.forksCount}</p>
-  <p>{stats.openIssuesCount}</p>
-  <p>{stats.description}</p>
-  <p>{stats.createdAt}</p>
-  <p>{stats.updatedAt}</p>
+  <p>{githubToken ? "SI" : "NO"}</p>
 
   {
     totalLines ? (
