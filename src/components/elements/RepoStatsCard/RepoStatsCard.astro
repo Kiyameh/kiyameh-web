@@ -1,8 +1,8 @@
 ---
-import {SiGithub} from '@icons-pack/react-simple-icons'
-import {getRepoStats} from 'github-repo-stats-card'
-import RingChart from '@/components/ui/RingChart/RingChart.astro'
-import {getCodetabsStats} from './getCodetabsStats'
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { getRepoStats } from "github-repo-stats-card";
+import RingChart from "@/components/ui/RingChart/RingChart.astro";
+import { getCodetabsStats } from "./getCodetabsStats";
 import {
   CalendarPlus,
   CalendarSync,
@@ -10,33 +10,36 @@ import {
   ExternalLink,
   GitFork,
   Star,
-} from 'lucide-react'
+} from "lucide-react";
 
-const {repository} = Astro.props
+const { repository } = Astro.props;
 
-const author = repository.split('/')[3]
-const slug = repository.split('/')[4]
-const githubSlug = `${author}/${slug}`
+const author = repository.split("/")[3];
+const slug = repository.split("/")[4];
+const githubSlug = `${author}/${slug}`;
 
-let stats = null
-let totalLines = null
+let stats = null;
+let totalLines = null;
+let error = null;
 
 try {
-  stats = await getRepoStats(githubSlug, import.meta.env.GITHUB_AUTH_TOKEN)
-  const codetabsStats = await getCodetabsStats(repository)
+  stats = await getRepoStats(githubSlug, import.meta.env.GITHUB_AUTH_TOKEN);
+  const codetabsStats = await getCodetabsStats(repository);
   totalLines = codetabsStats.find(
-    (item) => item.language === 'Total'
-  )?.linesOfCode
+    (item) => item.language === "Total"
+  )?.linesOfCode;
 } catch (err) {
-  console.error(err)
+  console.error(err);
+  error = (err as Error).message;
 }
 ---
 
 {
-  !stats ? (
+  error || !stats ? (
     <div class="errorContainer">
       <div class="errorIcon">⚠️</div>
       <p>Something wrong :(</p>
+      <p>{error}</p>
     </div>
   ) : (
     <article class="card">
@@ -45,11 +48,7 @@ try {
           <SiGithub className="github" />
           <div>
             <div class="name">
-              <a
-                class="link"
-                href={stats.htmlUrl}
-                target="_blank"
-              >
+              <a class="link" href={stats.htmlUrl} target="_blank">
                 {stats.name}
               </a>
               <ExternalLink className="external icon" />
@@ -84,10 +83,10 @@ try {
                 <span>Created at</span>
               </p>
               <p>
-                {new Date(stats.createdAt).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
+                {new Date(stats.createdAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </p>
             </div>
@@ -99,10 +98,10 @@ try {
                 <span>Updated at</span>
               </p>
               <p>
-                {new Date(stats.updatedAt).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
+                {new Date(stats.updatedAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </p>
             </div>
