@@ -1,0 +1,71 @@
+---
+export interface Props {
+  text: string
+}
+
+const {text} = Astro.props
+---
+
+<div class="corner-ribbon">
+  <div class="ribbon-band">
+    <span class="ribbon-text">
+      {text}
+    </span>
+  </div>
+</div>
+
+<style>
+  .corner-ribbon {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .ribbon-band {
+    position: absolute;
+    top: 40px;
+    right: -60px;
+    width: 250px;
+    transform: rotate(45deg);
+
+    display: flex;
+    place-content: center;
+
+    padding: 1rem 1rem;
+    background: linear-gradient(
+      45deg,
+      var(--gradient-100),
+      var(--gradient-200),
+      var(--gradient-300)
+    );
+
+    box-shadow: var(--shadow-large);
+    pointer-events: auto;
+    user-select: none;
+    transition: all 0.3s ease;
+  }
+
+  .ribbon-text {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .ribbon-band:hover {
+    background: linear-gradient(
+      60deg,
+      var(--gradient-100),
+      var(--gradient-200),
+      var(--gradient-300)
+    );
+    transform: rotate(45deg) scale(1.05);
+  }
+</style>

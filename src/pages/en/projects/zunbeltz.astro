@@ -1,0 +1,367 @@
+---
+import {GradientButton} from 'need-more-gradients-ui'
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
+import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
+import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
+import CornerRibbon from '@/components/ui/CornerRibbon/CornerRibbon.astro'
+
+import {AtSign, Code, MessageCircleHeart} from 'lucide-react'
+
+/* Get project info */
+import {getCollection} from 'astro:content'
+const projects = await getCollection('projects')
+const project = projects.find((project) => project.data.slug === 'zunbeltz')
+
+if (!project) {
+  return Astro.redirect('/es/projects')
+}
+
+const {features_en, name, type, technologies, logo, logo_dark} = project.data
+---
+
+<PortfolioLayout>
+  <div class="container">
+    <CornerRibbon text="In development" />
+    <!-- Header -->
+    <Breadcrumb
+      client:load
+      items={[
+        {label: 'Home', href: '/es'},
+        {label: 'Projects', href: '/es/projects'},
+        {label: 'Zunbeltz', href: '/es/projects/zunbeltz'},
+      ]}
+    />
+    <header>
+      <SectionTitle
+        client:load
+        level="title"
+      >
+        Zunbeltz
+      </SectionTitle>
+      <ProjectTypeBadge type={type} />
+    </header>
+    <main>
+      <!-- Presentation -->
+      <section class="presentation">
+        <div class="logo-container">
+          {
+            logo && (
+              <img
+                class="logo logo-light"
+                src={logo}
+                alt={name}
+              />
+            )
+          }
+          {
+            logo_dark && (
+              <img
+                class="logo logo-dark"
+                src={logo_dark}
+                alt={name}
+              />
+            )
+          }
+        </div>
+        <div class="presentation-text">
+          <p class="paragraph">
+            <span class="bold">
+              <a
+                href="https://www.zunbeltz.org"
+                class="link"
+                >Zunbeltz.org</a
+              >
+              is currently under development.</span
+            > I am actively working to make it a
+            <span class="emphasis">pioneering</span> portal within mountain sports
+            and caving in particular.
+          </p>
+          <p class="paragraph">
+            The goal is to create a community of cavers and mountain sports
+            enthusiasts who can share their experiences and knowledge, discuss
+            the best techniques and materials, and ultimately, generate an<span
+              class="emphasis"
+            >
+              online knowledge base.</span
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- Connect -->
+      <section class="conect">
+        <p class="connect-text">
+          <MessageCircleHeart className="heart-icon" />
+          <span>
+            If you want to stay up to date with the latest news, leave your
+            email and I will keep you informed.
+          </span>
+        </p>
+
+        <form
+          name="zunbeltz-info"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="conect-form"
+        >
+          <div class="hidden">
+            <input
+              type="hidden"
+              name="form-name"
+              value="zunbeltz-info"
+            />
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </div>
+
+          <div class="input-container">
+            <AtSign className="input-icon" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email address"
+              aria-label="Email address"
+              required
+              class="form-input"
+            />
+          </div>
+
+          <GradientButton
+            type="submit"
+            roundness={0.5}
+            primary
+            className="submit-button"
+          >
+            Send
+          </GradientButton>
+        </form>
+      </section>
+
+      <!-- Features -->
+      <section>
+        <header>
+          <SectionTitle
+            client:load
+            id="features"
+            level="subtitle"
+          >
+            Features
+          </SectionTitle>
+        </header>
+        {
+          technologies && (
+            <div class="technologies-carrousel">
+              <TechBadgesCarrousel
+                client:load
+                technologies={technologies.map((tech) => ({
+                  name: tech,
+                  disabled: false,
+                }))}
+              />
+            </div>
+          )
+        }
+
+        <ul>
+          {
+            features_en &&
+              features_en.map((feature) => (
+                <li class="feature-item">
+                  <Code className="feature-icon" />
+                  {feature}
+                </li>
+              ))
+          }
+        </ul>
+      </section>
+    </main>
+  </div>
+</PortfolioLayout>
+
+<style>
+  /* Layout */
+  .container {
+    width: 100%;
+    max-width: 1024px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: var(--surface-100);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+    padding: 4rem;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 2rem;
+    }
+  }
+  header {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 4rem;
+  }
+
+  section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+  }
+
+  section header {
+    padding-left: 2rem;
+  }
+  section:last-child {
+    margin-bottom: 4rem;
+  }
+
+  /* Project presentation */
+
+  .presentation {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    .presentation {
+      flex-direction: column;
+    }
+  }
+
+  .logo {
+    width: 20rem;
+  }
+  .logo-light {
+    display: block;
+  }
+  .logo-dark {
+    display: none;
+  }
+  /* Show dark logo in dark theme */
+  :global([data-theme='dark']) .logo-light {
+    display: none;
+  }
+  :global([data-theme='dark']) .logo-dark {
+    display: block;
+  }
+  /* Show light logo in light theme */
+  :global([data-theme='light']) .logo-light {
+    display: block;
+  }
+  :global([data-theme='light']) .logo-dark {
+    display: none;
+  }
+
+  .presentation-text {
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: var(--surface-300);
+    border-radius: var(--radius-large);
+  }
+  .bold {
+    font-weight: 600;
+  }
+
+  /* Contact form */
+  .conect {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .connect-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .heart-icon {
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+  }
+
+  .conect-form {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .input-container {
+    position: relative;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--content);
+    opacity: 0.6;
+    z-index: 1;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 0.75rem 0.75rem 2.75rem;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-medium);
+    background-color: var(--surface-100);
+    color: var(--content);
+    font-size: 1rem;
+  }
+
+  .submit-button {
+    font-size: 1.2rem;
+    height: 2.7rem;
+    min-width: 10rem;
+  }
+
+  /* Features */
+
+  .technologies-carrousel {
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem;
+    position: relative;
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 2rem;
+  }
+  .feature-icon {
+    width: 1.2rem;
+    color: var(--accent);
+  }
+</style>
