@@ -36,6 +36,8 @@
     "Authentication and user management system"
   ],
   "relevancy": 4,
+  "state": "development",
+  "version": "0.0.3",
   "images": ["/projects/zunbeltz/1.png"],
   "date": "2025-01-15"
 }

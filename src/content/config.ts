@@ -1,4 +1,5 @@
 import {defineCollection, z} from 'astro:content'
+import {version} from 'react'
 
 export const projectCategories = [
   'webpage',
@@ -25,6 +26,10 @@ const projectsSchema = z.object({
   features_en: z.array(z.string()),
   images: z.array(z.string()).optional(),
   relevancy: z.number().optional(),
+  state: z
+    .enum(['planned', 'designing', 'development', 'completed', 'upgrading'])
+    .optional(),
+  version: z.string().optional(),
   date: z
     .string()
     .or(z.date())

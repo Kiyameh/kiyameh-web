@@ -9,6 +9,7 @@ import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
 
 import {Code, Info} from 'lucide-react'
 import {getCollection} from 'astro:content'
+import ProjectStateBadge from '@/components/ui/ProjectStateBadge/ProjectStateBadge'
 
 // Obtener el slug del parámetro dinámico
 export async function getStaticPaths() {
@@ -33,6 +34,8 @@ const {
   images,
   logo,
   logo_dark,
+  state,
+  version,
 } = project.data
 ---
 
@@ -73,7 +76,11 @@ const {
           {name}
         </SectionTitle>
       </div>
-      <ProjectTypeBadge type={type} />
+      <div>
+        {version && <span class="version">v{version}</span>}
+        {state && <ProjectStateBadge state={state} />}
+        <ProjectTypeBadge type={type} />
+      </div>
     </header>
     <main>
       <!-- Picture -->
@@ -261,6 +268,9 @@ const {
   }
   :global([data-theme='light']) .logo-dark {
     display: none;
+  }
+  .version {
+    font-size: 0.9rem;
   }
 
   /* Picture */

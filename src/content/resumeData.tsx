@@ -263,7 +263,7 @@ export const content: Content = {
     picture: '/me.jpg',
     // About
     about_text:
-      'Desarrollador de software orientado a tecnologías web. Competente en frameworks modernos de JavaScript, despliegue de software y control de versiones. Especialmente interesado en el diseño de interfaces, la interacción humana y la generación de experiencias de usuario satisfactorias. Comprometido con el software libre, el desarrollo de código sostenible y las metodologias de diseño centradas en el usuario.',
+      'Desarrollador de software orientado a tecnologías web. Competente en frameworks modernos de JavaScript, despliegue de software y control de versiones. Especialmente interesado en el diseño de interfaces, la interacción humana y la generación de experiencias de usuario satisfactorias. Comprometido con el software libre, el desarrollo de código sostenible y las metodologías de diseño centradas en el usuario.',
 
     // Experience
     works: [

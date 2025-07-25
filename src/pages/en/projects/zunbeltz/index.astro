@@ -11,6 +11,7 @@ import {AtSign, Code, MessageCircleHeart} from 'lucide-react'
 
 /* Get project info */
 import {getCollection} from 'astro:content'
+import ProjectStateBadge from '@/components/ui/ProjectStateBadge/ProjectStateBadge'
 const projects = await getCollection('projects')
 const project = projects.find((project) => project.data.slug === 'zunbeltz')
 
@@ -18,7 +19,8 @@ if (!project) {
   return Astro.redirect('/es/projects')
 }
 
-const {features_en, name, type, technologies, logo, logo_dark} = project.data
+const {features_en, name, type, technologies, logo, logo_dark, state, version} =
+  project.data
 ---
 
 <PortfolioLayout>
@@ -40,7 +42,11 @@ const {features_en, name, type, technologies, logo, logo_dark} = project.data
       >
         Zunbeltz
       </SectionTitle>
-      <ProjectTypeBadge type={type} />
+      <div>
+        {version && <span class="version">v{version}</span>}
+        {state && <ProjectStateBadge state={state} />}
+        <ProjectTypeBadge type={type} />
+      </div>
     </header>
     <main>
       <!-- Presentation -->
@@ -272,6 +278,10 @@ const {features_en, name, type, technologies, logo, logo_dark} = project.data
   }
   :global([data-theme='light']) .logo-dark {
     display: none;
+  }
+
+  .version {
+    font-size: 0.9rem;
   }
 
   .presentation-text {
