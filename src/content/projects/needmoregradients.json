@@ -18,13 +18,11 @@
     "figma"
   ],
   "features": [
-    "Biblioteca de componentes de ui",
-    "Sistema de estilizado y personalización",
+    "Biblioteca de componentes de estilizado",
     "Instalable a partir de npm o sistema de copiar-usar"
   ],
   "features_en": [
-    "UI component library",
-    "Styled and customizable system",
+    "Styling component library",
     "Installable from NPM or copy-use system"
   ],
   "images": [

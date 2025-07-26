@@ -1,0 +1,93 @@
+/* Container */
+.gradow {
+  /* Positioning */
+  position: relative;
+  z-index: 0;
+}
+
+.gradow-back {
+  /* Positioning */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+
+  /* Sizing */
+  width: 120%;
+  min-height: 120%;
+
+  /* Styling */
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: var(--opacity);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gradow[data-variant='spin'] > .gradow-back {
+  width: 100%;
+  min-height: 100%;
+  aspect-ratio: 0.85;
+  background: linear-gradient(
+    45deg,
+    var(--gradient-100),
+    var(--gradient-200),
+    var(--gradient-300)
+  );
+  animation: spotlight-spin 6s linear infinite;
+}
+
+.gradow[data-variant='pulse'] > .gradow-back {
+  animation: glowPulse 8s linear infinite;
+}
+
+.gradow[data-variant='sticky'] > .gradow-back {
+  background: radial-gradient(
+    circle at var(--position-x) var(--position-y),
+    var(--gradient-100) 0%,
+    var(--gradient-200) 30%,
+    var(--gradient-300) 60%,
+    var(--surface-300) 95%,
+    transparent 100%
+  );
+}
+
+.gradow[data-mode='hover']:not(:hover) > .gradow-back {
+  opacity: 0;
+}
+.gradow[data-mode='hover']:hover > .gradow-back {
+  opacity: var(--opacity);
+}
+
+/* Spotlight animation */
+@keyframes spotlight-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    background: color-mix(in oklch, var(--gradient-100) 100%, transparent);
+    transform: translate(-50%, -50%) translate(-5px, -5px);
+  }
+  25% {
+    background: color-mix(in oklch, var(--gradient-200) 100%, transparent);
+    transform: translate(-50%, -50%) translate(5px, 5px);
+  }
+  50% {
+    background: color-mix(in oklch, var(--gradient-300) 100%, transparent);
+    transform: translate(-50%, -50%) translate(0, 0);
+  }
+  75% {
+    background: color-mix(in oklch, var(--gradient-200) 100%, transparent);
+    transform: translate(-50%, -50%) translate(-5px, 5px);
+  }
+  100% {
+    background: color-mix(in oklch, var(--gradient-100) 100%, transparent);
+    transform: translate(-50%, -50%) translate(-5px, -5px);
+  }
+}

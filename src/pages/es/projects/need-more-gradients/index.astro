@@ -1,0 +1,326 @@
+---
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
+import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
+import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
+import CornerRibbon from '@/components/ui/CornerRibbon/CornerRibbon.astro'
+import ProjectStateBadge from '@/components/ui/ProjectStateBadge/ProjectStateBadge'
+import GrapperPlayground from '@/components/package/GrapperPlayground'
+import GradowPlayground from '@/components/package/GradowPlayground'
+import {Code} from 'lucide-react'
+
+/* Get project info */
+import {getCollection} from 'astro:content'
+import TagTitle from '@/components/ui/TagTitle/TagTitle'
+const projects = await getCollection('projects')
+const project = projects.find(
+  (project) => project.data.slug === 'need-more-gradients'
+)
+
+if (!project) {
+  return Astro.redirect('/es/projects')
+}
+
+const {features, name, type, technologies, logo, logo_dark, state, version} =
+  project.data
+---
+
+<PortfolioLayout>
+  <div class="container">
+    <CornerRibbon text="En desarrollo" />
+    <!-- Header -->
+    <Breadcrumb
+      client:load
+      items={[
+        {label: 'Inicio', href: '/es'},
+        {label: 'Proyectos', href: '/es/projects'},
+        {
+          label: 'Need More Gradients',
+          href: '/es/projects/need-more-gradients',
+        },
+      ]}
+    />
+    <header>
+      <SectionTitle
+        client:load
+        level="title"
+      >
+        Need More Gradients
+      </SectionTitle>
+      <div>
+        {version && <span class="version">v{version}</span>}
+        {state && <ProjectStateBadge state={state} />}
+        <ProjectTypeBadge type={type} />
+      </div>
+    </header>
+    <main>
+      <!-- Presentation -->
+      <section class="presentation">
+        <div class="logo-container">
+          {
+            logo && (
+              <img
+                class="logo logo-light"
+                src={logo}
+                alt={name}
+              />
+            )
+          }
+          {
+            logo_dark && (
+              <img
+                class="logo logo-dark"
+                src={logo_dark}
+                alt={name}
+              />
+            )
+          }
+        </div>
+        <div class="presentation-text">
+          <p class="paragraph">
+            <span class="fantasy-text">Need more gradients</span> es una biblioteca
+            de componentes de React para añadir facilmente estilos coloridos a tus
+            proyectos. Esta disponible a través de npm o copiando los componentes
+            directamente desde la <a
+              href="need-more-gradients/docs"
+              class="link"
+              >documentación</a
+            >.
+          </p>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section>
+        <header>
+          <SectionTitle
+            client:load
+            id="filosophy"
+            level="subtitle"
+          >
+            Filosofía del proyecto
+          </SectionTitle>
+        </header>
+        {
+          technologies && (
+            <div class="technologies-carrousel">
+              <TechBadgesCarrousel
+                client:load
+                technologies={technologies.map((tech) => ({
+                  name: tech,
+                  disabled: false,
+                }))}
+              />
+            </div>
+          )
+        }
+
+        <p class="paragraph">
+          El objetivo del proyecto es proporcionar componentes de estilizado que
+          no afecten a la funcionalidad o marcado de tu proyecto. Por ello, el
+          proyecto esta estructurado en una serie de componentes que envuelven a
+          los elementos HTML nativos, permitiendote estilizar tus elementos sin
+          alterarlos.
+          <br />
+          <br />
+          Estos componentes de estilización son totalmente personalizables mediante
+          clases CSS o mediante variables globales.
+        </p>
+        <ul>
+          {
+            features &&
+              features.map((feature) => (
+                <li class="feature-item">
+                  <Code className="feature-icon" />
+                  {feature}
+                </li>
+              ))
+          }
+        </ul>
+      </section>
+      <!-- Components -->
+
+      <section>
+        <header>
+          <SectionTitle
+            client:load
+            id="components"
+            level="subtitle"
+          >
+            Componentes
+          </SectionTitle>
+        </header>
+
+        <div class="component-box">
+          <TagTitle
+            client:load
+            id="grapper"
+            >Grapper</TagTitle
+          >
+          <p class="paragraph">
+            El componente <span class="emphasis">{`<Grapper>`}</span> es el componente
+            principal de la biblioteca. Permite envolver cualquier elemento HTML
+            nativo con un gradiente personalizable.
+          </p>
+
+          <GrapperPlayground client:load />
+        </div>
+        <div class="component-box">
+          <TagTitle
+            client:load
+            id="gradow"
+            >Gradow</TagTitle
+          >
+          <p class="paragraph">
+            El componente <span class="emphasis">{`<Gradow>`}</span> permite envolver
+            cualquier elemento para incluir una sombra exterior colorida.
+          </p>
+          <GradowPlayground client:load />
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <style>
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1024px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background-color: var(--surface-200);
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 2rem;
+      padding: 4rem;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem;
+      }
+    }
+    header {
+      width: 100%;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    main {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 4rem;
+    }
+
+    section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    section header {
+      padding-left: 2rem;
+    }
+    section:last-child {
+      margin-bottom: 4rem;
+    }
+
+    /* Project presentation */
+
+    .presentation {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      gap: 1rem;
+    }
+    .fantasy-text {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .presentation {
+        flex-direction: column;
+      }
+    }
+
+    .logo {
+      width: 12rem;
+    }
+    .logo-light {
+      display: block;
+    }
+    .logo-dark {
+      display: none;
+    }
+    /* Mostrar logo oscuro en tema oscuro */
+    :global([data-theme='dark']) .logo-light {
+      display: none;
+    }
+    :global([data-theme='dark']) .logo-dark {
+      display: block;
+    }
+    /* Mostrar logo claro en tema claro */
+    :global([data-theme='light']) .logo-light {
+      display: block;
+    }
+    :global([data-theme='light']) .logo-dark {
+      display: none;
+    }
+
+    .version {
+      font-size: 0.9rem;
+    }
+
+    .presentation-text {
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: var(--surface-300);
+      border-radius: var(--radius-large);
+    }
+    .bold {
+      font-weight: 600;
+    }
+
+    /* Features */
+
+    .technologies-carrousel {
+      width: 100%;
+      overflow: hidden;
+      padding: 1rem;
+      position: relative;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 2rem;
+    }
+    .feature-icon {
+      width: 1.2rem;
+      color: var(--accent);
+    }
+
+    /* Componentes */
+    .component-box {
+      width: 100%;
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .component-box .paragraph {
+      max-width: 70%;
+    }
+  </style>
+</PortfolioLayout>

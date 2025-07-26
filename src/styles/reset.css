@@ -44,6 +44,11 @@ textarea {
   background: none;
 }
 
+button {
+  color: inherit; /* Inherit color from parent */
+  cursor: pointer; /* Ensure buttons have a pointer cursor */
+}
+
 /* 6. Remove default text decoration from links and inherit color */
 a {
   text-decoration: none; /* Remove underline */

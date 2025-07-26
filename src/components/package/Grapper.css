@@ -1,0 +1,126 @@
+/* Container */
+.grapper {
+  /* Positioning */
+  display: flex;
+  place-content: center;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+
+  /* Styling */
+  color: var(--content);
+  border-radius: var(--radius);
+  cursor: default;
+  transition: color 0.3s ease-in-out;
+}
+
+.grapper[data-mode='solid'] {
+  color: var(--gradient-content);
+}
+
+.grapper-back {
+  /* Positioning */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+
+  /* Sizing */
+  width: 100%;
+  min-height: 100%;
+  aspect-ratio: 1 / 1;
+
+  /* Styling */
+  border-radius: var(--radius);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.grapper[data-variant='static'] > .grapper-back {
+  background: linear-gradient(
+    90deg,
+    var(--gradient-100),
+    var(--gradient-200),
+    var(--gradient-300)
+  );
+}
+
+.grapper[data-variant='spotlight'] > .grapper-back {
+  width: 150%;
+  min-height: 150%;
+  background: linear-gradient(
+    90deg,
+    var(--gradient-100),
+    var(--gradient-200) 50%,
+    var(--gradient-300) 100%
+  );
+  animation: spotlight-spin 2s linear infinite;
+}
+
+.grapper[data-variant='sticky'] > .grapper-back {
+  background: radial-gradient(
+    circle at var(--position-x) var(--position-y),
+    var(--gradient-100) 0%,
+    var(--gradient-200) 30%,
+    var(--gradient-300) 60%,
+    var(--surface-300) 95%,
+    transparent 100%
+  );
+}
+
+.grapper[data-mode='ghost'] > .grapper-back {
+  opacity: 0;
+}
+.grapper[data-mode='ghost']:hover > .grapper-back {
+  opacity: 1;
+}
+
+/* Front surface */
+.grapper-front {
+  /* Positioning */
+  position: absolute;
+  z-index: -1;
+  /* Styling */
+  border-radius: calc(var(--radius) - var(--inset));
+  transition: inset 0.2s ease-in-out;
+  background: var(--surface-300);
+  inset: 0;
+}
+
+.grapper[data-mode='border'] > .grapper-front {
+  inset: var(--inset);
+}
+
+.grapper[data-mode='ghost']:hover > .grapper-front {
+  inset: var(--inset);
+}
+
+.grapper:hover > .grapper-front {
+  opacity: 0.95;
+}
+
+.grapper:active > .grapper-front {
+  opacity: 0.85;
+}
+
+.grapper[data-mode='solid'] > .grapper-front {
+  opacity: 0;
+}
+
+.grapper[data-mode='solid']:hover > .grapper-front {
+  opacity: 0.1;
+}
+
+.grapper[data-mode='solid']:active > .grapper-front {
+  opacity: 0.2;
+}
+
+/* Spotlight animation */
+@keyframes spotlight-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

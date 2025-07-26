@@ -5,11 +5,11 @@ import styles from './SectionTitle.module.css'
 export default function SectionTitle({
   children,
   id,
-  level,
+  level = 'title',
 }: {
   children: React.ReactNode
   id?: string
-  level: 'title' | 'subtitle'
+  level?: 'title' | 'subtitle'
 }) {
   const [isCopied, setIsCopied] = useState(false)
 

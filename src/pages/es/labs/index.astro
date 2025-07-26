@@ -1,9 +1,9 @@
 ---
-import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
-import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
-import LabsHero from "@/templates/labs/LabsHero.astro";
-import { Image } from "astro:assets";
-import bg1 from "@/assets/backgrounds/bg1.svg";
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import LabsHero from '@/templates/labs/LabsHero.astro'
+import {Image} from 'astro:assets'
+import bg1 from '@/assets/backgrounds/bg1.svg'
+import ChipsSection from '@/templates/labs/ChipsSection.astro'
 
 /* 
   @version 1
@@ -14,7 +14,11 @@ import bg1 from "@/assets/backgrounds/bg1.svg";
 
 <PortfolioLayout>
   <div class="page-container">
-    <div class="bg-grid" aria-hidden="true"></div>
+    <div
+      class="bg-grid"
+      aria-hidden="true"
+    >
+    </div>
     <Image
       src={bg1}
       alt="background-decoration"
@@ -23,10 +27,7 @@ import bg1 from "@/assets/backgrounds/bg1.svg";
     />
     <main>
       <LabsHero language="es" />
-
-      <section class="section-container" id="components">
-        <SectionTitle id="components" level="title">Componentes </SectionTitle>
-      </section>
+      <ChipsSection />
     </main>
   </div>
 </PortfolioLayout>
@@ -45,7 +46,7 @@ import bg1 from "@/assets/backgrounds/bg1.svg";
   /* Background grid */
   .bg-grid {
     z-index: -1;
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -73,18 +74,5 @@ import bg1 from "@/assets/backgrounds/bg1.svg";
     z-index: -1;
     opacity: 0.5;
     filter: blur(100px);
-  }
-
-  /* Sections */
-  .section-container {
-    width: 100%;
-    min-height: 100lvh;
-    margin-bottom: 5rem;
-  }
-  #components {
-    background: var(--surface-300);
-    border-radius: 1rem;
-    border-top-right-radius: 6rem;
-    border-bottom-left-radius: 6rem;
   }
 </style>
