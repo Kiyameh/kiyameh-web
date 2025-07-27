@@ -1,0 +1,69 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'error' | 'success' | 'accent'
+}
+const {type} = Astro.props
+---
+
+<div class:list={['alert', type]}>
+  {
+    Astro.slots.has('icon') && (
+      <div class="icon">
+        <slot name="icon" />
+      </div>
+    )
+  }
+
+  <div class="content">
+    {
+      Astro.slots.has('title') && (
+        <div class="title">
+          <slot name="title" />
+        </div>
+      )
+    }
+
+    <div>
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style scoped>
+  .alert {
+    max-width: 100%;
+    margin-inline: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    background-color: var(--surface-300);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .icon {
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+  }
+
+  .alert.info {
+    border-left: 6px solid var(--info);
+  }
+  .alert.warning {
+    border-left: 6px solid var(--warning);
+  }
+  .alert.error {
+    border-left: 6px solid var(--error);
+  }
+  .alert.success {
+    border-left: 6px solid var(--success);
+  }
+  .alert.accent {
+    border-left: 6px solid var(--accent);
+  }
+
+  .title {
+    font-weight: bold;
+  }
+</style>

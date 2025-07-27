@@ -3,7 +3,12 @@ import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
 import LabsHero from '@/templates/labs/LabsHero.astro'
 import {Image} from 'astro:assets'
 import bg1 from '@/assets/backgrounds/bg1.svg'
-import ChipsSection from '@/templates/labs/ChipsSection.astro'
+import ChipCarrouselPanel from '@/templates/labs/ChipCarrouselPanel.astro'
+import TechChipPanel from '@/templates/labs/TechChipPanel.astro'
+import CornerRibbonPanel from '@/templates/labs/CornerRibbonPanel.astro'
+import RingChartPanel from '@/templates/labs/RingChartPanel.astro'
+import TripleSwitchPanel from '@/templates/labs/TripleSwitchPanel.astro'
+import HandwrittenNotePanel from '@/templates/labs/HandwrittenNotePanel.astro'
 
 /* 
   @version 1
@@ -25,9 +30,14 @@ import ChipsSection from '@/templates/labs/ChipsSection.astro'
       aria-hidden="true"
       class="bg-gradient"
     />
+    <LabsHero language="es" />
     <main>
-      <LabsHero language="es" />
-      <ChipsSection />
+      <ChipCarrouselPanel />
+      <TechChipPanel />
+      <CornerRibbonPanel />
+      <RingChartPanel />
+      <TripleSwitchPanel />
+      <HandwrittenNotePanel />
     </main>
   </div>
 </PortfolioLayout>
@@ -41,6 +51,7 @@ import ChipsSection from '@/templates/labs/ChipsSection.astro'
     align-items: center;
     justify-content: center;
     position: relative;
+    gap: 4rem;
   }
 
   /* Background grid */

@@ -1,0 +1,41 @@
+---
+import Alert from '@/components/ui/Alert/Alert.astro'
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
+import {Rocket} from 'lucide-react'
+---
+
+<section>
+  <SectionTitle
+    id="triple-switch"
+    level="subtitle"
+  >
+    Triple Switch
+  </SectionTitle>
+  <Alert type="accent">
+    <Rocket slot="icon" />
+    <h3 slot="title">In development</h3>
+    Be patient, this component will be ready soon!
+  </Alert>
+</section>
+
+<style>
+  section {
+    width: 100%;
+    min-height: 500px;
+    aspect-ratio: 1;
+    background: var(--surface-200);
+    border-radius: 999px;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  @media screen and (min-width: 768px) {
+    section {
+      width: 80%;
+      padding: 4rem 2rem;
+    }
+  }
+</style>

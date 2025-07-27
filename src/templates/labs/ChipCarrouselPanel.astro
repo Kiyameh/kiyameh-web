@@ -1,0 +1,115 @@
+---
+import Alert from '@/components/ui/Alert/Alert.astro'
+import HandwrittenNote from '@/components/ui/HandwrittenNote/HandwrittenNote'
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
+import TechBadge from '@/components/ui/TechBadge/TechBadge'
+import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
+import {MessageCircleQuestion} from 'lucide-react'
+---
+
+<section>
+  <SectionTitle
+    id="chip-carrousel"
+    level="subtitle"
+  >
+    Chip Carrousel
+  </SectionTitle>
+  <div class="content">
+    <div class="tech-chip-showcase">
+      <HandwrittenNote
+        text="Esto son TechChips"
+        position="top"
+      />
+      <div class="chip-container">
+        <div class="chip">
+          <TechBadge
+            tech="astro"
+            client:load
+          />
+        </div>
+        <div class="chip">
+          <TechBadge
+            tech="javascript"
+            client:load
+          />
+        </div>
+        <div class="chip">
+          <TechBadge
+            tech="mongodb"
+            client:load
+          />
+        </div>
+      </div>
+    </div>
+    <Alert>
+      <MessageCircleQuestion slot="icon" />
+      <p>
+        Puedes encontrar el componente <span class="emphasis"
+          >{`<TechChip>`}</span
+        > en su <a
+          href="#tech-chip"
+          class="link"
+          >propia sección</a
+        >, pero aquí los usaremos para crear este carrousel interactivo:
+      </p>
+    </Alert>
+    <HandwrittenNote
+      text="Esto es un carrousel de chips"
+      position="topright"
+    />
+    <TechBadgesCarrousel
+      client:load
+      technologies={[
+        {name: 'astro', disabled: false},
+        {name: 'javascript', disabled: false},
+        {name: 'mongodb', disabled: false},
+        {name: 'react', disabled: false},
+        {name: 'typescript', disabled: false},
+        {name: 'tailwindcss', disabled: false},
+        {name: 'vercel', disabled: false},
+        {name: 'express', disabled: false},
+        {name: 'figma', disabled: false},
+      ]}
+    />
+  </div>
+</section>
+
+<style>
+  section {
+    width: 100%;
+    border-radius: 6rem;
+    background: linear-gradient(
+      135deg,
+      var(--surface-300) 0%,
+      transparent 100%
+    );
+    border: 6px dotted var(--border);
+    padding: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 4rem;
+  }
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .tech-chip-showcase {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chip-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+</style>

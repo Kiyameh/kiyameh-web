@@ -1,0 +1,31 @@
+---
+import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
+import CornerRibbon from '@/components/ui/CornerRibbon/CornerRibbon.astro'
+---
+
+<section>
+  <SectionTitle
+    id="corner-ribbon"
+    level="subtitle"
+  >
+    Corner Ribbon</SectionTitle
+  >
+  <CornerRibbon text="En desarrollo" />
+</section>
+
+<style>
+  section {
+    width: 100%;
+    min-height: 100lvh;
+    background: var(--surface-200);
+    border-radius: 1rem;
+    border-top-right-radius: 6rem;
+    border-bottom-left-radius: 6rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+    position: relative;
+  }
+</style>
