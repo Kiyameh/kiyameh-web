@@ -17,7 +17,7 @@ export default function GrapperPlayground() {
       {/* Selectors */}
       <header className={style.controls}>
         <fieldset>
-          <legend>Variante:</legend>
+          <legend>Variant:</legend>
           <label>
             <input
               type="radio"
@@ -50,7 +50,7 @@ export default function GrapperPlayground() {
           </label>
         </fieldset>
         <fieldset>
-          <legend>Modo:</legend>
+          <legend>Mode:</legend>
           <label>
             <input
               type="radio"
@@ -83,7 +83,7 @@ export default function GrapperPlayground() {
           </label>
         </fieldset>
         <div>
-          Ancho borde:
+          Border Width:
           <label>
             <input
               type="range"
@@ -96,7 +96,7 @@ export default function GrapperPlayground() {
           </label>
         </div>
         <div>
-          Radio borde:
+          Border Radius:
           <label>
             <input
               type="range"

@@ -14,7 +14,7 @@ export default function GradowPlayground() {
       {/* Selectors */}
       <header className={style.controls}>
         <fieldset>
-          <legend>Variante:</legend>
+          <legend>Variant:</legend>
           <label>
             <input
               type="radio"
@@ -47,7 +47,7 @@ export default function GradowPlayground() {
           </label>
         </fieldset>
         <fieldset>
-          <legend>Modo:</legend>
+          <legend>Mode:</legend>
           <label>
             <input
               type="radio"
@@ -70,7 +70,7 @@ export default function GradowPlayground() {
           </label>
         </fieldset>
         <div>
-          Opacidad:
+          Opacity:
           <label>
             <input
               type="range"
