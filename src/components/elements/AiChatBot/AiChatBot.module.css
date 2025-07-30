@@ -26,7 +26,8 @@
   .chatDialog {
     position: fixed;
     width: 100lvw;
-    height: 50lvh;
+    min-width: 240px;
+    height: auto;
     bottom: 0;
     left: 0;
     transform-origin: bottom center;
@@ -266,6 +267,7 @@
 .inputForm {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -307,8 +309,8 @@
 }
 
 .sendButton svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
 }
 
 .floatingButton {
