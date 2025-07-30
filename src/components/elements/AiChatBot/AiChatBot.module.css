@@ -27,7 +27,7 @@
     position: fixed;
     width: 100lvw;
     height: 50lvh;
-    top: 50lvh;
+    bottom: 0;
     left: 0;
     transform-origin: bottom center;
   }
