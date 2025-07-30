@@ -1,7 +1,6 @@
 import {useState} from 'react'
 import {
   User,
-  BotMessageSquare,
   FileUser,
   Hash,
   Languages,
@@ -12,6 +11,7 @@ import {
 } from 'lucide-react'
 import styles from './MobileNavigationBar.module.css'
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher/ThemeSwitcher'
+import AiChatBot from '../AiChatBot/AiChatBot'
 
 const translations = {
   en: {
@@ -72,6 +72,9 @@ export default function MobileNavigationBar({
       >
         {isOpen ? <X /> : <Menu />}
       </button>
+      <div className={styles.floatingChatBot}>
+        <AiChatBot />
+      </div>
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
         <nav className={styles.navigation}>
@@ -213,10 +216,6 @@ export default function MobileNavigationBar({
               </button>
             </div>
           </div>
-          {/* Bot */}
-          <button className={styles.iconButton}>
-            <BotMessageSquare className={styles.bot} />
-          </button>
         </div>
       </div>
     </>

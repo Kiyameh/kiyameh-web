@@ -1,46 +1,46 @@
 ---
-import TagTitle from "@/components/ui/TagTitle/TagTitle";
-import ImageThumbnail from "@/components/ui/ImageThumbnail/ImageThumbnail";
-import IconButton from "@/components/ui/IconButton/IconButton";
+import TagTitle from '@/components/ui/TagTitle/TagTitle'
+import ImageThumbnail from '@/components/ui/ImageThumbnail/ImageThumbnail'
+import IconButton from '@/components/ui/IconButton/IconButton'
 
-import { Linkedin } from "lucide-react";
-import { SiGithub } from "@icons-pack/react-simple-icons";
-import me from "@/assets/me.jpg";
+import {Linkedin} from 'lucide-react'
+import {SiGithub} from '@icons-pack/react-simple-icons'
+import me from '@/assets/me.jpg'
 
 interface AboutProps {
-  language: "en" | "es";
+  language: 'en' | 'es'
 }
 
-const { language = "es" } = Astro.props as AboutProps;
+const {language = 'es'} = Astro.props as AboutProps
 
 const TEXTS = {
   en: {
     alt: "Andoni's photo",
-    job: "# Web Developer",
-    title: "AboutMe",
+    job: '# Web Developer',
+    title: 'AboutMe',
     paragraphs: [
       'My name is Andoni, I am a <span class="emphasis">web developer</span> and <span class="emphasis">interface designer</span> based in Navarra. Throughout my life, I have felt a deep passion for technology in general and the web in particular, which led me to explore web development independently.',
       'Between 2021 and 2024, I decided to deepen my knowledge in this field by pursuing a <span class="emphasis">degree in UI/UX Design</span>, a training that significantly expanded my vision and creative skills, and enables me to prototype and design interfaces using specialized software like <span class="emphasis">Figma</span>. Today, I combine that design vision with my passion for code to create interactive experiences on the web.',
       'I have developed most of my projects using <span class="emphasis">TypeScript</span> and <span class="emphasis">React</span>-based technologies, mainly in environments like Astro, Next.js, or Vite.js. However, one of my main passions is exploring the endless possibilities of <span class="emphasis">CSS language</span> to create unique and customized designs.',
-      "Thanks to always working independently, I have had the opportunity to experiment with different aspects of web development, such as backend API creation, database management, software deployment, version control, or code testing. These are areas where I continue to deepen and expand my knowledge.",
+      'Thanks to always working independently, I have had the opportunity to experiment with different aspects of web development, such as backend API creation, database management, software deployment, version control, or code testing. These are areas where I continue to deepen and expand my knowledge.',
       'Currently, I am looking to make the leap into the professional sector and dedicate myself full-time to <span class="emphasis">web development</span>, applying everything I have learned and growing alongside new challenges and work teams.',
     ],
   },
   es: {
-    alt: "Foto de Andoni",
-    job: "# Desarrollador web",
-    title: "SobreMí",
+    alt: 'Foto de Andoni',
+    job: '# Desarrollador web',
+    title: 'SobreMí',
     paragraphs: [
       'Mi nombre es Andoni, soy <span class="emphasis">desarrollador web</span> y <span class="emphasis">diseñador de interfaces</span> afincado en Navarra. A lo largo de toda mi vida he sentido una profunda pasión por la tecnología en general y por la web en particular, lo que me llevó a explorar el desarrollo web de manera independiente.',
       'Entre 2021 y 2024 decidí profundizar en este campo cursando un <span class="emphasis">grado en Diseño de UI/UX</span>, una formación que amplió de forma significativa mi visión y habilidades creativas, y que me capacita para prototipar y diseñar interfaces mediante software especializado como <span class="emphasis">Figma</span>. Hoy en día combino esa visión de diseño con mi pasión por el código para crear experiencias interactivas en la web.',
       'He desarrollado la mayoría de mis proyectos utilizando <span class="emphasis">TypeScript</span> y tecnologías basadas en <span class="emphasis">React</span>, principalmente en entornos como Astro, Next.js o Vite.js. Sin embargo, una de mis principales pasiones es explorar las infinitas posibilidades del <span class="emphasis">lenguaje CSS</span> para crear diseños únicos y personalizados.',
-      "Gracias a que siempre he trabajado de forma independiente, he tenido la oportunidad de experimentar con diferentes aspectos del desarrollo web, como la creación de APIs backend, el manejo de bases de datos, el despliegue de software, el control de versiones o el testeo de código. Son áreas en las que sigo profundizando y ampliando conocimientos.",
+      'Siempre he trabajado de forma independiente, así que he tenido la oportunidad de experimentar con diferentes aspectos del desarrollo web, como la creación de APIs backend, el manejo de bases de datos, el despliegue de software, el control de versiones o el testeo de código. Son áreas en las que sigo profundizando y ampliando conocimientos.',
       'Actualmente, busco dar el salto al sector profesional y dedicarme a tiempo completo al <span class="emphasis">desarrollo web</span>, aplicando todo lo aprendido y creciendo junto a nuevos retos y equipos de trabajo.',
     ],
   },
-};
+}
 
-const { alt, job, title, paragraphs } = TEXTS[language];
+const {alt, job, title, paragraphs} = TEXTS[language]
 ---
 
 <header class="header">
@@ -49,10 +49,10 @@ const { alt, job, title, paragraphs } = TEXTS[language];
     src={me.src}
     alt={alt}
     style={{
-      width: "180px",
-      height: "180px",
-      objectFit: "cover",
-      borderRadius: "100%",
+      width: '180px',
+      height: '180px',
+      objectFit: 'cover',
+      borderRadius: '100%',
     }}
   />
   <div class="info-container">
@@ -77,13 +77,20 @@ const { alt, job, title, paragraphs } = TEXTS[language];
   </div>
 </header>
 <main class="content">
-  <TagTitle client:load id="about" tagType="starting">
+  <TagTitle
+    client:load
+    id="about"
+    tagType="starting"
+  >
     {title}
   </TagTitle>
 
   {
     paragraphs.map((paragraph) => (
-      <p class="paragraph code-text" set:html={paragraph} />
+      <p
+        class="paragraph code-text"
+        set:html={paragraph}
+      />
     ))
   }
   <div class="signature-container">
@@ -125,7 +132,11 @@ const { alt, job, title, paragraphs } = TEXTS[language];
     </svg>
   </div>
 
-  <TagTitle client:load id="about" tagType="closing">
+  <TagTitle
+    client:load
+    id="about"
+    tagType="closing"
+  >
     {title}
   </TagTitle>
 </main>

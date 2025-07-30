@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 import styles from './NavigationBar.module.css'
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher/ThemeSwitcher'
+import AiChatBot from '../AiChatBot/AiChatBot'
 
 const translations = {
   en: {
@@ -170,7 +171,7 @@ export default function NavigationBar({
         </li>
         {/* Bot */}
         <li className={styles.button}>
-          <BotMessageSquare className={`${styles.icon} ${styles.bot}`} />
+          <AiChatBot />
         </li>
       </ul>
     </nav>

@@ -1,18 +1,18 @@
 ---
-import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
-import AboutSection from "@/templates/landing/AboutSection.astro";
-import WorksSection from "@/templates/landing/WorksSection.astro";
-import SkillsSection from "@/templates/landing/SkillsSection.astro";
-import ConnectSection from "@/templates/landing/ConnectSection.astro";
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import AboutSection from '@/templates/landing/AboutSection.astro'
+import WorksSection from '@/templates/landing/WorksSection.astro'
+import SkillsSection from '@/templates/landing/SkillsSection.astro'
+import ConnectSection from '@/templates/landing/ConnectSection.astro'
 
-import { Image } from "astro:assets";
-import bg1 from "@/assets/backgrounds/bg1.svg";
-import bg2 from "@/assets/backgrounds/bg2.svg";
-import bg3 from "@/assets/backgrounds/bg3.svg";
-import bg5 from "@/assets/backgrounds/bg5.svg";
+import {Image} from 'astro:assets'
+import bg1 from '@/assets/backgrounds/bg1.svg'
+import bg2 from '@/assets/backgrounds/bg2.svg'
+import bg3 from '@/assets/backgrounds/bg3.svg'
+import bg5 from '@/assets/backgrounds/bg5.svg'
 
-import LandingHero from "@/components/elements/LandingHero/LandingHero";
-import DesignProcessCards from "@/components/elements/DesignProcessCards/DesignProcessCards.astro";
+import LandingHero from '@/components/elements/LandingHero/LandingHero'
+import DesignProcessCards from '@/components/elements/DesignProcessCards/DesignProcessCards.astro'
 
 /* 
   @version 1
@@ -26,10 +26,17 @@ import DesignProcessCards from "@/components/elements/DesignProcessCards/DesignP
     <section>
       <!-- Content -->
       <div class="container">
-        <LandingHero language="es" client:load />
+        <LandingHero
+          language="es"
+          client:load
+        />
       </div>
       <!-- Decoration -->
-      <div class="bg-grid top-left" aria-hidden="true"></div>
+      <div
+        class="bg-grid top-left"
+        aria-hidden="true"
+      >
+      </div>
       <Image
         src={bg2}
         alt="background-decoration"
@@ -78,7 +85,11 @@ import DesignProcessCards from "@/components/elements/DesignProcessCards/DesignP
         <ConnectSection language="es" />
       </div>
       <!-- Decoration -->
-      <div class="bg-grid bottom-right" aria-hidden="true"></div>
+      <div
+        class="bg-grid bottom-right"
+        aria-hidden="true"
+      >
+      </div>
 
       <Image
         src={bg5}
@@ -115,7 +126,7 @@ import DesignProcessCards from "@/components/elements/DesignProcessCards/DesignP
   /* Background grid */
   .bg-grid {
     z-index: -1;
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;

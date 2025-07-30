@@ -12,7 +12,7 @@ import {
   FileQuestion,
   FileCode2,
 } from 'lucide-react'
-import {StickyCard} from 'need-more-gradients-ui'
+import Grapper from '@/components/package/Grapper'
 
 export default function ProjectHighlighter({
   projects,
@@ -73,7 +73,7 @@ export default function ProjectHighlighter({
   }
 
   return (
-    <section className={styles.projectExplorer}>
+    <div className={styles.projectExplorer}>
       <div className={styles.projectFilter}>
         {proyectCategories.map((category) => (
           <Button
@@ -115,7 +115,11 @@ export default function ProjectHighlighter({
                   <FileCode2 className={styles.placeholderIcon} />
                 )}
               </div>
-              <StickyCard borderWidth={2}>
+
+              <Grapper
+                mode="ghost"
+                variant="sticky"
+              >
                 <div className={styles.projectInfo}>
                   <h3>{project.data.name}</h3>
                   <p>
@@ -124,11 +128,11 @@ export default function ProjectHighlighter({
                       : project.data.description_en}
                   </p>
                 </div>
-              </StickyCard>
+              </Grapper>
             </a>
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   )
 }
