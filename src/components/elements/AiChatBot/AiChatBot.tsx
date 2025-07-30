@@ -142,11 +142,11 @@ export default function AiChatBot() {
               <div className={styles.suggestedMessages}>
                 {suggestedMessages.map((message, index) => (
                   <Grapper
+                    key={index}
                     mode="ghost"
                     variant="sticky"
                   >
                     <button
-                      key={index}
                       onClick={() => handleSuggestedMessage(message)}
                       className={styles.suggestedButton}
                     >
