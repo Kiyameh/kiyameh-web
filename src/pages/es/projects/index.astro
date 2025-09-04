@@ -1,8 +1,6 @@
 ---
-/* Layout */
-import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
-/* Components */
-/* Collections */
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
 import {getCollection} from 'astro:content'
 // Obtener todos los proyectos de la colección
 const projects = await getCollection('projects')
@@ -16,37 +14,39 @@ import ProjectsHero from '@/templates/projects/ProjectsHero.astro'
 
 /* 
  @version 2
- @revisado 14/07/2025
+ @revisado 04/09/2025
  @descripcion: Página de proyectos en español
 */
 ---
 
-<PortfolioLayout>
-  <div class="page-container">
-    <div
-      class="bg-grid"
-      aria-hidden="true"
-    >
-    </div>
-    <main>
-      <ProjectsHero language="es" />
-      <section class="projects-section">
-        <ProjectsExplorer
-          projects={sortedProjects}
-          language="es"
-          client:load
-        />
-      </section>
-
-      <Image
-        src={bg4}
-        alt="background-decoration"
+<HtmlLayout pageTitle="Proyectos">
+  <NavLayout>
+    <div class="page-container">
+      <div
+        class="bg-grid"
         aria-hidden="true"
-        class="bg-gradient"
-      />
-    </main>
-  </div>
-</PortfolioLayout>
+      >
+      </div>
+      <main>
+        <ProjectsHero language="es" />
+        <section class="projects-section">
+          <ProjectsExplorer
+            projects={sortedProjects}
+            language="es"
+            client:load
+          />
+        </section>
+
+        <Image
+          src={bg4}
+          alt="background-decoration"
+          aria-hidden="true"
+          class="bg-gradient"
+        />
+      </main>
+    </div>
+  </NavLayout>
+</HtmlLayout>
 
 <style>
   main {

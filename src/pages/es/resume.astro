@@ -3,32 +3,35 @@
 import ResumeContainer from '@/components/elements/Resume/Resume'
 
 /* Layout */
-import CvLayout from '@/layouts/CvLayout.astro'
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
 
 /* Content */
 import background from '@/assets/backgrounds/resume_bg.svg'
 
 /* 
- @version 1
- @revisado 02/07/2025
+ @version 2
+ @revisado 04/09/2025
  @descripcion: Página de resumen en español
 */
 ---
 
-<CvLayout>
-  <div class="container">
-    <img
-      id="background"
-      src={background.src}
-      alt=""
-      fetchpriority="high"
-    />
-    <ResumeContainer
-      client:load
-      language="es"
-    />
-  </div>
-</CvLayout>
+<HtmlLayout pageTitle="Cv de Andoni">
+  <NavLayout>
+    <div class="container">
+      <img
+        id="background"
+        src={background.src}
+        alt=""
+        fetchpriority="high"
+      />
+      <ResumeContainer
+        client:load
+        language="es"
+      />
+    </div>
+  </NavLayout>
+</HtmlLayout>
 
 <style>
   .container {

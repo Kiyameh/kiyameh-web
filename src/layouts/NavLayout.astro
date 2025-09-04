@@ -1,0 +1,50 @@
+---
+/* Components */
+import NavigationBar from '@/components/elements/NavigationBar/NavigationBar'
+import MobileNavigationBar from '@/components/elements/MobileNavigationBar/MobileNavigationBar'
+
+/* Variables */
+const currentLocale = Astro.currentLocale ?? 'es'
+const currentPath = Astro.url.pathname
+
+/* 
+ @version 1
+ @revisado 04/09/2025
+ @descripcion: Layout para navegación
+*/
+---
+
+<div>
+  <slot />
+  <nav class="desktop-nav">
+    <NavigationBar
+      currentLocale={currentLocale}
+      currentPath={currentPath}
+      client:load
+    />
+  </nav>
+  <nav class="mobile-nav">
+    <MobileNavigationBar
+      currentLocale={currentLocale}
+      currentPath={currentPath}
+      client:load
+    />
+  </nav>
+</div>
+
+<style>
+  .desktop-nav {
+    display: block;
+  }
+  .mobile-nav {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+    .mobile-nav {
+      display: block;
+    }
+  }
+</style>

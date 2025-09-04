@@ -1,5 +1,7 @@
 ---
-import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
+
 import AboutSection from '@/templates/landing/AboutSection.astro'
 import WorksSection from '@/templates/landing/WorksSection.astro'
 import SkillsSection from '@/templates/landing/SkillsSection.astro'
@@ -21,85 +23,87 @@ import DesignProcessCards from '@/components/elements/DesignProcessCards/DesignP
 */
 ---
 
-<PortfolioLayout>
-  <main>
-    <section>
-      <!-- Content -->
-      <div class="container">
-        <LandingHero
-          language="es"
-          client:load
+<HtmlLayout>
+  <NavLayout>
+    <main>
+      <section>
+        <!-- Content -->
+        <div class="container">
+          <LandingHero
+            language="es"
+            client:load
+          />
+        </div>
+        <!-- Decoration -->
+        <div
+          class="bg-grid top-left"
+          aria-hidden="true"
+        >
+        </div>
+        <Image
+          src={bg2}
+          alt="background-decoration"
+          aria-hidden="true"
+          class="bg-gradient pink"
         />
-      </div>
-      <!-- Decoration -->
-      <div
-        class="bg-grid top-left"
-        aria-hidden="true"
-      >
-      </div>
-      <Image
-        src={bg2}
-        alt="background-decoration"
-        aria-hidden="true"
-        class="bg-gradient pink"
-      />
-    </section>
-    <section id="about">
-      <!-- Content -->
-      <div class="container">
-        <AboutSection language="es" />
-      </div>
-      <!-- Decoration -->
-      <Image
-        src={bg1}
-        alt="background-decoration"
-        aria-hidden="true"
-        class="bg-gradient blue"
-      />
-    </section>
-    <section id="works">
-      <!-- Content -->
-      <div class="container">
-        <WorksSection language="es" />
-      </div>
-      <!-- Decoration -->
-      <Image
-        src={bg3}
-        alt="background-decoration"
-        aria-hidden="true"
-        class="bg-gradient purple"
-      />
-    </section>
-    <section id="skills">
-      <!-- Content -->
-      <div class="container">
-        <SkillsSection language="es" />
-      </div>
-      <div class="full-width-container">
-        <DesignProcessCards language="es" />
-      </div>
-    </section>
-    <section id="connect">
-      <!-- Content -->
-      <div class="container">
-        <ConnectSection language="es" />
-      </div>
-      <!-- Decoration -->
-      <div
-        class="bg-grid bottom-right"
-        aria-hidden="true"
-      >
-      </div>
+      </section>
+      <section id="about">
+        <!-- Content -->
+        <div class="container">
+          <AboutSection language="es" />
+        </div>
+        <!-- Decoration -->
+        <Image
+          src={bg1}
+          alt="background-decoration"
+          aria-hidden="true"
+          class="bg-gradient blue"
+        />
+      </section>
+      <section id="works">
+        <!-- Content -->
+        <div class="container">
+          <WorksSection language="es" />
+        </div>
+        <!-- Decoration -->
+        <Image
+          src={bg3}
+          alt="background-decoration"
+          aria-hidden="true"
+          class="bg-gradient purple"
+        />
+      </section>
+      <section id="skills">
+        <!-- Content -->
+        <div class="container">
+          <SkillsSection language="es" />
+        </div>
+        <div class="full-width-container">
+          <DesignProcessCards language="es" />
+        </div>
+      </section>
+      <section id="connect">
+        <!-- Content -->
+        <div class="container">
+          <ConnectSection language="es" />
+        </div>
+        <!-- Decoration -->
+        <div
+          class="bg-grid bottom-right"
+          aria-hidden="true"
+        >
+        </div>
 
-      <Image
-        src={bg5}
-        alt="background-decoration"
-        aria-hidden="true"
-        class="bg-gradient purple2"
-      />
-    </section>
-  </main>
-</PortfolioLayout>
+        <Image
+          src={bg5}
+          alt="background-decoration"
+          aria-hidden="true"
+          class="bg-gradient purple2"
+        />
+      </section>
+    </main>
+  </NavLayout>
+</HtmlLayout>
 
 <style>
   /* Layout */

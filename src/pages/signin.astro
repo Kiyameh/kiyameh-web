@@ -1,7 +1,6 @@
 ---
 export const prerender = false
-
-import Layout from '@/layouts/PortfolioLayout.astro'
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
 
 const {cookies, redirect} = Astro
 
@@ -13,7 +12,7 @@ if (accessToken && refreshToken) {
 }
 ---
 
-<Layout title="Iniciar sesión">
+<HtmlLayout pageTitle="Iniciar sesión">
   <h1>Iniciar sesión</h1>
   <p>¿Nuevo aquí? <a href="/register">Crea una cuenta</a></p>
 
@@ -61,4 +60,4 @@ if (accessToken && refreshToken) {
       Inicia sesión con Google
     </button>
   </form>
-</Layout>
+</HtmlLayout>

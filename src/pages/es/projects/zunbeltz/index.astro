@@ -1,6 +1,7 @@
 ---
 import {GradientButton} from 'need-more-gradients-ui'
-import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
 import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
 import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
 import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
@@ -21,172 +22,180 @@ if (!project) {
 
 const {features, name, type, technologies, logo, logo_dark, state, version} =
   project.data
+
+/* 
+  @version 1
+  @revisado 04/09/2025
+  @descripcion: Página de Zunbeltz en español
+*/
 ---
 
-<PortfolioLayout>
-  <div class="container">
-    <CornerRibbon text="En desarrollo" />
-    <!-- Header -->
-    <Breadcrumb
-      client:load
-      items={[
-        {label: 'Inicio', href: '/es'},
-        {label: 'Proyectos', href: '/es/projects'},
-        {label: 'Zunbeltz', href: '/es/projects/zunbeltz'},
-      ]}
-    />
-    <header>
-      <SectionTitle
+<HtmlLayout pageTitle="Zunbeltz">
+  <NavLayout>
+    <div class="container">
+      <CornerRibbon text="En desarrollo" />
+      <!-- Header -->
+      <Breadcrumb
         client:load
-        level="title"
-      >
-        Zunbeltz
-      </SectionTitle>
-      <div>
-        {version && <span class="version">v{version}</span>}
-        {state && <ProjectStateBadge state={state} />}
-        <ProjectTypeBadge type={type} />
-      </div>
-    </header>
-    <main>
-      <!-- Presentation -->
-      <section class="presentation">
-        <div class="logo-container">
-          {
-            logo && (
-              <img
-                class="logo logo-light"
-                src={logo}
-                alt={name}
-              />
-            )
-          }
-          {
-            logo_dark && (
-              <img
-                class="logo logo-dark"
-                src={logo_dark}
-                alt={name}
-              />
-            )
-          }
-        </div>
-        <div class="presentation-text">
-          <p class="paragraph">
-            <span class="bold">
-              <a
-                href="https://www.zunbeltz.org"
-                class="link"
-                >Zunbeltz.org</a
-              >
-              se encuentra actualmente en desarrollo.</span
-            > Estoy trabajando activamente para que se convierta en un portal
-            <span class="emphasis">pionero</span> dentro de los deportes de montaña
-            y de la espeleología en particular.
-          </p>
-          <p class="paragraph">
-            El objetivo es crear una comunidad de espeleólogos y deportistas de
-            montaña que puedan compartir sus experiencias y conocimientos,
-            debatir sobre las mejores técnicas y materiales, y en defintiva,
-            generar una<span class="emphasis">
-              base de conocimiento online.</span
-            >
-          </p>
-        </div>
-      </section>
-
-      <!-- Connect -->
-      <section class="conect">
-        <p class="connect-text">
-          <MessageCircleHeart className="heart-icon" />
-          <span>
-            Si quieres estar al tanto de las novedades, deja tu correo y te
-            mantendré informado.
-          </span>
-        </p>
-
-        <form
-          name="zunbeltz-info"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          class="conect-form"
+        items={[
+          {label: 'Inicio', href: '/es'},
+          {label: 'Proyectos', href: '/es/projects'},
+          {label: 'Zunbeltz', href: '/es/projects/zunbeltz'},
+        ]}
+      />
+      <header>
+        <SectionTitle
+          client:load
+          level="title"
         >
-          <div class="hidden">
-            <input
-              type="hidden"
-              name="form-name"
-              value="zunbeltz-info"
-            />
-            <label>
-              Don't fill this out if you're human: <input name="bot-field" />
-            </label>
+          Zunbeltz
+        </SectionTitle>
+        <div>
+          {version && <span class="version">v{version}</span>}
+          {state && <ProjectStateBadge state={state} />}
+          <ProjectTypeBadge type={type} />
+        </div>
+      </header>
+      <main>
+        <!-- Presentation -->
+        <section class="presentation">
+          <div class="logo-container">
+            {
+              logo && (
+                <img
+                  class="logo logo-light"
+                  src={logo}
+                  alt={name}
+                />
+              )
+            }
+            {
+              logo_dark && (
+                <img
+                  class="logo logo-dark"
+                  src={logo_dark}
+                  alt={name}
+                />
+              )
+            }
           </div>
-
-          <div class="input-container">
-            <AtSign className="input-icon" />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Correo electrónico"
-              aria-label="Correo electrónico"
-              required
-              class="form-input"
-            />
+          <div class="presentation-text">
+            <p class="paragraph">
+              <span class="bold">
+                <a
+                  href="https://www.zunbeltz.org"
+                  class="link"
+                  >Zunbeltz.org</a
+                >
+                se encuentra actualmente en desarrollo.</span
+              > Estoy trabajando activamente para que se convierta en un portal
+              <span class="emphasis">pionero</span> dentro de los deportes de montaña
+              y de la espeleología en particular.
+            </p>
+            <p class="paragraph">
+              El objetivo es crear una comunidad de espeleólogos y deportistas
+              de montaña que puedan compartir sus experiencias y conocimientos,
+              debatir sobre las mejores técnicas y materiales, y en defintiva,
+              generar una<span class="emphasis">
+                base de conocimiento online.</span
+              >
+            </p>
           </div>
+        </section>
 
-          <GradientButton
-            type="submit"
-            roundness={0.5}
-            primary
-            className="submit-button"
-          >
-            Enviar
-          </GradientButton>
-        </form>
-      </section>
+        <!-- Connect -->
+        <section class="conect">
+          <p class="connect-text">
+            <MessageCircleHeart className="heart-icon" />
+            <span>
+              Si quieres estar al tanto de las novedades, deja tu correo y te
+              mantendré informado.
+            </span>
+          </p>
 
-      <!-- Features -->
-      <section>
-        <header>
-          <SectionTitle
-            client:load
-            id="features"
-            level="subtitle"
+          <form
+            name="zunbeltz-info"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="conect-form"
           >
-            Características
-          </SectionTitle>
-        </header>
-        {
-          technologies && (
-            <div class="technologies-carrousel">
-              <TechBadgesCarrousel
-                client:load
-                technologies={technologies.map((tech) => ({
-                  name: tech,
-                  disabled: false,
-                }))}
+            <div class="hidden">
+              <input
+                type="hidden"
+                name="form-name"
+                value="zunbeltz-info"
+              />
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </div>
+
+            <div class="input-container">
+              <AtSign className="input-icon" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Correo electrónico"
+                aria-label="Correo electrónico"
+                required
+                class="form-input"
               />
             </div>
-          )
-        }
 
-        <ul>
+            <GradientButton
+              type="submit"
+              roundness={0.5}
+              primary
+              className="submit-button"
+            >
+              Enviar
+            </GradientButton>
+          </form>
+        </section>
+
+        <!-- Features -->
+        <section>
+          <header>
+            <SectionTitle
+              client:load
+              id="features"
+              level="subtitle"
+            >
+              Características
+            </SectionTitle>
+          </header>
           {
-            features &&
-              features.map((feature) => (
-                <li class="feature-item">
-                  <Code className="feature-icon" />
-                  {feature}
-                </li>
-              ))
+            technologies && (
+              <div class="technologies-carrousel">
+                <TechBadgesCarrousel
+                  client:load
+                  technologies={technologies.map((tech) => ({
+                    name: tech,
+                    disabled: false,
+                  }))}
+                />
+              </div>
+            )
           }
-        </ul>
-      </section>
-    </main>
-  </div>
-</PortfolioLayout>
+
+          <ul>
+            {
+              features &&
+                features.map((feature) => (
+                  <li class="feature-item">
+                    <Code className="feature-icon" />
+                    {feature}
+                  </li>
+                ))
+            }
+          </ul>
+        </section>
+      </main>
+    </div>
+  </NavLayout>
+</HtmlLayout>
 
 <style>
   /* Layout */
