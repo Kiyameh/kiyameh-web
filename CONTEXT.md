@@ -1,4 +1,4 @@
-# CONTEXT.md - kiyameh.dev
+# CONTEXT.md - kiyameh.com
 
 ## Concepto
 
@@ -12,6 +12,7 @@ Portfolio personal de Andoni Abarzuza, desarrollador web y diseñador de interfa
 - Sistema de temas claro/oscuro
 - Optimización de imágenes con Astro Assets
 - Componentes React con hidratación selectiva
+- Sistema de autenticación completo con Supabase
 
 ## Tecnologías
 
@@ -24,6 +25,7 @@ Portfolio personal de Andoni Abarzuza, desarrollador web y diseñador de interfa
 - **Animaciones**: Framer Motion
 - **Iconos**: Lucide React, React Simple Icons
 - **Fuentes**: Outfit Variable, JetBrains Mono, Baskervville
+- **Autenticación**: Supabase con flujo PKCE
 
 ## Estructura de Carpetas
 
@@ -37,7 +39,10 @@ src/
 ├── content/         # Contenido del sitio
 ├── functions/       # Funciones utilitarias
 ├── layouts/         # Layouts de Astro
+├── lib/            # Librerías y utilidades (incluye Supabase)
 ├── pages/          # Páginas del sitio (Astro)
+│   └── api/        # API endpoints (autenticación)
+│       └── auth/   # Endpoints de autenticación
 ├── styles/         # Estilos globales y variables CSS
 └── templates/      # Paneles y secciones de las paginas
 ```
@@ -91,3 +96,33 @@ src/
 - **Alias**: `@` apunta a `./src`
 - **i18n**: Español como idioma por defecto
 - **Integraciones**: React habilitado para componentes interactivos
+
+## Autenticación (Supabase)
+
+### Configuración
+
+- **Cliente**: Configurado en `src/lib/supabase.ts`
+- **Flujo**: PKCE (Proof Key for Code Exchange)
+- **Variables de entorno**: `SUPABASE_URL` y `SUPABASE_ANON_KEY`
+
+### Endpoints de API
+
+- **POST** `/api/auth/signin` - Inicio de sesión con email/password o OAuth
+- **POST** `/api/auth/register` - Registro de nuevos usuarios
+- **GET** `/api/auth/callback` - Callback para OAuth (Google, GitHub)
+- **GET** `/api/auth/signout` - Cierre de sesión
+
+### Flujo de Autenticación
+
+1. **Registro**: Usuario se registra → redirige a `/signin`
+2. **Inicio de sesión**: Email/password o proveedores OAuth
+3. **OAuth**: Redirige a proveedor → callback → dashboard
+4. **Sesión**: Tokens almacenados en cookies (`sb-access-token`, `sb-refresh-token`)
+5. **Protección**: Páginas protegidas verifican tokens en cookies
+6. **Cierre**: Elimina cookies y redirige a home
+
+### Páginas de Autenticación
+
+- `/signin` - Formulario de inicio de sesión
+- `/register` - Formulario de registro
+- `/dashboard` - Panel protegido (requiere autenticación)

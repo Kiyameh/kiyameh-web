@@ -1,0 +1,64 @@
+---
+export const prerender = false
+
+import Layout from '@/layouts/PortfolioLayout.astro'
+
+const {cookies, redirect} = Astro
+
+const accessToken = cookies.get('sb-access-token')
+const refreshToken = cookies.get('sb-refresh-token')
+
+if (accessToken && refreshToken) {
+  return redirect('/dashboard')
+}
+---
+
+<Layout title="Iniciar sesión">
+  <h1>Iniciar sesión</h1>
+  <p>¿Nuevo aquí? <a href="/register">Crea una cuenta</a></p>
+
+  <form
+    action="/api/auth/signin"
+    method="post"
+  >
+    <label for="email">Correo electrónico</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+    />
+    <label for="password">Contraseña</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+    />
+    <button type="submit">Iniciar sesión</button>
+  </form>
+
+  <form
+    action="/api/auth/signin"
+    method="post"
+  >
+    <button
+      value="github"
+      name="provider"
+      type="submit"
+    >
+      Inicia sesión con Github
+    </button>
+  </form>
+
+  <form
+    action="/api/auth/signin"
+    method="post"
+  >
+    <button
+      value="google"
+      name="provider"
+      type="submit"
+    >
+      Inicia sesión con Google
+    </button>
+  </form>
+</Layout>

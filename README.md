@@ -1,4 +1,4 @@
-# 🦊 kiyameh.dev
+# 🦊 kiyameh.com
 
 ¡Hola! Soy **Andoni Abarzuza** y este es mi portfolio personal. Un espacio donde comparto mi pasión, mis habilidades y algunas cosas más.
 
