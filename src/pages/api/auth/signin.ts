@@ -12,6 +12,18 @@ export const POST: APIRoute = async ({request, cookies, redirect}) => {
   const validProviders = ['google', 'github']
 
   if (provider && validProviders.includes(provider)) {
+    // Obtener la URL de referencia para recordar de dónde vino el usuario
+    const referer = request.headers.get('referer') || '/'
+
+    // Guardar la URL original en una cookie antes de redirigir a OAuth
+    cookies.set('oauth-redirect-url', referer, {
+      path: '/',
+      httpOnly: true,
+      secure: false, // Cambiar a true en producción
+      sameSite: 'lax',
+      maxAge: 60 * 10, // 10 minutos
+    })
+
     const {data, error} = await supabase.auth.signInWithOAuth({
       provider: provider as Provider,
       options: {
@@ -48,5 +60,8 @@ export const POST: APIRoute = async ({request, cookies, redirect}) => {
   cookies.set('sb-refresh-token', refresh_token, {
     path: '/',
   })
-  return redirect('/dashboard')
+
+  // Obtener la URL de referencia para redirigir de vuelta a la página actual
+  const referer = request.headers.get('referer') || '/'
+  return redirect(referer)
 }

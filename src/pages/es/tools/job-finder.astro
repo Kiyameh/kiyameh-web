@@ -1,0 +1,13 @@
+---
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import AuthLayout from '@/layouts/AuthLayout'
+---
+
+<HtmlLayout pageTitle="Job Finder">
+    <AuthLayout client:load>
+      <div class="container">
+        <h1>Job Finder Es</h1>
+        <p>Esta es una herramienta para buscar trabajos. Necesitas estar autenticado para usarla.</p>
+      </div>
+    </AuthLayout>
+</HtmlLayout>

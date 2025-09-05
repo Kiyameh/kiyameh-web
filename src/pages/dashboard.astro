@@ -10,7 +10,6 @@ const accessToken = cookies.get('sb-access-token')
 const refreshToken = cookies.get('sb-refresh-token')
 
 if (!accessToken || !refreshToken) {
-  console.log('No access token or refresh token')
   return redirect('/signin')
 }
 
@@ -30,12 +29,12 @@ if (error) {
   return redirect('/signin')
 }
 
-const email = data?.user?.email
+const name = data?.user?.user_metadata?.name
 ---
 
 <HtmlLayout pageTitle="panel de control">
   <NavLayout>
-    <h1>Bienvenido {email}</h1>
+    <h1>Bienvenido {name}</h1>
     <p>Estamos felices de verte aquí</p>
     <form action="/api/auth/signout">
       <button type="submit">Cerrar sesión</button>

@@ -25,5 +25,9 @@ export const GET: APIRoute = async ({url, cookies, redirect}) => {
     path: '/',
   })
 
-  return redirect('/dashboard')
+  // Obtener la URL original de la cookie y limpiarla
+  const redirectUrl = cookies.get('oauth-redirect-url')?.value || '/'
+  cookies.delete('oauth-redirect-url', {path: '/'})
+
+  return redirect(redirectUrl)
 }
