@@ -1,26 +1,37 @@
 ---
 /* Layout */
-import CvLayout from "@/layouts/CvLayout.astro";
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
 
 /* Components */
-import ResumeContainer from "@/components/elements/Resume/Resume";
+import ResumeContainer from '@/components/elements/Resume/Resume'
 
 /* Content */
-import background from "@/assets/backgrounds/resume_bg.svg";
+import background from '@/assets/backgrounds/resume_bg.svg'
 
 /* 
- @version 1
- @revisado 02/07/2025
+ @version 2
+ @revisado 04/09/2025
  @descripcion: Página de resumen en inglés
 */
 ---
 
-<CvLayout>
-  <div class="container">
-    <img id="background" src={background.src} alt="" fetchpriority="high" />
-    <ResumeContainer client:load language="en" />
-  </div>
-</CvLayout>
+<HtmlLayout pageTitle="Andoni's Resume">
+  <NavLayout>
+    <div class="container">
+      <img
+        id="background"
+        src={background.src}
+        alt=""
+        fetchpriority="high"
+      />
+      <ResumeContainer
+        client:load
+        language="en"
+      />
+    </div>
+  </NavLayout>
+</HtmlLayout>
 
 <style>
   .container {

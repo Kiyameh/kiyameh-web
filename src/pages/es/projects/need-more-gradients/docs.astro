@@ -1,15 +1,24 @@
 ---
 import CornerRibbon from '@/components/ui/CornerRibbon/CornerRibbon.astro'
-import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
+
+/* 
+  @version 1
+  @revisado 04/09/2025
+  @descripcion: Página de documentación de Need More Gradients en español
+*/
 ---
 
-<PortfolioLayout>
-  <div class="container">
-    <CornerRibbon text="En desarrollo" />
-    <h1>Need More Gradients</h1>
-    <p>Documentación de Need More Gradients</p>
-  </div>
-</PortfolioLayout>
+<HtmlLayout pageTitle="Need More Gradients Docs">
+  <NavLayout>
+    <div class="container">
+      <CornerRibbon text="En desarrollo" />
+      <h1>Need More Gradients</h1>
+      <p>Documentación de Need More Gradients</p>
+    </div>
+  </NavLayout>
+</HtmlLayout>
 
 <style>
   .container {

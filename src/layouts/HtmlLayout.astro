@@ -1,0 +1,93 @@
+---
+/* Styles */
+import '@/styles/theme.css'
+import '@/styles/reset.css'
+import '@/styles/css-components.css'
+
+/* Fonts */
+import '@fontsource-variable/jetbrains-mono'
+import '@fontsource-variable/outfit'
+import '@fontsource/baskervville'
+import '@fontsource-variable/caveat'
+
+/* Variables */
+const currentLocale = Astro.currentLocale ?? 'es'
+
+/* Props */
+interface Props {
+  pageTitle?: string
+  pageDescription?: string
+  pageTags?: string[]
+}
+
+const {
+  pageTitle = `${
+    currentLocale === 'es' ? 'Portfolio de Andoni' : "Andoni's Portfolio"
+  }`,
+  pageDescription = `${
+    currentLocale === 'es'
+      ? 'Portfolio personal de Andoni Abarzuza, desarrollador web y diseñador de interfaces'
+      : 'Personal portfolio of Andoni Abarzuza, web developer and interface designer'
+  }`,
+  pageTags = [
+    'portfolio',
+    'andoni',
+    'developer',
+    'designer',
+    'web',
+    'design',
+    'development',
+  ],
+} = Astro.props
+
+/* 
+ @version 1
+ @revisado 04/09/2025
+ @descripcion: Layout principal con html y slot para modales
+*/
+---
+
+<!-- TODO: incluir theme-color, incluir etiquetas OpenGraph y twitter, incluir manifest y robots --><!doctype html>
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta
+      name="title"
+      content={pageTitle}
+    />
+    <meta
+      name="description"
+      content={pageDescription}
+    />
+    <meta
+      name="author"
+      content="Andoni Abarzuza @kiyameh"
+    />
+    <meta
+      name="tags"
+      content={pageTags?.join(', ') ?? ''}
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+
+    <title>{pageTitle}</title>
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+  </head>
+  <body data-theme="light">
+    <slot />
+    <!-- Slot para modales -->
+    <div id="modal-root"></div>
+  </body>
+</html>

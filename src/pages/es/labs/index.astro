@@ -1,5 +1,6 @@
 ---
-import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
 import LabsHero from '@/templates/labs/LabsHero.astro'
 import {Image} from 'astro:assets'
 import bg1 from '@/assets/backgrounds/bg1.svg'
@@ -9,32 +10,40 @@ import CornerRibbonPanel from '@/templates/labs/CornerRibbonPanel.astro'
 import RingChartPanel from '@/templates/labs/RingChartPanel.astro'
 import TripleSwitchPanel from '@/templates/labs/TripleSwitchPanel.astro'
 import HandwrittenNotePanel from '@/templates/labs/HandwrittenNotePanel.astro'
+
+/* 
+  @version 1
+  @revisado 04/09/2025
+  @descripcion: Página de labs en español
+*/
 ---
 
-<PortfolioLayout>
-  <div class="page-container">
-    <div
-      class="bg-grid"
-      aria-hidden="true"
-    >
+<HtmlLayout pageTitle="Laboratorios de Andoni">
+  <NavLayout>
+    <div class="page-container">
+      <div
+        class="bg-grid"
+        aria-hidden="true"
+      >
+      </div>
+      <Image
+        src={bg1}
+        alt="background-decoration"
+        aria-hidden="true"
+        class="bg-gradient"
+      />
+      <LabsHero language="es" />
+      <main>
+        <ChipCarrouselPanel />
+        <HandwrittenNotePanel />
+        <TechChipPanel />
+        <CornerRibbonPanel />
+        <RingChartPanel />
+        <TripleSwitchPanel />
+      </main>
     </div>
-    <Image
-      src={bg1}
-      alt="background-decoration"
-      aria-hidden="true"
-      class="bg-gradient"
-    />
-    <LabsHero language="es" />
-    <main>
-      <ChipCarrouselPanel />
-      <HandwrittenNotePanel />
-      <TechChipPanel />
-      <CornerRibbonPanel />
-      <RingChartPanel />
-      <TripleSwitchPanel />
-    </main>
-  </div>
-</PortfolioLayout>
+  </NavLayout>
+</HtmlLayout>
 
 <style>
   main {

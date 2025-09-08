@@ -1,5 +1,7 @@
 ---
-import PortfolioLayout from '@/layouts/PortfolioLayout.astro'
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
+
 import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
 import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
 import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
@@ -37,162 +39,170 @@ const {
   state,
   version,
 } = project.data
+
+/* 
+  @version 1
+  @revisado 04/09/2025
+  @descripcion: Página de proyecto en inglés
+*/
 ---
 
-<PortfolioLayout>
-  <div class="container">
-    <Breadcrumb
-      client:load
-      items={[
-        {label: 'Home', href: '/en'},
-        {label: 'Projects', href: '/en/projects'},
-        {label: name, href: `/en/projects/${slug}`},
-      ]}
-    />
-    <header>
-      <div class="name-and-logo">
-        {
-          logo && (
-            <img
-              class="logo logo-light"
-              src={logo}
-              alt={name}
-            />
-          )
-        }
-        {
-          logo_dark && (
-            <img
-              class="logo logo-dark"
-              src={logo_dark}
-              alt={name}
-            />
-          )
-        }
-        <SectionTitle
-          client:load
-          level="title"
-        >
-          {name}
-        </SectionTitle>
-      </div>
-      <div>
-        {version && <span class="version">v{version}</span>}
-        {state && <ProjectStateBadge state={state} />}
-        <ProjectTypeBadge type={type} />
-      </div>
-    </header>
-    <main>
-      <!-- Picture -->
-      <picture class="main-picture">
-        <img
-          src={images?.[0] || ''}
-          alt={name}
-        />
-        <a
-          href={url}
-          target="_blank"
-        >
-          <button class="live-button"> View online </button>
-        </a>
-      </picture>
-
-      <!-- Features -->
-      <section>
-        <header>
-          <SectionTitle
-            client:load
-            id="features"
-            level="subtitle"
-          >
-            Features
-          </SectionTitle>
-        </header>
-        {
-          description && (
-            <p class="description-box">
-              <Info />
-              {description}
-            </p>
-          )
-        }
-        <ul>
+<HtmlLayout pageTitle={name}>
+  <NavLayout>
+    <div class="container">
+      <Breadcrumb
+        client:load
+        items={[
+          {label: 'Home', href: '/en'},
+          {label: 'Projects', href: '/en/projects'},
+          {label: name, href: `/en/projects/${slug}`},
+        ]}
+      />
+      <header>
+        <div class="name-and-logo">
           {
-            features &&
-              features.map((feature) => (
-                <li class="feature-item">
-                  <Code className="feature-icon" />
-                  {feature}
-                </li>
-              ))
-          }
-        </ul>
-        {
-          technologies && (
-            <div class="technologies-carrousel">
-              <TechBadgesCarrousel
-                client:load
-                technologies={technologies.map((tech) => ({
-                  name: tech,
-                  disabled: false,
-                }))}
+            logo && (
+              <img
+                class="logo logo-light"
+                src={logo}
+                alt={name}
               />
-            </div>
-          )
-        }
-      </section>
-      <section>
-        <header>
+            )
+          }
+          {
+            logo_dark && (
+              <img
+                class="logo logo-dark"
+                src={logo_dark}
+                alt={name}
+              />
+            )
+          }
           <SectionTitle
             client:load
-            id="repository"
-            level="subtitle"
+            level="title"
           >
-            Repository
+            {name}
           </SectionTitle>
-        </header>
-
-        <!-- Server Island con los datos del repositorio -->
-
-        <RepoStatsCard
-          repository={repository}
-          server:defer
-        >
-          <div
-            class="loaderContainer"
-            slot="fallback"
+        </div>
+        <div>
+          {version && <span class="version">v{version}</span>}
+          {state && <ProjectStateBadge state={state} />}
+          <ProjectTypeBadge type={type} />
+        </div>
+      </header>
+      <main>
+        <!-- Picture -->
+        <picture class="main-picture">
+          <img
+            src={images?.[0] || ''}
+            alt={name}
+          />
+          <a
+            href={url}
+            target="_blank"
           >
-            <div class="loader"></div>
-          </div>
-        </RepoStatsCard>
-      </section>
-      {
-        images && (
-          <section>
-            <header>
-              <SectionTitle
-                client:load
-                id="screenshots"
-                level="subtitle"
-              >
-                Screenshots
-              </SectionTitle>
-            </header>
-            <div class="screenshots-container">
-              <ImageGallery
-                client:load
-                images={images.map((image) => ({
-                  src: image,
-                  alt: name,
-                }))}
-              />
+            <button class="live-button"> View online </button>
+          </a>
+        </picture>
+
+        <!-- Features -->
+        <section>
+          <header>
+            <SectionTitle
+              client:load
+              id="features"
+              level="subtitle"
+            >
+              Features
+            </SectionTitle>
+          </header>
+          {
+            description && (
+              <p class="description-box">
+                <Info />
+                {description}
+              </p>
+            )
+          }
+          <ul>
+            {
+              features &&
+                features.map((feature) => (
+                  <li class="feature-item">
+                    <Code className="feature-icon" />
+                    {feature}
+                  </li>
+                ))
+            }
+          </ul>
+          {
+            technologies && (
+              <div class="technologies-carrousel">
+                <TechBadgesCarrousel
+                  client:load
+                  technologies={technologies.map((tech) => ({
+                    name: tech,
+                    disabled: false,
+                  }))}
+                />
+              </div>
+            )
+          }
+        </section>
+        <section>
+          <header>
+            <SectionTitle
+              client:load
+              id="repository"
+              level="subtitle"
+            >
+              Repository
+            </SectionTitle>
+          </header>
+
+          <!-- Server Island con los datos del repositorio -->
+
+          <RepoStatsCard
+            repository={repository}
+            server:defer
+          >
+            <div
+              class="loaderContainer"
+              slot="fallback"
+            >
+              <div class="loader"></div>
             </div>
-          </section>
-        )
-      }
-    </main>
-  </div>
-</PortfolioLayout>
+          </RepoStatsCard>
+        </section>
+        {
+          images && (
+            <section>
+              <header>
+                <SectionTitle
+                  client:load
+                  id="screenshots"
+                  level="subtitle"
+                >
+                  Screenshots
+                </SectionTitle>
+              </header>
+              <div class="screenshots-container">
+                <ImageGallery
+                  client:load
+                  images={images.map((image) => ({
+                    src: image,
+                    alt: name,
+                  }))}
+                />
+              </div>
+            </section>
+          )
+        }
+      </main>
+    </div>
+  </NavLayout>
+</HtmlLayout>
 
 <style>
   /* Layout */

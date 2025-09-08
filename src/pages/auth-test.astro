@@ -1,0 +1,46 @@
+---
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import AuthLayout from '@/layouts/AuthLayout.tsx'
+---
+
+<HtmlLayout pageTitle="Prueba de Autenticación">
+    <AuthLayout client:load>
+      <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+        <h1>Página de Prueba de Autenticación</h1>
+        <p>Esta página demuestra el funcionamiento del AuthLayout:</p>
+        
+        <div style="background: var(--surface-200); padding: 1rem; border-radius: var(--radius-medium); margin: 1rem 0;">
+          <h2>Funcionalidades implementadas:</h2>
+          <ul>
+            <li>✅ Estado de sesión con información de usuario (ID y nombre)</li>
+            <li>✅ Barra de navegación que cambia según el estado de autenticación</li>
+            <li>✅ Botones de login con Google y GitHub cuando no hay sesión</li>
+            <li>✅ Saludo personalizado y botón de logout cuando hay sesión</li>
+            <li>✅ Integración con Supabase para verificación de sesión</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--surface-100); padding: 1rem; border-radius: var(--radius-medium); margin: 1rem 0;">
+          <h3>Instrucciones para probar:</h3>
+          <ol>
+            <li>Si no estás autenticado, verás los botones de "Iniciar con Google" e "Iniciar con GitHub" en la barra superior</li>
+            <li>Haz clic en cualquiera de estos botones para iniciar sesión</li>
+            <li>Una vez autenticado, verás el saludo "Hola [tu nombre]" y un botón de "Cerrar sesión"</li>
+            <li>El botón de cerrar sesión te desconectará y volverás a ver los botones de login</li>
+          </ol>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <p><em>Mira la barra de navegación superior para ver los cambios en tiempo real</em></p>
+        </div>
+      </div>
+    </AuthLayout>
+</HtmlLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+</style>

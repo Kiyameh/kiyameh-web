@@ -1,0 +1,16 @@
+---
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
+import AuthLayout from '@/layouts/AuthLayout'
+---
+
+<HtmlLayout pageTitle="Job Finder">
+  <NavLayout>
+    <AuthLayout client:load>
+      <div class="container">
+        <h1>Job Finder En</h1>
+        <p>This is a job finder tool. You need to be authenticated to use it.</p>
+      </div>
+    </AuthLayout>
+  </NavLayout>
+</HtmlLayout>

@@ -1,6 +1,5 @@
 import {
   User,
-  BotMessageSquare,
   FileUser,
   Hash,
   Languages,
