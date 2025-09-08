@@ -2,8 +2,26 @@ export const prerender = false
 
 import type {APIRoute} from 'astro'
 import {supabase} from '@/lib/supabase'
+import {
+  setSessionCookies,
+  getOAuthRedirectCookie,
+  deleteOAuthRedirectCookie,
+} from '@/lib/authCookies'
 
 export const GET: APIRoute = async ({url, cookies, redirect}) => {
+  const isProd = import.meta.env.PROD === true
+  const getBaseUrl = () => url.origin
+  const sanitizeToPath = (raw: string | null) => {
+    try {
+      if (!raw) return '/'
+      const u = new URL(raw, getBaseUrl())
+      return u.origin === getBaseUrl()
+        ? u.pathname + u.search + u.hash || '/'
+        : '/'
+    } catch {
+      return '/'
+    }
+  }
   const authCode = url.searchParams.get('code')
 
   if (!authCode) {
@@ -13,21 +31,20 @@ export const GET: APIRoute = async ({url, cookies, redirect}) => {
   const {data, error} = await supabase.auth.exchangeCodeForSession(authCode)
 
   if (error) {
-    return new Response(error.message, {status: 500})
+    console.error('OAuth callback error:', error)
+    return new Response(
+      JSON.stringify({error: 'No se pudo completar la autenticación'}),
+      {status: 500, headers: {'Content-Type': 'application/json'}}
+    )
   }
 
   const {access_token, refresh_token} = data.session
 
-  cookies.set('sb-access-token', access_token, {
-    path: '/',
-  })
-  cookies.set('sb-refresh-token', refresh_token, {
-    path: '/',
-  })
+  setSessionCookies(cookies, access_token, refresh_token)
 
   // Obtener la URL original de la cookie y limpiarla
-  const redirectUrl = cookies.get('oauth-redirect-url')?.value || '/'
-  cookies.delete('oauth-redirect-url', {path: '/'})
+  const redirectUrl = sanitizeToPath(getOAuthRedirectCookie(cookies))
+  deleteOAuthRedirectCookie(cookies)
 
   return redirect(redirectUrl)
 }

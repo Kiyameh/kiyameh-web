@@ -19,70 +19,29 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Función simple para verificar cookies del navegador
-    const checkAuthCookies = () => {
+    let isMounted = true
+    const loadUser = async () => {
       try {
-        // Obtener cookies del navegador
-        const cookies = document.cookie.split(';').reduce((acc, cookie) => {
-          const [key, value] = cookie.trim().split('=')
-          acc[key] = value
-          return acc
-        }, {} as Record<string, string>)
-
-        const accessToken = cookies['sb-access-token']
-        const refreshToken = cookies['sb-refresh-token']
-
-        if (accessToken && refreshToken) {
-          // Intentar obtener información del usuario del token JWT
-          try {
-            // Decodificar el JWT (solo la parte del payload, sin verificar la firma)
-            const payload = JSON.parse(atob(accessToken.split('.')[1]))
-
-            const userName =
-              payload.user_metadata?.name ||
-              payload.user_metadata?.full_name ||
-              payload.email?.split('@')[0] ||
-              'Usuario'
-
-            setUser({
-              id: payload.sub || 'unknown-id',
-              name: userName,
-              email: payload.email,
-            })
-          } catch (tokenError) {
-            console.error('Error decoding token:', tokenError)
-            // Fallback si no se puede decodificar el token
-            setUser({
-              id: 'user-from-token',
-              name: 'Usuario Autenticado',
-              email: 'user@example.com',
-            })
-          }
+        const res = await fetch('/api/auth/me', {credentials: 'include'})
+        if (!isMounted) return
+        if (res.ok) {
+          const data = await res.json()
+          setUser(data.user)
         } else {
           setUser(null)
         }
       } catch (error) {
-        console.error('Error checking auth cookies:', error)
+        console.error('Error fetching auth user:', error)
         setUser(null)
       } finally {
-        setIsLoading(false)
+        if (isMounted) setIsLoading(false)
       }
     }
-
-    // Ejecutar la verificación inmediatamente
-    checkAuthCookies()
-
-    // También verificar cada 5 segundos por si las cookies cambian
-    const interval = setInterval(checkAuthCookies, 5000)
-
+    loadUser()
     return () => {
-      clearInterval(interval)
+      isMounted = false
     }
   }, [])
-
-  const checkSession = async () => {
-    // Esta función ya no es necesaria con el nuevo enfoque
-  }
 
   const signOut = async () => {
     try {

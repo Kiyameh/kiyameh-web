@@ -2,9 +2,24 @@ export const prerender = false
 
 import type {APIRoute} from 'astro'
 import {supabase} from '@/lib/supabase'
+import {setOAuthRedirectCookie, setSessionCookies} from '@/lib/authCookies'
 import type {Provider} from '@supabase/supabase-js'
 
 export const POST: APIRoute = async ({request, cookies, redirect}) => {
+  const isProd = import.meta.env.PROD === true
+  const getBaseUrl = () => request.url.split('/api')[0]
+  const sanitizeToPath = (raw: string | null) => {
+    try {
+      if (!raw) return '/'
+      const url = new URL(raw, getBaseUrl())
+      // Solo permitir rutas internas
+      return url.origin === getBaseUrl()
+        ? url.pathname + url.search + url.hash || '/'
+        : '/'
+    } catch {
+      return '/'
+    }
+  }
   const formData = await request.formData()
   const email = formData.get('email')?.toString()
   const password = formData.get('password')?.toString()
@@ -13,35 +28,41 @@ export const POST: APIRoute = async ({request, cookies, redirect}) => {
 
   if (provider && validProviders.includes(provider)) {
     // Obtener la URL de referencia para recordar de dónde vino el usuario
-    const referer = request.headers.get('referer') || '/'
+    const referer = sanitizeToPath(request.headers.get('referer'))
 
     // Guardar la URL original en una cookie antes de redirigir a OAuth
-    cookies.set('oauth-redirect-url', referer, {
-      path: '/',
-      httpOnly: true,
-      secure: false, // Cambiar a true en producción
-      sameSite: 'lax',
-      maxAge: 60 * 10, // 10 minutos
-    })
+    setOAuthRedirectCookie(cookies, referer)
 
     const {data, error} = await supabase.auth.signInWithOAuth({
       provider: provider as Provider,
       options: {
-        redirectTo: 'http://localhost:4321/api/auth/callback',
+        redirectTo: `${getBaseUrl()}/api/auth/callback`,
       },
     })
 
     if (error) {
-      return new Response(error.message, {status: 500})
+      console.error('OAuth error:', error)
+      return new Response(
+        JSON.stringify({
+          error: 'No se pudo iniciar sesión. Inténtalo de nuevo.',
+        }),
+        {status: 500, headers: {'Content-Type': 'application/json'}}
+      )
     }
 
     return redirect(data.url)
   }
 
   if (!email || !password) {
-    return new Response('Correo electrónico y contraseña obligatorios', {
-      status: 400,
-    })
+    return new Response(
+      JSON.stringify({error: 'Correo electrónico y contraseña obligatorios'}),
+      {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
   }
 
   const {data, error} = await supabase.auth.signInWithPassword({
@@ -50,18 +71,21 @@ export const POST: APIRoute = async ({request, cookies, redirect}) => {
   })
 
   if (error) {
-    return new Response(error.message, {status: 500})
+    console.error('Password sign-in error:', error)
+    return new Response(JSON.stringify({error: 'Credenciales inválidas'}), {
+      status: 400,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
   }
 
   const {access_token, refresh_token} = data.session
-  cookies.set('sb-access-token', access_token, {
-    path: '/',
-  })
-  cookies.set('sb-refresh-token', refresh_token, {
-    path: '/',
-  })
+  setSessionCookies(cookies, access_token, refresh_token)
 
-  // Obtener la URL de referencia para redirigir de vuelta a la página actual
-  const referer = request.headers.get('referer') || '/'
-  return redirect(referer)
+  // Responder con éxito para que el cliente gestione la redirección/recarga
+  return new Response(JSON.stringify({success: true}), {
+    status: 200,
+    headers: {'Content-Type': 'application/json'},
+  })
 }

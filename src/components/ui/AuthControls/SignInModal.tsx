@@ -15,8 +15,46 @@ export default function SignInModal({
   onSwitchToRegister,
 }: SignInModalProps) {
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   if (!isOpen) return null
+
+  const handleEmailSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setError(null)
+
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        body: formData,
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+
+      if (response.ok) {
+        // Si el login es exitoso, recargar la página para actualizar el estado de autenticación
+        window.location.reload()
+      } else {
+        // Si hay error, mostrar el mensaje en el modal
+        try {
+          const errorData = await response.json()
+          setError(errorData.error || 'Error desconocido')
+        } catch {
+          const errorMessage = await response.text()
+          setError(errorMessage)
+        }
+      }
+    } catch (err) {
+      setError('Error de conexión. Inténtalo de nuevo.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const handleProviderSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setIsLoading(true)
@@ -45,10 +83,10 @@ export default function SignInModal({
         {/* Formulario de email */}
         <div className={styles.formSection}>
           <form
-            action="/api/auth/signin"
-            method="post"
+            onSubmit={handleEmailSubmit}
             className={styles.emailForm}
           >
+            {error && <div className={styles.errorMessage}>{error}</div>}
             <div className={styles.inputGroup}>
               <label htmlFor="email">Correo electrónico</label>
               <input
@@ -92,10 +130,9 @@ export default function SignInModal({
               onSubmit={handleProviderSubmit}
             >
               <input
-                type="text"
+                type="hidden"
                 name="provider"
-                value="github"
-                hidden
+                defaultValue="github"
               />
               <button
                 type="submit"
@@ -113,10 +150,9 @@ export default function SignInModal({
               onSubmit={handleProviderSubmit}
             >
               <input
-                type="text"
+                type="hidden"
                 name="provider"
-                value="google"
-                hidden
+                defaultValue="google"
               />
               <button
                 type="submit"

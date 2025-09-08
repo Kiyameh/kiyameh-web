@@ -59,6 +59,25 @@
   gap: 1rem;
 }
 
+/* Mensaje de error */
+.errorMessage {
+  background-color: var(--error);
+  color: var(--error-content);
+  padding: 0.75rem;
+  border-radius: var(--radius-medium);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.successMessage {
+  background-color: var(--success);
+  color: var(--success-content);
+  padding: 0.75rem;
+  border-radius: var(--radius-medium);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
 .inputGroup {
   display: flex;
   flex-direction: column;
@@ -119,6 +138,8 @@
 }
 
 /* Botones de proveedores */
+.providerSection {
+}
 .providerButtons {
   display: flex;
   flex-direction: column;

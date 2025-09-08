@@ -1,4 +1,4 @@
-import {AuthProvider, useAuth} from '@/contexts/AuthContext'
+import {AuthProvider} from '@/contexts/AuthContext'
 import styles from './AuthLayout.module.css'
 import AuthControls from '../components/ui/AuthControls/AuthControls'
 
