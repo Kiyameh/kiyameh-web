@@ -168,10 +168,14 @@ export default function NavigationBar({
             </div>
           </div>
         </li>
-        {/* Bot */}
+        {/* Bot 
+        
+         Interfaz preparada para programar un chatbot propio. Por ahora oculta.
+        
         <li className={styles.button}>
           <AiChatBot />
         </li>
+          */}
       </ul>
     </nav>
   )

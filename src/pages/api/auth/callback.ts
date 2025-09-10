@@ -9,7 +9,6 @@ import {
 } from '@/lib/authCookies'
 
 export const GET: APIRoute = async ({url, cookies, redirect}) => {
-  const isProd = import.meta.env.PROD === true
   const getBaseUrl = () => url.origin
   const sanitizeToPath = (raw: string | null) => {
     try {

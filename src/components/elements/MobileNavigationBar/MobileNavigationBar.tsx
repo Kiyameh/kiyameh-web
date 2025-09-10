@@ -72,9 +72,14 @@ export default function MobileNavigationBar({
       >
         {isOpen ? <X /> : <Menu />}
       </button>
+      {/* Bot 
+
+      Interfaz preparada para programar un chatbot propio. Por ahora oculta.
+      
       <div className={styles.floatingChatBot}>
         <AiChatBot />
       </div>
+      */}
 
       <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
         <nav className={styles.navigation}>
