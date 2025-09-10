@@ -4,8 +4,7 @@ import type {APIRoute} from 'astro'
 import {supabase} from '@/lib/supabase'
 import {setSessionCookies} from '@/lib/authCookies'
 
-export const POST: APIRoute = async ({request, redirect, cookies}) => {
-  const isProd = import.meta.env.PROD === true
+export const POST: APIRoute = async ({request, cookies}) => {
   const formData = await request.formData()
   const email = formData.get('email')?.toString()
   const password = formData.get('password')?.toString()

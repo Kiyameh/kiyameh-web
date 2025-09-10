@@ -6,7 +6,6 @@ import {setOAuthRedirectCookie, setSessionCookies} from '@/lib/authCookies'
 import type {Provider} from '@supabase/supabase-js'
 
 export const POST: APIRoute = async ({request, cookies, redirect}) => {
-  const isProd = import.meta.env.PROD === true
   const getBaseUrl = () => request.url.split('/api')[0]
   const sanitizeToPath = (raw: string | null) => {
     try {
