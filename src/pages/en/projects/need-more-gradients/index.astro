@@ -9,7 +9,7 @@ import CornerRibbon from '@/components/ui/CornerRibbon/CornerRibbon.astro'
 import ProjectStateBadge from '@/components/ui/ProjectStateBadge/ProjectStateBadge'
 import GrapperPlayground from '@/components/package/GrapperPlayground'
 import GradowPlayground from '@/components/package/GradowPlayground'
-import {Code} from 'lucide-react'
+import {Code, BookOpen} from 'lucide-react'
 
 /* Get project info */
 import {getCollection} from 'astro:content'
@@ -23,7 +23,7 @@ if (!project) {
   return Astro.redirect('/en/projects')
 }
 
-const {features, name, type, technologies, logo, logo_dark, state, version} =
+const {features, name, type, technologies, logo, logo_dark, state, version, documentation} =
   project.data
 
 /* 
@@ -186,6 +186,35 @@ const {features, name, type, technologies, logo, logo_dark, state, version} =
             <GradowPlayground client:load />
           </div>
         </section>
+        <!-- Documentation -->
+        {
+          documentation && (
+            <section>
+              <header>
+                <SectionTitle
+                  client:load
+                  id="documentation"
+                  level="subtitle"
+                >
+                  Documentation
+                </SectionTitle>
+              </header>
+              <div class="documentation-link">
+                <BookOpen className="documentation-icon" />
+                <div class="documentation-content">
+                  <p>Check out the complete project documentation for detailed information about its usage and implementation.</p>
+                  <a
+                    href={documentation}
+                    target="_blank"
+                    class="documentation-button"
+                  >
+                    View Documentation
+                  </a>
+                </div>
+              </div>
+            </section>
+          )
+        }
       </main>
     </div>
   </NavLayout>
@@ -330,5 +359,65 @@ const {features, name, type, technologies, logo, logo_dark, state, version} =
   }
   .component-box .paragraph {
     max-width: 70%;
+  }
+
+  /* Documentation */
+  .documentation-link {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    background-color: var(--surface-300);
+    border-radius: var(--radius-large);
+  }
+
+  .documentation-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .documentation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .documentation-content p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .documentation-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--surface-100);
+    color: var(--content);
+    text-decoration: none;
+    border-radius: var(--radius-medium);
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    align-self: flex-start;
+  }
+
+  .documentation-button:hover {
+    background-color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .documentation-link {
+      padding: 1.5rem;
+      gap: 1rem;
+    }
+    
+    .documentation-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 </style>

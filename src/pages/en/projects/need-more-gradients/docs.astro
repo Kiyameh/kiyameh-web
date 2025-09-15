@@ -1,36 +1,739 @@
 ---
-import CornerRibbon from '@/components/ui/CornerRibbon/CornerRibbon.astro'
 import HtmlLayout from '@/layouts/HtmlLayout.astro'
 import NavLayout from '@/layouts/NavLayout.astro'
+import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb.tsx'
+import { SiGithub, SiNpm } from '@icons-pack/react-simple-icons'
 
 /* 
   @version 1
-  @revisado 04/09/2025
-  @descripcion: Página de documentación de Need More Gradients en inglés
+  @revisado 15/09/2025
+  @descripcion: Complete documentation page for Need More Gradients in English
 */
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Projects', href: '/en/projects' },
+  { label: 'Need More Gradients', href: '/en/projects/need-more-gradients' },
+  { label: 'Documentation' }
+]
 ---
 
-<HtmlLayout pageTitle="Need More Gradients Docs">
+<HtmlLayout pageTitle="Need More Gradients - Documentation">
   <NavLayout>
-    <div class="container">
-      <CornerRibbon text="In development" />
-      <h1>Need More Gradients</h1>
-      <p>Need More Gradients documentation</p>
+    <div class="docs-container">
+      <Breadcrumb items={breadcrumbItems} client:load />
+      <header class="docs-header">
+        <div class="logo-section">
+          <img src="/projects/needmoregradients/logo.png" alt="Need More Gradients Logo" class="logo" />
+          <div class="header-text">
+            <h1>Need More Gradients UI</h1>
+            <p class="subtitle">React UI component library with colorful gradient-based styling</p>
+          </div>
+        </div>
+        <div class="badges">
+            <a href="https://www.npmjs.com/package/need-more-gradients-ui" target="_blank" class="badge-button npm-badge">
+              <SiNpm/>
+              NPM</a>
+            <a href="https://github.com/Kiyameh/need-more-gradients-ui" target="_blank" class="badge-button github-badge">
+              <SiGithub/>
+              GitHub</a>
+        </div>
+      </header>
+
+      <nav class="table-of-contents">
+        <h2>Contents</h2>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#quick-start">Quick Start</a></li>
+          <li><a href="#grapper">Grapper Component</a></li>
+          <li><a href="#gradow">Gradow Component</a></li>
+          <li><a href="#customization">Customization</a></li>
+          <li><a href="#examples">Advanced Examples</a></li>
+        </ul>
+      </nav>
+
+      <main class="docs-content">
+        <section id="features" class="docs-section">
+          <h2>Features</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <span class="feature-icon">🎨</span>
+              <h3>Gradient components</h3>
+              <p>Two specialized components: Grapper and Gradow</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">⚡</span>
+              <h3>Easy installation</h3>
+              <p>Installable from NPM or copy-use system</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🔧</span>
+              <h3>Highly customizable</h3>
+              <p>Multiple variants and configuration modes</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">📱</span>
+              <h3>Interactive</h3>
+              <p>Cursor-following effects and smooth animations</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🎯</span>
+              <h3>TypeScript</h3>
+              <p>Fully typed for better development experience</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🌈</span>
+              <h3>CSS Variables</h3>
+              <p>Complete customization through CSS variables</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="installation" class="docs-section">
+          <h2>Installation</h2>
+          
+          <h3>Via NPM</h3>
+          <div class="code-block">
+            <pre><code>npm install need-more-gradients-ui</code></pre>
+          </div>
+          
+          <h3>Copy-Use System</h3>
+          <p>You can also copy the components directly into your project:</p>
+          <ol>
+            <li>Copy the files <code>Grapper.tsx</code>, <code>Grapper.css</code>, <code>Gradow.tsx</code> and <code>Gradow.css</code></li>
+            <li>Import the components into your project</li>
+            <li>Make sure you have the necessary CSS variables in your theme</li>
+          </ol>
+        </section>
+
+        <section id="quick-start" class="docs-section">
+          <h2>Quick Start</h2>
+          <div class="code-block">
+            <pre><code>import &#123;Grapper, Gradow&#125; from 'need-more-gradients-ui'
+
+function App() &#123;
+  return (
+    &lt;div&gt;
+      &lt;Grapper variant="static" mode="border"&gt;
+        &lt;p&gt;Content with gradient border&lt;/p&gt;
+      &lt;/Grapper&gt;
+      
+      &lt;Gradow variant="spin" mode="permanent"&gt;
+        &lt;h2&gt;Title with glow&lt;/h2&gt;
+      &lt;/Gradow&gt;
+    &lt;/div&gt;
+  )
+&#125;</code></pre>
+          </div>
+        </section>
+
+        <section id="grapper" class="docs-section">
+          <h2>Grapper Component</h2>
+          <p>Grapper is a component that wraps content with animated gradient borders or backgrounds.</p>
+          
+          <h3>Grapper Props</h3>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Prop</th>
+                  <th>Type</th>
+                  <th>Default value</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>variant</code></td>
+                  <td>'static' | 'spotlight' | 'sticky'</td>
+                  <td>'static'</td>
+                  <td>Type of gradient animation</td>
+                </tr>
+                <tr>
+                  <td><code>mode</code></td>
+                  <td>'border' | 'solid' | 'ghost'</td>
+                  <td>'border'</td>
+                  <td>Display style</td>
+                </tr>
+                <tr>
+                  <td><code>borderWidth</code></td>
+                  <td>string</td>
+                  <td>'2px'</td>
+                  <td>Border thickness (only in mode='border')</td>
+                </tr>
+                <tr>
+                  <td><code>borderRadius</code></td>
+                  <td>string</td>
+                  <td>'16px'</td>
+                  <td>Corner radius</td>
+                </tr>
+                <tr>
+                  <td><code>children</code></td>
+                  <td>React.ReactNode</td>
+                  <td>-</td>
+                  <td>Content to wrap</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Grapper Variants</h3>
+          
+          <h4>Static</h4>
+          <p>Static gradient without animation:</p>
+          <div class="code-block">
+            <pre><code>&lt;Grapper variant="static" mode="border"&gt;
+  Content with static gradient border
+&lt;/Grapper&gt;</code></pre>
+          </div>
+
+          <h4>Spotlight</h4>
+          <p>Continuously rotating gradient:</p>
+          <div class="code-block">
+            <pre><code>&lt;Grapper variant="spotlight" mode="solid"&gt;
+  Content with rotating gradient background
+&lt;/Grapper&gt;</code></pre>
+          </div>
+
+          <h4>Sticky</h4>
+          <p>Gradient that follows the mouse cursor:</p>
+          <div class="code-block">
+            <pre><code>&lt;Grapper variant="sticky" mode="ghost"&gt;
+  Content that lights up on hover
+&lt;/Grapper&gt;</code></pre>
+          </div>
+
+          <h3>Grapper Modes</h3>
+          <ul>
+            <li><strong>border:</strong> Shows only the gradient border</li>
+            <li><strong>solid:</strong> Fills completely with the gradient</li>
+            <li><strong>ghost:</strong> Only appears on hover</li>
+          </ul>
+        </section>
+
+        <section id="gradow" class="docs-section">
+          <h2>Gradow Component</h2>
+          <p>Gradow adds a gradient glow effect behind the content.</p>
+          
+          <h3>Gradow Props</h3>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Prop</th>
+                  <th>Type</th>
+                  <th>Default value</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>variant</code></td>
+                  <td>'spin' | 'pulse' | 'sticky'</td>
+                  <td>'spin'</td>
+                  <td>Type of glow animation</td>
+                </tr>
+                <tr>
+                  <td><code>mode</code></td>
+                  <td>'permanent' | 'hover'</td>
+                  <td>'permanent'</td>
+                  <td>When to show the glow</td>
+                </tr>
+                <tr>
+                  <td><code>opacity</code></td>
+                  <td>number</td>
+                  <td>0.5</td>
+                  <td>Glow opacity (0-1)</td>
+                </tr>
+                <tr>
+                  <td><code>children</code></td>
+                  <td>React.ReactNode</td>
+                  <td>-</td>
+                  <td>Content to wrap</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Gradow Variants</h3>
+          
+          <h4>Spin</h4>
+          <p>Continuously rotating glow:</p>
+          <div class="code-block">
+            <pre><code>&lt;Gradow variant="spin" mode="permanent" opacity=&#123;0.7&#125;&gt;
+  &lt;h2&gt;Title with rotating glow&lt;/h2&gt;
+&lt;/Gradow&gt;</code></pre>
+          </div>
+
+          <h4>Pulse</h4>
+          <p>Glow that pulses with different colors:</p>
+          <div class="code-block">
+            <pre><code>&lt;Gradow variant="pulse" mode="hover" opacity=&#123;0.8&#125;&gt;
+  &lt;button&gt;Button with pulse effect on hover&lt;/button&gt;
+&lt;/Gradow&gt;</code></pre>
+          </div>
+
+          <h4>Sticky</h4>
+          <p>Glow that follows the cursor:</p>
+          <div class="code-block">
+            <pre><code>&lt;Gradow variant="sticky" mode="permanent"&gt;
+  &lt;div&gt;Content with cursor-following glow&lt;/div&gt;
+&lt;/Gradow&gt;</code></pre>
+          </div>
+        </section>
+
+        <section id="customization" class="docs-section">
+          <h2>Customization</h2>
+          
+          <h3>Required CSS Variables</h3>
+          <p>For the components to work correctly, you need to define these CSS variables in your theme:</p>
+          <div class="code-block">
+            <pre><code>:root &#123;
+  /* Gradient colors */
+  --gradient-100: #ff6b6b;
+  --gradient-200: #4ecdc4;
+  --gradient-300: #45b7d1;
+  
+  /* Content color over solid gradient */
+  --gradient-content: #ffffff;
+  
+  /* Surface colors */
+  --surface-300: #f8f9fa;
+  
+  /* Normal content color */
+  --content: #333333;
+&#125;</code></pre>
+          </div>
+
+          <h3>Advanced Customization</h3>
+          <p>You can fully customize the gradients by modifying the CSS variables:</p>
+          <div class="code-block">
+            <pre><code>/* Dark theme */
+:root[data-theme="dark"] &#123;
+  --gradient-100: #667eea;
+  --gradient-200: #764ba2;
+  --gradient-300: #f093fb;
+  --gradient-content: #ffffff;
+  --surface-300: #1a1a1a;
+  --content: #ffffff;
+&#125;
+
+/* Custom theme */
+:root[data-theme="custom"] &#123;
+  --gradient-100: #ffeaa7;
+  --gradient-200: #fab1a0;
+  --gradient-300: #fd79a8;
+&#125;</code></pre>
+          </div>
+        </section>
+
+        <section id="examples" class="docs-section">
+          <h2>Advanced Examples</h2>
+          
+          <h3>Card with Combined Effects</h3>
+          <div class="code-block">
+            <pre><code>&lt;Gradow variant="pulse" mode="hover" opacity=&#123;0.3&#125;&gt;
+  &lt;Grapper variant="sticky" mode="ghost" borderRadius="20px"&gt;
+    &lt;div style=&#123;&#123; padding: '2rem' &#125;&#125;&gt;
+      &lt;h3&gt;Interactive Card&lt;/h3&gt;
+      &lt;p&gt;This card combines both components to create a unique effect&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/Grapper&gt;
+&lt;/Gradow&gt;</code></pre>
+          </div>
+
+          <h3>Button with Multiple States</h3>
+          <div class="code-block">
+            <pre><code>function GradientButton(&#123; children, onClick &#125;) &#123;
+  const [isActive, setIsActive] = useState(false)
+  
+  return (
+    &lt;Gradow 
+      variant="spin" 
+      mode=&#123;isActive ? "permanent" : "hover"&#125;
+      opacity=&#123;0.6&#125;
+    &gt;
+      &lt;Grapper 
+        variant="spotlight" 
+        mode="solid"
+        borderRadius="12px"
+      &gt;
+        &lt;button 
+          onClick=&#123;() =&gt; &#123;
+            setIsActive(!isActive)
+            onClick?.()
+          &#125;&#125;
+          style=&#123;&#123; 
+            padding: '1rem 2rem',
+            border: 'none',
+            background: 'transparent',
+            color: 'inherit',
+            cursor: 'pointer'
+          &#125;&#125;
+        &gt;
+          &#123;children&#125;
+        &lt;/button&gt;
+      &lt;/Grapper&gt;
+    &lt;/Gradow&gt;
+  )
+&#125;</code></pre>
+          </div>
+
+          <h3>Layout with Background Effects</h3>
+          <div class="code-block">
+            <pre><code>&lt;div style=&#123;&#123; position: 'relative', minHeight: '100vh' &#125;&#125;&gt;
+  &lt;Gradow variant="sticky" mode="permanent" opacity=&#123;0.1&#125;&gt;
+    &lt;div style=&#123;&#123; 
+      position: 'absolute',
+      inset: 0,
+      zIndex: -1
+    &#125;&#125; /&gt;
+  &lt;/Gradow&gt;
+  
+  &lt;main&gt;
+    &lt;h1&gt;Main content&lt;/h1&gt;
+    &lt;p&gt;The background responds to cursor movement&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Useful Links</h2>
+          <div class="links-grid">
+            <a href="https://www.npmjs.com/package/need-more-gradients-ui" target="_blank" class="link-card">
+              <h3>📦 NPM Package</h3>
+              <p>Install the package from NPM</p>
+            </a>
+            <a href="https://github.com/Kiyameh/need-more-gradients-ui" target="_blank" class="link-card">
+              <h3>💻 Repository</h3>
+              <p>Source code and examples</p>
+            </a>
+            <a href="#examples" class="link-card">
+              <h3>🎯 Examples</h3>
+              <p>Advanced use cases</p>
+            </a>
+          </div>
+        </section>
+
+        <footer class="docs-footer">
+          <p>Created by <strong>Andoni Abarzuza (@kiyameh)</strong></p>
+          <p>MIT License - Contributions are welcome!</p>
+        </footer>
+      </main>
     </div>
   </NavLayout>
 </HtmlLayout>
 
 <style>
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    background-color: var(--surface-100);
-    max-width: 1024px;
+  .docs-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem;
-    position: relative;
+    padding: 2rem;
+    background-color: var(--surface-200);
+    min-height: 100vh;
+  }
+
+  .docs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--primary);
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-medium);
+  }
+
+  .header-text h1 {
+    font-size: 2.5rem;
+    color: var(--content);
+    margin: 0;
+  }
+
+  .subtitle {
+    color: var(--content-200);
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .badge-button {
+    padding: 0.5rem 1rem;
+    background: var(--surface-300);
+    border-radius: 99px;
+    border: 2px solid transparent;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+    width: fit-content;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+  .npm-badge {
+    color: orangered;
+  }
+  .npm-badge:hover {
+    border: 2px solid orangered;
+  }
+
+  .github-badge {
+    color: var(--primary);
+  }
+  .github-badge:hover {
+    border: 2px solid var(--primary);
+  }
+  .table-of-contents {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    margin-bottom: 3rem;
+  }
+
+  .table-of-contents h2 {
+    margin-top: 0;
+    color: var(--content);
+  }
+
+  .table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .table-of-contents a {
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: var(--radius-small);
+    transition: all 0.2s ease;
+  }
+
+  .table-of-contents a:hover {
+    background-color: var(--surface-200);
+    transform: translateX(4px);
+  }
+
+  .docs-content {
+    line-height: 1.6;
+  }
+
+  .docs-section {
+    margin-bottom: 4rem;
+  }
+
+  .docs-section h2 {
+    color: var(--content);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+  }
+
+  .docs-section h3 {
+    color: var(--content);
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0;
+  }
+
+  .docs-section h4 {
+    color: var(--content);
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.5rem 0;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .feature-card {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--surface-200);
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--content);
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: var(--content-200);
+  }
+
+  .code-block {
+    background-color: var(--surface-100);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .code-block pre {
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  .code-block code {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--content);
+  }
+
+  .props-table {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .props-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface-100);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+  }
+
+  .props-table th,
+  .props-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--surface-200);
+  }
+
+  .props-table th {
+    background-color: var(--surface-300);
+    font-weight: 600;
+    color: var(--content);
+  }
+
+  .props-table code {
+    background-color: var(--surface-300);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-small);
+    font-size: 0.9rem;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .link-card {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    text-decoration: none;
+    color: var(--content);
+    transition: all 0.3s ease;
+  }
+
+  .link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--surface-200);
+  }
+
+  .link-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+  }
+
+  .link-card p {
+    margin: 0;
+    color: var(--content-200);
+  }
+
+  .docs-footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 2px solid var(--surface-200);
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    color: var(--content);
+    background-color: var(--surface-200);
+    border-radius: var(--radius-medium);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .docs-container {
+      padding: 1rem;
+    }
+
+    .docs-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .logo-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .header-text h1 {
+      font-size: 2rem;
+    }
+
+    .table-of-contents ul {
+      grid-template-columns: 1fr;
+    }
+
+    .features-grid,
+    .links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Highlight active section */
+  .docs-section:target {
+    scroll-margin-top: 2rem;
   }
 </style>
