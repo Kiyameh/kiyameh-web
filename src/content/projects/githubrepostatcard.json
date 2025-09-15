@@ -5,6 +5,7 @@
   "logo_dark": "/projects/githubrepostatscard/logo_dark.svg",
   "url": "https://www.npmjs.com/package/github-repo-stats-card",
   "repository": "https://github.com/Kiyameh/repo-stats-card",
+  "documentation": "https://kiyameh.com/es/projects/github-repo-stat-card/docs",
   "type": "package",
   "description": "Componente de React para mostrar estadísticas de un repositorio de Github.",
   "description_en": "React component to show statistics of a Github repository.",

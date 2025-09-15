@@ -18,6 +18,7 @@ const projectsSchema = z.object({
   logo_dark: z.string().optional(),
   url: z.string().url().optional(),
   repository: z.string().url().optional(),
+  documentation: z.string().url().optional(),
   type: z.enum(projectCategories),
   description: z.string(),
   description_en: z.string(),

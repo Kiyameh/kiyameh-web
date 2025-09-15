@@ -1,0 +1,846 @@
+---
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
+import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb.tsx'
+import { SiGithub, SiNpm } from '@icons-pack/react-simple-icons'
+
+/* 
+  @version 3
+  @revisado 15/09/2025
+  @descripcion: Complete documentation page for GitHub Repo Stats Card in English
+*/
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Projects', href: '/en/projects' },
+  { label: 'GitHub Repo Stats Card', href: '/en/projects/github-repo-stats-card' },
+  { label: 'Documentation' }
+]
+---
+
+<HtmlLayout pageTitle="GitHub Repo Stats Card - Documentation">
+  <NavLayout>
+    <div class="docs-container">
+      <Breadcrumb items={breadcrumbItems} client:load />
+      <header class="docs-header">
+        <div class="logo-section">
+          <img src="/projects/githubrepostatscard/logo.svg" alt="GitHub Repo Stats Card Logo" class="logo" />
+          <div class="header-text">
+      <h1>GitHub Repo Stats Card</h1>
+            <p class="subtitle">Lightweight, dependency-free NPM package for displaying GitHub repository statistics</p>
+          </div>
+        </div>
+        <div class="badges">
+            <a href="https://www.npmjs.com/package/github-repo-stats-card" class="badge-button npm-badge">
+              <SiNpm/>
+              NPM</a>
+            <a href="https://github.com/Kiyameh/repo-stats-card" class="badge-button github-badge">
+              <SiGithub/>
+              GitHub</a>
+        </div>
+      </header>
+
+      <nav class="table-of-contents">
+        <h2>Contents</h2>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#basic-usage">Basic Usage</a></li>
+          <li><a href="#api">API Reference</a></li>
+          <li><a href="#statistics">Displayed Statistics</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+          <li><a href="#customization">Customization</a></li>
+          <li><a href="#examples">Advanced Examples</a></li>
+        </ul>
+      </nav>
+
+      <main class="docs-content">
+        <section id="features" class="docs-section">
+          <h2>Features</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <span class="feature-icon">🚀</span>
+              <h3>Zero dependencies</h3>
+              <p>Works only with native browser APIs</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🎨</span>
+              <h3>Self-contained styling</h3>
+              <p>CSS automatically injected, doesn't interfere with existing styles</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">📱</span>
+              <h3>Responsive</h3>
+              <p>Adapts to different screen sizes with adaptive layout</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">⚡</span>
+              <h3>Lightweight</h3>
+              <p>Only vanilla JavaScript with ES Modules</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🛡️</span>
+              <h3>Error handling</h3>
+              <p>Shows elegant error messages when something fails</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🔐</span>
+              <h3>Optional authentication</h3>
+              <p>GitHub token support to increase API limits</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">💻</span>
+              <h3>Programming languages</h3>
+              <p>Top 5 most used languages in the repository</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">♿</span>
+              <h3>Accessible</h3>
+              <p>Meets WCAG standards and includes screen reader support</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🌙</span>
+              <h3>Dark theme</h3>
+              <p>Automatic support for prefers-color-scheme: dark</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">📊</span>
+              <h3>Dual charts</h3>
+              <p>Pie chart on desktop, linear chart on mobile</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="installation" class="docs-section">
+          <h2>Installation</h2>
+          <div class="code-block">
+            <pre><code>npm install github-repo-stats-card</code></pre>
+          </div>
+        </section>
+
+        <section id="basic-usage" class="docs-section">
+          <h2>Basic Usage</h2>
+          
+          <h3>HTML</h3>
+          <div class="code-block">
+            <pre><code>&lt;div id="github-card"&gt;&lt;/div&gt;</code></pre>
+          </div>
+
+          <h3>JavaScript</h3>
+          <div class="code-block">
+            <pre><code>import &#123;getRepoStats, renderRepoCard&#125; from 'github-repo-stats-card'
+
+// Get repository data
+const stats = await getRepoStats('vuejs/vue')
+
+// Render the card with the obtained data
+renderRepoCard('#github-card', stats)
+
+// With authentication token
+const statsWithToken = await getRepoStats('vuejs/vue', 'ghp_your_token_here')
+renderRepoCard('#github-card', statsWithToken)</code></pre>
+          </div>
+
+          <h3>TypeScript</h3>
+          <p>The package includes full TypeScript support with defined types:</p>
+          <div class="code-block">
+            <pre><code>import &#123;getRepoStats, renderRepoCard, RepoStats&#125; from 'github-repo-stats-card'
+
+// Get typed data
+const stats: RepoStats = await getRepoStats('vuejs/vue')
+console.log(stats.stargazersCount) // number
+console.log(stats.languages) // Record&lt;string, number&gt;
+
+// Render with typed data
+renderRepoCard('#github-card', stats)</code></pre>
+          </div>
+
+          <div class="warning-box">
+            <h4>⚠️ Important Security Note</h4>
+            <p><strong>getRepoStats</strong> should always be used on the server side to avoid exposing the token to the client.</p>
+            <p><strong>renderRepoCard</strong> can be safely used on the client or server side.</p>
+          </div>
+        </section>
+
+        <section id="api" class="docs-section">
+          <h2>API Reference</h2>
+          
+          <h3>getRepoStats(repoName, githubAuthToken?)</h3>
+          <p>Gets only repository data without manipulating the DOM.</p>
+          
+          <div class="api-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Required</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>repoName</code></td>
+                  <td>string</td>
+                  <td>Yes</td>
+                  <td>Repository name in 'user/repo-name' format</td>
+                </tr>
+                <tr>
+                  <td><code>githubAuthToken</code></td>
+                  <td>string</td>
+                  <td>No</td>
+                  <td>GitHub authentication token to increase API limits</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <p><strong>Returns:</strong> <code>Promise&lt;RepoStats&gt;</code> - Repository statistics</p>
+          
+          <div class="warning-box">
+            <p><strong>⚠️ Important:</strong> This function should always be used on the server side to avoid exposing the token to the client.</p>
+          </div>
+
+          <h3>renderRepoCard(selector, stats)</h3>
+          <p>Renders a GitHub statistics card with provided data.</p>
+          
+          <div class="api-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Required</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>selector</code></td>
+                  <td>string</td>
+                  <td>Yes</td>
+                  <td>CSS selector of the container element where the card will be displayed</td>
+                </tr>
+                <tr>
+                  <td><code>stats</code></td>
+                  <td>RepoStats</td>
+                  <td>Yes</td>
+                  <td>Repository statistics obtained with getRepoStats</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <p><strong>Returns:</strong> <code>void</code></p>
+          
+          <div class="info-box">
+            <p><strong>ℹ️ Note:</strong> This function can be safely used on the client or server side.</p>
+          </div>
+        </section>
+
+        <section id="statistics" class="docs-section">
+          <h2>Displayed Statistics</h2>
+          <p>The card shows the following repository statistics:</p>
+          
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-icon">⭐</span>
+              <div>
+                <h4>Stars (Stargazers)</h4>
+                <p>Number of users who have starred the repository</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🍴</span>
+              <div>
+                <h4>Forks</h4>
+                <p>Number of repository copies created by other users</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">❗</span>
+              <div>
+                <h4>Open issues</h4>
+                <p>Number of pending problems or feature requests</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">📝</span>
+              <div>
+                <h4>Description</h4>
+                <p>Repository description provided by the author</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">📅</span>
+              <div>
+                <h4>Creation date</h4>
+                <p>When the repository was created</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🔄</span>
+              <div>
+                <h4>Last update</h4>
+                <p>Date of the last commit or change in the repository</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">💻</span>
+              <div>
+                <h4>Top 5 languages</h4>
+                <p>The 5 most used programming languages with percentages</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🔗</span>
+              <div>
+                <h4>Direct link</h4>
+                <p>Link that goes directly to the repository on GitHub</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="accessibility" class="docs-section">
+          <h2>Accessibility and Design</h2>
+          
+          <h3>Accessibility Features</h3>
+          <ul>
+            <li><strong>ARIA roles:</strong> Appropriate use of roles like <code>main</code>, <code>group</code>, <code>img</code> and <code>section</code></li>
+            <li><strong>Descriptive labels:</strong> <code>aria-label</code> and <code>aria-labelledby</code> for interactive elements</li>
+            <li><strong>Screen reader text:</strong> Hidden but accessible content for assistive technologies</li>
+            <li><strong>Keyboard navigation:</strong> Links with <code>target="_blank"</code> and <code>rel="noopener noreferrer"</code></li>
+            <li><strong>Color contrast:</strong> Meets WCAG accessibility standards</li>
+          </ul>
+
+          <h3>Responsive Design</h3>
+          <ul>
+            <li><strong>Adaptive layout:</strong> Grid on desktop, flexbox on mobile</li>
+            <li><strong>Dual charts:</strong> Pie chart on desktop, linear chart on mobile</li>
+            <li><strong>Scalable typography:</strong> CSS variables for consistent font sizes</li>
+            <li><strong>Responsive spacing:</strong> Margins and padding that adapt to screen size</li>
+            <li><strong>Dark theme:</strong> Automatic support for <code>prefers-color-scheme: dark</code></li>
+          </ul>
+        </section>
+
+        <section id="customization" class="docs-section">
+          <h2>Customization</h2>
+          <p>The package automatically injects the necessary CSS styles. Styles are encapsulated in classes with <code>stat-card-</code> prefix to avoid conflicts.</p>
+          
+          <h3>Available CSS Variables</h3>
+          <p>You can override these CSS variables to customize the appearance:</p>
+          <div class="code-block">
+            <pre><code>:root &#123;
+  /* Colors */
+  --stat-card-surface: #ffffff;
+  --stat-card-border: #e1e5e9;
+  --stat-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --stat-card-text-primary: #24292f;
+  --stat-card-text-secondary: #656d76;
+  --stat-card-text-muted: #8b949e;
+  --stat-card-accent: #0969da;
+  --stat-card-accent-hover: #0860ca;
+  
+  /* Spacing */
+  --stat-card-spacing-xs: 4px;
+  --stat-card-spacing-sm: 8px;
+  --stat-card-spacing-md: 16px;
+  --stat-card-spacing-lg: 24px;
+  
+  /* Typography */
+  --stat-card-font-sm: 0.875rem;
+  --stat-card-font-base: 1rem;
+  --stat-card-font-lg: 1.125rem;
+  
+  /* Borders */
+  --stat-card-radius: 12px;
+&#125;</code></pre>
+          </div>
+
+          <h3>Custom Dark Theme</h3>
+          <div class="code-block">
+            <pre><code>@media (prefers-color-scheme: dark) &#123;
+  :root &#123;
+    --stat-card-surface: #0d1117;
+    --stat-card-border: #30363d;
+    --stat-card-text-primary: #f0f6fc;
+    --stat-card-text-secondary: #8b949e;
+    --stat-card-text-muted: #6e7681;
+    --stat-card-accent: #58a6ff;
+    --stat-card-accent-hover: #4493f8;
+  &#125;
+&#125;</code></pre>
+          </div>
+        </section>
+
+        <section id="examples" class="docs-section">
+          <h2>Advanced Examples</h2>
+          
+          <h3>With Error Handling</h3>
+          <div class="code-block">
+            <pre><code>import &#123;getRepoStats, renderRepoCard&#125; from 'github-repo-stats-card'
+
+async function loadGitHubCard() &#123;
+  try &#123;
+    const stats = await getRepoStats('user/repository')
+    renderRepoCard('#my-card', stats)
+  &#125; catch (error) &#123;
+    console.error('Error loading card:', error)
+    document.querySelector('#my-card').innerHTML = 
+      '&lt;p&gt;Error loading repository statistics&lt;/p&gt;'
+  &#125;
+&#125;
+
+loadGitHubCard()</code></pre>
+          </div>
+
+          <h3>Multiple Cards</h3>
+          <div class="code-block">
+            <pre><code>const repositories = ['vuejs/vue', 'facebook/react', 'angular/angular']
+
+async function loadMultipleCards() &#123;
+  for (const [index, repo] of repositories.entries()) &#123;
+    try &#123;
+      const stats = await getRepoStats(repo)
+      renderRepoCard(`#card-$&#123;index&#125;`, stats)
+    &#125; catch (error) &#123;
+      console.error(`Error loading $&#123;repo&#125;:`, error)
+    &#125;
+  &#125;
+&#125;</code></pre>
+          </div>
+
+          <h3>With Environment Variables</h3>
+          <div class="code-block">
+            <pre><code>// In Node.js with environment variables
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN
+
+async function serverSideRender(repoName) &#123;
+  const stats = await getRepoStats(repoName, GITHUB_TOKEN)
+  return stats
+&#125;
+
+// On the client
+const stats = await fetch('/api/github-stats?repo=vuejs/vue')
+  .then(res =&gt; res.json())
+renderRepoCard('#github-card', stats)</code></pre>
+          </div>
+
+          <h3>GitHub API Limits</h3>
+          <div class="info-box">
+            <h4>📝 GitHub API Limits</h4>
+            <ul>
+              <li><strong>Without authentication:</strong> 60 requests per hour per IP</li>
+              <li><strong>With token:</strong> 5,000 requests per hour</li>
+              <li><strong>Recommendation:</strong> Use a token for production projects</li>
+            </ul>
+          </div>
+
+          <h3>Creating a GitHub Token</h3>
+          <ol>
+            <li>Go to <a href="https://github.com/settings/tokens" target="_blank">GitHub Settings → Developer settings → Personal access tokens</a></li>
+            <li>Generate a new token with <code>public_repo</code> permissions</li>
+            <li>Use the token as the second parameter in <code>getRepoStats</code></li>
+          </ol>
+        </section>
+
+        <section class="docs-section">
+          <h2>Useful Links</h2>
+          <div class="links-grid">
+            <a href="https://www.npmjs.com/package/github-repo-stats-card" target="_blank" class="link-card">
+              <h3>📦 NPM Package</h3>
+              <p>Install the package from NPM</p>
+            </a>
+            <a href="https://github.com/Kiyameh/repo-stats-card" target="_blank" class="link-card">
+              <h3>💻 Repository</h3>
+              <p>Source code and examples</p>
+            </a>
+            <a href="https://docs.github.com/en/rest/reference/repos" target="_blank" class="link-card">
+              <h3>🔗 GitHub API</h3>
+              <p>GitHub API documentation</p>
+            </a>
+          </div>
+        </section>
+
+        <footer class="docs-footer">
+          <p>Created by <strong>Andoni Abarzuza (@kiyameh)</strong></p>
+          <p>MIT License - Contributions are welcome!</p>
+        </footer>
+      </main>
+    </div>
+  </NavLayout>
+</HtmlLayout>
+
+<style>
+  .docs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--surface-200);
+    min-height: 100vh;
+  }
+
+  .docs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--primary);
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-medium);
+  }
+
+  .header-text h1 {
+    font-size: 2.5rem;
+    color: var(--content);
+    margin: 0;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .badge-button {
+    padding: 0.5rem 1rem;
+    background: var(--surface-300);
+    border-radius: 99px;
+    border: 2px solid transparent;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+    width: fit-content;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+  .npm-badge {
+    color: orangered;
+  }
+  .npm-badge:hover {
+    border: 2px solid orangered;
+  }
+
+  .github-badge {
+    color: var(--primary);
+  }
+  .github-badge:hover {
+    border: 2px solid var(--primary);
+  }
+
+  .table-of-contents {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    margin-bottom: 3rem;
+  }
+
+  .table-of-contents h2 {
+    margin-top: 0;
+    color: var(--content);
+  }
+
+  .table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .table-of-contents a {
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: var(--radius-small);
+    transition: all 0.2s ease;
+  }
+
+  .table-of-contents a:hover {
+    background-color: var(--surface-200);
+    transform: translateX(4px);
+  }
+
+  .docs-content {
+    line-height: 1.6;
+  }
+
+  .docs-section {
+    margin-bottom: 4rem;
+  }
+
+  .docs-section h2 {
+    color: var(--content);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+  }
+
+  .docs-section h3 {
+    color: var(--content);
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0;
+  }
+
+  .docs-section h4 {
+    color: var(--content);
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.5rem 0;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .feature-card {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--surface-200);
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--content);
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: var(--content-200);
+  }
+
+  .code-block {
+    background-color: var(--surface-100);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .code-block pre {
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  .code-block code {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--content);
+  }
+
+  .warning-box, .info-box {
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-medium);
+    border-left: 4px solid;
+  }
+
+  .warning-box {
+    background-color: var(--surface-100);
+    border-left-color: var(--warning);
+  }
+
+  .info-box {
+    background-color: var(--surface-100);
+    border-left-color: var(--info);
+  }
+
+  .warning-box h4, .info-box h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--content);
+  }
+
+  .api-table {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .api-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface-100);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+  }
+
+  .api-table th,
+  .api-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--surface-200);
+  }
+
+  .api-table th {
+    background-color: var(--surface-300);
+    font-weight: 600;
+    color: var(--content);
+  }
+
+  .api-table code {
+    background-color: var(--surface-300);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-small);
+    font-size: 0.9rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--surface-100);
+    border-radius: var(--radius-medium);
+    transition: all 0.2s ease;
+  }
+
+  .stat-item:hover {
+    background-color: var(--surface-200);
+    transform: translateY(-2px);
+  }
+
+  .stat-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .stat-item h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--content);
+    font-size: 1.1rem;
+  }
+
+  .stat-item p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .link-card {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    text-decoration: none;
+    color: var(--content);
+    transition: all 0.3s ease;
+  }
+
+  .link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--surface-200);
+  }
+
+  .link-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+  }
+
+  .link-card p {
+    margin: 0;
+    color: var(--content);
+  }
+
+  .docs-footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 2px solid var(--surface-200);
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    color: var(--content);
+    background-color: var(--surface-200);
+    border-radius: var(--radius-medium);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .docs-container {
+      padding: 1rem;
+    }
+
+    .docs-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .logo-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .header-text h1 {
+      font-size: 2rem;
+    }
+
+    .table-of-contents ul {
+      grid-template-columns: 1fr;
+    }
+
+    .features-grid,
+    .stats-grid,
+    .links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Highlight active section */
+  .docs-section:target {
+    scroll-margin-top: 2rem;
+  }
+</style>

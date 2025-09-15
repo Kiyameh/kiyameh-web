@@ -5,6 +5,7 @@
   "logo": "/projects/reactresumekit/logo.png",
   "logo_dark": "/projects/reactresumekit/logo.png",
   "repository": "https://github.com/Kiyameh/react-resume-kit",
+  "documentation": "https://kiyameh.com/es/projects/react-resume-kit/docs",
   "type": "package",
   "description": "Paquete npm para la creación de Currículums vitae de forma rápida y sencilla.",
   "description_en": "Npm package for creating resumes or CVs quickly and easily.",

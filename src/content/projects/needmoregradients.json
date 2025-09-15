@@ -5,6 +5,7 @@
   "logo_dark": "/projects/needmoregradients/logo.png",
   "url": "https://www.npmjs.com/package/need-more-gradients-ui",
   "repository": "https://github.com/Kiyameh/need-more-gradients-ui",
+  "documentation": "https://kiyameh.com/es/projects/need-more-gradients/docs",
   "type": "package",
   "description": "Biblioteca de componentes Ui para React con estilo colorido basado en gradientes.",
   "description_en": "UI component library for React with colorful style based on gradients.",

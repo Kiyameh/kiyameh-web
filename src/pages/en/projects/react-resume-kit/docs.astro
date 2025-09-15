@@ -1,0 +1,700 @@
+---
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
+import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb.tsx'
+import { SiGithub, SiNpm, SiVercel } from '@icons-pack/react-simple-icons'
+import { Circle, Laptop } from 'lucide-react'
+
+/* 
+  @version 3
+  @revisado 15/09/2025
+  @descripcion: Complete documentation page for React Resume Kit in English
+*/
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Projects', href: '/en/projects' },
+  { label: 'React Resume Kit', href: '/en/projects/react-resume-kit' },
+  { label: 'Documentation' }
+]
+---
+
+<HtmlLayout pageTitle="React Resume Kit - Documentation">
+  <NavLayout>
+    <div class="docs-container">
+      <Breadcrumb items={breadcrumbItems} client:load />
+      <header class="docs-header">
+        <div class="logo-section">
+          <img src="/projects/reactresumekit/logo.png" alt="React Resume Kit Logo" class="logo" />
+          <div class="header-text">
+      <h1>React Resume Kit</h1>
+            <p class="subtitle">Modern and customizable React component for creating professional resumes</p>
+          </div>
+        </div>
+        <div class="badges">
+          <a href="https://www.npmjs.com/package/react-resume-kit" target="_blank" class="badge-button npm-badge">
+            <SiNpm/>
+            NPM</a>
+            <a href="https://github.com/Kiyameh/react-resume-kit" target="_blank" class="badge-button github-badge">
+              <SiGithub/>
+              GitHub</a>
+              <a href="https://react-resume-kit.vercel.app/" target="_blank" class="badge-button live-badge">
+                <Laptop />
+                Live demo</a>
+        </div>
+      </header>
+
+      <nav class="table-of-contents">
+        <h2>Contents</h2>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#quick-start">Quick Start</a></li>
+          <li><a href="#configuration">Configuration</a></li>
+          <li><a href="#content-structure">Content Structure</a></li>
+          <li><a href="#icons">Icons</a></li>
+          <li><a href="#languages">Language Support</a></li>
+          <li><a href="#customization">Customization</a></li>
+          <li><a href="#custom-toolbar">Custom Toolbar</a></li>
+        </ul>
+      </nav>
+
+      <main class="docs-content">
+        <section id="features" class="docs-section">
+          <h2>Features</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <span class="feature-icon">🌐</span>
+              <h3>Multi-language support</h3>
+              <p>Easy configuration for multiple languages</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">📄</span>
+              <h3>PDF download</h3>
+              <p>Built-in PDF download functionality</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🎨</span>
+              <h3>Customizable themes</h3>
+              <p>CSS variables for complete customization</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🎯</span>
+              <h3>Icon support</h3>
+              <p>Compatible with any React icon library</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">⚡</span>
+              <h3>Easy integration</h3>
+              <p>Simple and quick setup</p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">📱</span>
+              <h3>Responsive design</h3>
+              <p>Adapts to any device</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="installation" class="docs-section">
+          <h2>Installation</h2>
+          <div class="code-block">
+            <pre><code>npm install react-resume-kit</code></pre>
+          </div>
+        </section>
+
+        <section id="quick-start" class="docs-section">
+          <h2>Quick Start</h2>
+          <div class="code-block">
+            <pre><code>import &#123;ResumeLayout, ResumeHeader&#125; from 'react-resume-kit'
+import &#123;content&#125; from './your-content-file'
+
+function App() &#123;
+  return (
+    &lt;ResumeLayout resumeContent=&#123;content&#125;&gt;
+      &lt;ResumeHeader /&gt;
+    &lt;/ResumeLayout&gt;
+  )
+&#125;</code></pre>
+          </div>
+        </section>
+
+        <section id="configuration" class="docs-section">
+          <h2>Configuration</h2>
+          
+          <h3>Step 1: Available components</h3>
+          <p>Add the <code>ResumeLayout</code> component wrapping one or more of the following components:</p>
+          <div class="code-block">
+            <pre><code>&lt;ResumeHeader/&gt;
+&lt;ResumeAbout/&gt;
+&lt;ResumeWorks/&gt;
+&lt;ResumeCourses/&gt;
+&lt;ResumeTechnologies/&gt;
+&lt;ResumeSoftSkills/&gt;
+&lt;ResumeProjects/&gt;
+&lt;ResumeContact/&gt;</code></pre>
+          </div>
+
+          <h3>Step 2: ResumeLayout Props</h3>
+          <div class="props-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Prop</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>initialLanguage</code></td>
+                  <td>string</td>
+                  <td>Initial language (e.g: "es", "en")</td>
+                </tr>
+                <tr>
+                  <td><code>resumeContent</code></td>
+                  <td>ResumeContent</td>
+                  <td>Object with all resume content</td>
+                </tr>
+                <tr>
+                  <td><code>enableLanguageSwitch</code></td>
+                  <td>boolean</td>
+                  <td>Enables language selector</td>
+                </tr>
+                <tr>
+                  <td><code>enablePdfDownload</code></td>
+                  <td>boolean</td>
+                  <td>Enables PDF download</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="content-structure" class="docs-section">
+          <h2>Content Structure</h2>
+          <p>The content should follow this TypeScript structure:</p>
+          <div class="code-block">
+            <pre><code>import &#123;ReactElement&#125; from 'react'
+
+type ResumeContent = &#123;
+  // One for each language
+  en: &#123;
+    // Section names
+    about_title: string
+    works_title: string
+    courses_title: string
+    techs_title: string
+    soft_skills_title: string
+    soft_skills_subtitle: string
+    projects_title: string
+    projects_subtitle: string
+    connect_title: string
+
+    // Download button text
+    download_pdf: string
+
+    // Language selector
+    switcher_text: string
+    language_labels: Array&lt;&#123;label: string; value: string&#125;&gt;
+
+    // Header
+    name: string
+    title: string
+    email: string
+    phone: string
+    location: string
+    picture?: string
+
+    // About
+    about_text: string
+
+    // Work experience
+    works: Array&lt;&#123;
+      title: string
+      company: string
+      date: string
+      location: string
+      points: string[]
+    &#125;&gt;
+
+    // Courses
+    courses: Array&lt;&#123;
+      degree: string
+      school: string
+      date: string
+    &#125;&gt;
+
+    // Technologies
+    technologies: Array&lt;&#123;
+      name: string
+      icon: ReactElement
+    &#125;&gt;
+
+    // Soft skills
+    soft_skills: Array&lt;&#123;
+      title: string
+      description: string
+      icon: ReactElement
+    &#125;&gt;
+
+    // Projects
+    projects: Array&lt;&#123;
+      title: string
+      description: string
+      features: string
+      technologies: string[]
+      link?: string
+    &#125;&gt;
+
+    // Footer
+    author: string
+    socialLinks: Array&lt;&#123;
+      name: string
+      icon: ReactElement
+      url: string
+    &#125;&gt;
+  &#125;
+&#125;</code></pre>
+          </div>
+        </section>
+
+        <section id="icons" class="docs-section">
+          <h2>Icons</h2>
+          <p>The component supports any React element as an icon. You can use icons from any library:</p>
+          
+          <h3>Example with Simple Icons</h3>
+          <div class="code-block">
+            <pre><code>import &#123;SiReact, SiTypescript&#125; from '@icons-pack/react-simple-icons'
+
+const content = &#123;
+  en: &#123;
+    // ...
+    technologies: [
+      &#123;name: 'React', icon: &lt;SiReact /&gt;&#125;,
+      &#123;name: 'TypeScript', icon: &lt;SiTypescript /&gt;&#125;,
+      // ...
+    ],
+    // ...
+  &#125;,
+&#125;</code></pre>
+          </div>
+
+          <div class="tip-box">
+            <strong>💡 Tip:</strong> You are responsible for importing and rendering the icon you want. The component will automatically inject the necessary CSS class for consistent styling.
+          </div>
+        </section>
+
+        <section id="languages" class="docs-section">
+          <h2>Language Support</h2>
+          <p>The component supports multiple languages. Provide content for each language:</p>
+          <div class="code-block">
+            <pre><code>const content = &#123;
+  en: &#123;
+    /* English content */
+  &#125;,
+  es: &#123;
+    /* Spanish content */
+  &#125;,
+&#125;</code></pre>
+          </div>
+        </section>
+
+        <section id="customization" class="docs-section">
+          <h2>Customization</h2>
+          
+          <h3>Styling System</h3>
+          <p>All components use classes that start with <code>.rrk-</code> for easy identification and customization.</p>
+
+          <h3>Quick Customization</h3>
+          <div class="code-block">
+            <pre><code>:root &#123;
+  --rrk-primary: #3b82f6; /* Your primary color */
+  --rrk-surface-100: #ffffff; /* Background color */
+  --rrk-content: #1f2937; /* Text color */
+  --rrk-radius-medium: 0.75rem; /* Border radius */
+&#125;</code></pre>
+          </div>
+
+          <h3>Advanced Customization</h3>
+          <ul>
+            <li><strong>CSS Variables:</strong> Override any CSS variable to change colors, shadows, borders, etc.</li>
+            <li><strong>Component Classes:</strong> Target specific components using their <code>.rrk-</code> classes</li>
+            <li><strong>Developer Tools:</strong> Inspect elements to see all available classes</li>
+            <li><strong>Repository:</strong> Check component CSS files for complete reference</li>
+          </ul>
+        </section>
+
+        <section id="custom-toolbar" class="docs-section">
+          <h2>Custom Toolbar</h2>
+          <p>Create your own toolbar using the <code>useToolbar</code> hook:</p>
+          <div class="code-block">
+            <pre><code>import &#123;useToolbar&#125; from 'react-resume-kit'
+
+function MyCustomToolbar() &#123;
+  const &#123;handlePrint, languageLabels, handleLanguageSelect&#125; = useToolbar()
+
+  return (
+    &lt;div className="my-toolbar"&gt;
+      &lt;button onClick=&#123;handlePrint&#125;&gt;📄 Download&lt;/button&gt;
+      &lt;select onChange=&#123;(e) =&gt; handleLanguageSelect(e.target.value)&#125;&gt;
+        &#123;languageLabels.map((lang) =&gt; (
+          &lt;option key=&#123;lang.value&#125; value=&#123;lang.value&#125;&gt;
+            &#123;lang.label&#125;
+          &lt;/option&gt;
+        ))&#125;
+      &lt;/select&gt;
+    &lt;/div&gt;
+  )
+&#125;</code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Useful Links</h2>
+          <div class="links-grid">
+            <a href="https://react-resume-kit.vercel.app/" target="_blank" class="link-card">
+              <h3>🌐 Live Demo</h3>
+              <p>Explore all features in action</p>
+            </a>
+            <a href="https://www.npmjs.com/package/react-resume-kit" target="_blank" class="link-card">
+              <h3>📦 NPM Package</h3>
+              <p>Download and install from NPM</p>
+            </a>
+            <a href="https://github.com/kiyameh/react-resume-kit" target="_blank" class="link-card">
+              <h3>💻 Repository</h3>
+              <p>Source code and contributions</p>
+            </a>
+          </div>
+        </section>
+
+        <footer class="docs-footer">
+          <p>Created by <strong>Andoni Abarzuza (@kiyameh)</strong></p>
+          <p>MIT License - Contributions are welcome!</p>
+        </footer>
+      </main>
+    </div>
+  </NavLayout>
+</HtmlLayout>
+
+<style>
+  .docs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--surface-200);
+    min-height: 100vh;
+  }
+
+  .docs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--primary);
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-medium);
+  }
+
+  .header-text h1 {
+    font-size: 2.5rem;
+    color: var(--content);
+    margin: 0;
+  }
+
+  .subtitle {
+    color: var(--content-200);
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .badge-button {
+    padding: 0.5rem 1rem;
+    background: var(--surface-300);
+    border-radius: 99px;
+    border: 2px solid transparent;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+    width: fit-content;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+
+  .npm-badge {
+    color: orangered;
+  }
+  .npm-badge:hover {
+    border: 2px solid orangered;
+  }
+
+  .github-badge {
+    color: var(--primary);
+  }
+  .github-badge:hover {
+    border: 2px solid var(--primary);
+  }
+  .live-badge {
+    color: var(--content);
+  }
+  .live-badge:hover {
+    border: 2px solid var(--content);
+  }
+
+  .table-of-contents {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    margin-bottom: 3rem;
+  }
+
+  .table-of-contents h2 {
+    margin-top: 0;
+    color: var(--content);
+  }
+
+  .table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .table-of-contents a {
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: var(--radius-small);
+    transition: background-color 0.2s ease;
+  }
+
+  .table-of-contents a:hover {
+    background-color: var(--surface-200);
+    transform: translateX(4px);
+  }
+
+  .docs-content {
+    line-height: 1.6;
+  }
+
+  .docs-section {
+    margin-bottom: 4rem;
+  }
+
+  .docs-section h2 {
+    color: var(--content);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+  }
+
+  .docs-section h3 {
+    color: var(--content);
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .feature-card {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--surface-200);
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--content);
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: var(--content-200);
+  }
+
+  .code-block {
+    background-color: var(--surface-100);
+    border-radius: var(--radius-medium);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .code-block pre {
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  .code-block code {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--content);
+  }
+
+  .props-table {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .props-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface-100);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+  }
+
+  .props-table th,
+  .props-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--surface-200);
+  }
+
+  .props-table th {
+    background-color: var(--surface-300);
+    font-weight: 600;
+    color: var(--content);
+  }
+
+  .props-table code {
+    background-color: var(--surface-300);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-small);
+    font-size: 0.9rem;
+  }
+
+  .tip-box {
+    background-color: var(--accent-100);
+    border-left: 4px solid var(--accent);
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-small);
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .link-card {
+    background-color: var(--surface-100);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    text-decoration: none;
+    color: var(--content);
+    transition: all 0.3s ease;
+  }
+
+  .link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--surface-200);
+  }
+
+  .link-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+  }
+
+  .link-card p {
+    margin: 0;
+    color: var(--content);
+  }
+
+  .docs-footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 2px solid var(--surface-200);
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    color: var(--content);
+    background-color: var(--surface-200);
+    border-radius: var(--radius-medium);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .docs-container {
+      padding: 1rem;
+    }
+
+    .docs-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .logo-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .header-text h1 {
+      font-size: 2rem;
+    }
+
+    .table-of-contents ul {
+      grid-template-columns: 1fr;
+    }
+
+    .features-grid,
+    .links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Highlight active section */
+  .docs-section:target {
+    scroll-margin-top: 2rem;
+  }
+</style>
