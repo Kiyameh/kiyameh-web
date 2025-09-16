@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./ColorPicker.module.css";
 import OklchSelector from "./OklchSelector";
 import HexSelector from "./HexSelector";
@@ -42,7 +42,7 @@ export default function ColorPicker({ onChange }: ColorPickerProps) {
 
   return (
     <div className={styles.container}>
-      <button className={styles.addButton} onClick={() => setOpen(!open)}>
+      <button type="button" className={styles.addButton} onClick={() => setOpen(!open)}>
         +
       </button>
 
@@ -50,13 +50,14 @@ export default function ColorPicker({ onChange }: ColorPickerProps) {
         <div className={styles.popup}>
           <div className={styles.modes}>
             {(["hex", "rgba", "hsl", "oklch"] as ColorMode[]).map((m) => (
-              <span
+              <button
+                type="button"
                 key={m}
                 className={`${styles.badge} ${mode === m ? styles.active : ""}`}
                 onClick={() => handleModeChange(m)}
               >
                 {m.toUpperCase()}
-              </span>
+              </button>
             ))}
           </div>
 
