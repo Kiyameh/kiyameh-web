@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useState} from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 interface AuthUser {
   id: string
@@ -14,7 +14,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
-export function AuthProvider({children}: {children: React.ReactNode}) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -22,7 +22,7 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
     let isMounted = true
     const loadUser = async () => {
       try {
-        const res = await fetch('/api/auth/me', {credentials: 'include'})
+        const res = await fetch('/api/auth/me', { credentials: 'include' })
         if (!isMounted) return
         if (res.ok) {
           const data = await res.json()
@@ -61,7 +61,7 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
   }
 
   return (
-    <AuthContext.Provider value={{user, isLoading, signOut}}>
+    <AuthContext.Provider value={{ user, isLoading, signOut }}>
       {children}
     </AuthContext.Provider>
   )

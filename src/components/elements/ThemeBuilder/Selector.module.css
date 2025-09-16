@@ -1,0 +1,63 @@
+.panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 8px;
+}
+
+.panel label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  outline: none;
+  position: relative;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 4px solid var(--surface-100);
+  cursor: pointer;
+  background: var(--thumb-color);
+}
+
+.slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 4px solid var(--surface-100);
+  cursor: pointer;
+  background: var(--thumb-color);
+}
+
+.hexSelector {
+  width: 100%;
+  height: 60px;
+  cursor: pointer;
+}
+
+/* ColorPicker.module.css */
+.colorPickerContainer {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.colorPickerContainer canvas {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+}
