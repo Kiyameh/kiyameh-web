@@ -1,43 +1,43 @@
 {
-  "name": "Zunbeltz",
-  "slug": "zunbeltz",
-  "url": "https://www.zunbeltz.org/",
-  "logo": "/projects/zunbeltz/logo.svg",
-  "logo_dark": "/projects/zunbeltz/logo_dark.svg",
-  "repository": "https://github.com/Kiyameh/zunbeltz_web",
-  "type": "webpage",
-  "description": "Página web de referencia sobre espeleología en Navarra. Blog, tienda online y sección de formación.",
-  "description_en": "Reference website about speleology in Navarre. Blog, online store and training section.",
-  "technologies": [
-    "html5",
-    "css",
-    "react",
-    "astro",
-    "typescript",
-    "figma",
-    "cloudinary",
-    "stripe",
-    "markdown"
-  ],
-  "features": [
-    "Página web informativa sobre espeleología en Navarra",
-    "Blog de noticias sobre espeleología",
-    "Tienda online de productos y servicios",
-    "Sección de formación con cursos y materiales",
-    "Sistema de distribución de contenido mediante colecciones de astro",
-    "Sistema de autenticación y gestión de usuarios"
-  ],
-  "features_en": [
-    "Informative website about speleology in Navarre",
-    "Speleology news blog",
-    "Online product store",
-    "Training section with courses and materials",
-    "Content distribution system using astro collections",
-    "Authentication and user management system"
-  ],
-  "relevancy": 4,
-  "state": "development",
-  "version": "0.0.3",
-  "images": ["/projects/zunbeltz/1.png"],
-  "date": "2025-01-15"
+	"name": "Zunbeltz",
+	"slug": "zunbeltz",
+	"url": "https://www.zunbeltz.org/",
+	"logo": "/projects/zunbeltz/logo.svg",
+	"logo_dark": "/projects/zunbeltz/logo_dark.svg",
+	"repository": "https://github.com/Kiyameh/zunbeltz_web",
+	"type": "webpage",
+	"description": "Página web de referencia sobre espeleología en Navarra. Blog, tienda online y sección de formación.",
+	"description_en": "Reference website about speleology in Navarre. Blog, online store and training section.",
+	"technologies": [
+		"html5",
+		"css",
+		"react",
+		"astro",
+		"typescript",
+		"figma",
+		"cloudinary",
+		"stripe",
+		"markdown"
+	],
+	"features": [
+		"Página web informativa sobre espeleología en Navarra",
+		"Blog de noticias sobre espeleología",
+		"Tienda online de productos y servicios",
+		"Sección de formación con cursos y materiales",
+		"Sistema de distribución de contenido mediante colecciones de astro",
+		"Sistema de autenticación y gestión de usuarios"
+	],
+	"features_en": [
+		"Informative website about speleology in Navarre",
+		"Speleology news blog",
+		"Online product store",
+		"Training section with courses and materials",
+		"Content distribution system using astro collections",
+		"Authentication and user management system"
+	],
+	"relevancy": 4,
+	"state": "development",
+	"version": "0.0.3",
+	"images": ["/projects/zunbeltz/1.png"],
+	"date": "2025-01-15"
 }

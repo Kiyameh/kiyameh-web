@@ -1,101 +1,101 @@
 .thumbnailContainer {
-  margin: 0;
-  padding: 0;
-  position: relative;
+	margin: 0;
+	padding: 0;
+	position: relative;
 }
 
 .picture {
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  height: 100%;
+	cursor: pointer;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
 .thumbnailImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.2s ease-in-out;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.2s ease-in-out;
 }
 
 .picture:hover .thumbnailImage {
-  transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  backdrop-filter: blur(3px);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	backdrop-filter: blur(3px);
 }
 
 .overlay::before {
-  content: '';
-  position: absolute;
-  background: linear-gradient(
-    45deg,
-    var(--gradient-100),
-    var(--gradient-200),
-    var(--gradient-300)
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+	content: "";
+	position: absolute;
+	background: linear-gradient(
+		45deg,
+		var(--gradient-100),
+		var(--gradient-200),
+		var(--gradient-300)
+	);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
 
 .overlay.visible::before {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 .modal {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+	position: relative;
+	max-width: 90vw;
+	max-height: 90vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
 }
 
 .image {
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: var(--radius-large);
+	max-width: 100%;
+	max-height: 80vh;
+	object-fit: contain;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	border-radius: var(--radius-large);
 }
 
 .imageVisible {
-  opacity: 1;
+	opacity: 1;
 }
 
 .closeButton {
-  position: absolute;
-  top: -40px;
-  right: 0;
-  background-color: var(--content);
-  color: var(--surface-100);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+	position: absolute;
+	top: -40px;
+	right: 0;
+	background-color: var(--content);
+	color: var(--surface-100);
+	border: none;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: transform 0.2s ease;
 }
 
 .closeButton:hover {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }

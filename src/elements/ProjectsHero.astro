@@ -1,27 +1,28 @@
 ---
+import { FileCode2 } from "lucide-react";
+
 interface Props {
-  language?: 'es' | 'en'
+	language?: "es" | "en";
 }
 
-const {language = 'es'} = Astro.props
+const { language = "es" } = Astro.props;
 
 const translations = {
-  es: {
-    featured: 'Principales',
-    projects: 'Proyectos',
-    subtitle: 'Una colección de los proyectos más destacados',
-    languageClass: 'spanish-featured-text',
-  },
-  en: {
-    featured: 'Featured',
-    projects: 'Projects',
-    subtitle: 'A collection of my most featured works',
-    languageClass: 'english-featured-text',
-  },
-}
+	es: {
+		featured: "Principales",
+		projects: "Proyectos",
+		subtitle: "Una colección de los proyectos más destacados",
+		languageClass: "spanish-featured-text",
+	},
+	en: {
+		featured: "Featured",
+		projects: "Projects",
+		subtitle: "A collection of my most featured works",
+		languageClass: "english-featured-text",
+	},
+};
 
-const t = translations[language]
-import {FileCode2} from 'lucide-react'
+const t = translations[language];
 ---
 
 <div class="spacer"></div>

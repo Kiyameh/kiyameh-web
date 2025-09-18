@@ -1,44 +1,44 @@
 ---
-import HtmlLayout from '@/layouts/HtmlLayout.astro'
-import NavLayout from '@/layouts/NavLayout.astro'
-import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
-import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
-import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
-import RepoStatsCard from '@/components/elements/RepoStatsCard/RepoStatsCard.astro'
-import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
-import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
+import HtmlLayout from "@/layouts/HtmlLayout.astro";
+import NavLayout from "@/layouts/NavLayout.astro";
+import Breadcrumb from "@/components/ui/Breadcrumb/Breadcrumb";
+import ProjectTypeBadge from "@/components/ui/ProjectTypeBadge/ProjectTypeBadge";
+import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
+import RepoStatsCard from "@/components/elements/RepoStatsCard/RepoStatsCard.astro";
+import TechBadgesCarrousel from "@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel";
+import ImageGallery from "@/components/ui/ImageGallery/ImageGallery";
 
-import {Code, Info, BookOpen} from 'lucide-react'
-import {getCollection} from 'astro:content'
-import ProjectStateBadge from '@/components/ui/ProjectStateBadge/ProjectStateBadge'
+import { Code, Info, BookOpen } from "lucide-react";
+import { getCollection } from "astro:content";
+import ProjectStateBadge from "@/components/ui/ProjectStateBadge/ProjectStateBadge";
 
 // Obtener el slug del parámetro dinámico
 export async function getStaticPaths() {
-  const projects = await getCollection('projects')
-  return projects.map((project) => ({
-    params: {project: project.data.slug},
-    props: {project},
-  }))
+	const projects = await getCollection("projects");
+	return projects.map((project) => ({
+		params: { project: project.data.slug },
+		props: { project },
+	}));
 }
 
-const {project} = Astro.props
+const { project } = Astro.props;
 
 const {
-  repository,
-  description,
-  features,
-  name,
-  type,
-  slug,
-  technologies,
-  url,
-  images,
-  logo,
-  logo_dark,
-  state,
-  version,
-  documentation,
-} = project.data
+	repository,
+	description,
+	features,
+	name,
+	type,
+	slug,
+	technologies,
+	url,
+	images,
+	logo,
+	logo_dark,
+	state,
+	version,
+	documentation,
+} = project.data;
 
 /* 
   @version 1

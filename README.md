@@ -39,4 +39,4 @@ Si eres desarrollador y quieres explorar cómo está construido este portfolio, 
 
 ---
 
-_Construido con 💜 y muchos 🥑 en Navarra, España_
+> _Construido con 💜 y muchos 🥑 en Navarra, España_

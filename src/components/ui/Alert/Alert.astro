@@ -1,8 +1,8 @@
 ---
 interface Props {
-  type?: 'info' | 'warning' | 'error' | 'success' | 'accent'
+	type?: "info" | "warning" | "error" | "success" | "accent";
 }
-const {type} = Astro.props
+const { type } = Astro.props;
 ---
 
 <div class:list={['alert', type]}>

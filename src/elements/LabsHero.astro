@@ -1,27 +1,28 @@
 ---
+import { FlaskConical } from "lucide-react";
+
 interface Props {
-  language?: 'es' | 'en'
+	language?: "es" | "en";
 }
 
-const {language = 'es'} = Astro.props
+const { language = "es" } = Astro.props;
 
 const translations = {
-  es: {
-    welcome: 'Bienvenido a',
-    labs: 'Labs',
-    subtitle: 'El lugar donde comparto mis experimentos y componentes',
-    languageClass: 'spanish-welcome-text',
-  },
-  en: {
-    welcome: 'Welcome to',
-    labs: 'Labs',
-    subtitle: 'The place where I share my experiments and components',
-    languageClass: 'english-welcome-text',
-  },
-}
+	es: {
+		welcome: "Bienvenido a",
+		labs: "Labs",
+		subtitle: "El lugar donde comparto mis experimentos y componentes",
+		languageClass: "spanish-welcome-text",
+	},
+	en: {
+		welcome: "Welcome to",
+		labs: "Labs",
+		subtitle: "The place where I share my experiments and components",
+		languageClass: "english-welcome-text",
+	},
+};
 
-const t = translations[language]
-import {FlaskConical} from 'lucide-react'
+const t = translations[language];
 ---
 
 <div class="spacer"></div>

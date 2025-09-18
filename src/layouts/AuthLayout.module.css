@@ -1,10 +1,10 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 0.5rem 1rem;
-  background-color: var(--surface-300);
-  margin-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+	padding: 0.5rem 1rem;
+	background-color: var(--surface-300);
+	margin-bottom: 1rem;
 }

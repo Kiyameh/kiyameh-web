@@ -1,44 +1,44 @@
 {
-  "name": "CaverBob",
-  "slug": "caverbob",
-  "logo": "/projects/caverbob/logo.svg",
-  "logo_dark": "/projects/caverbob/logo.svg",
-  "url": "https://www.caverbob.org/",
-  "repository": "https://github.com/Kiyameh/caverbob-web",
-  "type": "webpage",
-  "description": "Página web de referencia para espeleólogos para consulta del ranking espeleométrico de cavidades mundiales.",
-  "description_en": "Reference website for speleologists for the world speleometric cave rankings.",
-  "technologies": [
-    "html5",
-    "css",
-    "react",
-    "nextdotjs",
-    "typescript",
-    "supabase"
-  ],
-  "features": [
-    "Base de datos de espeleolometría de cavidades mundiales",
-    "Sistema de comentarios y discusión",
-    "Sistema de reporte de nueva información y actualización de los datos",
-    "SEO optimizado, accesibilidad y responsividad",
-    "Internacionalización en tres idiomas"
-  ],
-  "features_en": [
-    "World speleometric cave database",
-    "Comment and discussion system",
-    "New information reporting system and data update",
-    "SEO optimized, accessible and responsive",
-    "Internationalization in three languages"
-  ],
-  "images": [
-    "/projects/caverbob/1.png",
-    "/projects/caverbob/2.png",
-    "/projects/caverbob/3.png",
-    "/projects/caverbob/4.png",
-    "/projects/caverbob/5.png"
-  ],
-  "relevancy": 4,
-  "state": "completed",
-  "version": "1.0.0",
-  "date": "2025-01-15"
+	"name": "CaverBob",
+	"slug": "caverbob",
+	"logo": "/projects/caverbob/logo.svg",
+	"logo_dark": "/projects/caverbob/logo.svg",
+	"url": "https://www.caverbob.org/",
+	"repository": "https://github.com/Kiyameh/caverbob-web",
+	"type": "webpage",
+	"description": "Página web de referencia para espeleólogos para consulta del ranking espeleométrico de cavidades mundiales.",
+	"description_en": "Reference website for speleologists for the world speleometric cave rankings.",
+	"technologies": [
+		"html5",
+		"css",
+		"react",
+		"nextdotjs",
+		"typescript",
+		"supabase"
+	],
+	"features": [
+		"Base de datos de espeleolometría de cavidades mundiales",
+		"Sistema de comentarios y discusión",
+		"Sistema de reporte de nueva información y actualización de los datos",
+		"SEO optimizado, accesibilidad y responsividad",
+		"Internacionalización en tres idiomas"
+	],
+	"features_en": [
+		"World speleometric cave database",
+		"Comment and discussion system",
+		"New information reporting system and data update",
+		"SEO optimized, accessible and responsive",
+		"Internationalization in three languages"
+	],
+	"images": [
+		"/projects/caverbob/1.png",
+		"/projects/caverbob/2.png",
+		"/projects/caverbob/3.png",
+		"/projects/caverbob/4.png",
+		"/projects/caverbob/5.png"
+	],
+	"relevancy": 4,
+	"state": "completed",
+	"version": "1.0.0",
+	"date": "2025-01-15"
 }

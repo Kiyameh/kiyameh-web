@@ -1,30 +1,30 @@
 {
-  "name": "Github Repo Stat Card",
-  "slug": "github-repo-stat-card",
-  "logo": "/projects/githubrepostatscard/logo.svg",
-  "logo_dark": "/projects/githubrepostatscard/logo_dark.svg",
-  "url": "https://www.npmjs.com/package/github-repo-stats-card",
-  "repository": "https://github.com/Kiyameh/repo-stats-card",
-  "documentation": "https://kiyameh.com/es/projects/github-repo-stat-card/docs",
-  "type": "package",
-  "description": "Componente de React para mostrar estadísticas de un repositorio de Github.",
-  "description_en": "React component to show statistics of a Github repository.",
-  "technologies": ["html5", "css", "npm", "typescript"],
-  "features": [
-    "Desarrollado con html, css y js planos. Agnostico de framework",
-    "Fetch de datos de la API de Github",
-    "Instalable a partir de npm"
-  ],
-  "features_en": [
-    "Developed with plain html, css and js. Agnostic of framework",
-    "Fetch data from Github API",
-    "Installable from NPM"
-  ],
-  "images": [
-    "/projects/githubrepostatscard/1.png",
-    "/projects/githubrepostatscard/2.png"
-  ],
-  "relevancy": 1,
-  "state": "upgrading",
-  "date": "2025-04-15"
+	"name": "Github Repo Stat Card",
+	"slug": "github-repo-stat-card",
+	"logo": "/projects/githubrepostatscard/logo.svg",
+	"logo_dark": "/projects/githubrepostatscard/logo_dark.svg",
+	"url": "https://www.npmjs.com/package/github-repo-stats-card",
+	"repository": "https://github.com/Kiyameh/repo-stats-card",
+	"documentation": "https://kiyameh.com/es/projects/github-repo-stat-card/docs",
+	"type": "package",
+	"description": "Componente de React para mostrar estadísticas de un repositorio de Github.",
+	"description_en": "React component to show statistics of a Github repository.",
+	"technologies": ["html5", "css", "npm", "typescript"],
+	"features": [
+		"Desarrollado con html, css y js planos. Agnostico de framework",
+		"Fetch de datos de la API de Github",
+		"Instalable a partir de npm"
+	],
+	"features_en": [
+		"Developed with plain html, css and js. Agnostic of framework",
+		"Fetch data from Github API",
+		"Installable from NPM"
+	],
+	"images": [
+		"/projects/githubrepostatscard/1.png",
+		"/projects/githubrepostatscard/2.png"
+	],
+	"relevancy": 1,
+	"state": "upgrading",
+	"date": "2025-04-15"
 }

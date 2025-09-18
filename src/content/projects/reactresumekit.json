@@ -1,42 +1,42 @@
 {
-  "name": "React Resume Kit",
-  "slug": "react-resume-kit",
-  "url": "https://www.npmjs.com/package/react-resume-kit",
-  "logo": "/projects/reactresumekit/logo.png",
-  "logo_dark": "/projects/reactresumekit/logo.png",
-  "repository": "https://github.com/Kiyameh/react-resume-kit",
-  "documentation": "https://kiyameh.com/es/projects/react-resume-kit/docs",
-  "type": "package",
-  "description": "Paquete npm para la creación de Currículums vitae de forma rápida y sencilla.",
-  "description_en": "Npm package for creating resumes or CVs quickly and easily.",
-  "technologies": [
-    "html5",
-    "css",
-    "react",
-    "npm",
-    "typescript",
-    "vite",
-    "figma"
-  ],
-  "features": [
-    "Soporte para múltiples idiomas",
-    "Personalización sencilla mediante variables de css o clases",
-    "Opciones de descarga en formato pdf",
-    "Sistema modular de secciones de currículum"
-  ],
-  "features_en": [
-    "Multi-language support",
-    "Easy customization through css variables or classes",
-    "Download options in pdf format",
-    "Modular sections system"
-  ],
-  "images": [
-    "/projects/reactresumekit/1.png",
-    "/projects/reactresumekit/2.png",
-    "/projects/reactresumekit/3.png",
-    "/projects/reactresumekit/4.png"
-  ],
-  "relevancy": 3,
-  "state": "completed",
-  "date": "2025-01-15"
+	"name": "React Resume Kit",
+	"slug": "react-resume-kit",
+	"url": "https://www.npmjs.com/package/react-resume-kit",
+	"logo": "/projects/reactresumekit/logo.png",
+	"logo_dark": "/projects/reactresumekit/logo.png",
+	"repository": "https://github.com/Kiyameh/react-resume-kit",
+	"documentation": "https://kiyameh.com/es/projects/react-resume-kit/docs",
+	"type": "package",
+	"description": "Paquete npm para la creación de Currículums vitae de forma rápida y sencilla.",
+	"description_en": "Npm package for creating resumes or CVs quickly and easily.",
+	"technologies": [
+		"html5",
+		"css",
+		"react",
+		"npm",
+		"typescript",
+		"vite",
+		"figma"
+	],
+	"features": [
+		"Soporte para múltiples idiomas",
+		"Personalización sencilla mediante variables de css o clases",
+		"Opciones de descarga en formato pdf",
+		"Sistema modular de secciones de currículum"
+	],
+	"features_en": [
+		"Multi-language support",
+		"Easy customization through css variables or classes",
+		"Download options in pdf format",
+		"Modular sections system"
+	],
+	"images": [
+		"/projects/reactresumekit/1.png",
+		"/projects/reactresumekit/2.png",
+		"/projects/reactresumekit/3.png",
+		"/projects/reactresumekit/4.png"
+	],
+	"relevancy": 3,
+	"state": "completed",
+	"date": "2025-01-15"
 }

@@ -1,63 +1,63 @@
 .section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .controls {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 1rem;
-  width: 100%;
-  padding: 1rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 1rem;
+	width: 100%;
+	padding: 1rem;
 }
 
 .showcase {
-  width: 100%;
-  min-height: 460px;
-  padding: 3rem;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-large);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 4rem;
-  position: relative;
+	width: 100%;
+	min-height: 460px;
+	padding: 3rem;
+	border: 1px solid var(--border-soft);
+	border-radius: var(--radius-large);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 4rem;
+	position: relative;
 }
 .smallItems {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4rem;
 }
 @media (max-width: 800px) {
-  .showcase {
-    flex-direction: column;
-  }
+	.showcase {
+		flex-direction: column;
+	}
 }
 .chip {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.2rem 0.6rem;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.2rem 0.6rem;
 }
 .button {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.8rem 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.8rem 1rem;
 }
 .card {
-  width: 260px;
-  height: 280px;
-  display: flex;
-  padding: 1.5rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+	width: 260px;
+	height: 280px;
+	display: flex;
+	padding: 1.5rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
 }

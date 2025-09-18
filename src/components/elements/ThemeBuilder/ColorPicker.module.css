@@ -1,84 +1,84 @@
 /* ColorPicker */
 .container {
-  position: relative;
-  display: inline-block;
+	position: relative;
+	display: inline-block;
 }
 
 .addButton {
-  background-color: var(--surface-300);
-  border: 1px solid var(--border-soft);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 24px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+	background-color: var(--surface-300);
+	border: 1px solid var(--border-soft);
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	font-size: 24px;
+	cursor: pointer;
+	transition: background-color 0.2s;
 }
 
 .addButton:hover {
-  background-color: var(--surface-100);
+	background-color: var(--surface-100);
 }
 
 .popup {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  background-color: var(--surface-100);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-large);
-  padding: 12px;
-  box-shadow: var(--shadow-large);
-  z-index: 10;
-  width: 340px;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	background-color: var(--surface-100);
+	border: 1px solid var(--border-soft);
+	border-radius: var(--radius-large);
+	padding: 12px;
+	box-shadow: var(--shadow-large);
+	z-index: 10;
+	width: 340px;
 }
 
 .modes {
-  display: flex;
-  gap: 6px;
+	display: flex;
+	gap: 6px;
 }
 
 .badge {
-  padding: 3px 6px;
-  border-radius: 16px;
-  border: 1px solid var(--border-soft);
-  cursor: pointer;
-  font-size: 12px;
-  user-select: none;
+	padding: 3px 6px;
+	border-radius: 16px;
+	border: 1px solid var(--border-soft);
+	cursor: pointer;
+	font-size: 12px;
+	user-select: none;
 }
 
 .badge:hover {
-  border-color: var(--accent);
+	border-color: var(--accent);
 }
 
 .active {
-  background-color: var(--accent);
-  color: var(--accent-content);
-  border-color: var(--accent);
+	background-color: var(--accent);
+	color: var(--accent-content);
+	border-color: var(--accent);
 }
 
 /* Color Preview and Value */
 .colorPreview {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  gap: 16px;
+	display: flex;
+	align-items: center;
+	padding: 12px;
+	gap: 16px;
 }
 
 .colorBox {
-  width: 60px;
-  height: 60px;
-  border: 2px solid var(--content);
-  border-radius: var(--radius-large);
+	width: 60px;
+	height: 60px;
+	border: 2px solid var(--content);
+	border-radius: var(--radius-large);
 }
 
 .colorName {
-  flex: 1;
-  color: var(--content);
-  font-size: 12px;
-  font-family: var(--font-mono);
-  word-break: break-all;
-  line-height: 1.4;
-  padding: 8px;
-  border-radius: var(--radius-medium);
-  border: 1px solid var(--border-soft);
+	flex: 1;
+	color: var(--content);
+	font-size: 12px;
+	font-family: var(--font-mono);
+	word-break: break-all;
+	line-height: 1.4;
+	padding: 8px;
+	border-radius: var(--radius-medium);
+	border: 1px solid var(--border-soft);
 }

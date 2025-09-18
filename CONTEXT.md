@@ -29,7 +29,7 @@ Portfolio personal de Andoni Abarzuza, desarrollador web y diseñador de interfa
 
 ## Estructura de Carpetas
 
-```
+``` text
 src/
 ├── assets/          # Imágenes, fondos y recursos
 ├── components/      # Componentes reutilizables
@@ -98,8 +98,6 @@ src/
 - **Integraciones**: React habilitado para componentes interactivos
 
 ## Autenticación (Supabase)
-
-### Configuración
 
 - **Cliente**: Configurado en `src/lib/supabase.ts`
 - **Flujo**: PKCE (Proof Key for Code Exchange)

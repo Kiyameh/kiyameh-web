@@ -14,6 +14,7 @@
 	},
 	"linter": {
 		"enabled": true,
+		"includes": ["!.astro"],
 		"rules": {
 			"recommended": true
 		}
@@ -27,8 +28,30 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"organizeImports": "on"
+				"organizeImports": {
+					"level": "off",
+					"options": {
+						"groups": [{ "type": true }]
+					}
+				}
 			}
 		}
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["**/*.astro"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useConst": "off",
+						"useImportType": "off"
+					},
+					"correctness": {
+						"noUnusedVariables": "off",
+						"noUnusedImports": "off"
+					}
+				}
+			}
+		}
+	]
 }

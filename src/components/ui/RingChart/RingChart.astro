@@ -1,49 +1,49 @@
 ---
 interface Props {
-  title?: string
-  data: {name: string; value: number}[]
+	title?: string;
+	data: { name: string; value: number }[];
 }
 
 // 1. Obtener las props y establecer valores por defecto
-const {data} = Astro.props
+const { data } = Astro.props;
 
 if (!data || data.length === 0) {
-  return null
+	return null;
 }
 
 const COLORS = [
-  '#3b82f6',
-  '#10b981',
-  '#f97316',
-  '#ef4444',
-  '#8b5cf6',
-  '#06b6d4',
-  '#ec4899',
-  '#facc15',
-]
+	"#3b82f6",
+	"#10b981",
+	"#f97316",
+	"#ef4444",
+	"#8b5cf6",
+	"#06b6d4",
+	"#ec4899",
+	"#facc15",
+];
 
 // 2. Calcular el valor total sumando todos los `value` del array de datos
-const totalValue = data.reduce((sum, item) => sum + item.value, 0)
+const totalValue = data.reduce((sum, item) => sum + item.value, 0);
 
 // 3. Procesar y ordenar los datos
 const chartData = [...data] // Crear una copia para no mutar las props originales
-  .sort((a, b) => b.value - a.value) // Ordenar de mayor a menor valor
-  .map((item, index) => ({
-    ...item,
-    percentage: totalValue > 0 ? (item.value / totalValue) * 100 : 0,
-    color: COLORS[index % COLORS.length],
-  }))
+	.sort((a, b) => b.value - a.value) // Ordenar de mayor a menor valor
+	.map((item, index) => ({
+		...item,
+		percentage: totalValue > 0 ? (item.value / totalValue) * 100 : 0,
+		color: COLORS[index % COLORS.length],
+	}));
 
 // 4. Generar dinámicamente la cadena de texto para `conic-gradient`
-let cumulativePercentage = 0
+let cumulativePercentage = 0;
 const gradientParts = chartData.map((item) => {
-  const start = cumulativePercentage
-  cumulativePercentage += item.percentage
-  const end = cumulativePercentage
-  return `${item.color} ${start}% ${end}%`
-})
+	const start = cumulativePercentage;
+	cumulativePercentage += item.percentage;
+	const end = cumulativePercentage;
+	return `${item.color} ${start}% ${end}%`;
+});
 
-const gradientString = `conic-gradient(${gradientParts.join(', ')})`
+const gradientString = `conic-gradient(${gradientParts.join(", ")})`;
 ---
 
 <div class="chart-container">

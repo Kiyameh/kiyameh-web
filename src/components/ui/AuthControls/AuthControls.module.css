@@ -1,23 +1,23 @@
 .userControls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 
 .button {
-  background: var(--surface-100);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-small);
-  cursor: pointer;
+	background: var(--surface-100);
+	padding: 0.5rem 1rem;
+	border-radius: var(--radius-small);
+	cursor: pointer;
 }
 .button:hover {
-  background: var(--surface-200);
+	background: var(--surface-200);
 }
 
 .signInButton {
-  background: var(--accent);
-  color: var(--accent-content);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-small);
-  cursor: pointer;
+	background: var(--accent);
+	color: var(--accent-content);
+	padding: 0.5rem 1rem;
+	border-radius: var(--radius-small);
+	cursor: pointer;
 }

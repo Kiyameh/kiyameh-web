@@ -1,107 +1,107 @@
 .projectExplorer {
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  border-radius: var(--radius-large);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
+	width: 100%;
+	height: 100%;
+	padding: 1rem;
+	border-radius: var(--radius-large);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
 }
 
 .projectFilter {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
 }
 
 .projectList {
-  width: 100%;
-  padding-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 1.5rem;
-  padding-right: 1rem;
-  padding-left: 3rem;
-  overflow-y: hidden;
-  overflow-x: hidden;
+	width: 100%;
+	padding-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 1.5rem;
+	padding-right: 1rem;
+	padding-left: 3rem;
+	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
 .projectItem {
-  width: 100%;
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+	width: 100%;
+	position: relative;
+	cursor: pointer;
+	transition: transform 0.3s ease-in-out;
 }
 
 .projectItem:hover {
-  transform: scale(1.02);
+	transform: scale(1.02);
 }
 
 .projectImage {
-  width: 100px;
-  height: 100px;
-  border-radius: 100px;
-  background: var(--surface-100);
-  border: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  left: -2rem;
-  bottom: 0;
-  z-index: 4;
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	background: var(--surface-100);
+	border: 2px solid var(--border);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: -2rem;
+	bottom: 0;
+	z-index: 4;
 }
 .projectImage img {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
+	width: 80%;
+	height: 80%;
+	object-fit: contain;
 }
 
 .logoLight {
-  display: block;
+	display: block;
 }
 
 .logoDark {
-  display: none;
+	display: none;
 }
 
 /* Mostrar logo oscuro en tema oscuro */
-[data-theme='dark'] .projectImage .logoLight {
-  display: none;
+[data-theme="dark"] .projectImage .logoLight {
+	display: none;
 }
-[data-theme='dark'] .projectImage .logoDark {
-  display: block;
+[data-theme="dark"] .projectImage .logoDark {
+	display: block;
 }
 
 /* Mostrar logo claro en tema claro */
-[data-theme='light'] .projectImage .logoLight {
-  display: block;
+[data-theme="light"] .projectImage .logoLight {
+	display: block;
 }
-[data-theme='light'] .projectImage .logoDark {
-  display: none;
+[data-theme="light"] .projectImage .logoDark {
+	display: none;
 }
 
 .placeholderIcon {
-  width: 50%;
-  height: 50%;
-  color: var(--content);
+	width: 50%;
+	height: 50%;
+	color: var(--content);
 }
 
 .projectInfo {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: start;
-  padding: 1rem;
-  padding-left: 5rem;
-  cursor: pointer;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: start;
+	padding: 1rem;
+	padding-left: 5rem;
+	cursor: pointer;
 }

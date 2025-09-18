@@ -1,180 +1,182 @@
 .burgerButton {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 1000;
-  background-color: var(--surface-300);
-  color: var(--content);
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: var(--shadow-large);
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	z-index: 1000;
+	background-color: var(--surface-300);
+	color: var(--content);
+	border: none;
+	border-radius: 50%;
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-shadow: var(--shadow-large);
 }
 
 .floatingChatBot {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 1000;
-  background-color: var(--surface-300);
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-large);
+	position: fixed;
+	bottom: 1rem;
+	left: 1rem;
+	z-index: 1000;
+	background-color: var(--surface-300);
+	border: none;
+	border-radius: 50%;
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: var(--shadow-large);
 }
 
 .menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  height: 100lvh;
-  background-color: var(--surface-100);
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
-  transition: right 0.3s ease-in-out;
+	position: fixed;
+	top: 0;
+	right: -100%;
+	width: 100%;
+	height: 100lvh;
+	background-color: var(--surface-100);
+	z-index: 999;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 2rem;
+	transition: right 0.3s ease-in-out;
 }
 
 .menu.open {
-  right: 0;
+	right: 0;
 }
 
 .navigation ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .navigation li {
-  margin: 1rem 0;
+	margin: 1rem 0;
 }
 
 .navigation a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	color: var(--text);
+	font-size: 1.2rem;
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }
 
 .subsections {
-  margin-left: 2rem;
+	margin-left: 2rem;
 }
 
 .subsections li {
-  margin: 0.5rem 0;
+	margin: 0.5rem 0;
 }
 
 .subsections a {
-  font-size: 1rem;
+	font-size: 1rem;
 }
 
 .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
 }
 
 .hash {
-  width: 1rem;
-  height: 1rem;
-  color: var(--accent);
+	width: 1rem;
+	height: 1rem;
+	color: var(--accent);
 }
 
 .bottomButtons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem 0;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	padding: 1rem 0;
 }
 
 .iconButton {
-  color: var(--content);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	color: var(--content);
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .iconButton:hover {
-  background-color: var(--surface-300);
+	background-color: var(--surface-300);
 }
 
 .bot {
-  color: var(--accent);
+	color: var(--accent);
 }
 
 /* Language selector styles */
 .languageButton {
-  position: relative;
+	position: relative;
 }
 
 .languageSelector {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-bottom: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	opacity: 0;
+	visibility: hidden;
+	transition:
+		opacity 0.3s ease,
+		visibility 0.3s ease;
 }
 
 .languageSelector.visible {
-  opacity: 1;
-  visibility: visible;
+	opacity: 1;
+	visibility: visible;
 }
 
 .languageOption {
-  padding: 0.2rem;
-  cursor: pointer;
-  border: none;
-  background: none;
-  color: var(--text);
-  font-size: 0.8rem;
-  font-weight: bold;
-  position: relative;
-  white-space: nowrap;
+	padding: 0.2rem;
+	cursor: pointer;
+	border: none;
+	background: none;
+	color: var(--text);
+	font-size: 0.8rem;
+	font-weight: bold;
+	position: relative;
+	white-space: nowrap;
 }
 .active {
-  position: relative;
+	position: relative;
 }
 
 .active::before {
-  content: '';
-  position: absolute;
-  top: calc(100% - 0.2em);
-  left: 0;
-  height: 0.2em;
-  width: 100%;
-  background: linear-gradient(
-    to right,
-    var(--gradient-100),
-    var(--gradient-200)
-  );
+	content: "";
+	position: absolute;
+	top: calc(100% - 0.2em);
+	left: 0;
+	height: 0.2em;
+	width: 100%;
+	background: linear-gradient(
+		to right,
+		var(--gradient-100),
+		var(--gradient-200)
+	);
 }

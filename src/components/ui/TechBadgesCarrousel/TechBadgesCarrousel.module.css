@@ -1,32 +1,32 @@
 .carouselContainer {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
 .carouselTrack {
-  padding-block: 0.2rem;
-  display: flex;
-  gap: 1rem;
-  width: max-content;
-  animation: scroll infinite linear 50s;
+	padding-block: 0.2rem;
+	display: flex;
+	gap: 1rem;
+	width: max-content;
+	animation: scroll infinite linear 50s;
 }
 
 .reverse {
-  animation-direction: reverse;
+	animation-direction: reverse;
 }
 
 @keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
 }
 
 /* Detener animación en hover o cuando el usuario mantiene el dedo en la pantalla */
 .carouselContainer:hover .carouselTrack,
 .carouselContainer:active .carouselTrack {
-  animation-play-state: paused;
+	animation-play-state: paused;
 }

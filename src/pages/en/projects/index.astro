@@ -1,17 +1,15 @@
 ---
-import HtmlLayout from '@/layouts/HtmlLayout.astro'
-import NavLayout from '@/layouts/NavLayout.astro'
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import HtmlLayout from "@/layouts/HtmlLayout.astro";
+import NavLayout from "@/layouts/NavLayout.astro";
+import ProjectsHero from "@/elements/ProjectsHero.astro";
+import ProjectsExplorer from "@/components/elements/ProjectsExplorer/ProjectsExplorer";
+import { sortProjectByRelevancy } from "@/lib/sortProjectByRelevancy";
+import bg4 from "@/assets/backgrounds/bg4.svg";
 
-import {getCollection} from 'astro:content'
-// Obtener todos los proyectos de la colección
-const projects = await getCollection('projects')
-import {sortProjectByRelevancy} from '@/functions/sortProjectByRelevancy'
-const sortedProjects = sortProjectByRelevancy(projects)
-import ProjectsExplorer from '@/components/elements/ProjectsExplorer/ProjectsExplorer'
-
-import {Image} from 'astro:assets'
-import bg4 from '@/assets/backgrounds/bg4.svg'
-import ProjectsHero from '@/templates/projects/ProjectsHero.astro'
+const projects = await getCollection("projects");
+const sortedProjects = sortProjectByRelevancy(projects);
 
 /* 
  @version 2

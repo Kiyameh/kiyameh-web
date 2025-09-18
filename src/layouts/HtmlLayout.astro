@@ -1,44 +1,44 @@
 ---
 /* Styles */
-import '@/styles/theme.css'
-import '@/styles/reset.css'
-import '@/styles/css-components.css'
+import "@/styles/theme.css";
+import "@/styles/reset.css";
+import "@/styles/css-components.css";
 
 /* Fonts */
-import '@fontsource-variable/jetbrains-mono'
-import '@fontsource-variable/outfit'
-import '@fontsource/baskervville'
-import '@fontsource-variable/caveat'
+import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/outfit";
+import "@fontsource/baskervville";
+import "@fontsource-variable/caveat";
 
 /* Variables */
-const currentLocale = Astro.currentLocale ?? 'es'
+const currentLocale = Astro.currentLocale ?? "es";
 
 /* Props */
 interface Props {
-  pageTitle?: string
-  pageDescription?: string
-  pageTags?: string[]
+	pageTitle?: string;
+	pageDescription?: string;
+	pageTags?: string[];
 }
 
 const {
-  pageTitle = `${
-    currentLocale === 'es' ? 'Portfolio de Andoni' : "Andoni's Portfolio"
-  }`,
-  pageDescription = `${
-    currentLocale === 'es'
-      ? 'Portfolio personal de Andoni Abarzuza, desarrollador web y diseñador de interfaces'
-      : 'Personal portfolio of Andoni Abarzuza, web developer and interface designer'
-  }`,
-  pageTags = [
-    'portfolio',
-    'andoni',
-    'developer',
-    'designer',
-    'web',
-    'design',
-    'development',
-  ],
-} = Astro.props
+	pageTitle = `${
+		currentLocale === "es" ? "Portfolio de Andoni" : "Andoni's Portfolio"
+	}`,
+	pageDescription = `${
+		currentLocale === "es"
+			? "Portfolio personal de Andoni Abarzuza, desarrollador web y diseñador de interfaces"
+			: "Personal portfolio of Andoni Abarzuza, web developer and interface designer"
+	}`,
+	pageTags = [
+		"portfolio",
+		"andoni",
+		"developer",
+		"designer",
+		"web",
+		"design",
+		"development",
+	],
+} = Astro.props;
 
 /* 
  @version 1

@@ -3,8 +3,8 @@
 .top,
 .topLeft,
 .topRight {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .left > p,
@@ -12,25 +12,25 @@
 .top > p,
 .topLeft > p,
 .topRight > p {
-  width: 100%;
-  font-family: 'Caveat Variable';
-  font-size: 1.4rem;
-  padding-inline: 1.5rem;
+	width: 100%;
+	font-family: "Caveat Variable", cursive;
+	font-size: 1.4rem;
+	padding-inline: 1.5rem;
 }
 
 .left,
 .topLeft {
-  text-align: right;
-  align-items: flex-end;
+	text-align: right;
+	align-items: flex-end;
 }
 
 .right,
 .topRight {
-  text-align: left;
-  align-items: flex-start;
+	text-align: left;
+	align-items: flex-start;
 }
 
 .top {
-  text-align: center;
-  align-items: center;
+	text-align: center;
+	align-items: center;
 }

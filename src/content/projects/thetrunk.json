@@ -1,30 +1,30 @@
 {
-  "name": "The Trunk",
-  "slug": "the-trunk",
-  "logo": "/projects/thetrunk/logo.svg",
-  "logo_dark": "/projects/thetrunk/logo_dark.svg",
-  "url": "https://thetrunk.vercel.app/",
-  "repository": "https://github.com/Kiyameh/the-trunk",
-  "type": "tool",
-  "description": "Herramienta online para crear y almacenar tipos y objectos de typescript.",
-  "description_en": "Online tool for creating and storing typescript types and objects.",
-  "technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
-  "features": [
-    "Biblioteca de tipos y baul de objetos",
-    "Organización de objetos por proyecto",
-    "Sistema de combinación de tipos"
-  ],
-  "features_en": [
-    "Types library and object storage",
-    "Object organization by project",
-    "Type combination system"
-  ],
-  "images": [
-    "/projects/thetrunk/1.png",
-    "/projects/thetrunk/2.png",
-    "/projects/thetrunk/3.png"
-  ],
-  "relevancy": 2,
-  "state": "completed",
-  "date": "2025-01-15"
+	"name": "The Trunk",
+	"slug": "the-trunk",
+	"logo": "/projects/thetrunk/logo.svg",
+	"logo_dark": "/projects/thetrunk/logo_dark.svg",
+	"url": "https://thetrunk.vercel.app/",
+	"repository": "https://github.com/Kiyameh/the-trunk",
+	"type": "tool",
+	"description": "Herramienta online para crear y almacenar tipos y objectos de typescript.",
+	"description_en": "Online tool for creating and storing typescript types and objects.",
+	"technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
+	"features": [
+		"Biblioteca de tipos y baul de objetos",
+		"Organización de objetos por proyecto",
+		"Sistema de combinación de tipos"
+	],
+	"features_en": [
+		"Types library and object storage",
+		"Object organization by project",
+		"Type combination system"
+	],
+	"images": [
+		"/projects/thetrunk/1.png",
+		"/projects/thetrunk/2.png",
+		"/projects/thetrunk/3.png"
+	],
+	"relevancy": 2,
+	"state": "completed",
+	"date": "2025-01-15"
 }

@@ -1,31 +1,40 @@
 ---
-import HtmlLayout from '@/layouts/HtmlLayout.astro'
-import NavLayout from '@/layouts/NavLayout.astro'
+import HtmlLayout from "@/layouts/HtmlLayout.astro";
+import NavLayout from "@/layouts/NavLayout.astro";
 
-import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
-import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
-import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
-import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
-import CornerRibbon from '@/components/ui/CornerRibbon/CornerRibbon.astro'
-import ProjectStateBadge from '@/components/ui/ProjectStateBadge/ProjectStateBadge'
-import GrapperPlayground from '@/components/package/GrapperPlayground'
-import GradowPlayground from '@/components/package/GradowPlayground'
-import {Code, BookOpen} from 'lucide-react'
+import Breadcrumb from "@/components/ui/Breadcrumb/Breadcrumb";
+import ProjectTypeBadge from "@/components/ui/ProjectTypeBadge/ProjectTypeBadge";
+import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
+import TechBadgesCarrousel from "@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel";
+import CornerRibbon from "@/components/ui/CornerRibbon/CornerRibbon.astro";
+import ProjectStateBadge from "@/components/ui/ProjectStateBadge/ProjectStateBadge";
+import GrapperPlayground from "@/components/package/GrapperPlayground";
+import GradowPlayground from "@/components/package/GradowPlayground";
+import { Code, BookOpen } from "lucide-react";
 
 /* Get project info */
-import {getCollection} from 'astro:content'
-import TagTitle from '@/components/ui/TagTitle/TagTitle'
-const projects = await getCollection('projects')
+import { getCollection } from "astro:content";
+import TagTitle from "@/components/ui/TagTitle/TagTitle";
+const projects = await getCollection("projects");
 const project = projects.find(
-  (project) => project.data.slug === 'need-more-gradients'
-)
+	(project) => project.data.slug === "need-more-gradients",
+);
 
 if (!project) {
-  return Astro.redirect('/es/projects')
+	return Astro.redirect("/es/projects");
 }
 
-const {features, name, type, technologies, logo, logo_dark, state, version, documentation} =
-  project.data
+const {
+	features,
+	name,
+	type,
+	technologies,
+	logo,
+	logo_dark,
+	state,
+	version,
+	documentation,
+} = project.data;
 
 /* 
   @version 1

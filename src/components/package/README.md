@@ -2,7 +2,7 @@
 
 Conjunto de componentes para incluir en paquete Need more gradients UI.
 
-## Caracteristicas:
+## Caracteristicas
 
 - Construidos con React
 - Estilizados con scoped CSS
@@ -22,7 +22,7 @@ Conjunto de componentes para incluir en paquete Need more gradients UI.
 
 ### Grapper
 
-#### Props
+#### Grapper Props
 
 - variant: "static" | "spotlight" | "sticky"
 - mode: "border" | "solid" | "ghost"
@@ -32,7 +32,7 @@ Conjunto de componentes para incluir en paquete Need more gradients UI.
 
 ### Gradow
 
-#### Props
+#### Gradow Props
 
 - variant: "spin" | "pulse" | "sticky"
 - mode: "permanent" | "hover"

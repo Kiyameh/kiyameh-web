@@ -1,41 +1,41 @@
 {
-  "name": "Portfolio",
-  "slug": "portfolio",
-  "logo": "/projects/portfolio/logo.svg",
-  "logo_dark": "/projects/portfolio/logo_dark.svg",
-  "url": "https://www.kiyameh.com",
-  "repository": "https://github.com/Kiyameh/kiyameh.dev",
-  "type": "webpage",
-  "description": "Portfolio personal moderno y responsivo que muestra mis proyectos y habilidades como desarrollador.",
-  "description_en": "Personal modern and responsive portfolio that showcases my projects and skills as a developer.",
-  "technologies": [
-    "html5",
-    "cssmodules",
-    "react",
-    "astro",
-    "typescript",
-    "figma"
-  ],
-  "features": [
-    "Diseño visual estético personalizado",
-    "Diseño responsivo y accesible",
-    "Sistema de temas oscuro/claro",
-    "SEO optimizado"
-  ],
-  "features_en": [
-    "Custom aesthetic visual design",
-    "Responsive and accessible design",
-    "Dark/light themes system",
-    "SEO optimized"
-  ],
-  "images": [
-    "/projects/portfolio/1.png",
-    "/projects/portfolio/2.png",
-    "/projects/portfolio/3.png",
-    "/projects/portfolio/4.png",
-    "/projects/portfolio/5.png"
-  ],
-  "relevancy": 4,
-  "state": "upgrading",
-  "date": "2025-01-15"
+	"name": "Portfolio",
+	"slug": "portfolio",
+	"logo": "/projects/portfolio/logo.svg",
+	"logo_dark": "/projects/portfolio/logo_dark.svg",
+	"url": "https://www.kiyameh.com",
+	"repository": "https://github.com/Kiyameh/kiyameh.dev",
+	"type": "webpage",
+	"description": "Portfolio personal moderno y responsivo que muestra mis proyectos y habilidades como desarrollador.",
+	"description_en": "Personal modern and responsive portfolio that showcases my projects and skills as a developer.",
+	"technologies": [
+		"html5",
+		"cssmodules",
+		"react",
+		"astro",
+		"typescript",
+		"figma"
+	],
+	"features": [
+		"Diseño visual estético personalizado",
+		"Diseño responsivo y accesible",
+		"Sistema de temas oscuro/claro",
+		"SEO optimizado"
+	],
+	"features_en": [
+		"Custom aesthetic visual design",
+		"Responsive and accessible design",
+		"Dark/light themes system",
+		"SEO optimized"
+	],
+	"images": [
+		"/projects/portfolio/1.png",
+		"/projects/portfolio/2.png",
+		"/projects/portfolio/3.png",
+		"/projects/portfolio/4.png",
+		"/projects/portfolio/5.png"
+	],
+	"relevancy": 4,
+	"state": "upgrading",
+	"date": "2025-01-15"
 }

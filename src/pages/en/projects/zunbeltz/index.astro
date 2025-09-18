@@ -1,28 +1,36 @@
 ---
-import {GradientButton} from 'need-more-gradients-ui'
-import HtmlLayout from '@/layouts/HtmlLayout.astro'
-import NavLayout from '@/layouts/NavLayout.astro'
+import { GradientButton } from "need-more-gradients-ui";
+import HtmlLayout from "@/layouts/HtmlLayout.astro";
+import NavLayout from "@/layouts/NavLayout.astro";
 
-import Breadcrumb from '@/components/ui/Breadcrumb/Breadcrumb'
-import ProjectTypeBadge from '@/components/ui/ProjectTypeBadge/ProjectTypeBadge'
-import SectionTitle from '@/components/ui/SectionTitle/SectionTitle'
-import TechBadgesCarrousel from '@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel'
-import CornerRibbon from '@/components/ui/CornerRibbon/CornerRibbon.astro'
+import Breadcrumb from "@/components/ui/Breadcrumb/Breadcrumb";
+import ProjectTypeBadge from "@/components/ui/ProjectTypeBadge/ProjectTypeBadge";
+import SectionTitle from "@/components/ui/SectionTitle/SectionTitle";
+import TechBadgesCarrousel from "@/components/ui/TechBadgesCarrousel/TechBadgesCarrousel";
+import CornerRibbon from "@/components/ui/CornerRibbon/CornerRibbon.astro";
 
-import {AtSign, Code, MessageCircleHeart} from 'lucide-react'
+import { AtSign, Code, MessageCircleHeart } from "lucide-react";
 
 /* Get project info */
-import {getCollection} from 'astro:content'
-import ProjectStateBadge from '@/components/ui/ProjectStateBadge/ProjectStateBadge'
-const projects = await getCollection('projects')
-const project = projects.find((project) => project.data.slug === 'zunbeltz')
+import { getCollection } from "astro:content";
+import ProjectStateBadge from "@/components/ui/ProjectStateBadge/ProjectStateBadge";
+const projects = await getCollection("projects");
+const project = projects.find((project) => project.data.slug === "zunbeltz");
 
 if (!project) {
-  return Astro.redirect('/es/projects')
+	return Astro.redirect("/es/projects");
 }
 
-const {features_en, name, type, technologies, logo, logo_dark, state, version} =
-  project.data
+const {
+	features_en,
+	name,
+	type,
+	technologies,
+	logo,
+	logo_dark,
+	state,
+	version,
+} = project.data;
 
 /* 
   @version 1

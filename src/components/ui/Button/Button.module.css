@@ -1,75 +1,75 @@
 .button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  padding: 0.3rem 0.6rem;
-  border-radius: var(--radius-small);
-  color: var(--content);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	cursor: pointer;
+	padding: 0.3rem 0.6rem;
+	border-radius: var(--radius-small);
+	color: var(--content);
 }
 
 .buttonText::before {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  top: calc(100% - 0.1em);
-  left: 0;
-  width: 0%;
-  height: 0.2em;
-  background: linear-gradient(
-    to right,
-    var(--gradient-100),
-    var(--gradient-200)
-  );
-  transition: width 0.3s ease;
-}
-
-/* Hover State */
-.button:hover .buttonIcon {
-  color: var(--accent);
+	z-index: -1;
+	content: "";
+	position: absolute;
+	top: calc(100% - 0.1em);
+	left: 0;
+	width: 0%;
+	height: 0.2em;
+	background: linear-gradient(
+		to right,
+		var(--gradient-100),
+		var(--gradient-200)
+	);
+	transition: width 0.3s ease;
 }
 
 .buttonText {
-  position: relative;
-}
-
-.button:hover .buttonText::before {
-  width: 100%;
+	position: relative;
 }
 
 /* Active variant */
 .active .buttonIcon {
-  color: var(--accent);
+	color: var(--accent);
+}
+
+/* Hover State */
+.button:hover .buttonIcon {
+	color: var(--accent);
+}
+
+.button:hover .buttonText::before {
+	width: 100%;
 }
 
 /* Disabled State */
 .button:disabled {
-  cursor: default;
+	cursor: default;
 }
 .button:disabled * {
-  color: var(--neutral);
+	color: var(--neutral);
 }
 .button:disabled .buttonText::before {
-  display: none;
+	display: none;
 }
 
 /* Primary variant */
 .primary {
-  background: var(--surface-200);
-  border: 2px solid var(--gradient-100);
-  color: var(--content);
+	background: var(--surface-200);
+	border: 2px solid var(--gradient-100);
+	color: var(--content);
 }
 .primary:hover {
-  background: var(--surface-300);
+	background: var(--surface-300);
 }
 .primary:active * {
-  color: var(--accent);
+	color: var(--accent);
 }
 
 /* Responsive variant */
 
 @media (max-width: 768px) {
-  .responsive .buttonText {
-    display: none;
-  }
+	.responsive .buttonText {
+		display: none;
+	}
 }

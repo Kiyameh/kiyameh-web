@@ -6,7 +6,8 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"lint": "biome check --write"
 	},
 	"dependencies": {
 		"@astrojs/netlify": "^6.5.9",
@@ -16,6 +17,7 @@
 		"@fontsource-variable/outfit": "^5.2.6",
 		"@fontsource/baskervville": "^5.2.6",
 		"@icons-pack/react-simple-icons": "^13.1.0",
+		"@netlify/blobs": "^10.0.10",
 		"@supabase/supabase-js": "^2.57.0",
 		"astro": "^5.13.5",
 		"lucide-react": "^0.513.0",

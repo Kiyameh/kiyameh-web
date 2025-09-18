@@ -1,31 +1,31 @@
 {
-  "name": "Atomic Forge",
-  "slug": "atomic-forge",
-  "logo": "/projects/atomicforge/logo.svg",
-  "logo_dark": "/projects/atomicforge/logo_dark.svg",
-  "url": "https://atomicforge.vercel.app/",
-  "repository": "https://github.com/Kiyameh/atomic-forge",
-  "type": "tool",
-  "description": "Herramienta online para crear y previsualizar en tiempo real componentes de React. Pensado para aprendizaje y formación.",
-  "description_en": "Online tool for creating and previewing React components in real time. Thought for learning and training.",
-  "technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
-  "features": [
-    "Biblioteca de componentes creados",
-    "Previsualización en tiempo real de los componentes",
-    "Organización de componentes por proyecto"
-  ],
-  "features_en": [
-    "Created components library",
-    "Real-time preview of the components",
-    "Components organization by project"
-  ],
-  "images": [
-    "/projects/atomicforge/1.png",
-    "/projects/atomicforge/2.png",
-    "/projects/atomicforge/3.png",
-    "/projects/atomicforge/4.png"
-  ],
-  "relevancy": 1,
-  "state": "completed",
-  "date": "2025-01-15"
+	"name": "Atomic Forge",
+	"slug": "atomic-forge",
+	"logo": "/projects/atomicforge/logo.svg",
+	"logo_dark": "/projects/atomicforge/logo_dark.svg",
+	"url": "https://atomicforge.vercel.app/",
+	"repository": "https://github.com/Kiyameh/atomic-forge",
+	"type": "tool",
+	"description": "Herramienta online para crear y previsualizar en tiempo real componentes de React. Pensado para aprendizaje y formación.",
+	"description_en": "Online tool for creating and previewing React components in real time. Thought for learning and training.",
+	"technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
+	"features": [
+		"Biblioteca de componentes creados",
+		"Previsualización en tiempo real de los componentes",
+		"Organización de componentes por proyecto"
+	],
+	"features_en": [
+		"Created components library",
+		"Real-time preview of the components",
+		"Components organization by project"
+	],
+	"images": [
+		"/projects/atomicforge/1.png",
+		"/projects/atomicforge/2.png",
+		"/projects/atomicforge/3.png",
+		"/projects/atomicforge/4.png"
+	],
+	"relevancy": 1,
+	"state": "completed",
+	"date": "2025-01-15"
 }

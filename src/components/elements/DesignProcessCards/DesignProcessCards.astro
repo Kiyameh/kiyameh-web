@@ -1,75 +1,75 @@
 ---
-import {SpotlightButton, StickyCard} from 'need-more-gradients-ui'
+import { SpotlightButton, StickyCard } from "need-more-gradients-ui";
 
-import cursorSvg from '@/assets/ui-pieces/cursor.svg'
-import measure1Svg from '@/assets/ui-pieces/measure1.svg'
-import measure2Svg from '@/assets/ui-pieces/measure2.svg'
-import bg1 from '@/assets/backgrounds/bg1.svg'
-import bg_grid from '@/assets/backgrounds/bg_grid.svg'
-import {Image} from 'astro:assets'
+import cursorSvg from "@/assets/ui-pieces/cursor.svg";
+import measure1Svg from "@/assets/ui-pieces/measure1.svg";
+import measure2Svg from "@/assets/ui-pieces/measure2.svg";
+import bg1 from "@/assets/backgrounds/bg1.svg";
+import bg_grid from "@/assets/backgrounds/bg_grid.svg";
+import { Image } from "astro:assets";
 
 interface Props {
-  language: 'en' | 'es'
+	language: "en" | "es";
 }
 
-const {language = 'en'} = Astro.props as Props
+const { language = "en" } = Astro.props as Props;
 
 const TEXTS = {
-  en: {
-    designTitle: 'Design',
-    designDescription:
-      'I create intuitive and visually appealing interfaces that prioritize user experience. From wireframes to high-fidelity mockups, I ensure every design decision serves the user.',
-    layoutTitle: 'Layout',
-    layoutDescription:
-      'I transform designs into responsive layouts using modern CSS techniques. I focus on creating flexible, accessible, and performant structures that work across all devices.',
-    interactivityTitle: 'Interactivity',
-    interactivityDescription:
-      'I bring interfaces to life with smooth animations and interactive elements. Using JavaScript and modern frameworks, I create engaging user experiences that feel natural and responsive.',
-    designCardTitle: 'Design',
-    designCardDescription: 'The soul and the heart of awesome interfaces',
-    designCardButton: 'Awsm button',
-    structureCardTitle: 'Structure',
-    structureCardDescription: 'Responsiveness, accessibility and SEO',
-    structureCardButton: 'aria-check',
-    interactivityCardTitle: 'Interactivity',
-    interactivityCardDescription:
-      'Where design comes alive through motion and logic',
-    interactivityCardButton: "Let's do it",
-  },
-  es: {
-    designTitle: 'Diseño',
-    designDescription:
-      'Creo interfaces intuitivas y visualmente atractivas que priorizan la experiencia del usuario. Desde wireframes hasta mockups de alta fidelidad, me aseguro de que cada decisión de diseño sirva al usuario.',
-    layoutTitle: 'Maquetación',
-    layoutDescription:
-      'Transformo diseños en layouts responsivos usando técnicas CSS modernas. Me enfoco en crear estructuras flexibles, accesibles y performantes que funcionen en todos los dispositivos.',
-    interactivityTitle: 'Interactividad',
-    interactivityDescription:
-      'Doy vida a las interfaces con animaciones suaves y elementos interactivos. Usando JavaScript y frameworks modernos, creo experiencias de usuario atractivas que se sienten naturales y responsivas.',
-    designCardTitle: 'Diseño',
-    designCardDescription: 'El alma y el corazón de interfaces increíbles',
-    designCardButton: 'Botón asombroso',
-    structureCardTitle: 'Estructura',
-    structureCardDescription: 'Responsividad, accesibilidad y SEO',
-    structureCardButton: 'aria-check',
-    interactivityCardTitle: 'Interactividad',
-    interactivityCardDescription:
-      'Donde el diseño cobra vida a través del movimiento y la lógica',
-    interactivityCardButton: '¡Hagámoslo!',
-  },
-}
+	en: {
+		designTitle: "Design",
+		designDescription:
+			"I create intuitive and visually appealing interfaces that prioritize user experience. From wireframes to high-fidelity mockups, I ensure every design decision serves the user.",
+		layoutTitle: "Layout",
+		layoutDescription:
+			"I transform designs into responsive layouts using modern CSS techniques. I focus on creating flexible, accessible, and performant structures that work across all devices.",
+		interactivityTitle: "Interactivity",
+		interactivityDescription:
+			"I bring interfaces to life with smooth animations and interactive elements. Using JavaScript and modern frameworks, I create engaging user experiences that feel natural and responsive.",
+		designCardTitle: "Design",
+		designCardDescription: "The soul and the heart of awesome interfaces",
+		designCardButton: "Awsm button",
+		structureCardTitle: "Structure",
+		structureCardDescription: "Responsiveness, accessibility and SEO",
+		structureCardButton: "aria-check",
+		interactivityCardTitle: "Interactivity",
+		interactivityCardDescription:
+			"Where design comes alive through motion and logic",
+		interactivityCardButton: "Let's do it",
+	},
+	es: {
+		designTitle: "Diseño",
+		designDescription:
+			"Creo interfaces intuitivas y visualmente atractivas que priorizan la experiencia del usuario. Desde wireframes hasta mockups de alta fidelidad, me aseguro de que cada decisión de diseño sirva al usuario.",
+		layoutTitle: "Maquetación",
+		layoutDescription:
+			"Transformo diseños en layouts responsivos usando técnicas CSS modernas. Me enfoco en crear estructuras flexibles, accesibles y performantes que funcionen en todos los dispositivos.",
+		interactivityTitle: "Interactividad",
+		interactivityDescription:
+			"Doy vida a las interfaces con animaciones suaves y elementos interactivos. Usando JavaScript y frameworks modernos, creo experiencias de usuario atractivas que se sienten naturales y responsivas.",
+		designCardTitle: "Diseño",
+		designCardDescription: "El alma y el corazón de interfaces increíbles",
+		designCardButton: "Botón asombroso",
+		structureCardTitle: "Estructura",
+		structureCardDescription: "Responsividad, accesibilidad y SEO",
+		structureCardButton: "aria-check",
+		interactivityCardTitle: "Interactividad",
+		interactivityCardDescription:
+			"Donde el diseño cobra vida a través del movimiento y la lógica",
+		interactivityCardButton: "¡Hagámoslo!",
+	},
+};
 
 const {
-  designCardTitle,
-  designCardDescription,
-  designCardButton,
-  structureCardTitle,
-  structureCardDescription,
-  structureCardButton,
-  interactivityCardTitle,
-  interactivityCardDescription,
-  interactivityCardButton,
-} = TEXTS[language]
+	designCardTitle,
+	designCardDescription,
+	designCardButton,
+	structureCardTitle,
+	structureCardDescription,
+	structureCardButton,
+	interactivityCardTitle,
+	interactivityCardDescription,
+	interactivityCardButton,
+} = TEXTS[language];
 ---
 
 <arcticle class="design-process-box">

@@ -1,49 +1,49 @@
 {
-  "name": "Subterra",
-  "slug": "subterra",
-  "logo": "/projects/subterra/logo.svg",
-  "logo_dark": "/projects/subterra/logo_dark.svg",
-  "url": "https://www.subterra.app/",
-  "repository": "https://github.com/Kiyameh/subterra_web",
-  "documentation": "https://www.subterra.app/guide",
-  "type": "webpage",
-  "description": "Aplicación web para la gestión de datos de exploración de cavidades. Base de datos masiva para grupos y usuarios.",
-  "description_en": "Web application for cave exploration data management. Massive database for groups and users.",
-  "technologies": [
-    "html5",
-    "css",
-    "react",
-    "nextdotjs",
-    "typescript",
-    "mongodb",
-    "figma",
-    "cloudinary"
-  ],
-  "features": [
-    "Base de datos masiva para exploración de cavidades",
-    "Sistema de autenticación, grupos y roles",
-    "Subida de imágenes y archivos",
-    "Metodos de consulta, filtro y tratamiento de datos",
-    "Interfaz tipo dashboard para la visualización de datos",
-    "Modalidad premium con funcionalidades adicionales"
-  ],
-  "features_en": [
-    "Massive cave database for exploration",
-    "Authentication, groups and roles system",
-    "Photo and file upload",
-    "Query, filter and data treatment methods",
-    "Dashboard interface for data visualization",
-    "Premium mode with additional features"
-  ],
-  "images": [
-    "/projects/subterra/1.png",
-    "/projects/subterra/2.png",
-    "/projects/subterra/3.png",
-    "/projects/subterra/4.png",
-    "/projects/subterra/5.png"
-  ],
-  "relevancy": 5,
-  "state": "upgrading",
-  "version": "1.4.0",
-  "date": "2025-01-15"
+	"name": "Subterra",
+	"slug": "subterra",
+	"logo": "/projects/subterra/logo.svg",
+	"logo_dark": "/projects/subterra/logo_dark.svg",
+	"url": "https://www.subterra.app/",
+	"repository": "https://github.com/Kiyameh/subterra_web",
+	"documentation": "https://www.subterra.app/guide",
+	"type": "webpage",
+	"description": "Aplicación web para la gestión de datos de exploración de cavidades. Base de datos masiva para grupos y usuarios.",
+	"description_en": "Web application for cave exploration data management. Massive database for groups and users.",
+	"technologies": [
+		"html5",
+		"css",
+		"react",
+		"nextdotjs",
+		"typescript",
+		"mongodb",
+		"figma",
+		"cloudinary"
+	],
+	"features": [
+		"Base de datos masiva para exploración de cavidades",
+		"Sistema de autenticación, grupos y roles",
+		"Subida de imágenes y archivos",
+		"Metodos de consulta, filtro y tratamiento de datos",
+		"Interfaz tipo dashboard para la visualización de datos",
+		"Modalidad premium con funcionalidades adicionales"
+	],
+	"features_en": [
+		"Massive cave database for exploration",
+		"Authentication, groups and roles system",
+		"Photo and file upload",
+		"Query, filter and data treatment methods",
+		"Dashboard interface for data visualization",
+		"Premium mode with additional features"
+	],
+	"images": [
+		"/projects/subterra/1.png",
+		"/projects/subterra/2.png",
+		"/projects/subterra/3.png",
+		"/projects/subterra/4.png",
+		"/projects/subterra/5.png"
+	],
+	"relevancy": 5,
+	"state": "upgrading",
+	"version": "1.4.0",
+	"date": "2025-01-15"
 }
