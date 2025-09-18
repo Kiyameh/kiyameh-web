@@ -44,5 +44,5 @@ export default defineConfig({
 	// Adaptador para el despliegue - configura el proyecto para Netlify
 	adapter: netlify(),
 	// Tipo de salida del build - static
-	output: "estatic",
+	output: "static",
 });
