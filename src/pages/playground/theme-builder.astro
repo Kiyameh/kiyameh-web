@@ -1,7 +1,8 @@
 ---
-import HtmlLayout from "@/layouts/HtmlLayout.astro";
-import NavLayout from "@/layouts/NavLayout.astro";
-import ColorPicker from "@/components/elements/ThemeBuilder/ColorPicker.tsx";
+import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import NavLayout from '@/layouts/NavLayout.astro'
+import SingleColorPopover from '@/components/ui/ColorPicker/SingleColorPopover'
+import DualColorPopover from '@/components/ui/ColorPicker/DualColorPopover'
 ---
 
 <HtmlLayout pageTitle="Builder de Temas">
@@ -9,10 +10,12 @@ import ColorPicker from "@/components/elements/ThemeBuilder/ColorPicker.tsx";
         <main>
             <h1>Builder de Temas</h1>
 
-            <ColorPicker
-                client:load
-                onChange={(color) => console.log(color)}
-            />
+            <section style="margin: 2rem 0;">
+                <div style="display: grid; gap: 2rem; margin-top: 1rem;">
+                    <SingleColorPopover client:load />
+                    <DualColorPopover client:load />
+                </div>
+            </section>
         </main>
     </NavLayout>
 </HtmlLayout>

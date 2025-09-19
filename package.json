@@ -20,6 +20,7 @@
 		"@netlify/blobs": "^10.0.10",
 		"@supabase/supabase-js": "^2.57.0",
 		"astro": "^5.13.5",
+		"colorjs.io": "^0.5.2",
 		"lucide-react": "^0.513.0",
 		"motion": "^12.16.0",
 		"need-more-gradients-ui": "^0.0.1",

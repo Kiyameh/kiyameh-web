@@ -1,0 +1,83 @@
+/* ColorPicker */
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+/* Header */
+.modes {
+	display: flex;
+	gap: 6px;
+}
+
+.badge {
+	padding: 3px 6px;
+	border-radius: 16px;
+	border: 1px solid var(--border-soft);
+	cursor: pointer;
+	font-size: 12px;
+	user-select: none;
+}
+
+.badge:hover {
+	border-color: var(--primary);
+}
+
+.active {
+	background-color: var(--surface-300);
+	color: var(--primary);
+	border-color: var(--primary);
+}
+
+/* Selectors */
+
+.selectors {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+}
+
+.slider {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 8px;
+	border-radius: var(--radius-small);
+	outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 26px;
+	height: 26px;
+	border-radius: 26px;
+	border: 5px solid var(--surface-100);
+	cursor: pointer;
+	background: var(--thumb-color);
+}
+
+.slider::-moz-range-thumb {
+	width: 26px;
+	height: 26px;
+	border-radius: 26px;
+	border: 5px solid var(--surface-100);
+	cursor: pointer;
+	background: var(--thumb-color);
+}
+
+.canvas {
+	cursor: crosshair;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-medium);
+}
+
+/* Color Preview and Value */
+.colorName {
+	width: 100%;
+	text-align: center;
+	font-size: 0.8rem;
+	font-family: var(--font-mono);
+}

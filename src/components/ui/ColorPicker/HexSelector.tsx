@@ -1,17 +1,18 @@
 import { useState, useCallback, useRef, useEffect, useId } from "react";
-import styles from "./Selector.module.css";
+import styles from "./ColorPicker.module.css";
+
 
 interface HexSelectorProps {
 	onChange: (color: string) => void;
-	initialColor?: string;
+	color: string;
 }
 
 export default function HexSelector({
 	onChange,
-	initialColor = "#3366cc",
+	color,
 }: HexSelectorProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	const [selectedColor, setSelectedColor] = useState(initialColor);
+	const [selectedColor, setSelectedColor] = useState<string>(color);
 	const labelId = useId();
 
 	// Optimized RGB to HEX conversion using bitwise operations
@@ -144,23 +145,17 @@ export default function HexSelector({
 	}, [drawColorPanel, handleCanvasInteraction, handleKeyDown]);
 
 	return (
-		<div className={styles.panel}>
-			<div>
-				<div id={labelId} className={styles.label}>
-					Hex Color
-				</div>
-				<div className={styles.colorPickerContainer}>
-					<canvas
-						ref={canvasRef}
-						width="250"
-						height="150"
-						role="img"
-						tabIndex={0}
-						aria-labelledby={labelId}
-						aria-label={`Color picker, currently selected: ${selectedColor}`}
-					/>
-				</div>
-			</div>
+		<div className={styles.selectors}>
+			<canvas
+				className={styles.canvas}
+				ref={canvasRef}
+				width="250"
+				height="150"
+				role="img"
+				tabIndex={0}
+				aria-labelledby={labelId}
+				aria-label={`Color picker, currently selected: ${selectedColor}`}
+			/>
 		</div>
 	);
 }

@@ -1,0 +1,44 @@
+/* Trigger container */
+.trigger {
+	display: inline-block;
+	cursor: pointer;
+	width: fit-content;
+	height: fit-content;
+	border-radius: var(--radius-medium);
+}
+
+/* Panel container */
+.panel {
+	background: var(--surface-100);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-large);
+	box-shadow: var(--shadow-large);
+	padding: 2rem;
+	min-width: 200px;
+	max-width: 400px;
+	overflow: auto;
+
+	/* Animation */
+	animation: popoverFadeIn 0.15s ease-out;
+	transform-origin: var(--popover-transform-origin, center top);
+}
+
+/* Fade in animation */
+@keyframes popoverFadeIn {
+	from {
+		opacity: 0;
+		transform: scale(0.95) translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+	.panel {
+		max-width: calc(100vw - 32px);
+		max-height: calc(100vh - 64px);
+	}
+}
