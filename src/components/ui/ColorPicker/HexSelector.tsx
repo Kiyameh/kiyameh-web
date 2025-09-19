@@ -1,16 +1,12 @@
 import { useState, useCallback, useRef, useEffect, useId } from "react";
 import styles from "./ColorPicker.module.css";
 
-
 interface HexSelectorProps {
 	onChange: (color: string) => void;
 	color: string;
 }
 
-export default function HexSelector({
-	onChange,
-	color,
-}: HexSelectorProps) {
+export default function HexSelector({ onChange, color }: HexSelectorProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const [selectedColor, setSelectedColor] = useState<string>(color);
 	const labelId = useId();

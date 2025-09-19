@@ -7,16 +7,11 @@ interface RgbaSelectorProps {
 	color: Color;
 }
 
-export default function RgbaSelector({
-	onChange,
-	color,
-}: RgbaSelectorProps) {
-
+export default function RgbaSelector({ onChange, color }: RgbaSelectorProps) {
 	const redId = useId();
 	const greenId = useId();
 	const blueId = useId();
 	const alphaId = useId();
-
 
 	return (
 		<div className={styles.selectors}>
@@ -31,13 +26,18 @@ export default function RgbaSelector({
 					step="0.01"
 					value={color.srgb.r}
 					onChange={(e) => {
-						onChange(new Color("srgb", [parseFloat(e.target.value), color.srgb.g, color.srgb.blue], color.alpha))
+						onChange(
+							new Color(
+								"srgb",
+								[parseFloat(e.target.value), color.srgb.g, color.srgb.blue],
+								color.alpha,
+							),
+						);
 					}}
 					className={styles.slider}
 					style={
 						{
-							background:
-								`linear-gradient(to right, 
+							background: `linear-gradient(to right, 
                 					rgb(0, ${color.srgb.g}, ${color.srgb.blue}), 
                 					rgb(255, ${color.srgb.green}, ${color.srgb.blue}))`,
 							"--thumb-color": `rgb( ${color.srgb.red * 255}, 0, 0)`,
@@ -56,13 +56,18 @@ export default function RgbaSelector({
 					step="0.01"
 					value={color.srgb.g}
 					onChange={(e) => {
-						onChange(new Color("srgb", [color.srgb.r, parseFloat(e.target.value), color.srgb.blue], color.alpha))
+						onChange(
+							new Color(
+								"srgb",
+								[color.srgb.r, parseFloat(e.target.value), color.srgb.blue],
+								color.alpha,
+							),
+						);
 					}}
 					className={styles.slider}
 					style={
 						{
-							background:
-								`linear-gradient(to right, 	
+							background: `linear-gradient(to right, 	
                 					rgb(${color.srgb.red}, 0, ${color.srgb.blue}), 
                 					rgb(${color.srgb.red}, 255, ${color.srgb.blue}))`,
 							"--thumb-color": `rgb( 0, ${color.srgb.green * 255}, 0)`,
@@ -81,13 +86,18 @@ export default function RgbaSelector({
 					step="0.01"
 					value={color.srgb.b}
 					onChange={(e) => {
-						onChange(new Color("srgb", [color.srgb.r, color.srgb.g, parseFloat(e.target.value)], color.alpha))
+						onChange(
+							new Color(
+								"srgb",
+								[color.srgb.r, color.srgb.g, parseFloat(e.target.value)],
+								color.alpha,
+							),
+						);
 					}}
 					className={styles.slider}
 					style={
 						{
-							background:
-								`linear-gradient(to right, 
+							background: `linear-gradient(to right, 
                 					rgb(${color.srgb.red}, ${color.srgb.green}, 0), 
                 					rgb(${color.srgb.red}, ${color.srgb.green}, 255))`,
 							"--thumb-color": `rgb( 0, 0, ${color.srgb.blue * 255})`,
@@ -106,9 +116,9 @@ export default function RgbaSelector({
 					step="0.01"
 					value={color.alpha}
 					onChange={(e) => {
-						let newColor = color.clone()
-						newColor.alpha = parseFloat(e.target.value)
-						onChange(newColor)
+						let newColor = color.clone();
+						newColor.alpha = parseFloat(e.target.value);
+						onChange(newColor);
 					}}
 					className={styles.slider}
 					style={
@@ -121,7 +131,6 @@ export default function RgbaSelector({
 					}
 				/>
 			</div>
-
 		</div>
 	);
 }

@@ -2,22 +2,16 @@ import { useId } from "react";
 import styles from "./ColorPicker.module.css";
 import Color from "colorjs.io";
 
-
 interface HslSelectorProps {
 	onChange: (color: Color) => void;
 	color: Color;
 }
 
-export default function HslSelector({
-	onChange,
-	color,
-}: HslSelectorProps) {
-
+export default function HslSelector({ onChange, color }: HslSelectorProps) {
 	const hueId = useId();
 	const saturationId = useId();
 	const lightnessId = useId();
 	const alphaId = useId();
-
 
 	return (
 		<div className={styles.selectors}>
@@ -32,7 +26,17 @@ export default function HslSelector({
 					step="1"
 					value={color.hsl.hue}
 					onChange={(e) =>
-						onChange(new Color("hsl", [parseFloat(e.target.value), color.hsl.saturation, color.hsl.lightness], color.alpha))
+						onChange(
+							new Color(
+								"hsl",
+								[
+									parseFloat(e.target.value),
+									color.hsl.saturation,
+									color.hsl.lightness,
+								],
+								color.alpha,
+							),
+						)
 					}
 					className={styles.slider}
 					style={
@@ -53,7 +57,9 @@ export default function HslSelector({
 
 			{/* Saturation Slider */}
 			<div>
-				<label htmlFor={saturationId}>Saturation: {color.hsl.saturation.toFixed(0)}%</label>
+				<label htmlFor={saturationId}>
+					Saturation: {color.hsl.saturation.toFixed(0)}%
+				</label>
 				<input
 					id={saturationId}
 					type="range"
@@ -62,7 +68,17 @@ export default function HslSelector({
 					step="1"
 					value={color.hsl.saturation}
 					onChange={(e) =>
-						onChange(new Color("hsl", [color.hsl.hue, parseFloat(e.target.value), color.hsl.lightness], color.alpha))
+						onChange(
+							new Color(
+								"hsl",
+								[
+									color.hsl.hue,
+									parseFloat(e.target.value),
+									color.hsl.lightness,
+								],
+								color.alpha,
+							),
+						)
 					}
 					className={styles.slider}
 					style={
@@ -76,10 +92,11 @@ export default function HslSelector({
 				/>
 			</div>
 
-
 			{/* Lightness Slider */}
 			<div>
-				<label htmlFor={lightnessId}>Lightness: {color.hsl.lightness.toFixed(0)}%</label>
+				<label htmlFor={lightnessId}>
+					Lightness: {color.hsl.lightness.toFixed(0)}%
+				</label>
 				<input
 					id={lightnessId}
 					type="range"
@@ -88,7 +105,17 @@ export default function HslSelector({
 					step="1"
 					value={color.hsl.lightness}
 					onChange={(e) =>
-						onChange(new Color("hsl", [color.hsl.hue, color.hsl.saturation, parseFloat(e.target.value)], color.alpha))
+						onChange(
+							new Color(
+								"hsl",
+								[
+									color.hsl.hue,
+									color.hsl.saturation,
+									parseFloat(e.target.value),
+								],
+								color.alpha,
+							),
+						)
 					}
 					className={styles.slider}
 					style={
@@ -114,9 +141,9 @@ export default function HslSelector({
 					step="0.01"
 					value={color.alpha}
 					onChange={(e) => {
-						let newColor = color.clone()
-						newColor.alpha = parseFloat(e.target.value)
-						onChange(newColor)
+						let newColor = color.clone();
+						newColor.alpha = parseFloat(e.target.value);
+						onChange(newColor);
 					}}
 					className={styles.slider}
 					style={
@@ -129,8 +156,6 @@ export default function HslSelector({
 					}
 				/>
 			</div>
-
-
 		</div>
 	);
 }

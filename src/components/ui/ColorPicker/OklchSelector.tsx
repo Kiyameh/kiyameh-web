@@ -7,11 +7,7 @@ interface OklchSelectorProps {
 	color: Color;
 }
 
-export default function OklchSelector({
-	onChange,
-	color,
-}: OklchSelectorProps) {
-
+export default function OklchSelector({ onChange, color }: OklchSelectorProps) {
 	const hueId = useId();
 	const chromaId = useId();
 	const lightnessId = useId();
@@ -30,7 +26,17 @@ export default function OklchSelector({
 					step="1"
 					value={color.oklch.hue}
 					onChange={(e) =>
-						onChange(new Color("oklch", [color.oklch.lightness, color.oklch.chroma, parseFloat(e.target.value)], color.alpha))
+						onChange(
+							new Color(
+								"oklch",
+								[
+									color.oklch.lightness,
+									color.oklch.chroma,
+									parseFloat(e.target.value),
+								],
+								color.alpha,
+							),
+						)
 					}
 					className={styles.slider}
 					style={
@@ -51,7 +57,9 @@ export default function OklchSelector({
 
 			{/* Chroma Slider */}
 			<div>
-				<label htmlFor={chromaId}>Chroma: {color.oklch.chroma.toFixed(2)}</label>
+				<label htmlFor={chromaId}>
+					Chroma: {color.oklch.chroma.toFixed(2)}
+				</label>
 				<input
 					id={chromaId}
 					type="range"
@@ -60,7 +68,17 @@ export default function OklchSelector({
 					step="0.01"
 					value={color.oklch.chroma}
 					onChange={(e) =>
-						onChange(new Color("oklch", [color.oklch.lightness, parseFloat(e.target.value), color.oklch.hue], color.alpha))
+						onChange(
+							new Color(
+								"oklch",
+								[
+									color.oklch.lightness,
+									parseFloat(e.target.value),
+									color.oklch.hue,
+								],
+								color.alpha,
+							),
+						)
 					}
 					className={styles.slider}
 					style={
@@ -87,7 +105,17 @@ export default function OklchSelector({
 					step="0.01"
 					value={color.oklch.lightness}
 					onChange={(e) =>
-						onChange(new Color("oklch", [parseFloat(e.target.value), color.oklch.chroma, color.oklch.hue], color.alpha))
+						onChange(
+							new Color(
+								"oklch",
+								[
+									parseFloat(e.target.value),
+									color.oklch.chroma,
+									color.oklch.hue,
+								],
+								color.alpha,
+							),
+						)
 					}
 					className={styles.slider}
 					style={
@@ -112,9 +140,9 @@ export default function OklchSelector({
 					step="0.01"
 					value={color.alpha}
 					onChange={(e) => {
-						let newColor = color.clone()
-						newColor.alpha = parseFloat(e.target.value)
-						onChange(newColor)
+						let newColor = color.clone();
+						newColor.alpha = parseFloat(e.target.value);
+						onChange(newColor);
 					}}
 					className={styles.slider}
 					style={
@@ -127,8 +155,6 @@ export default function OklchSelector({
 					}
 				/>
 			</div>
-
-
 		</div>
 	);
 }
