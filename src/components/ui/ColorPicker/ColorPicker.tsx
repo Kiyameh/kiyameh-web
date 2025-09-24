@@ -11,14 +11,17 @@ const availableModes = ["oklch", "hsl", "srgb"];
 /**
  * @version 1
  * @description Component for color selection using different color models.
+ * @param name - Name of the color.
  * @param onChange - Function to be called when the color changes.
  * @param value - Initial color value.
  */
 
 export default function ColorPicker({
+	name,
 	onChange,
 	value,
 }: {
+	name?: string;
 	onChange: (color: string) => void;
 	value?: string;
 }) {
@@ -33,6 +36,7 @@ export default function ColorPicker({
 		setMode(newMode);
 		const newColor = color.to(newMode);
 		setColor(newColor);
+		onChange(newColor.toString({ format: mode }));
 	};
 
 	const handleColorChange = (color: Color) => {
@@ -54,6 +58,7 @@ export default function ColorPicker({
 						{m.toUpperCase()}
 					</button>
 				))}
+				{name && <p className={styles.colorName}>{name}</p>}
 			</div>
 
 			{/* RGB Color Sliders */}

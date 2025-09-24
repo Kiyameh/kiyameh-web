@@ -1,0 +1,166 @@
+/* Save Status Component */
+.saveStatus {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: var(--radius-small);
+	font-size: 0.875rem;
+	font-weight: 500;
+	transition: all 0.2s ease;
+	border: 1px solid transparent;
+	user-select: none;
+	min-width: 125px;
+}
+
+.iconContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.icon {
+	transition: all 0.2s ease;
+}
+
+.label {
+	white-space: nowrap;
+	font-weight: 500;
+}
+
+/* Status variants */
+.saved {
+	background-color: var(--success);
+	color: var(--success-content);
+	border-color: var(--success-content);
+}
+
+.saved .icon {
+	color: var(--success-content);
+}
+
+.unsaved {
+	background-color: var(--warning);
+	color: var(--warning-content);
+	border-color: var(--warning-content);
+}
+
+.unsaved .icon {
+	color: var(--warning-content);
+}
+
+.saving {
+	background-color: var(--info);
+	color: var(--info-content);
+	border-color: var(--info-content);
+}
+
+.saving .icon {
+	color: var(--info-content);
+}
+
+.notTracked {
+	background-color: var(--surface-300);
+	color: var(--content);
+	border-color: var(--border);
+	opacity: 0.7;
+}
+
+.notTracked .icon {
+	color: var(--content);
+}
+
+/* Clickable state */
+.clickable {
+	cursor: pointer;
+	box-shadow: var(--shadow-small);
+}
+
+.clickable:hover {
+	box-shadow: var(--shadow-medium);
+	transform: translateY(-1px);
+}
+
+.clickable:active {
+	transform: translateY(0);
+	box-shadow: var(--shadow-small);
+}
+
+/* Spinning animation for saving state */
+.spinning {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Responsive design */
+@media (max-width: 767px) {
+	.saveStatus {
+		padding: 0.4rem 0.6rem;
+		font-size: 0.8125rem;
+	}
+
+	.label {
+		display: none;
+	}
+
+	.iconContainer {
+		margin: 0;
+	}
+}
+
+/* Focus states for accessibility */
+.clickable:focus {
+	outline: 2px solid var(--focus);
+	outline-offset: 2px;
+}
+
+/* Hover effects for different states */
+.saved.clickable:hover {
+	background-color: var(--success);
+	opacity: 0.9;
+}
+
+.unsaved.clickable:hover {
+	background-color: var(--warning);
+	opacity: 0.9;
+}
+
+.saving.clickable:hover {
+	background-color: var(--info);
+	opacity: 0.9;
+}
+
+.notTracked.clickable:hover {
+	background-color: var(--surface-300);
+	opacity: 0.8;
+}
+
+/* Pulse animation for unsaved state */
+.unsaved {
+	animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.8;
+	}
+}
+
+/* Disable pulse when hovering */
+.unsaved:hover {
+	animation: none;
+	opacity: 1;
+}

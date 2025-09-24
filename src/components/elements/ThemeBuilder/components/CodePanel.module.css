@@ -1,0 +1,62 @@
+/* Code Panel */
+.codeBox {
+	padding: 0;
+	background-color: oklch(28.036% 0.019 264.182);
+	color: oklch(82.901% 0.031 222.959);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.codeHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+	border-bottom: 1px solid rgba(236, 236, 215, 0.1);
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.codeHeader h3 {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 600;
+	color: rgb(236, 236, 215);
+}
+
+.copyButton {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	background-color: rgba(236, 236, 215, 0.1);
+	color: rgb(236, 236, 215);
+	border: 1px solid rgba(236, 236, 215, 0.2);
+	border-radius: 6px;
+	font-size: 0.875rem;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.copyButton:hover {
+	background-color: rgba(236, 236, 215, 0.2);
+	border-color: rgba(236, 236, 215, 0.3);
+}
+
+.copyButton:disabled {
+	background-color: rgba(34, 197, 94, 0.2);
+	border-color: rgba(34, 197, 94, 0.3);
+	color: rgb(34, 197, 94);
+	cursor: default;
+}
+
+.codeBox pre {
+	flex: 1;
+	margin: 0;
+	padding: 2rem;
+	overflow: auto;
+}
+
+.code {
+	font-family: var(--font-mono);
+}

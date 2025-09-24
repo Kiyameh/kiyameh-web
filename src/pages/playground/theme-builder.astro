@@ -1,21 +1,11 @@
 ---
 import HtmlLayout from '@/layouts/HtmlLayout.astro'
+import ThemeBuilderApp from '@/components/elements/ThemeBuilder/ThemeBuilderApp'
 import NavLayout from '@/layouts/NavLayout.astro'
-import SingleColorPopover from '@/components/ui/ColorPicker/SingleColorPopover'
-import DualColorPopover from '@/components/ui/ColorPicker/DualColorPopover'
 ---
 
-<HtmlLayout pageTitle="Builder de Temas">
-    <NavLayout>
-        <main>
-            <h1>Builder de Temas</h1>
-
-            <section style="margin: 2rem 0;">
-                <div style="display: grid; gap: 2rem; margin-top: 1rem;">
-                    <SingleColorPopover client:load />
-                    <DualColorPopover client:load />
-                </div>
-            </section>
-        </main>
-    </NavLayout>
+<HtmlLayout pageTitle="Creador de temas">
+  <NavLayout>
+    <ThemeBuilderApp client:load />
+  </NavLayout>
 </HtmlLayout>

@@ -3,6 +3,7 @@ import { Popover } from "../Popover/Popover";
 import ColorPicker from "./ColorPicker";
 
 interface DualColorPopoverProps {
+	name?: string;
 	initialSurfaceColor?: string;
 	initialContentColor?: string;
 	onSurfaceColorChange?: (color: string) => void;
@@ -13,6 +14,7 @@ interface DualColorPopoverProps {
 /**
  * @version 1
  * @description Component for selecting surface and content colors opened in a popover.
+ * @param name - Name of the colors.
  * @param initialSurfaceColor - Initial surface color.
  * @param initialContentColor - Initial content color.
  * @param onSurfaceColorChange - Function to be called when the surface color changes.
@@ -21,6 +23,7 @@ interface DualColorPopoverProps {
  */
 
 export default function DualColorPopover({
+	name,
 	initialSurfaceColor = "#ffffff",
 	initialContentColor = "#000000",
 	onSurfaceColorChange,
@@ -29,7 +32,7 @@ export default function DualColorPopover({
 }: DualColorPopoverProps) {
 	const [surfaceColor, setSurfaceColor] = useState(initialSurfaceColor);
 	const [contentColor, setContentColor] = useState(initialContentColor);
-	const [activeTab, setActiveTab] = useState<"surface" | "content">("surface");
+	const [activeTab, setActiveTab] = useState<"surface" | "content">("content");
 
 	const handleSurfaceColorChange = (color: string) => {
 		setSurfaceColor(color);
@@ -47,6 +50,7 @@ export default function DualColorPopover({
 		<Popover
 			trigger={
 				<button
+					title={name}
 					style={{
 						backgroundColor: surfaceColor,
 						color: contentColor,
@@ -59,10 +63,10 @@ export default function DualColorPopover({
 						alignItems: "center",
 						justifyContent: "center",
 						fontSize: "34px",
-						fontWeight: "900",
+						fontWeight: "600",
 						fontFamily: "var(--font-sans)",
 					}}
-					aria-label="Select surface and content colors"
+					aria-label={`Select colors ${name}`}
 				>
 					A
 				</button>
@@ -79,64 +83,67 @@ export default function DualColorPopover({
 					}}
 				>
 					{/* Tab Navigation */}
-					<div
-						style={{
-							display: "flex",
-							borderRadius: "var(--radius-medium)",
-							border: "1px solid var(--border)",
-							overflow: "hidden",
-							marginBottom: "1rem",
-						}}
-					>
-						<button
-							onClick={() => setActiveTab("surface")}
+					{onSurfaceColorChange && (
+						<div
 							style={{
-								flex: 1,
-								padding: "0.5rem 1rem",
-								border: "none",
-								backgroundColor:
-									activeTab === "surface"
-										? "var(--primary)"
-										: "var(--surface-200)",
-								color:
-									activeTab === "surface"
-										? "var(--primary-content)"
-										: "var(--content)",
-								cursor: "pointer",
-								fontSize: "0.875rem",
-								fontWeight: activeTab === "surface" ? "600" : "400",
-								transition: "all 0.2s ease",
+								display: "flex",
+								borderRadius: "var(--radius-medium)",
+								border: "1px solid var(--border)",
+								overflow: "hidden",
+								marginBottom: "1rem",
 							}}
 						>
-							Surface
-						</button>
-						<button
-							onClick={() => setActiveTab("content")}
-							style={{
-								flex: 1,
-								padding: "0.5rem 1rem",
-								border: "none",
-								backgroundColor:
-									activeTab === "content"
-										? "var(--primary)"
-										: "var(--surface-200)",
-								color:
-									activeTab === "content"
-										? "var(--primary-content)"
-										: "var(--content)",
-								cursor: "pointer",
-								fontSize: "0.875rem",
-								fontWeight: activeTab === "content" ? "600" : "400",
-								transition: "all 0.2s ease",
-							}}
-						>
-							Content
-						</button>
-					</div>
+							<button
+								onClick={() => setActiveTab("surface")}
+								style={{
+									flex: 1,
+									padding: "0.5rem 1rem",
+									border: "none",
+									backgroundColor:
+										activeTab === "surface"
+											? "var(--primary)"
+											: "var(--surface-200)",
+									color:
+										activeTab === "surface"
+											? "var(--primary-content)"
+											: "var(--content)",
+									cursor: "pointer",
+									fontSize: "0.875rem",
+									fontWeight: activeTab === "surface" ? "600" : "400",
+									transition: "all 0.2s ease",
+								}}
+							>
+								Surface
+							</button>
+							<button
+								onClick={() => setActiveTab("content")}
+								style={{
+									flex: 1,
+									padding: "0.5rem 1rem",
+									border: "none",
+									backgroundColor:
+										activeTab === "content"
+											? "var(--primary)"
+											: "var(--surface-200)",
+									color:
+										activeTab === "content"
+											? "var(--primary-content)"
+											: "var(--content)",
+									cursor: "pointer",
+									fontSize: "0.875rem",
+									fontWeight: activeTab === "content" ? "600" : "400",
+									transition: "all 0.2s ease",
+								}}
+							>
+								Content
+							</button>
+						</div>
+					)}
 
 					{/* Color Picker */}
 					{activeTab === "surface" && (
 						<ColorPicker
+							name={name}
 							value={surfaceColor}
 							onChange={handleSurfaceColorChange}
 						/>
@@ -144,6 +151,7 @@ export default function DualColorPopover({
 
 					{activeTab === "content" && (
 						<ColorPicker
+							name={name}
 							value={contentColor}
 							onChange={handleContentColorChange}
 						/>

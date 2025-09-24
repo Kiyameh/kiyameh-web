@@ -1,0 +1,226 @@
+/* Auth Banner Component */
+.banner {
+	padding: 0.5rem 1rem;
+	border-radius: var(--radius-medium);
+	margin-bottom: 1rem;
+	border: 1px solid;
+	transition: all 0.2s ease;
+}
+
+.content {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+}
+
+.iconContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	margin-top: 0.125rem;
+}
+
+.icon {
+	transition: all 0.2s ease;
+}
+
+.textContent {
+	flex: 1;
+	min-width: 0;
+}
+
+.mainText {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 0.25rem;
+}
+
+.status {
+	font-weight: 600;
+	font-size: 0.875rem;
+	line-height: 1.2;
+}
+
+.description {
+	margin: 0;
+	font-size: 0.8125rem;
+	line-height: 1.4;
+	opacity: 0.9;
+}
+
+.infoIcon {
+	opacity: 0.7;
+	flex-shrink: 0;
+}
+
+.userBadge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.2);
+	flex-shrink: 0;
+}
+
+.linkButton {
+	background: none;
+	border: none;
+	color: inherit;
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: inherit;
+	font-weight: 600;
+	padding: 0;
+	margin: 0 0.25rem;
+	transition: opacity 0.2s ease;
+}
+
+.linkButton:hover {
+	opacity: 0.8;
+}
+
+/* Loading State */
+.loading {
+	background-color: var(--surface-200);
+	border-color: var(--border-soft);
+	color: var(--content);
+}
+
+.spinner {
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--surface-300);
+	border-top: 2px solid var(--accent);
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Unauthenticated State */
+.unauthenticated {
+	background-color: var(--warning);
+	border-color: var(--warning-content);
+	color: var(--warning-content);
+}
+
+.unauthenticated .icon {
+	color: var(--warning-content);
+}
+
+.unauthenticated .infoIcon {
+	color: var(--warning-content);
+}
+
+.unauthenticated .linkButton {
+	color: var(--warning-content);
+	font-weight: 700;
+}
+
+.unauthenticated .linkButton:hover {
+	opacity: 0.8;
+	text-decoration-thickness: 2px;
+}
+
+/* Authenticated State */
+.authenticated {
+	background-color: var(--success);
+	border-color: var(--success-content);
+	color: var(--success-content);
+}
+
+.authenticated .icon {
+	color: var(--success-content);
+}
+
+.authenticated .userBadge {
+	background-color: rgba(255, 255, 255, 0.25);
+	color: var(--success-content);
+}
+
+.authenticated .linkButton {
+	color: var(--success-content);
+	opacity: 0.8;
+	font-weight: 500;
+}
+
+.authenticated .linkButton:hover {
+	opacity: 1;
+	text-decoration-thickness: 1px;
+}
+
+/* Hover effects */
+.banner:hover {
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-small);
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+	.banner {
+		padding: 0.75rem 1rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.content {
+		gap: 0.5rem;
+	}
+
+	.status {
+		font-size: 0.8125rem;
+	}
+
+	.description {
+		font-size: 0.75rem;
+	}
+
+	.mainText {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.25rem;
+	}
+
+	.userBadge {
+		width: 18px;
+		height: 18px;
+	}
+
+	.linkButton {
+		display: inline-block;
+		margin: 0.25rem 0;
+	}
+}
+
+/* Animation for state changes */
+.banner {
+	animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Focus states for accessibility */
+.linkButton:focus {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+	border-radius: 2px;
+}
