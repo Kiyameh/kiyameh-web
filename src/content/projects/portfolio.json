@@ -4,7 +4,7 @@
 	"logo": "/projects/portfolio/logo.svg",
 	"logo_dark": "/projects/portfolio/logo_dark.svg",
 	"url": "https://www.kiyameh.com",
-	"repository": "https://github.com/Kiyameh/kiyameh.dev",
+	"repository": "https://github.com/Kiyameh/kiyameh-web",
 	"type": "webpage",
 	"description": "Portfolio personal moderno y responsivo que muestra mis proyectos y habilidades como desarrollador.",
 	"description_en": "Personal modern and responsive portfolio that showcases my projects and skills as a developer.",

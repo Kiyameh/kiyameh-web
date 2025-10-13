@@ -29,17 +29,10 @@ import DesignProcessCards from "@/components/elements/DesignProcessCards/DesignP
       <section>
         <!-- Content -->
         <div class="container">
-          <LandingHero
-            language="es"
-            client:load
-          />
+          <LandingHero language="es" client:load />
         </div>
         <!-- Decoration -->
-        <div
-          class="bg-grid top-left"
-          aria-hidden="true"
-        >
-        </div>
+        <div class="bg-grid top-left" aria-hidden="true"></div>
         <Image
           src={bg2}
           alt="background-decoration"
@@ -88,11 +81,7 @@ import DesignProcessCards from "@/components/elements/DesignProcessCards/DesignP
           <ConnectSection language="es" />
         </div>
         <!-- Decoration -->
-        <div
-          class="bg-grid bottom-right"
-          aria-hidden="true"
-        >
-        </div>
+        <div class="bg-grid bottom-right" aria-hidden="true"></div>
 
         <Image
           src={bg5}
@@ -107,6 +96,10 @@ import DesignProcessCards from "@/components/elements/DesignProcessCards/DesignP
 
 <style>
   /* Layout */
+  main {
+    overflow-x: hidden;
+  }
+
   section {
     position: relative;
     display: flex;
@@ -130,7 +123,7 @@ import DesignProcessCards from "@/components/elements/DesignProcessCards/DesignP
   /* Background grid */
   .bg-grid {
     z-index: -1;
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;

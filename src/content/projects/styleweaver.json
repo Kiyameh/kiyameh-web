@@ -1,0 +1,31 @@
+{
+	"name": "Style Weaver",
+	"slug": "style-weaver",
+	"logo": "/projects/styleweaver/logo.svg",
+	"logo_dark": "/projects/styleweaver/logo.svg",
+	"url": "https://weaver.kiyameh.com/",
+	"repository": "https://github.com/Kiyameh/style-weaver",
+	"type": "tool",
+	"description": "Herramienta online para crear y previsualizar en tiempo real temas de estilos y generación automática de archivos de variables CSS.",
+	"description_en": "Online tool for creating and previewing in real time style themes and automatic generation of CSS variable files.",
+	"technologies": ["html5", "css", "react", "nextdotjs", "typescript"],
+	"features": [
+		"Biblioteca de temas creados",
+		"Previsualización en tiempo real de los temas",
+		"Organización de temas por proyecto"
+	],
+	"features_en": [
+		"Created themes library",
+		"Real-time preview of the themes",
+		"Themes organization by project"
+	],
+	"images": [
+		"/projects/styleweaver/1.png",
+		"/projects/styleweaver/2.png",
+		"/projects/styleweaver/3.png",
+		"/projects/styleweaver/4.png"
+	],
+	"relevancy": 4,
+	"state": "completed",
+	"date": "2025-10-05"
+}

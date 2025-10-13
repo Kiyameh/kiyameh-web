@@ -4,7 +4,7 @@
 	"logo": "/projects/subterra/logo.svg",
 	"logo_dark": "/projects/subterra/logo_dark.svg",
 	"url": "https://www.subterra.app/",
-	"repository": "https://github.com/Kiyameh/subterra_web",
+	"repository": "https://github.com/Kiyameh/subterra-web",
 	"documentation": "https://www.subterra.app/guide",
 	"type": "webpage",
 	"description": "Aplicación web para la gestión de datos de exploración de cavidades. Base de datos masiva para grupos y usuarios.",
