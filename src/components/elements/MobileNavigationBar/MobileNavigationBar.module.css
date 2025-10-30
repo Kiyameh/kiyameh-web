@@ -163,6 +163,7 @@
 	position: relative;
 	white-space: nowrap;
 }
+
 .active {
 	position: relative;
 }
@@ -174,9 +175,7 @@
 	left: 0;
 	height: 0.2em;
 	width: 100%;
-	background: linear-gradient(
-		to right,
-		var(--gradient-100),
-		var(--gradient-200)
-	);
+	background: linear-gradient(to right,
+			var(--gradient-100),
+			var(--gradient-200));
 }

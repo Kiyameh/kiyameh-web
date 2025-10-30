@@ -7,7 +7,7 @@ import {
 	FileCode2,
 	Menu,
 	X,
-	FlaskConical,
+	PencilRuler,
 } from "lucide-react";
 import styles from "./MobileNavigationBar.module.css";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher/ThemeSwitcher";
@@ -22,6 +22,7 @@ const translations = {
 		portfolio: "Portfolio",
 		projects: "Projects",
 		labs: "Labs",
+		method: "Method",
 		resume: "Resume",
 	},
 	es: {
@@ -33,6 +34,7 @@ const translations = {
 		portfolio: "Portafolio",
 		projects: "Proyectos",
 		labs: "Laboratorio",
+		method: "Método",
 		resume: "Currículum",
 	},
 };
@@ -63,6 +65,11 @@ export default function MobileNavigationBar({
 		window.location.href = newPath;
 	};
 
+	const cleanPath =
+		currentPath.endsWith("/") && currentPath.length > 1
+			? currentPath.slice(0, -1)
+			: currentPath;
+
 	return (
 		<>
 			<button
@@ -82,7 +89,9 @@ export default function MobileNavigationBar({
 								<User className={styles.icon} />
 								<span
 									className={
-										currentPath.endsWith("/") ? `${styles.active}` : ""
+										cleanPath === "/es" || cleanPath === "/en"
+											? `${styles.active}`
+											: ""
 									}
 								>
 									{t.portfolio}
@@ -150,16 +159,16 @@ export default function MobileNavigationBar({
 								</span>
 							</a>
 						</li>
-						{/* Labs */}
+						{/* Method */}
 						<li>
-							<a href={`/${currentLocale}/labs`}>
-								<FlaskConical className={styles.icon} />
+							<a href={`/${currentLocale}/method`}>
+								<PencilRuler className={styles.icon} />
 								<span
 									className={
-										currentPath.includes("labs") ? `${styles.active}` : ""
+										currentPath.includes("method") ? `${styles.active}` : ""
 									}
 								>
-									{t.labs}
+									{t.method}
 								</span>
 							</a>
 						</li>

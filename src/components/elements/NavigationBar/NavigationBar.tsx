@@ -5,7 +5,7 @@ import {
 	Hash,
 	Languages,
 	FileCode2,
-	FlaskConical,
+	PencilRuler,
 } from "lucide-react";
 import styles from "./NavigationBar.module.css";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher/ThemeSwitcher";
@@ -20,6 +20,7 @@ const translations = {
 		portfolio: "Portfolio",
 		projects: "Projects",
 		labs: "Labs",
+		method: "Method",
 		resume: "Resume",
 	},
 	es: {
@@ -31,6 +32,7 @@ const translations = {
 		portfolio: "Portafolio",
 		projects: "Proyectos",
 		labs: "Labs",
+		method: "Método",
 		resume: "Currículum",
 	},
 };
@@ -59,6 +61,11 @@ export default function NavigationBar({
 			toggleLocale();
 		}
 	};
+
+	const cleanPath =
+		currentPath.endsWith("/") && currentPath.length > 1
+			? currentPath.slice(0, -1)
+			: currentPath;
 
 	return (
 		<nav className={styles.navbar}>
@@ -90,7 +97,7 @@ export default function NavigationBar({
 					<a href={`/${currentLocale}/`} className={styles.trigger}>
 						<User
 							className={`${styles.icon} ${
-								currentPath.endsWith("/") ? styles.active : ""
+								cleanPath === "/es" || cleanPath === "/en" ? styles.active : ""
 							}`}
 						/>
 						<span className={styles.text}>{t.portfolio}</span>
@@ -107,15 +114,15 @@ export default function NavigationBar({
 						<span className={styles.text}>{t.projects}</span>
 					</a>
 				</li>
-				{/* Labs */}
+				{/* Method */}
 				<li className={styles.page}>
-					<a href={`/${currentLocale}/labs`} className={styles.trigger}>
-						<FlaskConical
+					<a href={`/${currentLocale}/method`} className={styles.trigger}>
+						<PencilRuler
 							className={`${styles.icon} ${
-								currentPath.includes("labs") ? styles.active : ""
+								currentPath.includes("method") ? styles.active : ""
 							}`}
 						/>
-						<span className={styles.text}>{t.labs}</span>
+						<span className={styles.text}>{t.method}</span>
 					</a>
 				</li>
 				{/* Resume */}

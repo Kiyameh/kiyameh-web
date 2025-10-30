@@ -1,0 +1,124 @@
+---
+import HtmlLayout from "@/layouts/HtmlLayout.astro";
+import NavLayout from "@/layouts/NavLayout.astro";
+import { Image } from "astro:assets";
+import bg1 from "@/assets/backgrounds/bg1.svg";
+import MethodHero from "@/elements/MethodHero.astro";
+import PanelTitle from "@/assets/PanelTitle.astro";
+import PanelReact from "@/assets/PanelReact.astro";
+import PanelFrameworks from "@/assets/PanelFrameworks.astro";
+import PanelDeploying from "@/assets/PanelDeploying.astro";
+import PanelBackend from "@/assets/PanelBackend.astro";
+
+/* 
+  @version 1
+  @revisado 2025-10-30
+  @descripcion: Página del método de desarrollo
+*/
+---
+
+<HtmlLayout pageTitle="Método de desarrollo">
+  <NavLayout>
+    <div class="page-container">
+      <div class="bg-grid" aria-hidden="true"></div>
+      <Image
+        src={bg1}
+        alt="background-decoration"
+        aria-hidden="true"
+        class="bg-gradient"
+      />
+      <MethodHero language="es" />
+      <main>
+        <div class="quote">
+          <p>
+            Hay muchas maneras de hacer páginas web, pero hay una que utilizo
+            más. Eso no quiere decir que no pueda usar otras. Siempre estoy
+            abierto a aprender nuevas técnicas y herramientas.
+          </p>
+          <p>Sigue leyendo para conocer esta forma de trabajar</p>
+          <p>Andoni</p>
+        </div>
+        <div class="schema">
+          <PanelTitle />
+          <PanelReact />
+          <PanelFrameworks />
+          <PanelDeploying />
+          <PanelBackend />
+        </div>
+      </main>
+    </div>
+  </NavLayout>
+</HtmlLayout>
+
+<style>
+  main {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 4rem;
+    padding-bottom: 5rem;
+  }
+
+  .quote {
+    width: 90%;
+    max-width: 820px;
+    padding: 1rem 2rem;
+    font-style: italic;
+    font-weight: semibold;
+    font-family: var(--font-fantasy);
+    border-radius: var(--radius-large);
+    border-left: 12px solid var(--primary);
+    background-color: oklch(from var(--surface-200) l c h / calc(alpha - 0.5));
+
+    font-size: 1.2rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .quote p:last-child {
+    text-align: right;
+  }
+  .schema {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Background grid */
+  .bg-grid {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 15px 15px,
+      var(--gradient-300) 1px,
+      transparent 0
+    );
+    background-size: 25px 25px;
+    mask-image: radial-gradient(
+      ellipse 80% 80% at 0% 0%,
+      #000 50%,
+      transparent 90%
+    );
+  }
+
+  .bg-gradient {
+    position: absolute;
+    top: 500px;
+    right: 0;
+    width: 60lvw;
+    height: 100lvh;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(100px);
+  }
+</style>
