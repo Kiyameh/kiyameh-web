@@ -36,7 +36,6 @@ export default function ThemeSwitcher() {
 
 	const applyTheme = useCallback((newTheme: "light" | "dark") => {
 		document.documentElement.setAttribute("data-theme", newTheme);
-		document.body.setAttribute("data-theme", newTheme);
 		localStorage.setItem("theme", newTheme);
 		setTheme(newTheme);
 	}, []);

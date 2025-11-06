@@ -10,34 +10,37 @@ import "@fontsource-variable/outfit";
 import "@fontsource/baskervville";
 import "@fontsource-variable/caveat";
 
+/* Components */
+import ThemeLoader from "@/components/ui/ThemeLoader.astro";
+
 /* Variables */
 const currentLocale = Astro.currentLocale ?? "es";
 
 /* Props */
 interface Props {
-	pageTitle?: string;
-	pageDescription?: string;
-	pageTags?: string[];
+  pageTitle?: string;
+  pageDescription?: string;
+  pageTags?: string[];
 }
 
 const {
-	pageTitle = `${
-		currentLocale === "es" ? "Portfolio de Andoni" : "Andoni's Portfolio"
-	}`,
-	pageDescription = `${
-		currentLocale === "es"
-			? "Portfolio personal de Andoni Abarzuza, desarrollador web y diseñador de interfaces"
-			: "Personal portfolio of Andoni Abarzuza, web developer and interface designer"
-	}`,
-	pageTags = [
-		"portfolio",
-		"andoni",
-		"developer",
-		"designer",
-		"web",
-		"design",
-		"development",
-	],
+  pageTitle = `${
+    currentLocale === "es" ? "Portfolio de Andoni" : "Andoni's Portfolio"
+  }`,
+  pageDescription = `${
+    currentLocale === "es"
+      ? "Portfolio personal de Andoni Abarzuza, desarrollador web y diseñador de interfaces"
+      : "Personal portfolio of Andoni Abarzuza, web developer and interface designer"
+  }`,
+  pageTags = [
+    "portfolio",
+    "andoni",
+    "developer",
+    "designer",
+    "web",
+    "design",
+    "development",
+  ],
 } = Astro.props;
 
 /* 
@@ -52,38 +55,18 @@ const {
   <head>
     <meta charset="utf-8" />
 
-    <meta
-      name="title"
-      content={pageTitle}
-    />
-    <meta
-      name="description"
-      content={pageDescription}
-    />
-    <meta
-      name="author"
-      content="Andoni Abarzuza @kiyameh"
-    />
-    <meta
-      name="tags"
-      content={pageTags?.join(', ') ?? ''}
-    />
-    <meta
-      name="generator"
-      content={Astro.generator}
-    />
-    <meta
-      name="viewport"
-      content="width=device-width"
-    />
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content="Andoni Abarzuza @kiyameh" />
+    <meta name="tags" content={pageTags?.join(", ") ?? ""} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width" />
 
     <title>{pageTitle}</title>
 
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
-    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <ThemeLoader />
   </head>
   <body data-theme="light">
     <slot />

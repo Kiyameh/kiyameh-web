@@ -1,0 +1,26 @@
+---
+/* 
+ !important: Este archivo se encarga de elegir el tema segun las preferencias del usuario y el sistema. Importarlo en el head del layout principal. 
+ */
+
+const defaultTheme = "light";
+---
+
+<script is:inline define:vars={{ defaultTheme }}>
+  (() => {
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    let themeToSet = defaultTheme;
+
+    if (storedTheme) {
+      themeToSet = storedTheme;
+    } else if (prefersDark) {
+      themeToSet = "dark";
+    }
+
+    document.documentElement.setAttribute("data-theme", themeToSet);
+  })();
+</script>
