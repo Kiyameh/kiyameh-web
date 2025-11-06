@@ -8,6 +8,8 @@ import {
 	Menu,
 	X,
 	PencilRuler,
+	NotebookPen,
+	SquareMousePointer,
 } from "lucide-react";
 import styles from "./MobileNavigationBar.module.css";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher/ThemeSwitcher";
@@ -22,6 +24,7 @@ const translations = {
 		portfolio: "Portfolio",
 		projects: "Projects",
 		labs: "Labs",
+		blog: "Blog",
 		method: "Method",
 		resume: "Resume",
 	},
@@ -34,6 +37,7 @@ const translations = {
 		portfolio: "Portafolio",
 		projects: "Proyectos",
 		labs: "Laboratorio",
+		blog: "Blog",
 		method: "Método",
 		resume: "Currículum",
 	},
@@ -162,13 +166,26 @@ export default function MobileNavigationBar({
 						{/* Method */}
 						<li>
 							<a href={`/${currentLocale}/method`}>
-								<PencilRuler className={styles.icon} />
+								<SquareMousePointer className={styles.icon} />
 								<span
 									className={
 										currentPath.includes("method") ? `${styles.active}` : ""
 									}
 								>
 									{t.method}
+								</span>
+							</a>
+						</li>
+						{/* Blog */}
+						<li>
+							<a href={`/${currentLocale}/blog`}>
+								<NotebookPen className={styles.icon} />
+								<span
+									className={
+										currentPath.includes("blog") ? `${styles.active}` : ""
+									}
+								>
+									{t.blog}
 								</span>
 							</a>
 						</li>

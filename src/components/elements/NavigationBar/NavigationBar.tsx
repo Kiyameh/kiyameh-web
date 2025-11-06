@@ -6,6 +6,8 @@ import {
 	Languages,
 	FileCode2,
 	PencilRuler,
+	NotebookPen,
+	SquareMousePointer,
 } from "lucide-react";
 import styles from "./NavigationBar.module.css";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher/ThemeSwitcher";
@@ -19,6 +21,7 @@ const translations = {
 		connect: "Connect",
 		portfolio: "Portfolio",
 		projects: "Projects",
+		blog: "Blog",
 		labs: "Labs",
 		method: "Method",
 		resume: "Resume",
@@ -31,6 +34,7 @@ const translations = {
 		connect: "Contacto",
 		portfolio: "Portafolio",
 		projects: "Proyectos",
+		blog: "Blog",
 		labs: "Labs",
 		method: "Método",
 		resume: "Currículum",
@@ -117,12 +121,23 @@ export default function NavigationBar({
 				{/* Method */}
 				<li className={styles.page}>
 					<a href={`/${currentLocale}/method`} className={styles.trigger}>
-						<PencilRuler
+						<SquareMousePointer
 							className={`${styles.icon} ${
 								currentPath.includes("method") ? styles.active : ""
 							}`}
 						/>
 						<span className={styles.text}>{t.method}</span>
+					</a>
+				</li>
+				{/* Blog */}
+				<li className={styles.page}>
+					<a href={`/${currentLocale}/blog`} className={styles.trigger}>
+						<NotebookPen
+							className={`${styles.icon} ${
+								currentPath.includes("blog") ? styles.active : ""
+							}`}
+						/>
+						<span className={styles.text}>{t.blog}</span>
 					</a>
 				</li>
 				{/* Resume */}
