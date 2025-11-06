@@ -7,6 +7,7 @@ export const projectCategories = [
 	"design",
 	"other",
 ] as const;
+
 export type ProjectCategory = (typeof projectCategories)[number];
 
 // Definición de la colección de proyectos
@@ -37,7 +38,6 @@ const projectsSchema = z.object({
 		.optional(),
 });
 
-// Inferir automáticamente el tipo en TypeScript
 export type Project = {
 	id: string;
 	collection: string;
@@ -51,6 +51,29 @@ export type Project = {
 	digest?: string;
 };
 
+const posts = defineCollection({
+	type: "content",
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			pubDate: z.date(),
+			author: z.string().default("Tu Nombre"),
+			heroImage: image().optional(),
+			tags: z.array(z.string()).default([]),
+			draft: z.boolean().default(false),
+		}),
+});
+
+const tags = defineCollection({
+	type: "data",
+	schema: z.object({
+		name: z.string(),
+		description: z.string().optional(),
+		color: z.string().optional(),
+	}),
+});
+
 const projects = defineCollection({
 	type: "data",
 	schema: projectsSchema,
@@ -58,4 +81,6 @@ const projects = defineCollection({
 
 export const collections = {
 	projects,
+	posts,
+	tags,
 };
