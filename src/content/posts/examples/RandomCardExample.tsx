@@ -15,7 +15,7 @@ const generateRandomStyles = () => {
   } as React.CSSProperties;
 };
 
-const RandomCardExample = () => {
+const RandomCardExample = ({lang}: {lang: "es" | "en"}) => {
   const [randomKey, setRandomKey] = useState(0);
 
   const styleVars = useMemo(generateRandomStyles, [randomKey]);
@@ -27,11 +27,11 @@ const RandomCardExample = () => {
         onClick={() => setRandomKey((prev) => prev + 1)}
       >
         <Dices className={s.dices} />
-        Generar Estilos Aleatorios
+        {lang === "es" ? "Generar Estilos Aleatorios" : "Generate Random Styles"}
       </button>
 
       <div className={s.randomCard} style={styleVars}>
-        Soy un rectangulo tremendamente cambiante
+        {lang === "es" ? "Soy un rectangulo tremendamente cambiante" : "I'm a rectangle that changes tremendously"}
       </div>
     </div>
   );

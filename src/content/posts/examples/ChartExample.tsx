@@ -14,7 +14,7 @@ const ChartExample = () => {
     <div className={s.container}>
       <div className={s.chartControls}>
         <label>
-          Valor ({value}%):
+          Value ({value}%):
           <input
             type="range"
             min="0"

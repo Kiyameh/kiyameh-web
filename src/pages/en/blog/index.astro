@@ -9,8 +9,8 @@ import sailboat from "@/assets/sailboat.svg";
 import Grapper from "@/components/package/Grapper";
 
 const posts = await getCollection("posts");
-/* Ignorar los post en borrador (draft) y filtrar por idioma español */
-const publishedPosts = posts.filter((post) => !post.data.draft && post.data.language === "es");
+/* Ignore draft posts and filter by English language */
+const publishedPosts = posts.filter((post) => !post.data.draft && post.data.language === "en");
 const sortedPosts = publishedPosts.sort(
   (a, b) =>
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
@@ -19,14 +19,14 @@ const sortedPosts = publishedPosts.sort(
 
 <HtmlLayout
   pageTitle="Blog"
-  pageTags={["blog", "articulos"]}
-  pageDescription="Blog de ideas asombrosas"
+  pageTags={["blog", "articles"]}
+  pageDescription="Blog of amazing ideas"
 >
   <NavLayout>
     <header>
       <img class="background" src={waves.src} alt="" />
       <h1>
-        <span>Diario de viaje</span>
+        <span>Travel Journal</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="68"
@@ -50,14 +50,14 @@ const sortedPosts = publishedPosts.sort(
         {
           sortedPosts.length === 0 ? (
             <div class="no-posts">
-              <p>No hay posts disponibles aún.</p>
+              <p>No posts available yet.</p>
             </div>
           ) : (
             <div class="posts-grid">
               {sortedPosts.map((post) => (
                 <Grapper client:load mode="ghost" variant="sticky">
                   <article class="post-card">
-                    <a href={`/es/blog/${post.id}`}>
+                    <a href={`/en/blog/${post.id}`}>
                       <div class="post-card-content">
                         <div class="post-meta">
                           <span class="post-date">
@@ -92,7 +92,7 @@ const sortedPosts = publishedPosts.sort(
                           </div>
                         </div>
                         <div>
-                          <p class="link">Leer artículo →</p>
+                          <p class="link">Read article →</p>
                         </div>
                       </div>
                     </a>

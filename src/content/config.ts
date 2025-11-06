@@ -62,6 +62,7 @@ const posts = defineCollection({
 			heroImage: image().optional(),
 			tags: z.array(z.string()).default([]),
 			draft: z.boolean().default(false),
+			language: z.enum(["es", "en"]).default("es"),
 		}),
 });
 

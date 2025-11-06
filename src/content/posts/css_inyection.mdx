@@ -5,7 +5,7 @@ pubDate: 2025-09-27
 author: "Andoni"
 tags: ["React", "CSS", "JavaScript", "Frontend", "Performance"]
 draft: false
-
+language: "es"
 ---
 
 import ChartExample from './examples/ChartExample'
@@ -177,7 +177,7 @@ Et voilá, tenemos un bonito efecto:
 No todo el dinamismo proviene del usuario. A veces queremos que la UI se sienta "viva" u "orgánica". Crearemos un componente que, en cada render (o al hacer clic en un botón, para este ejemplo), genera valores aleatorios para su border-radius y border-width. Esto demuestra cómo la lógica de JavaScript puede crear estilos impredecibles y únicos.
 
 
-<RandomCardExample client:load />
+<RandomCardExample client:load lang="es" />
 
 De nuevo, hemos usado la inyección de variables CSS para crear un efecto visual dinámico. Sin embargo, esta vez, la información viene de una función de aleatoriedad que se ejecuta en cada render (o cuando nos interese).
 
@@ -213,7 +213,7 @@ Luego sencillamente se consumen esas variables en nuestro css:
 ### CASO 4: Temporalidad (Lógica externa)
 Los estilos dinámicos también pueden reaccionar a condiciones externas, como la hora del día. Crearemos un Theme Switcher automático. En lugar de un botón, el componente detectará la hora actual del usuario y aplicará un tema claro u oscuro inyectando las variables de color apropiadas (ej. --bg-color y --text-color) a toda laaplicación.
 
-<TemporalThemeExample client:load />
+<TemporalThemeExample client:load lang="es" />
 
 1. De nuevo, la fuente de la información es un poquito de JavaScript: 
 

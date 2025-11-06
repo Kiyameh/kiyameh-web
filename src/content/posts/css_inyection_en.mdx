@@ -1,0 +1,365 @@
+---
+title: "Dynamic Styling in React with CSS Variables: 5 Examples to Master Them All"
+description: "Discover how to use CSS custom properties with React to create dynamic and reusable components with optimal performance."
+pubDate: 2025-09-27
+author: "Andoni"
+tags: ["React", "CSS", "JavaScript", "Frontend", "Performance"]
+draft: false
+language: "en"
+---
+
+import ChartExample from './examples/ChartExample'
+import GrapperExample from './examples/GrapperExample.astro'
+import RandomCardExample from './examples/RandomCardExample'
+import TemporalThemeExample from './examples/TemporalThemeExample'
+import ResponsiveLayoutExample from './examples/ResponsiveLayoutExample'
+import ResponsiveGridExample from './examples/ResponsiveGrid'
+import Grapper from './../../components/package/Grapper'
+
+
+Dear internet dwellers. Today I'd like to talk about one of the most useful ninja techniques when styling components in React. And it's none other than **dynamic styling through the use of CSS variables**.
+
+Every React developer has at some point faced the need to dynamically change the appearance of an element based on its state or properties. A button that changes color? A tooltip that adjusts its position? Sound familiar?
+
+Today we're going to see, with five practical examples, how to do this in a simple and highly customizable way. Join me.
+
+
+
+## Why CSS Variables and not inline styles?
+
+The `style={{ ... }}` method is React's direct solution. But its limitations are frustrating: it's impossible to apply pseudo-classes like :hover or :active, we can't define media query rules, and we risk generating new objects on every render.
+
+Quickly, our JSX gets cluttered with styling logic and our CSS loses almost all its power. We're writing CSS with our hands tied.
+
+
+This is where **CSS Custom Properties** (or CSS variables) come in. They're native browser variables, like `var(--primary-color)`. Their superpower is that they're dynamic: if we change their value on an element, all child elements that use it update instantly.
+
+What if React, instead of changing the final style, changed the value of these variables?
+
+
+## The Technique: Injecting Variables from React
+
+The technique is surprisingly clean. Instead of injecting final styles (like backgroundColor: 'red'), we use React's style prop to inject the definitions of our CSS variables.
+
+We simply create an object like `const styleVars = { '--card-bg': props.color }` and pass it to a div `<div style={styleVars}>`. With this, we've just "provided" those variables to all its descendants. Our static CSS (in a .css file) can now consume them.
+
+
+<TipBox tip="Remember to use fallback values in your CSS (e.g. var(--color, #fff)) to prevent styles from breaking if a prop doesn't arrive."/>
+
+This separation gives us back all the power of CSS. Our .css files can now use **:hover** and **@media** while still being controlled by React props. We're no longer limited.
+
+We've created a perfect bridge between React's logic and CSS's power. By letting React manage the data (the variables) and CSS manage the presentation logic (the rules), we get cleaner, more powerful, and more efficient components.
+
+Now, what can we do with this?
+
+## Examples in Action
+
+
+### CASE 1: Controlling Visual Properties with JavaScript
+
+This is the classic example of dynamically styled UI. We'll build a simple chart bar. Its height and color will be controlled by user inputs. We'll see how easy it is to link React form state directly to the visual properties of an element.
+
+<ChartExample client:load  />
+
+Here's how the magic happens:
+
+1. A state stores the value and color
+
+```tsx
+const [value, setValue] = useState<number>(50);
+const [color, setColor] = useState<string>("#209CEE");
+``` 
+
+2. We generate CSS variables and pass them to the HTML element: 
+
+```tsx
+  const styleVars = {
+    "--bar-height": `${value}%`,
+    "--bar-color": color,
+  } as React.CSSProperties;
+
+  <div className="chartBar" style={styleVars}></div>
+
+```
+
+3. CSS consumes the variables: 
+
+```css
+.chartBar {
+  /* .... */
+  height: var(--bar-height, 0%); 
+  background-color: var(--bar-color, #ccc);
+}
+```
+
+Easy, right? Let's go one step further: 
+
+
+### CASE 2: Real-time Cursor Position, the Trendy Border
+
+Let's see if this example sounds familiar: A card or button whose border "chases" the cursor. You've surely seen it lately. The V0 button, Google's AI mode, or on this very website, for that matter. 
+
+  <GrapperExample text="Fancy Button" />
+
+⬆️ This is an example of the `<Grapper>` component from my project <a class="link" href="https://kiyameh.com/en/projects/need-more-gradients/">Need More Gradients UI</a>. Let's see how it works:  
+
+
+
+
+ 1. A state stores the cursor position
+
+```tsx
+const [position, setPosition] = useState({ x: 0, y: 0 });
+```
+
+2. A function handles cursor movement
+
+```tsx
+const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    setPosition({
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100,
+    });
+}, []);
+```
+
+3. The variables are passed to the element as style: 
+
+```tsx
+  const cssVariables = {
+       /* ....other variables */
+       "--position-x": `${position.x}%`,
+       "--position-y": `${position.y}%`,
+  } as React.CSSProperties;
+
+  return (
+      <div style={cssVariables}>
+      {/* ... */}
+      </div>
+  );
+```
+
+4. A background layer draws a radial gradient centered on the cursor position: 
+
+```css
+.grapper > .grapper-back {
+    background: radial-gradient(
+        circle at var(--position-x) var(--position-y),
+        var(--gradient-100) 0%,
+        var(--gradient-200) 30%,
+        var(--gradient-300) 60%,
+        transparent 100%
+    );
+}
+```
+
+5. Finally, a front layer clips the background using an inset on hover: 
+
+```css
+.grapper:hover > .grapper-front {
+    border-radius: calc(var(--radius) - var(--inset));
+    inset: var(--inset);
+}
+```
+
+
+
+Et voilà, we have a nice effect:
+
+<Grapper variant="sticky" mode="ghost" client:load>
+   <TipBox tip="The observant reader will have noticed that we used the same technique to convert the inset, radius, and colors properties of the React component into CSS variables that are injected into the element." style={{margin: 0, backgroundColor: "transparent"}}/>
+</Grapper>
+
+
+### CASE 3: Randomness (Visual Effects on Each Render)
+Not all dynamism comes from the user. Sometimes we want the UI to feel "alive" or "organic". We'll create a component that, on each render (or when clicking a button, for this example), generates random values for its border-radius and border-width. This demonstrates how JavaScript logic can create unpredictable and unique styles.
+
+
+<RandomCardExample client:load lang="en" />
+
+Again, we've used CSS variable injection to create a dynamic visual effect. However, this time, the information comes from a randomness function that runs on each render (or whenever we want).
+
+```tsx
+const generateRandomStyles = () => {
+  const radius = Math.floor(Math.random() * 50) + 10; // 10 to 60px
+  const width = Math.floor(Math.random() * 5) + 1; // 1 to 5px
+  const hue = Math.floor(Math.random() * 360); // Color hue
+
+  return {
+    "--card-border-radius": `${radius}px`,
+    "--card-border-width": `${width}px`,
+    "--card-border-color": `hsl(${hue}, 70%, 50%)`,
+  } as React.CSSProperties;
+};
+```
+
+Then we simply consume those variables in our CSS: 
+
+```css
+.randomCard {
+
+  /* ... */
+  border-style: solid;
+  border-radius: var(--card-border-radius, 10px);
+  border-width: var(--card-border-width, 1px);
+  border-color: var(--card-border-color, #ccc);
+}
+```
+
+
+
+### CASE 4: Temporality (External Logic)
+Dynamic styles can also react to external conditions, like the time of day. We'll create an automatic Theme Switcher. Instead of a button, the component will detect the user's current time and apply a light or dark theme by injecting the appropriate color variables (e.g. --bg-color and --text-color) to the entire application.
+
+<TemporalThemeExample client:load lang="en" />
+
+1. Again, the source of information is a bit of JavaScript: 
+
+```tsx
+const isNight = (date: Date): boolean => {
+  const hour = date.getHours();
+  return hour < 7 || hour >= 20;
+};
+
+function rotationAngle(date: Date): number {
+  const totalHours = date.getHours() + date.getMinutes() / 60;
+  /* 
+  * Speed of celestial bodies:
+  * 360deg / 24h = 15deg/h
+  */
+  const degrees = totalHours * 15;
+  return degrees.toFixed(2);
+}
+
+```
+
+2. We pass to our CSS the angles of the celestial bodies, and the color variables depending on whether it's day or night: 
+
+```tsx
+  const themeVars = useMemo(() => {
+    const commonVars = {
+      "--sun-rotation-angle": `${rotationAngle(currentTime)-180}deg`,
+      "--moon-rotation-angle": `${rotationAngle(currentTime)}deg`,
+    };
+
+    return isNight
+      ? ({
+          ...commonVars,
+          "--bg-color": "#0d2a6160",
+          "--text-color": "#fff0c8ff",
+        } as React.CSSProperties)
+      : ({
+          ...commonVars,
+          "--bg-color": "#fff0c8ff",
+          "--text-color": "#680902ff",
+        } as React.CSSProperties);
+  }, [isNight, currentTime]);
+```
+
+3. And finally, we consume those variables in our CSS wherever we need them: 
+
+```css
+.container{
+  /* .... */
+  background-color: var(--bg-color, #fff);
+  color: var(--text-color, #333);
+}
+
+.sun{
+  /* .... */
+  transform: rotate(var(--sun-rotation-angle));
+}
+
+.moon{
+  /* .... */
+  transform: rotate(var(--moon-rotation-angle));
+}
+```
+
+
+### CASE 5: Responsive Layout (Media Queries)
+As a final example, let's look at a smart way to separate concerns in a responsive design. The strategy is for JavaScript to define the layout options, but for CSS to decide when to apply them.
+
+Imagine a reusable ResponsiveGrid component. We pass it props to define the column configuration, like colsDesktop={4} and colsMobile={1}.
+
+The React component "injects" these options into the DOM (for example, as CSS variables). However, it will be the CSS file, through media queries, that decides which variable to apply based on the viewport size.
+
+In summary: JavaScript says how many columns to use in each context, but CSS decides what the current context is.
+
+The great advantage is that we delegate all the resizing logic to the CSS engine, which is native and highly optimized for this task, achieving cleaner and more efficient code.
+
+    <ResponsiveLayoutExample client:load />
+
+<TipBox tip="Change the window width to see how the layout adapts" />
+
+1. As you can imagine, the code is quite simple: 
+
+```tsx
+import React from "react";
+import s from "./ResponsiveGrid.module.css";
+const ResponsiveGrid = ({
+  children,
+  colsDesktop = 3,
+  colsTablet = 2,
+  colsMobile = 1,
+  gap = "1.5rem",
+}: {
+  children: React.ReactNode;
+  colsDesktop?: number;
+  colsTablet?: number;
+  colsMobile?: number;
+  gap?: string;
+}) => {
+  const gridVars = {
+    "--grid-cols-desktop": colsDesktop,
+    "--grid-cols-tablet": colsTablet,
+    "--grid-cols-mobile": colsMobile,
+    "--grid-gap": gap,
+  } as React.CSSProperties;
+
+  return (
+    <div className={s.responsiveGrid} style={gridVars}>
+      {children}
+    </div>
+  );
+};
+
+export default ResponsiveGrid;
+
+```
+
+```css
+.responsiveGrid {
+  display: grid;
+  gap: var(--grid-gap, 1.5rem);
+  /* Mobile-first: By default, use mobile columns */
+  grid-template-columns: repeat(var(--grid-cols-mobile), 1fr);
+}
+
+@media (min-width: 768px) {
+  .responsiveGrid {
+    grid-template-columns: repeat(var(--grid-cols-tablet), 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsiveGrid {
+    grid-template-columns: repeat(var(--grid-cols-desktop), 1fr);
+  }
+}
+
+```
+
+
+## Conclusion: One More Weapon in Your React Arsenal
+We've journeyed from the limitations of inline styles to the cleanest and most powerful dynamic styling. The technique of injecting CSS variables through React's style prop offers us the best of both worlds:
+
+**The power of React** (JavaScript): Logic, state, and user interaction control the styling data 
+
+**The robustness of CSS**: The browser is in charge of presentation logic, allowing us to use essential features like :hover, pseudo-elements, and crucially, @media queries without problems.
+
+By separating concerns this way, we achieve components that are more readable, more efficient (leveraging the native optimization of the browser's CSS engine), and with zero external dependencies.
+
+It's not about replacing your favorite CSS-in-JS libraries, but about having the right tool for the job. The next time you need a clean bridge between your component's logic and its final appearance, remember that injected CSS variables offer you an **elegant**, **performant**, and **purely native** solution.
