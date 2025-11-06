@@ -1,0 +1,52 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem auto;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--surface-100);
+  padding: 0.5rem;
+  border-radius: var(--radius-medium);
+  border:1px solid var(--border);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--surface-200);
+}
+.button:active {
+scale: 0.98;
+}
+
+.dices{
+  transition: rotate 0.8s ease-out;
+}
+
+.button:active>.dices{
+  rotate: 760deg;
+}
+
+
+
+
+.randomCard {
+
+  font-family: var(--font-mono);
+  font-weight: bold;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: var(--surface-100);
+  transition: all 0.2s ease-in-out; 
+
+  /* Consumo de las variables inyectadas */
+  border-radius: var(--card-border-radius, 10px);
+  border-width: var(--card-border-width, 1px);
+  border-style: solid;
+  border-color: var(--card-border-color, #ccc);
+}

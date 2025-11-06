@@ -1,0 +1,38 @@
+.container {
+	margin: 3rem auto;
+	background-color: var(--surface-100);
+	padding: 1rem;
+}
+
+.inputsContainer {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.inputsContainer > div {
+	flex: 1;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.inputsContainer > div > input {
+	background-color: var(--surface-300);
+	color: var(--content);
+	padding: 0.2rem 0.4rem;
+	border-radius: 6px;
+	border: 1px solid var(--emphasis);
+}
+
+.gridItem {
+	padding: 1rem;
+	background-color: var(--surface-300);
+	color: var(--content);
+	border-radius: 6px;
+	text-align: center;
+	border: 1px solid var(--border);
+	font-size: 2rem;
+}

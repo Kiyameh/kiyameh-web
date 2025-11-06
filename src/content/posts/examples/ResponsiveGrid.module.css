@@ -1,0 +1,18 @@
+.responsiveGrid {
+	display: grid;
+	gap: var(--grid-gap, 1.5rem);
+	/* Mobile-first: Por defecto, usa las columnas móviles */
+	grid-template-columns: repeat(var(--grid-cols-mobile), 1fr);
+}
+
+@media (min-width: 768px) {
+	.responsiveGrid {
+		grid-template-columns: repeat(var(--grid-cols-tablet), 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.responsiveGrid {
+		grid-template-columns: repeat(var(--grid-cols-desktop), 1fr);
+	}
+}

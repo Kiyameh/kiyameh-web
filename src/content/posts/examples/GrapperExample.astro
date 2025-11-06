@@ -1,0 +1,23 @@
+---
+import Grapper from "@/components/package/Grapper";
+const { text } = Astro.props;
+---
+
+<div class="container">
+  <Grapper variant="sticky" mode="ghost" client:load>
+    <button class="button">{text}</button>
+  </Grapper>
+</div>
+
+<style>
+  .button {
+    width: fit-content;
+    padding: 0.8rem 1rem;
+    font-size: 1.2rem;
+  }
+
+  .container {
+    max-width: 180px;
+    margin: 2rem auto;
+  }
+</style>

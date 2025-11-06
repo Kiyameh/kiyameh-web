@@ -1,0 +1,37 @@
+.container {
+	margin: 3rem auto;
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	width: 85%;
+	max-width: 480px;
+}
+
+.chartControls {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
+.chartContainer {
+	width: 100%;
+	height: 200px;
+	background-color: var(--surface-100);
+	border-radius: 8px;
+	overflow: hidden;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.chartBar {
+	width: 50px;
+	border-radius: 8px 8px 0 0;
+	transition: all 0.3s ease-out;
+	height: var(--bar-height, 0%);
+	background-color: var(--bar-color, #ccc);
+	position: relative;
+}

@@ -1,0 +1,138 @@
+.appThemeContainer {
+	min-height: 200px;
+	padding: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius-large);
+	font-size: 1.2rem;
+	margin: 3rem auto;
+
+	background-color: var(--bg-color, #fff);
+	color: var(--text-color, #333);
+	transition:
+		background-color 0.5s,
+		color 0.5s;
+}
+
+@media (max-width: 650px) {
+	.appThemeContainer {
+		flex-direction: column;
+		gap: 2rem;
+	}
+}
+
+.displayContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	flex: 1;
+}
+
+.timeDisplay {
+	font-size: 2.5rem;
+	font-weight: bold;
+	display: block;
+	margin-top: 0.5rem;
+}
+
+.dayNightText {
+	margin-top: 1rem;
+	font-style: italic;
+}
+
+.manualTimeSelector {
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	padding: 2rem;
+	border: 2px dashed var(--text-color);
+	border-radius: var(--radius-large);
+}
+
+.scrollersContainer {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.timeInput {
+	width: 60px;
+	height: 70px;
+	line-height: 70px;
+	font-size: 2.5rem;
+	text-align: center;
+	border: 2px solid var(--text-color);
+	border-radius: 8px;
+	cursor: ns-resize;
+	user-select: none;
+	overflow: hidden;
+	background-color: var(--bg-color);
+	transition: border-color 0.2s;
+	touch-action: none;
+}
+
+.timeInput:hover {
+	border-color: #ffaa00;
+}
+
+.separator {
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+.resetButton {
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 6px;
+	background-color: var(--text-color);
+	color: var(--bg-color);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	transition:
+		opacity 0.2s,
+		transform 0.1s;
+}
+
+.resetButton:hover:not(:disabled) {
+	opacity: 0.9;
+}
+
+.resetButton:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.iconsContainer {
+	width: 100%;
+	max-width: 250px;
+	min-height: 100px;
+	border-bottom: 4px solid var(--text-color);
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1.5rem;
+}
+
+.sun {
+	position: absolute;
+	stroke: var(--text-color);
+	transform-origin: 50% 200%;
+	transition: transform 0.5s;
+	transform: rotate(calc(var(--rotation-angle) - 180deg));
+}
+
+.moon {
+	position: absolute;
+	stroke: var(--text-color);
+	transform-origin: 50% 200%;
+	transition: transform 0.5s;
+	transform: rotate(calc(var(--rotation-angle)));
+}

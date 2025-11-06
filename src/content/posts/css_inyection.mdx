@@ -1,0 +1,365 @@
+---
+title: "Estilizado dinamico en React con variables CSS: 5 ejemplos para dominarlos a todos"
+description: "Descubre cómo usar CSS custom properties junto con React para crear componentes dinámicos y reutilizables con un rendimiento óptimo."
+pubDate: 2025-09-27
+author: "Andoni"
+tags: ["React", "CSS", "JavaScript", "Frontend", "Performance"]
+draft: false
+
+---
+
+import ChartExample from './examples/ChartExample'
+import GrapperExample from './examples/GrapperExample.astro'
+import RandomCardExample from './examples/RandomCardExample'
+import TemporalThemeExample from './examples/TemporalThemeExample'
+import ResponsiveLayoutExample from './examples/ResponsiveLayoutExample'
+import ResponsiveGridExample from './examples/ResponsiveGrid'
+import Grapper from './../../components/package/Grapper'
+
+
+Queridos cohabitantes de internet. Hoy me gustaría hablar sobre una de las técnicas ninja más utiles cuando estilizamos componentes en React. Y no es ni más ni menos que el **estilizado dinámico mediante el uso de variables CSS**.
+
+Todo desarrollador de React se han encontrado alguna vez ante la necesidad de cambiar dinamicamente la apariencia de un elemento según su estado o propiedades. ¿Un botón que cambia de color? ¿Un tooltip que ajusta su posición? ¿Nos suena?
+
+Hoy vamos a ver, con cinco ejemplos prácticos, como hacer esto de forma sencilla y muy personalizable. Acompañenme. 
+
+
+
+## ¿Por qué CSS Variables y no estilos en línea?
+
+El método `style={{ ... }}` es la solución directa de React. Pero sus limitaciones son frustrantes: es imposible aplicar pseudo-clases como :hover o :active, no podemos definir reglas de media queries, y corremos el riesgo de generar objetos nuevos en cada render.
+
+Rápidamente, nuestro JSX se ensucia con lógica de estilos y nuestro CSS pierde casi todo su poder. Estamos escribiendo CSS con las manos atadas.
+
+
+Aquí es donde entran las **CSS Custom Properties** (o variables CSS). Son variables nativas del navegador, como `var(--color-primario)`. Su superpoder es que son dinámicas: si cambiamos su valor en un elemento, todos los elementos hijos que la usen se actualizan al instante.
+
+¿Y si React, en lugar de cambiar el estilo final, cambiara el valor de estas variables?
+
+
+## La técnica: Inyectando las variables desde React
+
+La técnica es sorprendentemente limpia. En lugar de inyectar estilos finales (como backgroundColor: 'red'), usamos el prop style de React para inyectar las definiciones de nuestras variables CSS.
+
+Simplemente creamos un objeto como `const styleVars = { '--card-bg': props.color }` y lo pasamos a un div `<div style={styleVars}>`. Con esto, acabamos de "proveer" esas variables a todos sus descendientes. Nuestro CSS estático (en un archivo .css) puede ahora consumirlas.
+
+
+<TipBox tip="Recuerda usar valores de fallback en tu CSS (ej. var(--color, #fff)) para evitar que los estilos se rompan si una prop no llega."/>
+
+Esta separación nos devuelve todo el poder de CSS. Nuestros archivos .css pueden ahora usar **:hover** y **@media** mientras siguen siendo controlados por las props de React. Ya no estamos limitados.
+
+Hemos creado un puente perfecto entre la lógica de React y el poder de CSS. Al dejar que React gestione los datos (las variables) y que CSS gestione la lógica de presentación (las reglas), obtenemos componentes más limpios, potentes y eficientes.
+
+Ahora bien, ¿qué podemos hacer con esto?
+
+## Los ejemplos en acción
+
+
+### CASO 1: Controlando propiedades visuales con JavaScript
+
+Este es el ejemplo clásico de UI estilizada dinamicamente. Construiremos una barra de gráfico simple. Su altura y su color estarán controlados por inputs del usuario. Veremos qué fácil es vincular el estado de un formulario de React directamente a las propiedades visuales de un elemento.
+
+<ChartExample client:load  />
+
+Así es como sucede la magia:
+
+1. Un estado almacena el valor y el color
+
+```tsx
+const [value, setValue] = useState<number>(50);
+const [color, setColor] = useState<string>("#209CEE");
+``` 
+
+2. Generamos unas variables css y se las pasamos al elemento html: 
+
+```tsx
+  const styleVars = {
+    "--bar-height": `${value}%`,
+    "--bar-color": color,
+  } as React.CSSProperties;
+
+  <div className="chartBar" style={styleVars}></div>
+
+```
+
+3. Css consume las variables: 
+
+```css
+.chartBar {
+  /* .... */
+  height: var(--bar-height, 0%); 
+  background-color: var(--bar-color, #ccc);
+}
+```
+
+Facil, ¿verdad?. Vayamos un paso más allá: 
+
+
+### CASO 2: Posición del cursor en tiempo el real, el borde de moda
+
+A ver si nos suena este ejemplo: Una card o un botón cuyo borde "persigue" el cursor. Seguro que lo has visto ultimamente. El botón de V0, el modo IA de Google, o en esta misma web, sin ir más lejos. 
+
+  <GrapperExample text="Fancy Button" />
+
+⬆️ Este es un ejemplo del componente `<Grapper>` de mi proyecto <a class="link" href="https://kiyameh.com/es/projects/need-more-gradients/">Need More Gradients UI</a>. Veamos como funciona:  
+
+
+
+
+ 1. Un estado almacena la posición del cursor
+
+```tsx
+const [position, setPosition] = useState({ x: 0, y: 0 });
+```
+
+2.  Una función maneja el movimiento del cursor
+
+```tsx
+const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    setPosition({
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100,
+    });
+}, []);
+```
+
+3. Las variables se pasan al elemento en forma de style: 
+
+```tsx
+  const cssVariables = {
+       /* ....otras variables */
+       "--position-x": `${position.x}%`,
+       "--position-y": `${position.y}%`,
+  } as React.CSSProperties;
+
+  return (
+      <div style={cssVariables}>
+      {/* ... */}
+      </div>
+  );
+```
+
+4. Una capa en el fondo dibuja un gradiente radial que se centra en la posición del cursor: 
+
+```css
+.grapper > .grapper-back {
+    background: radial-gradient(
+        circle at var(--position-x) var(--position-y),
+        var(--gradient-100) 0%,
+        var(--gradient-200) 30%,
+        var(--gradient-300) 60%,
+        transparent 100%
+    );
+}
+```
+
+5. Por ultimo, una capa frontal recorta el fondo mediante un inset al hacer hover: 
+
+```css
+.grapper:hover > .grapper-front {
+    border-radius: calc(var(--radius) - var(--inset));
+    inset: var(--inset);
+}
+```
+
+
+
+Et voilá, tenemos un bonito efecto:
+
+<Grapper variant="sticky" mode="ghost" client:load>
+   <TipBox tip="El lector observador se habrá fijado que hemos usado la misma técnica para convertir las propiedades inset, radius y colors del componente de React en variables CSS que se inyectan en el elemento." style={{margin: 0, backgroundColor: "transparent"}}/>
+</Grapper>
+
+
+### CASO 3: Aleatoriedad (Efectos visuales en cada render)
+No todo el dinamismo proviene del usuario. A veces queremos que la UI se sienta "viva" u "orgánica". Crearemos un componente que, en cada render (o al hacer clic en un botón, para este ejemplo), genera valores aleatorios para su border-radius y border-width. Esto demuestra cómo la lógica de JavaScript puede crear estilos impredecibles y únicos.
+
+
+<RandomCardExample client:load />
+
+De nuevo, hemos usado la inyección de variables CSS para crear un efecto visual dinámico. Sin embargo, esta vez, la información viene de una función de aleatoriedad que se ejecuta en cada render (o cuando nos interese).
+
+```tsx
+const generateRandomStyles = () => {
+  const radius = Math.floor(Math.random() * 50) + 10; // 10 a 60px
+  const width = Math.floor(Math.random() * 5) + 1; // 1 a 5px
+  const hue = Math.floor(Math.random() * 360); // Tono de color
+
+  return {
+    "--card-border-radius": `${radius}px`,
+    "--card-border-width": `${width}px`,
+    "--card-border-color": `hsl(${hue}, 70%, 50%)`,
+  } as React.CSSProperties;
+};
+```
+
+Luego sencillamente se consumen esas variables en nuestro css: 
+
+```css
+.randomCard {
+
+  /* ... */
+  border-style: solid;
+  border-radius: var(--card-border-radius, 10px);
+  border-width: var(--card-border-width, 1px);
+  border-color: var(--card-border-color, #ccc);
+}
+```
+
+
+
+### CASO 4: Temporalidad (Lógica externa)
+Los estilos dinámicos también pueden reaccionar a condiciones externas, como la hora del día. Crearemos un Theme Switcher automático. En lugar de un botón, el componente detectará la hora actual del usuario y aplicará un tema claro u oscuro inyectando las variables de color apropiadas (ej. --bg-color y --text-color) a toda laaplicación.
+
+<TemporalThemeExample client:load />
+
+1. De nuevo, la fuente de la información es un poquito de JavaScript: 
+
+```tsx
+const isNight = (date: Date): boolean => {
+  const hour = date.getHours();
+  return hour < 7 || hour >= 20;
+};
+
+function rotationAngle(date: Date): number {
+  const totalHours = date.getHours() + date.getMinutes() / 60;
+  /* 
+  * Velocidad de avance de los astros:
+  * 360deg / 24h = 15deg/h
+  */
+  const degrees = totalHours * 15;
+  return degrees.toFixed(2);
+}
+
+```
+
+2. Pasamos a nuestro css los angulos de los astros, y las variables de color según si es dia o noche: 
+
+```tsx
+  const themeVars = useMemo(() => {
+    const commonVars = {
+      "--sun-rotation-angle": `${rotationAngle(currentTime)-180}deg`,
+      "--moon-rotation-angle": `${rotationAngle(currentTime)}deg`,
+    };
+
+    return isNight
+      ? ({
+          ...commonVars,
+          "--bg-color": "#0d2a6160",
+          "--text-color": "#fff0c8ff",
+        } as React.CSSProperties)
+      : ({
+          ...commonVars,
+          "--bg-color": "#fff0c8ff",
+          "--text-color": "#680902ff",
+        } as React.CSSProperties);
+  }, [isNight, currentTime]);
+```
+
+3. Y finalmente, consumimos esas variables en nuestro css donde las necesitemos: 
+
+```css
+.container{
+  /* .... */
+  background-color: var(--bg-color, #fff);
+  color: var(--text-color, #333);
+}
+
+.sun{
+  /* .... */
+  transform: rotate(var(--sun-rotation-angle));
+}
+
+.moon{
+  /* .... */
+  transform: rotate(var(--moon-rotation-angle));
+}
+```
+
+
+### CASO 5: Layout responsive (Media Queries)
+Como último ejemplo, veamos una forma inteligente de separar responsabilidades en un diseño responsive. La estrategia es que JavaScript defina las opciones del layout, pero que CSS decida cuándo aplicarlas.
+
+Imagina un componente reutilizable ResponsiveGrid. Le pasamos props para definir la configuración de las columnas, como colsDesktop={4} y colsMobile={1}.
+
+El componente React "inyecta" estas opciones en el DOM (por ejemplo, como variables CSS). Sin embargo, será el archivo CSS, mediante media queries, el que decida qué variable aplicar según el tamaño del viewport.
+
+En resumen: JavaScript dice cuántas columnas usar en cada contexto, pero CSS decide cuál es el contexto actual.
+
+La gran ventaja es que delegamos toda la lógica de redimensionamiento al motor de CSS, que es nativo y está altamente optimizado para esta tarea, logrando un código más limpio y eficiente.
+
+    <ResponsiveLayoutExample client:load />
+
+<TipBox tip="Cambia el ancho de la ventana para ver como se adapta el layout" />
+
+1. Como podrás imaginar, el código es bien sencillo: 
+
+```tsx
+import React from "react";
+import s from "./ResponsiveGrid.module.css";
+const ResponsiveGrid = ({
+  children,
+  colsDesktop = 3,
+  colsTablet = 2,
+  colsMobile = 1,
+  gap = "1.5rem",
+}: {
+  children: React.ReactNode;
+  colsDesktop?: number;
+  colsTablet?: number;
+  colsMobile?: number;
+  gap?: string;
+}) => {
+  const gridVars = {
+    "--grid-cols-desktop": colsDesktop,
+    "--grid-cols-tablet": colsTablet,
+    "--grid-cols-mobile": colsMobile,
+    "--grid-gap": gap,
+  } as React.CSSProperties;
+
+  return (
+    <div className={s.responsiveGrid} style={gridVars}>
+      {children}
+    </div>
+  );
+};
+
+export default ResponsiveGrid;
+
+```
+
+```css
+.responsiveGrid {
+  display: grid;
+  gap: var(--grid-gap, 1.5rem);
+  /* Mobile-first: Por defecto, usa las columnas móviles */
+  grid-template-columns: repeat(var(--grid-cols-mobile), 1fr);
+}
+
+@media (min-width: 768px) {
+  .responsiveGrid {
+    grid-template-columns: repeat(var(--grid-cols-tablet), 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsiveGrid {
+    grid-template-columns: repeat(var(--grid-cols-desktop), 1fr);
+  }
+}
+
+```
+
+
+## Conclusión: Un arma más en tu arsenal de React
+Hemos viajado desde las limitaciones de los estilos en línea hasta el estilizado dinámico más limpio y potente. La técnica de inyectar variables CSS a través del prop style en React nos ofrece lo mejor de dos mundos:
+
+**El poder de React** (JavaScript): La lógica, el estado, y la interacción del usuario controlan los datos de estilo 
+
+**La robustez de CSS**: El navegador es el encargado de la lógica de presentación, permitiéndonos utilizar sin problemas características esenciales como :hover, pseudo-elementos y, crucialmente, @media queries.
+
+Al separar las preocupaciones de esta manera, logramos componentes que son más legibles, más eficientes (aprovechando la optimización nativa del motor CSS del navegador) y con cero dependencias externas.
+
+No se trata de reemplazar tus librerías de CSS-in-JS favoritas, sino de tener la herramienta correcta para el trabajo. La próxima vez que necesites un puente limpio entre la lógica de tu componente y su apariencia final, recuerda que las variables CSS inyectadas te ofrecen una solución **elegante**, **performante** y **puramente nativa**.
