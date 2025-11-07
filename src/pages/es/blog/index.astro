@@ -10,7 +10,9 @@ import Grapper from "@/components/package/Grapper";
 
 const posts = await getCollection("posts");
 /* Ignorar los post en borrador (draft) y filtrar por idioma español */
-const publishedPosts = posts.filter((post) => !post.data.draft && post.data.language === "es");
+const publishedPosts = posts.filter(
+  (post) => !post.data.draft && post.data.language === "es"
+);
 const sortedPosts = publishedPosts.sort(
   (a, b) =>
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
@@ -161,7 +163,6 @@ const sortedPosts = publishedPosts.sort(
 
   .post-card {
     border-radius: var(--radius-large);
-    box-shadow: var(--shadow-medium);
     transition: all 0.3s ease;
   }
 
