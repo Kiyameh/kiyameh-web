@@ -1,5 +1,5 @@
 ---
-title: "Estilizado dinamico en React con variables CSS: 5 ejemplos para dominarlos a todos"
+title: "Estilizado dinámico en React con variables CSS: 5 ejemplos para dominarlos a todos"
 description: "Descubre cómo usar CSS custom properties junto con React para crear componentes dinámicos y reutilizables con un rendimiento óptimo."
 pubDate: 2025-09-27
 author: "Andoni"
@@ -19,9 +19,9 @@ import Grapper from './../../components/package/Grapper'
 
 Queridos cohabitantes de internet. Hoy me gustaría hablar sobre una de las técnicas ninja más utiles cuando estilizamos componentes en React. Y no es ni más ni menos que el **estilizado dinámico mediante el uso de variables CSS**.
 
-Todo desarrollador de React se han encontrado alguna vez ante la necesidad de cambiar dinamicamente la apariencia de un elemento según su estado o propiedades. ¿Un botón que cambia de color? ¿Un tooltip que ajusta su posición? ¿Nos suena?
+Todo desarrollador de React se ha encontrado alguna vez ante la necesidad de cambiar dinámicamente la apariencia de un elemento según su estado o propiedades. ¿Un botón que cambia de color? ¿Un tooltip que ajusta su posición? ¿Nos suena?
 
-Hoy vamos a ver, con cinco ejemplos prácticos, como hacer esto de forma sencilla y muy personalizable. Acompañenme. 
+Hoy vamos a ver, con cinco ejemplos prácticos, cómo hacer esto de forma sencilla y muy personalizable. Acompáñenme. 
 
 
 
@@ -57,7 +57,7 @@ Ahora bien, ¿qué podemos hacer con esto?
 
 ### CASO 1: Controlando propiedades visuales con JavaScript
 
-Este es el ejemplo clásico de UI estilizada dinamicamente. Construiremos una barra de gráfico simple. Su altura y su color estarán controlados por inputs del usuario. Veremos qué fácil es vincular el estado de un formulario de React directamente a las propiedades visuales de un elemento.
+Este es el ejemplo clásico de UI estilizada dinámicamente. Construiremos una barra de gráfico simple. Su altura y su color estarán controlados por inputs del usuario. Veremos qué fácil es vincular el estado de un formulario de React directamente a las propiedades visuales de un elemento.
 
 <ChartExample client:load  />
 
@@ -70,7 +70,7 @@ const [value, setValue] = useState<number>(50);
 const [color, setColor] = useState<string>("#209CEE");
 ``` 
 
-2. Generamos unas variables css y se las pasamos al elemento html: 
+2. Generamos unas variables CSS y se las pasamos al elemento HTML: 
 
 ```tsx
   const styleVars = {
@@ -92,16 +92,16 @@ const [color, setColor] = useState<string>("#209CEE");
 }
 ```
 
-Facil, ¿verdad?. Vayamos un paso más allá: 
+Facil, ¿verdad? Vayamos un paso más allá: 
 
 
-### CASO 2: Posición del cursor en tiempo el real, el borde de moda
+### CASO 2: Posición del cursor en tiempo real, el borde de moda
 
-A ver si nos suena este ejemplo: Una card o un botón cuyo borde "persigue" el cursor. Seguro que lo has visto ultimamente. El botón de V0, el modo IA de Google, o en esta misma web, sin ir más lejos. 
+A ver si nos suena este ejemplo: Una card o un botón cuyo borde "persigue" el cursor. Seguro que lo has visto últimamente. El botón de V0, el modo IA de Google, o en esta misma web, sin ir más lejos. 
 
   <GrapperExample text="Fancy Button" />
 
-⬆️ Este es un ejemplo del componente `<Grapper>` de mi proyecto <a class="link" href="https://kiyameh.com/es/projects/need-more-gradients/">Need More Gradients UI</a>. Veamos como funciona:  
+⬆️ Este es un ejemplo del componente `<Grapper>` de mi proyecto <a class="link" href="https://kiyameh.com/es/projects/need-more-gradients/">Need More Gradients UI</a>. Veamos cómo funciona:  
 
 
 
@@ -155,7 +155,7 @@ const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
 }
 ```
 
-5. Por ultimo, una capa frontal recorta el fondo mediante un inset al hacer hover: 
+5. Por último, una capa frontal recorta el fondo mediante un inset al hacer hover: 
 
 ```css
 .grapper:hover > .grapper-front {
@@ -166,10 +166,10 @@ const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
 
 
 
-Et voilá, tenemos un bonito efecto:
+Et voilà, tenemos un bonito efecto:
 
 <Grapper variant="sticky" mode="ghost" client:load>
-   <TipBox tip="El lector observador se habrá fijado que hemos usado la misma técnica para convertir las propiedades inset, radius y colors del componente de React en variables CSS que se inyectan en el elemento." style={{margin: 0, backgroundColor: "transparent"}}/>
+   <TipBox tip="El lector observador se habrá fijado en que hemos usado la misma técnica para convertir las propiedades inset, radius y colors del componente de React en variables CSS que se inyectan en el elemento." style={{margin: 0, backgroundColor: "transparent"}}/>
 </Grapper>
 
 
@@ -195,7 +195,7 @@ const generateRandomStyles = () => {
 };
 ```
 
-Luego sencillamente se consumen esas variables en nuestro css: 
+Luego sencillamente se consumen esas variables en nuestro CSS: 
 
 ```css
 .randomCard {
@@ -211,7 +211,7 @@ Luego sencillamente se consumen esas variables en nuestro css:
 
 
 ### CASO 4: Temporalidad (Lógica externa)
-Los estilos dinámicos también pueden reaccionar a condiciones externas, como la hora del día. Crearemos un Theme Switcher automático. En lugar de un botón, el componente detectará la hora actual del usuario y aplicará un tema claro u oscuro inyectando las variables de color apropiadas (ej. --bg-color y --text-color) a toda laaplicación.
+Los estilos dinámicos también pueden reaccionar a condiciones externas, como la hora del día. Crearemos un Theme Switcher automático. En lugar de un botón, el componente detectará la hora actual del usuario y aplicará un tema claro u oscuro inyectando las variables de color apropiadas (ej. --bg-color y --text-color) a toda la aplicación.
 
 <TemporalThemeExample client:load lang="es" />
 
@@ -235,7 +235,7 @@ function rotationAngle(date: Date): number {
 
 ```
 
-2. Pasamos a nuestro css los angulos de los astros, y las variables de color según si es dia o noche: 
+2. Pasamos a nuestro CSS los ángulos de los astros, y las variables de color según si es día o noche: 
 
 ```tsx
   const themeVars = useMemo(() => {
@@ -258,7 +258,7 @@ function rotationAngle(date: Date): number {
   }, [isNight, currentTime]);
 ```
 
-3. Y finalmente, consumimos esas variables en nuestro css donde las necesitemos: 
+3. Y finalmente, consumimos esas variables en nuestro CSS donde las necesitemos: 
 
 ```css
 .container{
@@ -292,7 +292,7 @@ La gran ventaja es que delegamos toda la lógica de redimensionamiento al motor 
 
     <ResponsiveLayoutExample client:load />
 
-<TipBox tip="Cambia el ancho de la ventana para ver como se adapta el layout" />
+<TipBox tip="Cambia el ancho de la ventana para ver cómo se adapta el layout" />
 
 1. Como podrás imaginar, el código es bien sencillo: 
 
@@ -356,7 +356,7 @@ export default ResponsiveGrid;
 ## Conclusión: Un arma más en tu arsenal de React
 Hemos viajado desde las limitaciones de los estilos en línea hasta el estilizado dinámico más limpio y potente. La técnica de inyectar variables CSS a través del prop style en React nos ofrece lo mejor de dos mundos:
 
-**El poder de React** (JavaScript): La lógica, el estado, y la interacción del usuario controlan los datos de estilo 
+**El poder de React** (JavaScript): La lógica, el estado y la interacción del usuario controlan los datos de estilo 
 
 **La robustez de CSS**: El navegador es el encargado de la lógica de presentación, permitiéndonos utilizar sin problemas características esenciales como :hover, pseudo-elementos y, crucialmente, @media queries.
 
