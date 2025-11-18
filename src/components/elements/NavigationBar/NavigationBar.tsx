@@ -142,7 +142,11 @@ export default function NavigationBar({
 				</li>
 				{/* Resume */}
 				<li className={styles.page}>
-					<a href={`/${currentLocale}/resume`} className={styles.trigger}>
+					<a
+						href={`/${currentLocale}/resume.pdf`}
+						className={styles.trigger}
+						target="_blank"
+					>
 						<FileUser
 							className={`${styles.icon} ${
 								currentPath.includes("resume") ? styles.active : ""

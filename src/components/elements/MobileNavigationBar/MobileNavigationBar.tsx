@@ -191,7 +191,7 @@ export default function MobileNavigationBar({
 						</li>
 						{/* Resume */}
 						<li>
-							<a href={`/${currentLocale}/resume`}>
+							<a href={`/${currentLocale}/resume.pdf`} target="_blank">
 								<FileUser className={styles.icon} />
 								<span
 									className={
